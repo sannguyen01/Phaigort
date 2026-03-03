@@ -4,12 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Divider } from "@/components/ui/Divider";
 import { ContactForm } from "@/components/sections/ContactForm";
 
-export const metadata = createMetadata({
-  title: "Contact",
-  description:
-    "Begin a conversation with Phaigort — inquiries about collections, consultations, and visits to the Wonderhouse.",
-  path: "/contact",
-});
+export const metadata = createMetadata({ title: "Contact", description: "Begin a conversation with Phaigort — inquiries about collections, consultations, and visits.", path: "/contact" });
 
 export default function ContactPage() {
   return (
@@ -17,16 +12,9 @@ export default function ContactPage() {
       <Container className="max-w-3xl text-center">
         <Caption>Direct Inquiry</Caption>
         <H1 className="mt-6">Contact</H1>
-        <Body className="mt-8 text-ivory/70">
-          Every relationship begins with curiosity. Whether you seek a
-          specific treasure, wish to visit the Wonderhouse, or simply want
-          to learn more about Material Consciousness — we welcome your
-          inquiry with the same care we bring to curating materials.
-        </Body>
+        <Body className="mt-8 text-silver">Every relationship begins with curiosity. Whether you seek a specific treasure, wish to visit the Wonderhouse, or simply want to learn more about Material Consciousness — we welcome your inquiry.</Body>
       </Container>
-
       <Divider />
-
       <ContactForm />
     </div>
   );

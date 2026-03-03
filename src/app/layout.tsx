@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Raleway, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BRAND } from "@/lib/constants";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const raleway = Raleway({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-cormorant",
+  variable: "--font-raleway",
   display: "swap",
 });
 
@@ -50,8 +50,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-obsidian text-ivory font-body antialiased">
+    <html lang="en" className={`${raleway.variable} ${inter.variable}`}>
+      <body className="min-h-screen bg-navy text-platinum font-body antialiased">
         <Header />
         <main className="pt-16 md:pt-20">{children}</main>
         <Footer />

@@ -25,13 +25,13 @@ export const TREASURE_DOMAINS = [
   {
     title: "Geological Rarities",
     description:
-      "Gemstones selected for compelling formation stories — sapphires revealing how iron and titanium created blue over millions of years, spinels demonstrating cobalt concentrations in ancient marble.",
+      "Gemstones curated for compelling formation stories — sapphires revealing how iron and titanium created blue over millions of years, spinels demonstrating cobalt concentrations in ancient marble.",
     href: "/collections#geological-rarities",
   },
   {
     title: "Precious Metals",
     description:
-      "Gold, platinum, silver, and palladium serving both wealth preservation and aesthetic appreciation. Native metal specimens showcasing Earth's chemistry creating elemental purity.",
+      "Gold, platinum, silver, and palladium — both wealth preservation and geological wonder. Native metal specimens showcasing Earth's chemistry creating elemental purity.",
     href: "/collections#precious-metals",
   },
   {

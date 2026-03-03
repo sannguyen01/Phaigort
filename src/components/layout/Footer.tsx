@@ -12,61 +12,34 @@ export function Footer() {
       <Divider />
       <Container className="pb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-          {/* Brand */}
           <div className="space-y-4">
-            <Link
-              href="/"
-              className="font-heading text-3xl tracking-wider text-cream hover:text-gold transition-colors duration-300"
-            >
+            <Link href="/" className="font-heading text-2xl tracking-logo uppercase font-medium text-platinum hover:text-coral transition-colors duration-300">
               {BRAND.name}
             </Link>
-            <p className="font-body text-sm leading-relaxed text-ivory/60 max-w-xs">
+            <p className="font-body text-sm leading-relaxed text-silver max-w-xs">
               {BRAND.tagline}
             </p>
           </div>
-
-          {/* Navigation */}
           <div className="space-y-4">
             <Caption>Explore</Caption>
             <nav className="flex flex-col gap-3 mt-4">
               {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="font-body text-sm text-ivory/60 hover:text-cream transition-colors duration-300"
-                >
+                <Link key={link.href} href={link.href} className="font-body text-sm text-silver hover:text-platinum transition-colors duration-300">
                   {link.label}
                 </Link>
               ))}
             </nav>
           </div>
-
-          {/* Connect */}
           <div className="space-y-4">
             <Caption>Connect</Caption>
             <nav className="flex flex-col gap-3 mt-4">
-              <a
-                href={SOCIAL.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-sm text-ivory/60 hover:text-cream transition-colors duration-300"
-              >
-                Instagram
-              </a>
-              <a
-                href={SOCIAL.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-body text-sm text-ivory/60 hover:text-cream transition-colors duration-300"
-              >
-                LinkedIn
-              </a>
+              <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" className="font-body text-sm text-silver hover:text-platinum transition-colors duration-300">Instagram</a>
+              <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" className="font-body text-sm text-silver hover:text-platinum transition-colors duration-300">LinkedIn</a>
             </nav>
           </div>
         </div>
-
         <div className="gold-line mt-16 mb-8" />
-        <p className="font-body text-xs text-ivory/40 text-center">
+        <p className="font-body text-xs text-silver/60 text-center">
           &copy; {currentYear} {BRAND.name}. All rights reserved.
         </p>
       </Container>

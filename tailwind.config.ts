@@ -8,16 +8,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        obsidian: "#0D0D0D",
-        charcoal: "#1A1A1A",
-        ivory: "#F5F0E8",
-        cream: "#FFFDF7",
-        gold: "#C9A86C",
-        garnet: "#8B1A2F",
-        "slate-stone": "#3D3D3D",
+        navy: "#1A2851",
+        "deep-navy": "#0F172A",
+        platinum: "#F8F9FB",
+        silver: "#8B9DC3",
+        coral: "#FF6B4A",
+        sapphire: "#0F52BA",
+        emerald: "#1B4332",
       },
       fontFamily: {
-        heading: ["var(--font-cormorant)", "Cormorant Garamond", "serif"],
+        heading: ["var(--font-raleway)", "Raleway", "sans-serif"],
         body: ["var(--font-inter)", "Inter", "sans-serif"],
       },
       spacing: {
@@ -27,6 +27,9 @@ const config: Config = {
       },
       maxWidth: {
         content: "1280px",
+      },
+      letterSpacing: {
+        logo: "0.25em",
       },
       transitionDuration: {
         1200: "1200ms",

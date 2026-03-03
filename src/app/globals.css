@@ -10,33 +10,32 @@
   }
 
   body {
-    @apply bg-obsidian text-ivory font-body;
+    @apply bg-navy text-platinum font-body;
   }
 
   ::selection {
-    @apply bg-gold/20 text-cream;
+    @apply bg-coral/20 text-platinum;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-obsidian;
+    @apply bg-navy;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-stone rounded-full;
+    @apply bg-silver/40 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gold/60;
+    @apply bg-sapphire;
   }
 }
 
 @layer components {
   .gold-line {
-    @apply h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent;
+    @apply h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent;
   }
 }
