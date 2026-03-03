@@ -39,7 +39,7 @@ const ARCHIVE_CATEGORIES = [
 
 export default function ArchivePage() {
   return (
-    <div className="pt-32 md:pt-40">
+    <div className="pt-16 md:pt-20">
       <Container>
         <Caption>Historical Treasures</Caption>
         <H1 className="mt-6 max-w-4xl">

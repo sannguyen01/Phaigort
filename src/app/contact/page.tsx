@@ -13,7 +13,7 @@ export const metadata = createMetadata({
 
 export default function ContactPage() {
   return (
-    <div className="pt-32 md:pt-40">
+    <div className="pt-16 md:pt-20">
       <Container className="max-w-3xl text-center">
         <Caption>Direct Inquiry</Caption>
         <H1 className="mt-6">Contact</H1>

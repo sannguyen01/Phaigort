@@ -13,7 +13,7 @@ export const metadata = createMetadata({
 
 export default function CollectionsPage() {
   return (
-    <div className="pt-32 md:pt-40">
+    <div className="pt-16 md:pt-20">
       <Container>
         <Caption>The Four Domains</Caption>
         <H1 className="mt-6 max-w-4xl">

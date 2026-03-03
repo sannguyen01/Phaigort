@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-obsidian">
+    <section className="relative -mt-16 md:-mt-20 flex min-h-screen items-center justify-center overflow-hidden bg-obsidian">
       {/* Subtle radial glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,168,108,0.04)_0%,_transparent_70%)]" />
 
