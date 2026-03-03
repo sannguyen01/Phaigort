@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-obsidian text-ivory font-body;
+  }
+
+  ::selection {
+    @apply bg-gold/20 text-cream;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-obsidian;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-stone rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold/60;
+  }
+}
+
+@layer components {
+  .gold-line {
+    @apply h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent;
+  }
+}
