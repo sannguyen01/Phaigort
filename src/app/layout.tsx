@@ -58,6 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${raleway.variable} ${inter.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

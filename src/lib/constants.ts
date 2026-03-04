@@ -27,23 +27,31 @@ export const TREASURE_DOMAINS = [
     description:
       "Gemstones curated for compelling formation stories — sapphires revealing how iron and titanium created blue over millions of years, spinels demonstrating cobalt concentrations in ancient marble.",
     href: "/collections#geological-rarities",
+    image: "/collections/geological-rarities.jpg",
+    imageAlt: "A brilliant blue sapphire resting on natural rock formation",
   },
   {
     title: "Precious Metals",
     description:
       "Gold, platinum, silver, and palladium — both wealth preservation and geological wonder. Native metal specimens showcasing Earth's chemistry creating elemental purity.",
     href: "/collections#precious-metals",
+    image: "/collections/precious-metals.jpg",
+    imageAlt: "Collection of deep blue sapphires arranged in a display tray",
   },
   {
     title: "Historical Artifacts",
     description:
       "Cultural pieces with documented stories — Spanish colonial jewelry, Portuguese filigree representing five centuries of craft transmission, Asian trade objects connecting civilizations.",
     href: "/collections#historical-artifacts",
+    image: "/collections/historical-artifacts.jpg",
+    imageAlt: "A cabochon-cut emerald displaying rich green translucency",
   },
   {
     title: "Contemporary Innovations",
     description:
       "Advanced materials demonstrating genuine technical achievement — aerospace alloys, proprietary finishes, experimental composites requiring years to develop.",
     href: "/collections#contemporary-innovations",
+    image: "/collections/contemporary-innovations.jpg",
+    imageAlt: "Assorted tourmaline gemstones in green and pink hues",
   },
 ] as const;

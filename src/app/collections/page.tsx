@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { createMetadata } from "@/lib/metadata";
 import { H1, H3, Body, Caption } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
@@ -26,8 +27,14 @@ export default function CollectionsPage() {
                 </div>
                 <div>
                   <Body className="text-silver">{domain.description}</Body>
-                  <div className="mt-8 aspect-[16/9] bg-deep-navy border border-subtle flex items-center justify-center">
-                    <Caption>Collection imagery forthcoming</Caption>
+                  <div className="mt-8 relative aspect-[16/9] overflow-hidden bg-deep-navy border border-subtle">
+                    <Image
+                      src={domain.image}
+                      alt={domain.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 66vw"
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               </div>
