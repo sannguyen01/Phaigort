@@ -11,7 +11,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-navy/80 backdrop-blur-md border-b border-silver/10">
+    <header className="fixed inset-x-0 top-0 z-50 bg-navy/80 backdrop-blur-md border-b border-subtle">
       <Container className="flex items-center justify-between h-16 md:h-20">
         <Link
           href="/"
@@ -59,7 +59,7 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden bg-navy border-b border-silver/10"
+            className="md:hidden overflow-hidden bg-navy border-b border-subtle"
           >
             <Container className="flex flex-col gap-6 py-8">
               {NAV_LINKS.map((link) => (

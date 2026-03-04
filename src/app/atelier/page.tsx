@@ -26,7 +26,7 @@ export default function AtelierPage() {
         <H2 className="mb-12">Discovery Approaches</H2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {APPROACHES.map((a) => (
-            <div key={a.title} className="p-8 md:p-10 bg-deep-navy border border-silver/10 space-y-4">
+            <div key={a.title} className="p-8 md:p-10 bg-deep-navy border border-subtle space-y-4">
               <div className="flex items-baseline justify-between gap-4">
                 <h3 className="font-heading text-xl text-platinum">{a.title}</h3>
                 <span className="font-body text-xs text-coral/70 whitespace-nowrap">{a.duration}</span>

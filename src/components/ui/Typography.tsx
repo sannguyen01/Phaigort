@@ -10,7 +10,7 @@ export function Display({ children, className }: TypographyProps) {
   return (
     <h1
       className={cn(
-        "font-heading text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-platinum",
+        "font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-platinum",
         className
       )}
     >
@@ -23,7 +23,7 @@ export function H1({ children, className }: TypographyProps) {
   return (
     <h1
       className={cn(
-        "font-heading text-3xl md:text-4xl lg:text-5xl font-light tracking-tight text-platinum",
+        "font-heading text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-light tracking-tight text-platinum",
         className
       )}
     >

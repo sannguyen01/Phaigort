@@ -30,6 +30,7 @@ export function Button({
     "inline-flex items-center justify-center px-8 py-3",
     "font-body text-sm uppercase tracking-widest",
     "transition-all duration-300 ease-out",
+    "disabled:opacity-50 disabled:cursor-not-allowed",
     variants[variant],
     className
   );

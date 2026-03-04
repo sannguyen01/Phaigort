@@ -26,7 +26,7 @@ export default function CollectionsPage() {
                 </div>
                 <div>
                   <Body className="text-silver">{domain.description}</Body>
-                  <div className="mt-8 aspect-[16/9] bg-deep-navy border border-silver/10 flex items-center justify-center">
+                  <div className="mt-8 aspect-[16/9] bg-deep-navy border border-subtle flex items-center justify-center">
                     <Caption>Collection imagery forthcoming</Caption>
                   </div>
                 </div>

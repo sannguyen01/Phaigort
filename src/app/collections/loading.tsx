@@ -10,7 +10,7 @@ export default function CollectionsLoading() {
           <div className="h-5 w-96 bg-platinum/5 rounded" />
         </div>
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[1, 2, 3, 4].map((i) => (<div key={i} className="h-64 bg-deep-navy border border-silver/10 animate-pulse" />))}
+          {[1, 2, 3, 4].map((i) => (<div key={i} className="h-64 bg-deep-navy border border-subtle animate-pulse" />))}
         </div>
       </Container>
     </div>

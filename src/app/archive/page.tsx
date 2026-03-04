@@ -24,7 +24,7 @@ export default function ArchivePage() {
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {ARCHIVE_CATEGORIES.map((cat) => (
-            <div key={cat.title} className="p-8 md:p-12 bg-deep-navy border border-silver/10">
+            <div key={cat.title} className="p-8 md:p-12 bg-deep-navy border border-subtle">
               <Caption className="text-coral/70">{cat.period}</Caption>
               <H3 className="mt-4">{cat.title}</H3>
               <Body className="mt-4 text-silver">{cat.description}</Body>

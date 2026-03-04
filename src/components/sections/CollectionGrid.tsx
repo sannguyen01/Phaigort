@@ -22,7 +22,7 @@ export function CollectionGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {TREASURE_DOMAINS.map((domain, i) => (
             <motion.div key={domain.title} {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 24 }, animate: isInView ? { opacity: 1, y: 0 } : {}, transition: { delay: 0.1 + i * 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] } })}>
-              <Link href={domain.href} className="group block p-8 md:p-12 bg-deep-navy border border-silver/10 hover:border-coral/30 transition-all duration-500">
+              <Link href={domain.href} className="group block p-8 md:p-12 bg-deep-navy border border-subtle hover:border-coral/30 transition-all duration-500">
                 <span className="font-body text-xs uppercase tracking-widest text-coral/80 group-hover:text-coral transition-colors duration-300">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-4 font-heading text-2xl md:text-3xl text-platinum group-hover:text-coral transition-colors duration-500">{domain.title}</h3>
                 <Body className="mt-4 text-silver/70 group-hover:text-silver transition-colors duration-500">{domain.description}</Body>

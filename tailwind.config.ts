@@ -20,20 +20,18 @@ const config: Config = {
         heading: ["var(--font-raleway)", "Raleway", "sans-serif"],
         body: ["var(--font-inter)", "Inter", "sans-serif"],
       },
-      spacing: {
-        18: "4.5rem",
-        88: "22rem",
-        128: "32rem",
-      },
+      spacing: {},
       maxWidth: {
         content: "1280px",
       },
       letterSpacing: {
         logo: "0.25em",
       },
+      borderColor: {
+        subtle: "rgba(139, 157, 195, 0.1)",
+      },
       transitionDuration: {
         1200: "1200ms",
-        1800: "1800ms",
       },
     },
   },
