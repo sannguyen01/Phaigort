@@ -13,7 +13,7 @@ export default function CollectionsPage() {
       <Container>
         <Caption>The Four Domains</Caption>
         <H1 className="mt-6 max-w-4xl">Comprehensive Material Curation</H1>
-        <Body className="mt-8 max-w-2xl text-silver">Phaigort curates across four treasure domains without hierarchy. A gemstone formed over millions of years receives the same curatorial reverence as an artisan&apos;s masterwork perfected across generations.</Body>
+        <Body className="mt-8 max-w-2xl text-royal-navy/60">Phaigort curates across four treasure domains without hierarchy. A gemstone formed over millions of years receives the same curatorial reverence as an artisan&apos;s masterwork perfected across generations.</Body>
       </Container>
       <Divider />
       <Container>
@@ -26,8 +26,8 @@ export default function CollectionsPage() {
                   <H3 className="mt-4">{domain.title}</H3>
                 </div>
                 <div>
-                  <Body className="text-silver">{domain.description}</Body>
-                  <div className="mt-8 relative aspect-[16/9] overflow-hidden bg-deep-navy border border-subtle">
+                  <Body className="text-royal-navy/60">{domain.description}</Body>
+                  <div className="mt-8 relative aspect-[16/9] overflow-hidden bg-royal-navy/5 border border-royal-navy/10">
                     <Image
                       src={domain.image}
                       alt={domain.imageAlt}

@@ -18,16 +18,16 @@ export default function ArchivePage() {
       <Container>
         <Caption>Historical Treasures</Caption>
         <H1 className="mt-6 max-w-4xl">The Archive</H1>
-        <Body className="mt-8 max-w-2xl text-silver">Cultural pieces with documented stories — objects embodying human civilization&apos;s creative achievements across centuries and continents.</Body>
+        <Body className="mt-8 max-w-2xl text-royal-navy/60">Cultural pieces with documented stories — objects embodying human civilization&apos;s creative achievements across centuries and continents.</Body>
       </Container>
       <Divider />
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {ARCHIVE_CATEGORIES.map((cat) => (
-            <div key={cat.title} className="p-8 md:p-12 bg-deep-navy border border-subtle">
+            <div key={cat.title} className="p-8 md:p-12 bg-royal-navy/5 border border-royal-navy/10">
               <Caption className="text-coral/70">{cat.period}</Caption>
               <H3 className="mt-4">{cat.title}</H3>
-              <Body className="mt-4 text-silver">{cat.description}</Body>
+              <Body className="mt-4 text-royal-navy/60">{cat.description}</Body>
             </div>
           ))}
         </div>
