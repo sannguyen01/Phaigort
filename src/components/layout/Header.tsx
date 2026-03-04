@@ -20,7 +20,7 @@ export function Header() {
           {BRAND.name}
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -42,6 +42,7 @@ export function Header() {
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden p-2 text-platinum/70 hover:text-platinum transition-colors"
           aria-label="Toggle navigation"
+          aria-expanded={mobileOpen}
         >
           <div className="flex flex-col gap-1.5 w-6">
             <span className={cn("block h-px bg-current transition-transform duration-300", mobileOpen && "translate-y-[7px] rotate-45")} />
@@ -54,6 +55,7 @@ export function Header() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
+            aria-label="Mobile navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}

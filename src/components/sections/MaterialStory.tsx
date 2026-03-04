@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { H2, Body, Caption } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
@@ -9,11 +9,12 @@ import { Divider } from "@/components/ui/Divider";
 export function MaterialStory() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <section ref={ref} className="py-32 md:py-48 bg-deep-navy">
       <Container>
-        <motion.div initial={{ opacity: 0, y: 32 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }} className="max-w-3xl">
+        <motion.div {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 32 }, animate: isInView ? { opacity: 1, y: 0 } : {}, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } })} className="max-w-3xl">
           <Caption>The Philosophy</Caption>
           <H2 className="mt-6">Material Consciousness is the recognition that treasures derive value from three converging sources</H2>
         </motion.div>
@@ -23,7 +24,7 @@ export function MaterialStory() {
             { title: "Cultural Heritage", description: "Human craft mastery — traditions perfected across generations through meditative dedication, from Portuguese filigree to Japanese metalwork." },
             { title: "Technical Mastery", description: "Contemporary innovation — materials requiring years of development and irreplaceable expertise, demonstrating human ingenuity at its finest." },
           ].map((pillar, i) => (
-            <motion.div key={pillar.title} initial={{ opacity: 0, y: 24 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.2 + i * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }} className="space-y-4">
+            <motion.div key={pillar.title} {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 24 }, animate: isInView ? { opacity: 1, y: 0 } : {}, transition: { delay: 0.2 + i * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] } })} className="space-y-4">
               <span className="font-body text-xs uppercase tracking-widest text-coral/70">0{i + 1}</span>
               <h3 className="font-heading text-xl text-platinum">{pillar.title}</h3>
               <Body className="text-silver">{pillar.description}</Body>

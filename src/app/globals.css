@@ -26,11 +26,17 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-silver/40 rounded-full;
+    @apply bg-silver/60 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-sapphire;
+  }
+}
+
+@layer base {
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-coral rounded-sm;
   }
 }
 

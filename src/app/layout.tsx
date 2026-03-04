@@ -52,8 +52,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${raleway.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-navy text-platinum font-body antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-coral focus:text-platinum focus:font-body focus:text-sm focus:rounded"
+        >
+          Skip to content
+        </a>
         <Header />
-        <main className="pt-16 md:pt-20">{children}</main>
+        <main id="main-content" className="pt-16 md:pt-20">{children}</main>
         <Footer />
       </body>
     </html>
