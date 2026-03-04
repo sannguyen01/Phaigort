@@ -21,6 +21,9 @@ export function createMetadata({
   return {
     title: pageTitle,
     description: pageDescription,
+    alternates: {
+      canonical: path || "/",
+    },
     openGraph: {
       title: pageTitle,
       description: pageDescription,
@@ -29,7 +32,7 @@ export function createMetadata({
       type: "website",
       images: [
         {
-          url: `${BRAND.url}/og-image.jpg`,
+          url: "/og-image.jpg",
           width: 1200,
           height: 630,
           alt: `${BRAND.name} — ${BRAND.tagline}`,
@@ -38,6 +41,8 @@ export function createMetadata({
     },
     twitter: {
       card: "summary_large_image",
+      site: "@phaigort",
+      creator: "@phaigort",
       title: pageTitle,
       description: pageDescription,
     },

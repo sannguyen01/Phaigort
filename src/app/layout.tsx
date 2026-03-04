@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Raleway, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { BRAND } from "@/lib/constants";
+import { BRAND, SOCIAL } from "@/lib/constants";
 import "./globals.css";
 
 const raleway = Raleway({
@@ -19,11 +19,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BRAND.url),
   title: {
     default: `${BRAND.name} — ${BRAND.tagline}`,
     template: `%s — ${BRAND.name}`,
   },
   description: BRAND.description,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: `${BRAND.name} — ${BRAND.tagline}`,
     description: BRAND.description,
@@ -32,7 +36,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${BRAND.url}/og-image.jpg`,
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: `${BRAND.name} — ${BRAND.tagline}`,
@@ -41,6 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@phaigort",
+    creator: "@phaigort",
   },
 };
 
@@ -51,6 +57,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${raleway.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: BRAND.name,
+              url: BRAND.url,
+              description: BRAND.description,
+              sameAs: [SOCIAL.instagram, SOCIAL.linkedin],
+            }),
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-navy text-platinum font-body antialiased">
         <a
           href="#main-content"
