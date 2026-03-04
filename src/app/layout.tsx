@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Raleway, Inter } from "next/font/google";
+import { Bodoni_Moda, EB_Garamond } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BRAND, SOCIAL } from "@/lib/constants";
 import "./globals.css";
 
-const raleway = Raleway({
+const bodoni = Bodoni_Moda({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-raleway",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-bodoni",
   display: "swap",
 });
 
-const inter = Inter({
+const ebGaramond = EB_Garamond({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-eb-garamond",
   display: "swap",
 });
 
@@ -56,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${raleway.variable} ${inter.variable}`}>
+    <html lang="en" className={`${bodoni.variable} ${ebGaramond.variable}`}>
       <head>
         <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png" />
         <script
@@ -73,7 +74,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-navy text-platinum font-body antialiased">
+      <body className="min-h-screen bg-platinum text-royal-navy font-body antialiased">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-coral focus:text-platinum focus:font-body focus:text-sm focus:rounded"

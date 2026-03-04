@@ -10,8 +10,8 @@ interface FormData { name: string; email: string; interest: string; message: str
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClasses = cn(
-  "w-full px-4 py-3 bg-deep-navy border border-silver/20",
-  "font-body text-sm text-platinum placeholder:text-silver/60",
+  "w-full px-4 py-3 bg-white border border-royal-navy/10",
+  "font-body text-sm text-royal-navy placeholder:text-royal-navy/40",
   "focus:outline-none focus:border-coral/50 transition-colors duration-300",
   "disabled:opacity-50 disabled:cursor-not-allowed"
 );
@@ -53,7 +53,7 @@ export function ContactForm() {
       <Container className="max-w-2xl">
         <div className="text-center py-16 space-y-4">
           <H3>Thank You</H3>
-          <Body className="text-silver">Your inquiry has been received. We will respond within 48 hours.</Body>
+          <Body className="text-royal-navy/60">Your inquiry has been received. We will respond within 48 hours.</Body>
           <button
             onClick={() => setStatus("idle")}
             className="mt-6 font-body text-sm uppercase tracking-widest text-coral hover:text-coral/80 transition-colors duration-300"
@@ -71,7 +71,7 @@ export function ContactForm() {
     <Container className="max-w-2xl">
       <div className="text-center mb-16 space-y-4">
         <H3>Begin a Conversation</H3>
-        <Body className="text-silver">Whether you seek a specific treasure or wish to explore the possibilities of Material Consciousness, we welcome your inquiry.</Body>
+        <Body className="text-royal-navy/60">Whether you seek a specific treasure or wish to explore the possibilities of Material Consciousness, we welcome your inquiry.</Body>
       </div>
       <form onSubmit={handleSubmit} className="space-y-6" noValidate>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -86,7 +86,7 @@ export function ContactForm() {
         </div>
         <div>
           <label htmlFor="contact-interest" className="sr-only">Area of interest</label>
-          <select id="contact-interest" disabled={isSubmitting} value={form.interest} onChange={(e) => setForm({ ...form, interest: e.target.value })} className={cn(inputClasses, !form.interest && "text-silver/60")}>
+          <select id="contact-interest" disabled={isSubmitting} value={form.interest} onChange={(e) => setForm({ ...form, interest: e.target.value })} className={cn(inputClasses, !form.interest && "text-royal-navy/40")}>
             <option value="">Area of interest</option>
             <option value="geological-rarities">Geological Rarities</option>
             <option value="precious-metals">Precious Metals</option>

@@ -10,7 +10,7 @@ export function Display({ children, className }: TypographyProps) {
   return (
     <h1
       className={cn(
-        "font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-platinum",
+        "font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-royal-navy",
         className
       )}
     >
@@ -23,7 +23,7 @@ export function H1({ children, className }: TypographyProps) {
   return (
     <h1
       className={cn(
-        "font-heading text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-light tracking-tight text-platinum",
+        "font-heading text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-light tracking-tight text-royal-navy",
         className
       )}
     >
@@ -36,7 +36,7 @@ export function H2({ children, className }: TypographyProps) {
   return (
     <h2
       className={cn(
-        "font-heading text-2xl md:text-3xl font-light tracking-tight text-platinum",
+        "font-heading text-2xl md:text-3xl font-light tracking-tight text-royal-navy",
         className
       )}
     >
@@ -49,7 +49,7 @@ export function H3({ children, className }: TypographyProps) {
   return (
     <h3
       className={cn(
-        "font-heading text-xl md:text-2xl font-light text-platinum",
+        "font-heading text-xl md:text-2xl font-light text-royal-navy",
         className
       )}
     >
@@ -62,7 +62,7 @@ export function H4({ children, className }: TypographyProps) {
   return (
     <h4
       className={cn(
-        "font-heading text-lg md:text-xl font-normal text-platinum",
+        "font-heading text-lg md:text-xl font-normal text-royal-navy",
         className
       )}
     >
@@ -75,7 +75,7 @@ export function Body({ children, className }: TypographyProps) {
   return (
     <p
       className={cn(
-        "font-body text-base md:text-lg leading-relaxed text-platinum/80",
+        "font-body text-base md:text-lg leading-relaxed max-w-prose text-royal-navy/80",
         className
       )}
     >

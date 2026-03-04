@@ -10,11 +10,11 @@
   }
 
   body {
-    @apply bg-navy text-platinum font-body;
+    @apply bg-platinum text-royal-navy font-body;
   }
 
   ::selection {
-    @apply bg-coral/20 text-platinum;
+    @apply bg-royal-navy text-platinum;
   }
 
   ::-webkit-scrollbar {
@@ -22,7 +22,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-navy;
+    @apply bg-platinum;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -42,7 +42,7 @@
 
 @layer components {
   .gold-line {
-    @apply h-px bg-gradient-to-r from-transparent via-silver/30 to-transparent;
+    @apply h-px bg-gradient-to-r from-transparent via-royal-navy/10 to-transparent;
   }
 
   select {

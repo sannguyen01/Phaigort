@@ -15,9 +15,9 @@ const variants = {
   primary:
     "bg-coral text-platinum hover:bg-coral/90 active:bg-coral/80",
   secondary:
-    "border border-silver/30 text-platinum hover:bg-platinum/10 active:bg-platinum/5",
+    "border border-royal-navy/20 text-royal-navy hover:bg-royal-navy/5 active:bg-royal-navy/10",
   ghost:
-    "text-platinum/80 hover:text-platinum hover:bg-platinum/5",
+    "text-royal-navy/80 hover:text-royal-navy hover:bg-royal-navy/5",
 } as const;
 
 export function Button({

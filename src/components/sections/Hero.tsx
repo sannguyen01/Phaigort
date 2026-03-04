@@ -4,17 +4,18 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Display, Body } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative -mt-16 md:-mt-20 flex min-h-screen items-center justify-center overflow-hidden bg-navy">
+    <DarkFieldStage intensity="full" className="relative -mt-16 md:-mt-20 flex min-h-screen items-center justify-center overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(15,82,186,0.08)_0%,_transparent_70%)]" />
       <Container className="relative z-10 flex flex-col items-center text-center py-32">
         <motion.div {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } })} className="space-y-8">
           <span className="inline-block font-body text-[10px] uppercase tracking-[0.4em] text-silver">Material Consciousness</span>
-          <Display>
+          <Display className="text-platinum">
             Wonderhouse of<br />Material Consciousness
           </Display>
           <Body className="mx-auto max-w-2xl text-platinum/70">
@@ -33,7 +34,7 @@ export function Hero() {
           </motion.div>
         )}
       </Container>
-    </section>
+    </DarkFieldStage>
   );
 }
 
