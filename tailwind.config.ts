@@ -10,8 +10,8 @@ const config: Config = {
       colors: {
         navy: "#1A2851",
         "deep-navy": "#0F172A",
-        "royal-navy": "#1A2851",
         platinum: "#F8F9FB",
+        "royal-navy": "#1A2851",
         silver: "#8B9DC3",
         coral: "#FF6B4A",
         "coral-reef": "#FF6B4A",
@@ -19,8 +19,8 @@ const config: Config = {
         emerald: "#1B4332",
       },
       fontFamily: {
-        heading: ["var(--font-bodoni)", "Bodoni Moda", "serif"],
-        body: ["var(--font-eb-garamond)", "EB Garamond", "serif"],
+        heading: ["var(--font-bodoni)", "serif"],
+        body: ["var(--font-eb-garamond)", "serif"],
       },
       spacing: {},
       maxWidth: {

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -10,7 +9,6 @@ import { Container } from "@/components/ui/Container";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const pathname = usePathname();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-platinum/95 border-b border-royal-navy/10">
@@ -23,28 +21,27 @@ export function Header() {
         </Link>
 
         <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "relative font-body text-[11px] uppercase tracking-widest transition-colors duration-300",
-                  isActive
-                    ? "font-semibold tracking-tight text-royal-navy"
-                    : "text-royal-navy/60 hover:text-royal-navy"
-                )}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "relative font-body text-[11px] uppercase tracking-widest",
+                "font-normal tracking-wide text-royal-navy/60",
+                "hover:text-royal-navy transition-colors duration-200",
+                "after:absolute after:bottom-0 after:left-0 after:h-px after:w-0",
+                "after:bg-coral after:transition-all after:duration-300",
+                "hover:after:w-full"
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-royal-navy/70 hover:text-royal-navy transition-colors"
+          className="md:hidden p-2 text-royal-navy/60 hover:text-royal-navy transition-colors"
           aria-label="Toggle navigation"
           aria-expanded={mobileOpen}
         >
@@ -66,24 +63,16 @@ export function Header() {
             className="md:hidden overflow-hidden bg-platinum border-b border-royal-navy/10"
           >
             <Container className="flex flex-col gap-6 py-8">
-              {NAV_LINKS.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={cn(
-                      "font-body text-sm uppercase tracking-widest transition-colors duration-300",
-                      isActive
-                        ? "font-semibold text-royal-navy"
-                        : "text-royal-navy/60 hover:text-royal-navy"
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="font-body text-sm uppercase tracking-widest text-royal-navy/60 hover:text-royal-navy transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </Container>
           </motion.nav>
         )}

@@ -1,38 +1,29 @@
 import { cn } from "@/lib/utils";
-import { type ReactNode } from "react";
-
-type Intensity = "full" | "deep" | "medium";
 
 interface DarkFieldStageProps {
-  children: ReactNode;
-  className?: string;
-  intensity?: Intensity;
-  as?: "section" | "div";
+    children: React.ReactNode;
+    className?: string;
+    intensity?: "full" | "deep" | "medium";
 }
 
-const intensityMap: Record<Intensity, string> = {
-  full: "bg-royal-navy",
-  deep: "bg-deep-navy",
-  medium: "bg-royal-navy/90",
-};
-
 export function DarkFieldStage({
-  children,
-  className,
-  intensity = "full",
-  as: Tag = "section",
+    children,
+    className,
+    intensity = "full",
 }: DarkFieldStageProps) {
-  return (
-    <Tag
-      className={cn(
-        intensityMap[intensity],
-        "text-platinum",
-        className
-      )}
-    >
-      {children}
-    </Tag>
-  );
+    const bg = {
+        full: "bg-royal-navy",
+        deep: "bg-royal-navy/90",
+        medium: "bg-royal-navy/75",
+    }[intensity];
+
+    return (
+        <section
+            className={cn(bg, "relative py-24 md:py-32 px-6 md:px-12", className)}
+        >
+            {children}
+        </section>
+    );
 }
 
 export default DarkFieldStage;

@@ -7,9 +7,9 @@ type ButtonProps = {
   className?: string;
   variant?: "primary" | "secondary" | "ghost";
 } & (
-  | { href: string; type?: never }
-  | ({ href?: never } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "className">)
-);
+    | { href: string; type?: never }
+    | ({ href?: never } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "className">)
+  );
 
 const variants = {
   primary:
@@ -17,7 +17,7 @@ const variants = {
   secondary:
     "border border-royal-navy/20 text-royal-navy hover:bg-royal-navy/5 active:bg-royal-navy/10",
   ghost:
-    "text-royal-navy/80 hover:text-royal-navy hover:bg-royal-navy/5",
+    "text-royal-navy/70 hover:text-royal-navy hover:bg-royal-navy/5",
 } as const;
 
 export function Button({

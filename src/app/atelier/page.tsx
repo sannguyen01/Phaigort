@@ -15,11 +15,11 @@ const APPROACHES = [
 
 export default function AtelierPage() {
   return (
-    <div className="pt-16 md:pt-20">
+    <div>
       <Container className="max-w-3xl">
         <Caption>The Wonderhouse Experience</Caption>
         <H1 className="mt-6">Atelier</H1>
-        <Body className="mt-8 text-royal-navy/60">Entering a Wonderhouse feels like stepping into the generative depths where treasures form — an immersive environment from which materials emerge like geological revelations. We celebrate extended contemplation and explicitly give permission for unlimited deliberation.</Body>
+        <Body className="mt-8 text-royal-navy/70">Entering a Wonderhouse feels like stepping into the generative depths where treasures form — an immersive environment from which materials emerge like geological revelations. We celebrate extended contemplation and explicitly give permission for unlimited deliberation.</Body>
       </Container>
       <Divider />
       <Container>
@@ -28,10 +28,10 @@ export default function AtelierPage() {
           {APPROACHES.map((a) => (
             <div key={a.title} className="p-8 md:p-10 bg-royal-navy/5 border border-royal-navy/10 space-y-4">
               <div className="flex items-baseline justify-between gap-4">
-                <h3 className="font-heading text-xl text-royal-navy">{a.title}</h3>
+                <h3 className="font-heading text-xl">{a.title}</h3>
                 <span className="font-body text-xs text-coral/70 whitespace-nowrap">{a.duration}</span>
               </div>
-              <Body className="text-royal-navy/60">{a.description}</Body>
+              <Body className="text-royal-navy/70">{a.description}</Body>
             </div>
           ))}
         </div>
@@ -39,7 +39,7 @@ export default function AtelierPage() {
       <Divider />
       <Container className="max-w-3xl text-center">
         <H2>Begin Your Voyage</H2>
-        <Body className="mt-6 text-royal-navy/60">Whether you are a first-time visitor curious about geological wonders or a seasoned collector seeking specific treasures, the Wonderhouse welcomes your presence. No purchase requirements, no wealth qualifications — only genuine curiosity.</Body>
+        <Body className="mt-6 text-royal-navy/70">Whether you are a first-time visitor curious about geological wonders or a seasoned collector seeking specific treasures, the Wonderhouse welcomes your presence. No purchase requirements, no wealth qualifications — only genuine curiosity.</Body>
         <div className="mt-10"><Button href="/contact">Schedule a Visit</Button></div>
       </Container>
     </div>

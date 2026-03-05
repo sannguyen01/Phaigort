@@ -5,16 +5,18 @@ import { Footer } from "@/components/layout/Footer";
 import { BRAND, SOCIAL } from "@/lib/constants";
 import "./globals.css";
 
-const bodoni = Bodoni_Moda({
+const bodoniModa = Bodoni_Moda({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-bodoni",
   display: "swap",
 });
 
 const ebGaramond = EB_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   variable: "--font-eb-garamond",
   display: "swap",
 });
@@ -57,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bodoni.variable} ${ebGaramond.variable}`}>
+    <html lang="en" className={`${bodoniModa.variable} ${ebGaramond.variable}`}>
       <head>
         <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png" />
         <script
@@ -74,7 +76,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-platinum text-royal-navy font-body antialiased">
+      <body className={`${bodoniModa.variable} ${ebGaramond.variable} bg-platinum text-royal-navy antialiased`}>
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-coral focus:text-platinum focus:font-body focus:text-sm focus:rounded"
