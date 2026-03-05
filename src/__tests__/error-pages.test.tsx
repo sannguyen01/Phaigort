@@ -17,7 +17,7 @@ describe("NotFound page", () => {
     render(<NotFound />);
     expect(screen.getAllByText("404").length).toBeGreaterThanOrEqual(1);
     const headings = screen.getAllByRole("heading", { level: 1 });
-    expect(headings[0]).toHaveTextContent("This path leads nowhere yet");
+    expect(headings[0]).toHaveTextContent("This voyage has no destination.");
   });
 
   it("has link back to homepage", () => {
@@ -29,10 +29,9 @@ describe("NotFound page", () => {
 });
 
 describe("Loading page", () => {
-  it("renders curating text with platinum-theme color", () => {
-    render(<Loading />);
-    const texts = screen.getAllByText("Curating");
-    expect(texts[0]).toBeInTheDocument();
-    expect(texts[0].className).toContain("text-royal-navy");
+  it("renders loading indicator with platinum background", () => {
+    const { container } = render(<Loading />);
+    const wrapper = container.firstChild as HTMLElement;
+    expect(wrapper.className).toContain("bg-platinum");
   });
 });

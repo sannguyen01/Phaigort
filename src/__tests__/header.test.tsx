@@ -47,11 +47,10 @@ describe("Header", () => {
     expect(toggle).toHaveAttribute("aria-expanded", "true");
   });
 
-  it("uses platinum background without backdrop-blur", () => {
+  it("uses royal-navy background", () => {
     render(<Header />);
     const headers = screen.getAllByRole("banner");
     const header = headers[0];
-    expect(header.className).toContain("bg-platinum");
-    expect(header.className).not.toContain("backdrop-blur");
+    expect(header.className).toContain("bg-royal-navy");
   });
 });

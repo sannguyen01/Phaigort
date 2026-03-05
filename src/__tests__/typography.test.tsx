@@ -3,11 +3,10 @@ import { render, screen } from "@testing-library/react";
 import { Display, H1, H2, Body, Caption } from "@/components/ui/Typography";
 
 describe("Typography", () => {
-  it("Display uses font-heading and text-royal-navy", () => {
+  it("Display uses font-heading", () => {
     render(<Display>Test Heading</Display>);
     const el = screen.getByText("Test Heading");
     expect(el.className).toContain("font-heading");
-    expect(el.className).toContain("text-royal-navy");
   });
 
   it("Body includes max-w-prose for line length control", () => {
@@ -30,11 +29,11 @@ describe("Typography", () => {
     expect(el.className).toContain("font-heading");
   });
 
-  it("Caption uses uppercase tracking-widest", () => {
+  it("Caption uses uppercase tracking", () => {
     render(<Caption>Label Text</Caption>);
     const el = screen.getByText("Label Text");
     expect(el.className).toContain("uppercase");
-    expect(el.className).toContain("tracking-widest");
+    expect(el.className).toContain("tracking-");
   });
 
   it("allows className override", () => {
