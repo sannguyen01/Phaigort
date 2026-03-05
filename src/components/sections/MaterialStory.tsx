@@ -12,7 +12,7 @@ export function MaterialStory() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section ref={ref} className="py-32 md:py-48">
+    <section ref={ref} className="py-14 md:py-20 bg-royal-navy text-platinum">
       <Container>
         <motion.div {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 32 }, animate: isInView ? { opacity: 1, y: 0 } : {}, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } })} className="max-w-3xl">
           <Caption>The Philosophy</Caption>
@@ -27,7 +27,7 @@ export function MaterialStory() {
             <motion.div key={pillar.title} {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 24 }, animate: isInView ? { opacity: 1, y: 0 } : {}, transition: { delay: 0.2 + i * 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] } })} className="space-y-4">
               <span className="font-body text-xs uppercase tracking-widest text-coral/70">0{i + 1}</span>
               <h3 className="font-heading text-xl">{pillar.title}</h3>
-              <Body className="text-royal-navy/70">{pillar.description}</Body>
+              <Body>{pillar.description}</Body>
             </motion.div>
           ))}
         </div>

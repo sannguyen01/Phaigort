@@ -10,18 +10,18 @@ export function Hero() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <DarkFieldStage className="-mt-16 md:-mt-20 flex min-h-screen items-center justify-center overflow-hidden py-0">
+    <DarkFieldStage className="-mt-16 md:-mt-20 flex min-h-[80vh] md:min-h-[85vh] items-center justify-center overflow-hidden py-0">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(15,82,186,0.08)_0%,_transparent_70%)]" />
-      <Container className="relative z-10 flex flex-col items-center text-center py-32">
-        <div className="space-y-8">
-          <span className="inline-block font-body text-[10px] uppercase tracking-[0.4em] text-platinum/70">Material Consciousness</span>
+      <Container className="relative z-10 flex flex-col items-center text-center py-20 md:py-24">
+        <motion.div {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } })} className="space-y-8">
+          <span className="inline-block font-brand text-[10px] uppercase tracking-[0.4em] text-silver">Material Consciousness</span>
           <Display className="text-platinum">
             Wonderhouse of<br />Material Consciousness
           </Display>
           <Body className="mx-auto max-w-2xl text-platinum/70">
             Where Earth&apos;s geological creativity, humanity&apos;s craft traditions, precious metals, and contemporary innovations converge into vessels of personal meaning.
           </Body>
-        </div>
+        </motion.div>
         <motion.div {...(prefersReducedMotion ? {} : { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { delay: 0.6, duration: 0.8 } })} className="mt-12">
           <Button href="/collections">Explore Collections</Button>
         </motion.div>

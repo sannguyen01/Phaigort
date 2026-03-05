@@ -19,8 +19,12 @@ const config: Config = {
         emerald: "#1B4332",
       },
       fontFamily: {
-        heading: ["var(--font-bodoni)", "serif"],
-        body: ["var(--font-eb-garamond)", "serif"],
+        // Jost: logo identity, navigation, labels, UI chrome
+        brand: ["var(--font-jost)", "Jost", "sans-serif"],
+        // Cormorant: editorial headings H1–H3
+        heading: ["var(--font-cormorant)", "Cormorant", "serif"],
+        // Inter: body copy, captions, metadata
+        body: ["var(--font-inter)", "Inter", "sans-serif"],
       },
       spacing: {},
       maxWidth: {

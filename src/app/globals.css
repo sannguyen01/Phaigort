@@ -5,12 +5,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     @apply bg-platinum text-royal-navy font-body;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
+    line-height: 1.65;
   }
 
   ::selection {
@@ -38,6 +40,13 @@
 @layer base {
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-coral rounded-sm;
+  }
+}
+
+@layer utilities {
+  .font-brand {
+    font-family: var(--font-jost), sans-serif;
+    letter-spacing: 0.04em;
   }
 }
 

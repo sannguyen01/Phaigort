@@ -14,16 +14,16 @@ export function CollectionGrid() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section ref={ref} className="py-32 md:py-48 bg-royal-navy text-platinum">
+    <section ref={ref} className="py-14 md:py-20 bg-platinum text-royal-navy">
       <Container>
         <motion.div {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 32 }, animate: isInView ? { opacity: 1, y: 0 } : {}, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } })} className="text-center mb-20">
-          <Caption className="text-platinum/60">Four Treasure Domains</Caption>
-          <H2 className="mt-6 text-platinum">Curated Without Hierarchy</H2>
+          <Caption>Four Treasure Domains</Caption>
+          <H2 className="mt-6">Curated Without Hierarchy</H2>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {TREASURE_DOMAINS.map((domain, i) => (
             <motion.div key={domain.title} {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 24 }, animate: isInView ? { opacity: 1, y: 0 } : {}, transition: { delay: 0.1 + i * 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] } })}>
-              <Link href={domain.href} className="group block bg-deep-navy border border-platinum/10 hover:border-coral/30 transition-all duration-500 overflow-hidden">
+              <Link href={domain.href} className="group block bg-royal-navy border border-platinum/10 hover:border-coral/30 transition-all duration-500 overflow-hidden">
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
                     src={domain.image}

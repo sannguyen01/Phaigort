@@ -1,23 +1,29 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, EB_Garamond } from "next/font/google";
+import { Jost, Cormorant, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BRAND, SOCIAL } from "@/lib/constants";
 import "./globals.css";
 
-const bodoniModa = Bodoni_Moda({
+const jost = Jost({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-bodoni",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-jost",
   display: "swap",
 });
 
-const ebGaramond = EB_Garamond({
+const cormorant = Cormorant({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
-  variable: "--font-eb-garamond",
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -59,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bodoniModa.variable} ${ebGaramond.variable}`}>
+    <html lang="en" className={`${jost.variable} ${cormorant.variable} ${inter.variable}`}>
       <head>
         <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png" />
         <script
@@ -76,7 +82,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${bodoniModa.variable} ${ebGaramond.variable} bg-platinum text-royal-navy antialiased`}>
+      <body className="min-h-screen bg-platinum text-royal-navy font-body antialiased">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-coral focus:text-platinum focus:font-body focus:text-sm focus:rounded"
