@@ -10,11 +10,11 @@ export function Hero() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <DarkFieldStage intensity="full" className="relative -mt-16 md:-mt-20 flex min-h-screen items-center justify-center overflow-hidden">
+    <DarkFieldStage className="-mt-16 md:-mt-20 flex min-h-[80vh] md:min-h-[85vh] items-center justify-center overflow-hidden py-0">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(15,82,186,0.08)_0%,_transparent_70%)]" />
-      <Container className="relative z-10 flex flex-col items-center text-center py-32">
+      <Container className="relative z-10 flex flex-col items-center text-center py-20 md:py-24">
         <motion.div {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 }, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } })} className="space-y-8">
-          <span className="inline-block font-body text-[10px] uppercase tracking-[0.4em] text-silver">Material Consciousness</span>
+          <span className="inline-block font-brand text-[10px] uppercase tracking-[0.4em] text-silver">Material Consciousness</span>
           <Display className="text-platinum">
             Wonderhouse of<br />Material Consciousness
           </Display>
@@ -28,8 +28,8 @@ export function Hero() {
         {!prefersReducedMotion && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.8 }} className="absolute bottom-12 left-1/2 -translate-x-1/2">
             <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} className="flex flex-col items-center gap-2">
-              <span className="font-body text-[10px] uppercase tracking-widest text-silver/60">Scroll</span>
-              <div className="h-8 w-px bg-gradient-to-b from-silver/30 to-transparent" />
+              <span className="font-body text-[10px] uppercase tracking-widest text-platinum/50">Scroll</span>
+              <div className="h-8 w-px bg-gradient-to-b from-platinum/30 to-transparent" />
             </motion.div>
           </motion.div>
         )}

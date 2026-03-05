@@ -8,11 +8,11 @@ export const metadata = createMetadata({ title: "Contact", description: "Begin a
 
 export default function ContactPage() {
   return (
-    <div className="pt-16 md:pt-20">
+    <div>
       <Container className="max-w-3xl text-center">
         <Caption>Direct Inquiry</Caption>
         <H1 className="mt-6">Contact</H1>
-        <Body className="mt-8 text-royal-navy/60">Every relationship begins with curiosity. Whether you seek a specific treasure, wish to visit the Wonderhouse, or simply want to learn more about Material Consciousness — we welcome your inquiry.</Body>
+        <Body className="mt-8 text-royal-navy/70">Every relationship begins with curiosity. Whether you seek a specific treasure, wish to visit the Wonderhouse, or simply want to learn more about Material Consciousness — we welcome your inquiry.</Body>
       </Container>
       <Divider />
       <ContactForm />

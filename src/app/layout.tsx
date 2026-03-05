@@ -1,21 +1,29 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, EB_Garamond } from "next/font/google";
+import { Jost, Cormorant, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BRAND, SOCIAL } from "@/lib/constants";
 import "./globals.css";
 
-const bodoni = Bodoni_Moda({
+const jost = Jost({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-bodoni",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-jost",
   display: "swap",
 });
 
-const ebGaramond = EB_Garamond({
+const cormorant = Cormorant({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-eb-garamond",
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -57,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bodoni.variable} ${ebGaramond.variable}`}>
+    <html lang="en" className={`${jost.variable} ${cormorant.variable} ${inter.variable}`}>
       <head>
         <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png" />
         <script

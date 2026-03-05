@@ -1,26 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
-import { H1, Body, Caption } from "@/components/ui/Typography";
-import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
-
-interface ErrorProps { error: Error & { digest?: string }; reset: () => void; }
-
-export default function Error({ error, reset }: ErrorProps) {
-  useEffect(() => { console.error("[Phaigort error boundary]", error); }, [error]);
-
+export default function Error({ reset }: { reset: () => void }) {
   return (
-    <div className="flex min-h-[80vh] items-center justify-center">
-      <Container className="max-w-2xl text-center">
-        <Caption className="text-coral">Something went wrong</Caption>
-        <H1 className="mt-6">An unexpected fracture</H1>
-        <Body className="mt-6 text-royal-navy/60">Even the most carefully curated systems encounter geological instability. We are working to restore clarity.</Body>
-        <div className="mt-10 flex items-center justify-center gap-4">
-          <Button onClick={reset} variant="secondary">Try again</Button>
-          <Button href="/">Return home</Button>
-        </div>
-      </Container>
-    </div>
+    <main className="flex flex-col items-center justify-center min-h-screen bg-platinum text-royal-navy gap-8 px-6">
+      <h2 className="font-heading text-3xl">Something interrupted the voyage.</h2>
+      <button onClick={reset} className="text-sm underline underline-offset-4">Try again</button>
+    </main>
   );
 }

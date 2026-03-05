@@ -13,11 +13,11 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-platinum/95 border-b border-royal-navy/10">
+    <header className="fixed inset-x-0 top-0 z-50 bg-royal-navy border-b border-platinum/10">
       <Container className="flex items-center justify-between h-16 md:h-20">
         <Link
           href="/"
-          className="font-heading text-xl md:text-2xl tracking-logo uppercase font-medium text-royal-navy hover:text-royal-navy/70 transition-colors duration-300"
+          className="font-brand text-xl md:text-2xl tracking-logo uppercase font-medium text-platinum hover:text-platinum/75 transition-colors duration-300"
         >
           {BRAND.name}
         </Link>
@@ -32,8 +32,8 @@ export function Header() {
                 className={cn(
                   "relative font-body text-[11px] uppercase tracking-widest transition-colors duration-300",
                   isActive
-                    ? "font-semibold tracking-tight text-royal-navy"
-                    : "text-royal-navy/60 hover:text-royal-navy"
+                    ? "font-semibold text-platinum"
+                    : "text-platinum/55 hover:text-platinum"
                 )}
               >
                 {link.label}
@@ -44,7 +44,7 @@ export function Header() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-royal-navy/70 hover:text-royal-navy transition-colors"
+          className="md:hidden p-2 text-platinum/70 hover:text-platinum transition-colors"
           aria-label="Toggle navigation"
           aria-expanded={mobileOpen}
         >
@@ -63,7 +63,7 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden bg-platinum border-b border-royal-navy/10"
+            className="md:hidden overflow-hidden bg-royal-navy border-b border-platinum/10"
           >
             <Container className="flex flex-col gap-6 py-8">
               {NAV_LINKS.map((link) => {
@@ -76,8 +76,8 @@ export function Header() {
                     className={cn(
                       "font-body text-sm uppercase tracking-widest transition-colors duration-300",
                       isActive
-                        ? "font-semibold text-royal-navy"
-                        : "text-royal-navy/60 hover:text-royal-navy"
+                        ? "font-semibold text-platinum"
+                        : "text-platinum/55 hover:text-platinum"
                     )}
                   >
                     {link.label}

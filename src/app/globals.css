@@ -11,10 +11,13 @@
 
   body {
     @apply bg-platinum text-royal-navy font-body;
+    font-size: 15px;
+    line-height: 1.65;
   }
 
   ::selection {
-    @apply bg-royal-navy text-platinum;
+    background-color: theme('colors.royal-navy');
+    color: theme('colors.platinum');
   }
 
   ::-webkit-scrollbar {
@@ -26,11 +29,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-silver/60 rounded-full;
+    @apply bg-royal-navy/20 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-sapphire;
+    @apply bg-royal-navy/40;
   }
 }
 
@@ -40,16 +43,23 @@
   }
 }
 
+@layer utilities {
+  .font-brand {
+    font-family: var(--font-jost), sans-serif;
+    letter-spacing: 0.04em;
+  }
+}
+
 @layer components {
   .gold-line {
-    @apply h-px bg-gradient-to-r from-transparent via-royal-navy/10 to-transparent;
+    @apply h-px bg-gradient-to-r from-transparent via-royal-navy/15 to-transparent;
   }
 
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%238B9DC3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%231A2851' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     padding-right: 2.5rem;
