@@ -1,7 +1,6 @@
 export const NAV_LINKS = [
-  { label: "Collections", href: "/collections" },
-  { label: "Material Consciousness", href: "/material-consciousness" },
-  { label: "Archive", href: "/archive" },
+  { label: "Our Collection", href: "/collections" },
+  { label: "Our Story", href: "/our-story" },
   { label: "Atelier", href: "/atelier" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -11,8 +10,7 @@ export const BRAND = {
   tagline: "Wonderhouse of Material Consciousness",
   description:
     "Where Earth's geological creativity, humanity's craft traditions, precious metals, and contemporary innovations converge into vessels of personal meaning.",
-  promise:
-    "Phaigort connects you with materials that matter.",
+  promise: "Phaigort connects you with materials that matter.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://phaigort.com",
 } as const;
 
@@ -41,7 +39,7 @@ export const TREASURE_DOMAINS = [
   {
     title: "Historical Artifacts",
     description:
-      "Cultural pieces with documented stories — Spanish colonial jewelry, Portuguese filigree representing five centuries of craft transmission, Asian trade objects connecting civilizations.",
+      "Cultural pieces with documented stories — Portuguese filigree, Spanish colonial jewelry, and Asian trade objects connecting five centuries of craft and civilisation.",
     href: "/collections#historical-artifacts",
     image: "/collections/historical-artifacts.jpg",
     imageAlt: "A cabochon-cut emerald displaying rich green translucency",

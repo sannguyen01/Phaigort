@@ -14,14 +14,29 @@ export function Philosophy() {
   return (
     <section ref={ref} className="py-14 md:py-20 bg-royal-navy text-platinum">
       <Container className="max-w-3xl text-center">
-        <motion.div {...(prefersReducedMotion ? {} : { initial: { opacity: 0, y: 32 }, animate: isInView ? { opacity: 1, y: 0 } : {}, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } })} className="space-y-8">
+        <motion.div
+          {...(prefersReducedMotion
+            ? {}
+            : {
+                initial: { opacity: 0, y: 32 },
+                animate: isInView ? { opacity: 1, y: 0 } : {},
+                transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+              })}
+          className="space-y-6"
+        >
           <Caption>Our Promise</Caption>
           <H2>This is where curiosity meets substance</H2>
-          <Body>
-            Where you build collections worth explaining, worth keeping, worth passing down. Where materials become more meaningful over time through understanding and connection. Every piece comes with its true story. Every collector joins a community of material enthusiasts. Every visit offers discovery.
+          <Body className="text-platinum/70">
+            Where you build collections worth explaining, worth keeping, worth
+            passing down. Where materials become more meaningful over time
+            through understanding and connection. Every piece comes with its
+            true story. Every collector joins a community of material
+            enthusiasts.
           </Body>
-          <div className="pt-8">
-            <Button href="/material-consciousness" variant="secondary">Discover Our Philosophy</Button>
+          <div className="pt-2">
+            <Button href="/our-story" variant="secondary">
+              Discover Our Story
+            </Button>
           </div>
         </motion.div>
       </Container>

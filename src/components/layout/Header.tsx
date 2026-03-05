@@ -30,7 +30,7 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative font-body text-[11px] uppercase tracking-widest transition-colors duration-300",
+                  "relative font-brand text-[11px] uppercase tracking-widest transition-colors duration-300",
                   isActive
                     ? "font-semibold text-platinum"
                     : "text-platinum/55 hover:text-platinum"
@@ -49,9 +49,24 @@ export function Header() {
           aria-expanded={mobileOpen}
         >
           <div className="flex flex-col gap-1.5 w-6">
-            <span className={cn("block h-px bg-current transition-transform duration-300", mobileOpen && "translate-y-[7px] rotate-45")} />
-            <span className={cn("block h-px bg-current transition-opacity duration-300", mobileOpen && "opacity-0")} />
-            <span className={cn("block h-px bg-current transition-transform duration-300", mobileOpen && "-translate-y-[7px] -rotate-45")} />
+            <span
+              className={cn(
+                "block h-px bg-current transition-transform duration-300",
+                mobileOpen && "translate-y-[7px] rotate-45"
+              )}
+            />
+            <span
+              className={cn(
+                "block h-px bg-current transition-opacity duration-300",
+                mobileOpen && "opacity-0"
+              )}
+            />
+            <span
+              className={cn(
+                "block h-px bg-current transition-transform duration-300",
+                mobileOpen && "-translate-y-[7px] -rotate-45"
+              )}
+            />
           </div>
         </button>
       </Container>
@@ -74,7 +89,7 @@ export function Header() {
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className={cn(
-                      "font-body text-sm uppercase tracking-widest transition-colors duration-300",
+                      "font-brand text-sm uppercase tracking-widest transition-colors duration-300",
                       isActive
                         ? "font-semibold text-platinum"
                         : "text-platinum/55 hover:text-platinum"
