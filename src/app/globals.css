@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Google Stitch / Material Design 3 → Phaigort brand token bridge */
+@import "../styles/stitch-tokens.css";
+
 @layer base {
   html {
     scroll-behavior: smooth;

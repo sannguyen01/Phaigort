@@ -1,0 +1,119 @@
+/**
+ * Google Stitch / Material Design 3 → Phaigort Brand Token Bridge
+ *
+ * Overrides MD3 CSS custom properties so any component exported from
+ * Google Stitch renders with Phaigort's visual identity out of the box.
+ *
+ * Coverage:
+ *   - Color roles (primary, secondary, surface, background, error, outline)
+ *   - Typescale references (brand / plain typefaces, weights)
+ *   - Shape tokens (Phaigort uses sharp, zero-radius geometry)
+ *   - Motion tokens (aligned to the brand's [0.22,1,0.36,1] easing curve)
+ *
+ * Import once in globals.css:
+ *   @import "./stitch-tokens.css";
+ */
+
+:root {
+  /* ─── Primary (Coral Reef — CTAs, discovery markers) ─────────────────── */
+  --md-sys-color-primary:                    #FF6B4A;
+  --md-sys-color-on-primary:                 #F8F9FB;
+  --md-sys-color-primary-container:          #1A2851;
+  --md-sys-color-on-primary-container:       #F8F9FB;
+  --md-sys-color-primary-fixed:              #FF6B4A;
+  --md-sys-color-primary-fixed-dim:          rgba(255, 107, 74, 0.70);
+  --md-sys-color-on-primary-fixed:           #F8F9FB;
+  --md-sys-color-on-primary-fixed-variant:   rgba(248, 249, 251, 0.70);
+
+  /* ─── Secondary (Sapphire — links, secondary accents) ────────────────── */
+  --md-sys-color-secondary:                  #0F52BA;
+  --md-sys-color-on-secondary:               #F8F9FB;
+  --md-sys-color-secondary-container:        #0F172A;
+  --md-sys-color-on-secondary-container:     #F8F9FB;
+  --md-sys-color-secondary-fixed:            #0F52BA;
+  --md-sys-color-secondary-fixed-dim:        rgba(15, 82, 186, 0.70);
+  --md-sys-color-on-secondary-fixed:         #F8F9FB;
+  --md-sys-color-on-secondary-fixed-variant: rgba(248, 249, 251, 0.70);
+
+  /* ─── Tertiary (Emerald — positive signals) ──────────────────────────── */
+  --md-sys-color-tertiary:                   #1B4332;
+  --md-sys-color-on-tertiary:                #F8F9FB;
+  --md-sys-color-tertiary-container:         rgba(27, 67, 50, 0.15);
+  --md-sys-color-on-tertiary-container:      #F8F9FB;
+
+  /* ─── Surface & Background ───────────────────────────────────────────── */
+  --md-sys-color-surface:                    #F8F9FB;  /* platinum */
+  --md-sys-color-on-surface:                 #1A2851;  /* royal-navy */
+  --md-sys-color-surface-variant:            #1A2851;
+  --md-sys-color-on-surface-variant:         #8B9DC3;  /* silver */
+  --md-sys-color-surface-container-lowest:   #F8F9FB;
+  --md-sys-color-surface-container-low:      rgba(26, 40, 81, 0.02);
+  --md-sys-color-surface-container:          rgba(26, 40, 81, 0.04);
+  --md-sys-color-surface-container-high:     rgba(26, 40, 81, 0.08);
+  --md-sys-color-surface-container-highest:  rgba(26, 40, 81, 0.12);
+  --md-sys-color-surface-bright:             #F8F9FB;
+  --md-sys-color-surface-dim:                rgba(248, 249, 251, 0.85);
+  --md-sys-color-surface-tint:               #FF6B4A;
+
+  --md-sys-color-background:                 #F8F9FB;
+  --md-sys-color-on-background:              #1A2851;
+
+  --md-sys-color-inverse-surface:            #1A2851;
+  --md-sys-color-inverse-on-surface:         #F8F9FB;
+  --md-sys-color-inverse-primary:            #F8F9FB;
+
+  /* ─── Error (Emerald for Phaigort — positive/rare) ───────────────────── */
+  --md-sys-color-error:                      #1B4332;
+  --md-sys-color-on-error:                   #F8F9FB;
+  --md-sys-color-error-container:            rgba(27, 67, 50, 0.10);
+  --md-sys-color-on-error-container:         #F8F9FB;
+
+  /* ─── Outline ─────────────────────────────────────────────────────────── */
+  --md-sys-color-outline:                    rgba(139, 157, 195, 0.15);
+  --md-sys-color-outline-variant:            #8B9DC3;
+
+  /* ─── Shadow & Scrim ─────────────────────────────────────────────────── */
+  --md-sys-color-shadow:                     rgba(26, 40, 81, 0.12);
+  --md-sys-color-scrim:                      rgba(15, 23, 42, 0.60);
+
+  /* ─── Typescale references ────────────────────────────────────────────── */
+  --md-ref-typeface-brand:                   var(--font-jost, "Jost"), sans-serif;
+  --md-ref-typeface-plain:                   var(--font-inter, "Inter"), sans-serif;
+  --md-ref-typeface-weight-regular:          400;
+  --md-ref-typeface-weight-medium:           500;
+  --md-ref-typeface-weight-bold:             700;
+
+  /* ─── Shape tokens (Phaigort: sharp, rectilinear geometry) ───────────── */
+  --md-sys-shape-corner-none:                0px;
+  --md-sys-shape-corner-extra-small:         0px;
+  --md-sys-shape-corner-small:               0px;
+  --md-sys-shape-corner-medium:              0px;
+  --md-sys-shape-corner-large:               0px;
+  --md-sys-shape-corner-extra-large:         0px;
+  --md-sys-shape-corner-full:                0px;
+
+  /* ─── Motion tokens (aligned to brand easing) ────────────────────────── */
+  --md-sys-motion-easing-standard:           cubic-bezier(0.22, 1, 0.36, 1);
+  --md-sys-motion-easing-standard-accelerate: cubic-bezier(0.30, 0, 1, 1);
+  --md-sys-motion-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --md-sys-motion-easing-emphasized:         cubic-bezier(0.22, 1, 0.36, 1);
+  --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.30, 0, 0.80, 0.15);
+  --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.70, 0.10, 1);
+  --md-sys-motion-easing-legacy:             cubic-bezier(0.4, 0, 0.2, 1);
+  --md-sys-motion-duration-short1:           100ms;
+  --md-sys-motion-duration-short2:           200ms;
+  --md-sys-motion-duration-short3:           300ms;
+  --md-sys-motion-duration-short4:           400ms;
+  --md-sys-motion-duration-medium1:          250ms;
+  --md-sys-motion-duration-medium2:          400ms;
+  --md-sys-motion-duration-medium3:          500ms;
+  --md-sys-motion-duration-medium4:          600ms;
+  --md-sys-motion-duration-long1:            700ms;
+  --md-sys-motion-duration-long2:            800ms;
+  --md-sys-motion-duration-long3:            900ms;
+  --md-sys-motion-duration-long4:            1000ms;
+  --md-sys-motion-duration-extra-long1:      1200ms;
+  --md-sys-motion-duration-extra-long2:      1400ms;
+  --md-sys-motion-duration-extra-long3:      1600ms;
+  --md-sys-motion-duration-extra-long4:      1800ms;
+}
