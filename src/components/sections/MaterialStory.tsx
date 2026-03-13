@@ -6,6 +6,8 @@ import { H2, Body, Caption } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
 import { Divider } from "@/components/ui/Divider";
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 const pillars = [
   {
     number: "01",
@@ -25,24 +27,24 @@ const pillars = [
     description:
       "Every piece is held to one question: will it matter more in twenty years? The cutting must honour the stone's natural optics. The metalwork must be worthy of the material. The provenance must be documented — not claimed. This is the discipline of creating things built to be passed down.",
   },
-];
+] as const;
 
 export function OurStory() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const prefersReducedMotion = useReducedMotion();
+  const prefersRM = useReducedMotion();
 
   return (
     <section ref={ref} className="py-14 md:py-20 bg-royal-navy text-platinum">
       <Container>
+
+        {/* Header */}
         <motion.div
-          {...(prefersReducedMotion
-            ? {}
-            : {
-                initial: { opacity: 0, y: 32 },
-                animate: isInView ? { opacity: 1, y: 0 } : {},
-                transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
-              })}
+          {...(prefersRM ? {} : {
+            initial: { opacity: 0, y: 32 },
+            animate: isInView ? { opacity: 1, y: 0 } : {},
+            transition: { duration: 1, ease: EASE },
+          })}
           className="max-w-3xl"
         >
           <Caption>Our Story</Caption>
@@ -58,28 +60,38 @@ export function OurStory() {
           </Body>
         </motion.div>
 
+        {/* Pillars */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-platinum/10">
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.number}
-              {...(prefersReducedMotion
-                ? {}
-                : {
-                    initial: { opacity: 0, y: 24 },
-                    animate: isInView ? { opacity: 1, y: 0 } : {},
-                    transition: {
-                      delay: 0.2 + i * 0.15,
-                      duration: 0.8,
-                      ease: [0.22, 1, 0.36, 1],
-                    },
-                  })}
-              className="py-8 md:py-0 md:px-8 first:md:pl-0 last:md:pr-0 space-y-3"
+              {...(prefersRM ? {} : {
+                initial: { opacity: 0, y: 24 },
+                animate: isInView ? { opacity: 1, y: 0 } : {},
+                transition: { delay: 0.2 + i * 0.15, duration: 0.8, ease: EASE },
+              })}
+              className="group relative py-8 md:py-0 md:px-8 first:md:pl-0 last:md:pr-0 space-y-3 cursor-default"
             >
-              <span className="font-brand text-[10px] uppercase tracking-[0.35em] text-coral/70">
+              {/* Mobile: coral left-border reveals on hover */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 left-0 w-0.5 origin-bottom scale-y-0 bg-coral transition-transform duration-500 ease-out group-hover:scale-y-100 md:hidden"
+              />
+              {/* Desktop: coral top-bar reveals on hover */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-coral transition-transform duration-500 ease-out group-hover:scale-x-100 hidden md:block"
+              />
+
+              <span className="block font-brand text-[10px] uppercase tracking-[0.35em] text-coral/70 transition-colors duration-300 group-hover:text-coral">
                 {pillar.number}
               </span>
-              <h3 className="font-heading text-xl text-platinum">{pillar.title}</h3>
-              <Body className="text-platinum/65">{pillar.description}</Body>
+              <h3 className="font-heading text-xl text-platinum transition-colors duration-300 group-hover:text-platinum">
+                {pillar.title}
+              </h3>
+              <Body className="text-platinum/65 transition-colors duration-500 group-hover:text-platinum/80">
+                {pillar.description}
+              </Body>
             </motion.div>
           ))}
         </div>
