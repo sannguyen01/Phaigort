@@ -18,7 +18,7 @@ export const DarkFieldStage = forwardRef<HTMLElement, DarkFieldStageProps>(
         return (
             <section
                 ref={ref}
-                className={cn(bg, "relative py-24 md:py-32 px-6 md:px-12", className)}
+                className={cn(bg, "relative py-16 md:py-20 px-6 md:px-12", className)}
             >
                 {children}
             </section>

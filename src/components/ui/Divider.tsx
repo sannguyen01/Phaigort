@@ -5,7 +5,7 @@ interface DividerProps {
 }
 
 export function Divider({ className }: DividerProps) {
-  return <div className={cn("gold-line my-16 md:my-24", className)} />;
+  return <div className={cn("gold-line my-8 md:my-12", className)} />;
 }
 
 export default Divider;

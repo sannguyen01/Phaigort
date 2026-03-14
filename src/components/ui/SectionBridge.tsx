@@ -16,7 +16,7 @@ export function SectionBridge({ direction, className }: SectionBridgeProps) {
   return (
     <div
       aria-hidden
-      className={cn("h-16 md:h-24", gradients[direction], className)}
+      className={cn("h-8 md:h-12", gradients[direction], className)}
     />
   );
 }

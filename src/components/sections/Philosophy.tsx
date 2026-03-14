@@ -12,7 +12,7 @@ export function Philosophy() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section ref={ref} className="py-14 md:py-20 bg-royal-navy text-platinum">
+    <section ref={ref} className="py-10 md:py-16 bg-royal-navy text-platinum">
       <Container className="max-w-3xl text-center">
         <motion.div
           {...(prefersReducedMotion

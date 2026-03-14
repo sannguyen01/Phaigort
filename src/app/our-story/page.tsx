@@ -15,8 +15,7 @@ export const metadata: Metadata = {
 export default function OurStoryPage() {
   return (
     <>
-      {/* Hero */}
-      <DarkFieldStage intensity="full" className="py-20 md:py-28">
+      <DarkFieldStage intensity="full" className="py-16 md:py-24">
         <Container className="max-w-3xl">
           <Caption>Our Story</Caption>
           <H1 className="mt-5 text-platinum">
@@ -34,11 +33,10 @@ export default function OurStoryPage() {
 
       <SectionBridge direction="navy-to-platinum" />
 
-      {/* Section 1 */}
-      <section className="py-14 md:py-20 bg-platinum text-royal-navy">
+      <section className="py-10 md:py-16 bg-platinum text-royal-navy">
         <Container>
           <ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
               <div>
                 <Caption className="text-silver">The Earth as Artist</Caption>
                 <H2 className="mt-4">
@@ -68,11 +66,10 @@ export default function OurStoryPage() {
 
       <SectionBridge direction="platinum-to-navy" />
 
-      {/* Section 2 */}
-      <section className="py-14 md:py-20 bg-royal-navy text-platinum">
+      <section className="py-10 md:py-16 bg-royal-navy text-platinum">
         <Container>
           <ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
               <div>
                 <Caption>The Expedition Mind</Caption>
                 <H2 className="mt-4">
@@ -102,11 +99,10 @@ export default function OurStoryPage() {
 
       <SectionBridge direction="navy-to-platinum" />
 
-      {/* Section 3 */}
-      <section className="py-14 md:py-20 bg-platinum text-royal-navy">
+      <section className="py-10 md:py-16 bg-platinum text-royal-navy">
         <Container>
           <ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start">
               <div>
                 <Caption className="text-silver">The Standard</Caption>
                 <H2 className="mt-4">
@@ -135,8 +131,7 @@ export default function OurStoryPage() {
 
       <SectionBridge direction="platinum-to-navy" />
 
-      {/* CTA */}
-      <DarkFieldStage intensity="full" className="py-16 md:py-20">
+      <DarkFieldStage intensity="full" className="py-12 md:py-16">
         <Container className="text-center">
           <ScrollReveal>
             <H2 className="text-platinum max-w-xl mx-auto">

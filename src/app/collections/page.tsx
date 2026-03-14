@@ -21,7 +21,7 @@ export default function CollectionsPage() {
       </Container>
       <Divider />
       <Container>
-        <div className="space-y-24 md:space-y-32">
+        <div className="space-y-16 md:space-y-20">
           {TREASURE_DOMAINS.map((domain, i) => (
             <section key={domain.title} id={domain.href.split("#")[1]} className="scroll-mt-24">
               <ScrollReveal>

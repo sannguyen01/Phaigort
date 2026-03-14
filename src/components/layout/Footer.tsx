@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Divider } from "@/components/ui/Divider";
 import { NAV_LINKS, BRAND, SOCIAL } from "@/lib/constants";
 import { Caption } from "@/components/ui/Typography";
 
@@ -8,10 +7,9 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-royal-navy text-platinum">
-      <Divider />
-      <Container className="pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+    <footer className="bg-royal-navy text-platinum pt-12 md:pt-16 pb-10">
+      <Container>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
           <div className="space-y-4">
             <Link
               href="/"
@@ -59,7 +57,7 @@ export function Footer() {
             </nav>
           </div>
         </div>
-        <div className="gold-line mt-16 mb-8" />
+        <div className="gold-line mt-10 mb-6" />
         <p className="font-body text-xs text-platinum/40 text-center">
           &copy; {currentYear} {BRAND.name}. All rights reserved.
         </p>
