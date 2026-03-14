@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 const INTERESTS = [
   "geological-rarities",
@@ -46,7 +47,34 @@ function validate(data: unknown): { ok: true; data: ContactPayload } | { ok: fal
   };
 }
 
+// Simple in-memory rate limiter: max 5 requests per IP per 15 minutes
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_WINDOW = 15 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+    return false;
+  }
+
+  entry.count++;
+  return entry.count > RATE_LIMIT_MAX;
+}
+
 export async function POST(request: Request) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429 }
+    );
+  }
+
   try {
     const body: unknown = await request.json();
     const result = validate(body);
@@ -55,12 +83,45 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: result.error }, { status: 400 });
     }
 
-    // TODO: integrate email service (Resend, SendGrid, etc.)
-    // For now, log the validated submission
-    console.log("[contact]", result.data);
+    const { name, email, interest, message } = result.data;
+    const recipientEmail = process.env.CONTACT_EMAIL_TO ?? "hello@phaigort.com";
+
+    if (process.env.RESEND_API_KEY) {
+      const resend = new Resend(process.env.RESEND_API_KEY);
+      await resend.emails.send({
+        from: `Phaigort Contact <noreply@${process.env.RESEND_DOMAIN ?? "phaigort.com"}>`,
+        to: recipientEmail,
+        replyTo: email,
+        subject: `New inquiry from ${name} — ${interest}`,
+        text: [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          `Interest: ${interest}`,
+          ``,
+          `Message:`,
+          message,
+        ].join("\n"),
+      });
+    } else {
+      // Fallback: log to server when Resend is not configured (dev/preview)
+      console.warn("[contact] RESEND_API_KEY not set — logging submission instead of emailing");
+      console.log("[contact]", result.data);
+    }
 
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Failed to process request." }, { status: 500 });
   }
+}
+
+export async function GET() {
+  return NextResponse.json({ error: "Method not allowed." }, { status: 405 });
+}
+
+export async function PUT() {
+  return NextResponse.json({ error: "Method not allowed." }, { status: 405 });
+}
+
+export async function DELETE() {
+  return NextResponse.json({ error: "Method not allowed." }, { status: 405 });
 }

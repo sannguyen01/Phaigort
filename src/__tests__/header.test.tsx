@@ -33,8 +33,9 @@ describe("Header", () => {
 
   it("renders main navigation with links", () => {
     render(<Header />);
-    expect(screen.getAllByText("Collections").length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText("Archive").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("Our Collection").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("Our Story").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("Atelier").length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText("Contact").length).toBeGreaterThanOrEqual(1);
   });
 

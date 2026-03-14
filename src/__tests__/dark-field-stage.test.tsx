@@ -4,22 +4,23 @@ import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
 
 describe("DarkFieldStage", () => {
   it("renders with full intensity by default", () => {
-    render(<DarkFieldStage>Content</DarkFieldStage>);
-    const el = screen.getByText("Content");
-    expect(el.className).toContain("bg-royal-navy");
-    expect(el.className).toContain("text-platinum");
+    const { container } = render(<DarkFieldStage>Content</DarkFieldStage>);
+    const section = container.querySelector("section");
+    expect(section).toBeTruthy();
+    expect(section!.className).toContain("bg-royal-navy");
+    expect(section!.className).toContain("text-platinum");
   });
 
   it("renders deep intensity variant", () => {
-    render(<DarkFieldStage intensity="deep">Deep</DarkFieldStage>);
-    const el = screen.getByText("Deep");
-    expect(el.className).toContain("bg-deep-navy");
+    const { container } = render(<DarkFieldStage intensity="deep">Deep</DarkFieldStage>);
+    const section = container.querySelector("section");
+    expect(section!.className).toContain("bg-deep-navy");
   });
 
   it("renders medium intensity variant", () => {
-    render(<DarkFieldStage intensity="medium">Medium</DarkFieldStage>);
-    const el = screen.getByText("Medium");
-    expect(el.className).toContain("bg-royal-navy/90");
+    const { container } = render(<DarkFieldStage intensity="medium">Medium</DarkFieldStage>);
+    const section = container.querySelector("section");
+    expect(section!.className).toContain("bg-royal-navy/90");
   });
 
   it("renders as section", () => {

@@ -13,7 +13,7 @@ curious — not exclusive or intimidating. "For the genuinely curious," not "for
 - Framework: Next.js 14, App Router, TypeScript (strict mode)
 - Styling: Tailwind CSS v3, no inline styles
 - Animation: Framer Motion (purposeful only — no gratuitous motion)
-- Fonts: Bodoni Moda (headings/display), EB Garamond (body/ui) — Google Fonts
+- Fonts: Jost (brand/UI), Cormorant (headings/display), Inter (body/captions) — Google Fonts
 - Deployment: Vercel (zero-config)
 - Package manager: pnpm
 
@@ -34,8 +34,9 @@ curious — not exclusive or intimidating. "For the genuinely curious," not "for
 - Coral: 5-8% only — life signal, CTAs, discovery markers
 
 ## Typography Rules
-- Bodoni Moda: headings, display text, logo text — bold/semibold, tight tracking
-- EB Garamond: body copy, UI elements, captions — clean, readable serif
+- Jost: brand identity, navigation, logo text, UI labels — uppercase, wide tracking
+- Cormorant: headings, display text (H1/H2/H3/Display) — bold/semibold, editorial serif
+- Inter: body copy, captions, form elements — clean, readable sans-serif
 - Logo treatment: uppercase, tracking-[0.25em], font-medium weight
 
 ## Layout Governance

@@ -18,7 +18,7 @@ export function ScrollReveal({
   as = "div",
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const viewRef = useInView(ref as React.RefObject<HTMLElement>, { once: true, margin: "-80px" });
   const prefersReducedMotion = useReducedMotion();
 
   const Tag = motion[as];
@@ -31,7 +31,7 @@ export function ScrollReveal({
         ? {}
         : {
             initial: { opacity: 0, y: 24 },
-            animate: isInView ? { opacity: 1, y: 0 } : {},
+            animate: viewRef ? { opacity: 1, y: 0 } : {},
             transition: {
               delay,
               duration: 0.8,
