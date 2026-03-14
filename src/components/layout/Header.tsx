@@ -7,10 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
+import { useActiveSection } from "@/lib/useActiveSection";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const isHomepage = pathname === "/";
+  const scrollActive = useActiveSection(isHomepage);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-royal-navy border-b border-platinum/10">
@@ -24,13 +27,14 @@ export function Header() {
 
         <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || scrollActive === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                data-active={isActive || undefined}
                 className={cn(
-                  "relative font-brand text-[11px] uppercase tracking-widest transition-colors duration-300",
+                  "nav-link relative font-brand text-[11px] uppercase tracking-widest transition-colors duration-300",
                   isActive
                     ? "font-semibold text-platinum"
                     : "text-platinum/55 hover:text-platinum"
@@ -82,7 +86,7 @@ export function Header() {
           >
             <Container className="flex flex-col gap-6 py-8">
               {NAV_LINKS.map((link) => {
-                const isActive = pathname === link.href;
+                const isActive = pathname === link.href || scrollActive === link.href;
                 return (
                   <Link
                     key={link.href}

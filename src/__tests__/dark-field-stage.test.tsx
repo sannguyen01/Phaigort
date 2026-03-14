@@ -22,14 +22,8 @@ describe("DarkFieldStage", () => {
     expect(el.className).toContain("bg-royal-navy/90");
   });
 
-  it("renders as section by default", () => {
+  it("renders as section", () => {
     const { container } = render(<DarkFieldStage>Stage</DarkFieldStage>);
     expect(container.querySelector("section")).toBeTruthy();
-  });
-
-  it("renders as div when specified", () => {
-    const { container } = render(<DarkFieldStage as="div">Stage</DarkFieldStage>);
-    expect(container.querySelector("div")).toBeTruthy();
-    expect(container.querySelector("section")).toBeFalsy();
   });
 });

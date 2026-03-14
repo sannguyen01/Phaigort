@@ -33,7 +33,7 @@ export function OurStory() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section ref={ref} className="py-14 md:py-20 bg-royal-navy text-platinum">
+    <section id="story" ref={ref} className="py-14 md:py-20 bg-royal-navy text-platinum">
       <Container>
         <motion.div
           {...(prefersReducedMotion

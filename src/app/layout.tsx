@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Jost, Cormorant, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { BRAND, SOCIAL } from "@/lib/constants";
 import "./globals.css";
 
@@ -90,6 +91,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Header />
+        <ScrollProgress />
         <main id="main-content" className="pt-16 md:pt-20">{children}</main>
         <Footer />
       </body>

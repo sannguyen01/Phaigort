@@ -55,6 +55,17 @@
     @apply h-px bg-gradient-to-r from-transparent via-royal-navy/15 to-transparent;
   }
 
+  .nav-link::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-full bg-coral origin-left;
+    transform: scaleX(0);
+    transition: transform 300ms ease-out;
+  }
+  .nav-link:hover::after,
+  .nav-link[data-active]::after {
+    transform: scaleX(1);
+  }
+
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
