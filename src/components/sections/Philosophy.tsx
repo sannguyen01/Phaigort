@@ -25,7 +25,7 @@ export function Philosophy() {
         >
           <Caption>Our Promise</Caption>
           <H2 className="mt-4">This is where curiosity meets substance</H2>
-          <Body className="mt-5 text-platinum/70">
+          <Body className="mt-5 mx-auto text-platinum/70">
             Where you build collections worth explaining, worth keeping, worth
             passing down. Where materials become more meaningful over time
             through understanding and connection. Every piece comes with its

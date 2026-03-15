@@ -68,7 +68,7 @@ export default function AtelierPage() {
         <Container className="max-w-3xl text-center">
           <ScrollReveal>
             <H2 className="text-platinum">Begin Your Voyage</H2>
-            <Body className="mt-4 text-platinum/70">
+            <Body className="mt-4 mx-auto text-platinum/70">
               Whether you are a first-time visitor curious about geological
               wonders or a seasoned collector seeking specific treasures, the
               Wonderhouse welcomes your presence. No purchase requirements, no
