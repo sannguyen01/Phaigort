@@ -1,5 +1,5 @@
 import { createMetadata } from "@/lib/metadata";
-import { H1, H2, Body, Caption } from "@/components/ui/Typography";
+import { H1, H2, H4, Body, Caption, Label } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
@@ -46,14 +46,14 @@ export default function AtelierPage() {
             {APPROACHES.map((a, i) => (
               <ScrollReveal key={a.title} delay={i * 0.1}>
                 <div className="h-full p-8 md:p-10 bg-royal-navy border border-royal-navy/10 space-y-4 text-platinum">
-                  <span className="font-brand text-[10px] uppercase tracking-[0.35em] text-coral/70">
+                  <Label className="text-coral/70">
                     {a.number}
-                  </span>
+                  </Label>
                   <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="font-heading text-xl text-platinum">{a.title}</h3>
-                    <span className="font-body text-xs text-coral/70 whitespace-nowrap">{a.duration}</span>
+                    <H4 className="text-platinum">{a.title}</H4>
+                    <Label className="text-coral/70 whitespace-nowrap">{a.duration}</Label>
                   </div>
-                  <Body className="text-platinum/65">{a.description}</Body>
+                  <Body className="text-platinum/70">{a.description}</Body>
                 </div>
               </ScrollReveal>
             ))}

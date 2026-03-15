@@ -2,7 +2,7 @@
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
-import { H2, Body, Caption } from "@/components/ui/Typography";
+import { H2, H4, Body, Caption, Label } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
 import { Divider } from "@/components/ui/Divider";
 
@@ -75,11 +75,11 @@ export function OurStory() {
                   })}
               className="py-8 md:py-0 md:px-8 first:md:pl-0 last:md:pr-0 space-y-3"
             >
-              <span className="font-brand text-[10px] uppercase tracking-[0.35em] text-coral/70">
+              <Label className="text-coral/70">
                 {pillar.number}
-              </span>
-              <h3 className="font-heading text-xl text-platinum">{pillar.title}</h3>
-              <Body className="text-platinum/65">{pillar.description}</Body>
+              </Label>
+              <H4 className="text-platinum">{pillar.title}</H4>
+              <Body className="text-platinum/70">{pillar.description}</Body>
             </motion.div>
           ))}
         </div>

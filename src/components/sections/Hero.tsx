@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { Display, Body } from "@/components/ui/Typography";
+import { Display, Body, Caption } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
@@ -50,7 +50,7 @@ export function Hero() {
                 })}
             className="space-y-8"
           >
-            <span className="inline-block font-brand text-[10px] uppercase tracking-[0.4em] text-silver">Material Consciousness</span>
+            <Caption>Material Consciousness</Caption>
             <Display className="text-platinum">
               Wonderhouse of<br />Material Consciousness
             </Display>

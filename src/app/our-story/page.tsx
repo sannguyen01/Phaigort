@@ -19,6 +19,7 @@ export default function OurStoryPage() {
         <Container className="max-w-3xl">
           <Caption>Our Story</Caption>
           <H1 className="mt-5 text-platinum">
+
             The Earth as artist.<br />The expedition as practice.
           </H1>
           <Body className="mt-6 text-platinum/70">
@@ -77,7 +78,7 @@ export default function OurStoryPage() {
                 </H2>
               </div>
               <div className="space-y-5">
-                <Body className="text-platinum/75">
+                <Body className="text-platinum/70">
                   Great gemstones do not announce themselves. They surface in river
                   gravels outside Ratnapura in Sri Lanka, in metamorphic corridors
                   across the Malagasy highlands, in marble seams running through
@@ -85,7 +86,7 @@ export default function OurStoryPage() {
                   processed — rough, ungraded, unvalued — requires geological
                   intuition developed over years in the field.
                 </Body>
-                <Body className="text-platinum/75">
+                <Body className="text-platinum/70">
                   This expedition instinct is how Phaigort accesses material that
                   never reaches open markets. It is also how we maintain direct
                   knowledge of provenance — not certificates issued after the

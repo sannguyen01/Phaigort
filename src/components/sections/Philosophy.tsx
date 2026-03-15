@@ -22,18 +22,17 @@ export function Philosophy() {
                 animate: isInView ? { opacity: 1, y: 0 } : {},
                 transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
               })}
-          className="space-y-6"
         >
           <Caption>Our Promise</Caption>
-          <H2>This is where curiosity meets substance</H2>
-          <Body className="text-platinum/70">
+          <H2 className="mt-4">This is where curiosity meets substance</H2>
+          <Body className="mt-5 text-platinum/70">
             Where you build collections worth explaining, worth keeping, worth
             passing down. Where materials become more meaningful over time
             through understanding and connection. Every piece comes with its
             true story. Every collector joins a community of material
             enthusiasts.
           </Body>
-          <div className="pt-2">
+          <div className="mt-8">
             <Button href="/our-story" variant="secondary">
               Discover Our Story
             </Button>
