@@ -76,3 +76,10 @@
     padding-right: 2.5rem;
   }
 }
+
+@layer utilities {
+  /* Chrome strip transition easing — matches overlay open/close timing */
+  .ease-chrome {
+    transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+  }
+}

@@ -15,7 +15,7 @@ const jost = Jost({
 
 const cormorant = Cormorant({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",
@@ -92,7 +92,7 @@ export default function RootLayout({
         </a>
         <Header />
         <ScrollProgress />
-        <main id="main-content" className="pt-16 md:pt-20">{children}</main>
+        <main id="main-content" className="pt-[72px]">{children}</main>
         <Footer />
       </body>
     </html>
