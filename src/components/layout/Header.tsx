@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, BRAND } from "@/lib/constants";
@@ -11,16 +11,38 @@ import { useActiveSection } from "@/lib/useActiveSection";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHomepage = pathname === "/";
   const scrollActive = useActiveSection(isHomepage);
 
+  // Scroll-reactive: transparent over dark hero → frosted warm-ivory after 75vh
+  useEffect(() => {
+    const getThreshold = () => window.innerHeight * 0.75;
+    const onScroll = () => setScrolled(window.scrollY > getThreshold());
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-royal-navy border-b border-platinum/10">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out",
+        scrolled
+          ? "bg-warm-ivory/95 backdrop-blur-md border-b border-royal-navy/[0.08] shadow-sm"
+          : "bg-royal-navy border-b border-platinum/10"
+      )}
+    >
       <Container className="flex items-center justify-between h-16 md:h-20">
         <Link
           href="/"
-          className="font-brand text-xl md:text-2xl tracking-logo uppercase font-medium text-platinum hover:text-platinum/75 transition-colors duration-300"
+          className={cn(
+            "font-brand text-xl md:text-2xl tracking-logo uppercase font-medium transition-colors duration-500",
+            scrolled
+              ? "text-royal-navy hover:text-royal-navy/70"
+              : "text-platinum hover:text-platinum/75"
+          )}
         >
           {BRAND.name}
         </Link>
@@ -34,8 +56,12 @@ export function Header() {
                 href={link.href}
                 data-active={isActive || undefined}
                 className={cn(
-                  "nav-link relative font-brand text-[11px] uppercase tracking-widest transition-colors duration-300",
-                  isActive
+                  "nav-link relative font-brand text-[11px] uppercase tracking-widest transition-colors duration-500",
+                  scrolled
+                    ? isActive
+                      ? "font-semibold text-royal-navy"
+                      : "text-royal-navy/55 hover:text-royal-navy"
+                    : isActive
                     ? "font-semibold text-platinum"
                     : "text-platinum/55 hover:text-platinum"
                 )}
@@ -48,7 +74,12 @@ export function Header() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-platinum/70 hover:text-platinum transition-colors"
+          className={cn(
+            "md:hidden p-2 transition-colors duration-500",
+            scrolled
+              ? "text-royal-navy/70 hover:text-royal-navy"
+              : "text-platinum/70 hover:text-platinum"
+          )}
           aria-label="Toggle navigation"
           aria-expanded={mobileOpen}
         >

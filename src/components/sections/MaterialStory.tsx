@@ -33,7 +33,7 @@ export function OurStory() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="story" ref={ref} className="py-10 md:py-16 bg-royal-navy text-platinum">
+    <section id="story" ref={ref} className="py-10 md:py-16 bg-warm-ivory text-royal-navy">
       <Container>
         <motion.div
           {...(prefersReducedMotion
@@ -45,11 +45,11 @@ export function OurStory() {
               })}
           className="max-w-3xl"
         >
-          <Caption>Our Story</Caption>
-          <H2 className="mt-4">
+          <Caption className="text-royal-navy/50">Our Story</Caption>
+          <H2 className="mt-4 text-royal-navy">
             Some materials take forty million years to become beautiful.
           </H2>
-          <Body className="mt-5 text-platinum/70">
+          <Body className="mt-5 text-royal-navy/65">
             Phaigort is built around a single conviction: the Earth&apos;s most
             extraordinary materials carry a depth of meaning no jeweler can
             manufacture. We find them at the source, understand them with
@@ -58,7 +58,7 @@ export function OurStory() {
           </Body>
         </motion.div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-platinum/10">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-royal-navy/10">
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.number}
@@ -78,13 +78,13 @@ export function OurStory() {
               <Label className="text-coral/70">
                 {pillar.number}
               </Label>
-              <H4 className="text-platinum">{pillar.title}</H4>
-              <Body className="text-platinum/70">{pillar.description}</Body>
+              <H4 className="text-royal-navy">{pillar.title}</H4>
+              <Body className="text-royal-navy/60">{pillar.description}</Body>
             </motion.div>
           ))}
         </div>
 
-        <Divider className="mt-16 mb-0" />
+        <Divider className="mt-16 mb-0 border-royal-navy/10" />
       </Container>
     </section>
   );

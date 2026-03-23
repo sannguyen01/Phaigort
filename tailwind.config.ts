@@ -13,6 +13,7 @@ const config: Config = {
         platinum: "#F8F9FB",
         "royal-navy": "#1A2851",
         silver: "#8B9DC3",
+        "warm-ivory": "#F7F3EE",
         coral: "#FF6B4A",
         "coral-reef": "#FF6B4A",
         sapphire: "#0F52BA",
