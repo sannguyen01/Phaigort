@@ -52,7 +52,7 @@
 
 @layer components {
   .gold-line {
-    @apply h-px bg-gradient-to-r from-transparent via-royal-navy/15 to-transparent;
+    @apply h-px bg-gradient-to-r from-transparent via-platinum/15 to-transparent;
   }
 
   .nav-link::after {

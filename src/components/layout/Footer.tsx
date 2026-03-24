@@ -7,28 +7,28 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-royal-navy text-platinum pt-12 md:pt-16 pb-10">
+    <footer className="bg-royal-navy pb-10 pt-12 text-platinum md:pt-16">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-16">
           <div className="space-y-4">
             <Link
               href="/"
-              className="font-brand text-2xl tracking-logo uppercase font-medium text-platinum hover:text-coral transition-colors duration-300"
+              className="font-brand text-2xl font-medium uppercase tracking-logo text-platinum transition-colors duration-300 hover:text-coral"
             >
               {BRAND.name}
             </Link>
-            <p className="font-body text-sm leading-relaxed text-platinum/60 max-w-xs">
+            <p className="max-w-xs font-body text-sm leading-relaxed text-platinum/60">
               {BRAND.tagline}
             </p>
           </div>
           <div className="space-y-4">
             <Caption>Explore</Caption>
-            <nav className="flex flex-col gap-3 mt-4">
+            <nav className="mt-4 flex flex-col gap-3">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="font-body text-sm text-platinum/60 hover:text-platinum transition-colors duration-300"
+                  className="font-body text-sm text-platinum/60 transition-colors duration-300 hover:text-platinum"
                 >
                   {link.label}
                 </Link>
@@ -37,12 +37,12 @@ export function Footer() {
           </div>
           <div className="space-y-4">
             <Caption>Connect</Caption>
-            <nav className="flex flex-col gap-3 mt-4">
+            <nav className="mt-4 flex flex-col gap-3">
               <a
                 href={SOCIAL.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-sm text-platinum/60 hover:text-platinum transition-colors duration-300"
+                className="font-body text-sm text-platinum/60 transition-colors duration-300 hover:text-platinum"
               >
                 Instagram
               </a>
@@ -50,15 +50,15 @@ export function Footer() {
                 href={SOCIAL.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-sm text-platinum/60 hover:text-platinum transition-colors duration-300"
+                className="font-body text-sm text-platinum/60 transition-colors duration-300 hover:text-platinum"
               >
                 LinkedIn
               </a>
             </nav>
           </div>
         </div>
-        <div className="gold-line mt-10 mb-6" />
-        <p className="font-body text-xs text-platinum/40 text-center">
+        <div className="mb-6 mt-10 h-px bg-gradient-to-r from-transparent via-platinum/15 to-transparent" />
+        <p className="text-center font-body text-xs text-platinum/40">
           &copy; {currentYear} {BRAND.name}. All rights reserved.
         </p>
       </Container>
