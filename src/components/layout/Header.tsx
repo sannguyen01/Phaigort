@@ -80,13 +80,12 @@ export function Header() {
         className={cn(
           "fixed inset-x-0 top-0 z-[60] h-[72px] transition-colors duration-[350ms] ease-[cubic-bezier(0,0,0.58,1)]",
           isOpen
-            ? "bg-[#111214] border-b border-transparent"
-            : "bg-platinum border-b border-royal-navy/[0.07]"
+            ? "border-b border-transparent bg-royal-navy"
+            : "border-b border-royal-navy/[0.07] bg-platinum"
         )}
       >
         {/* Three-element layout: trigger | wordmark | spacer */}
-        <div className="relative flex items-center justify-between h-full px-6 md:px-10 lg:px-14">
-
+        <div className="relative flex h-full items-center justify-between px-6 md:px-10 lg:px-14">
           {/* LEFT — Menu / Close text trigger */}
           <button
             onClick={() => setIsOpen((prev) => !prev)}
@@ -94,7 +93,7 @@ export function Header() {
             aria-controls={overlayId}
             aria-label={isOpen ? "Close navigation" : "Open navigation"}
             className={cn(
-              "relative z-10 flex items-center justify-center min-w-[44px] min-h-[44px] -ml-2 px-2",
+              "relative z-10 -ml-2 flex min-h-[44px] min-w-[44px] items-center justify-center px-2",
               "font-brand text-[0.65rem] uppercase tracking-[0.18em]",
               "transition-colors duration-[350ms]",
               isOpen
@@ -128,12 +127,12 @@ export function Header() {
           </button>
 
           {/* CENTER — Wordmark, absolute-centered in strip */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <Link
               href="/"
               className={cn(
                 "pointer-events-auto font-brand text-[1.1rem] md:text-[1.2rem]",
-                "tracking-[0.25em] uppercase font-medium",
+                "font-medium uppercase tracking-[0.25em]",
                 "transition-colors duration-[350ms]",
                 isOpen
                   ? "text-platinum hover:text-platinum/80"
@@ -146,7 +145,7 @@ export function Header() {
           </div>
 
           {/* RIGHT — Spacer (balances flex layout) */}
-          <div className="min-w-[44px] h-[44px]" aria-hidden="true" />
+          <div className="h-[44px] min-w-[44px]" aria-hidden="true" />
         </div>
       </header>
 
@@ -169,13 +168,13 @@ export function Header() {
                     opacity: { duration: 0.01 },
                   }
             }
-            className="fixed inset-0 z-[55] bg-[#111214] flex flex-col"
+            className="fixed inset-0 z-[55] flex flex-col bg-royal-navy"
           >
             {/* ── NAV CONTENT ──────────────────────────────────────────── */}
             <div
               className={cn(
-                "flex flex-col justify-center flex-1",
-                "pt-[96px] pb-[64px]",
+                "flex flex-1 flex-col justify-center",
+                "pb-[64px] pt-[96px]",
                 "px-[clamp(24px,4vw,64px)]"
               )}
             >
@@ -200,9 +199,7 @@ export function Header() {
                               "tracking-[0.04em]",
                               "text-[clamp(1.8rem,3.5vw,3.2rem)]",
                               "transition-colors duration-[250ms]",
-                              active
-                                ? "text-[#F0EBE3]"
-                                : "text-platinum/80 hover:text-platinum/45"
+                              active ? "text-[#F0EBE3]" : "text-platinum/80 hover:text-platinum/45"
                             )}
                           >
                             {link.label}
@@ -225,7 +222,7 @@ export function Header() {
                 "absolute bottom-0 left-0 right-0",
                 "flex items-center justify-between",
                 "px-[clamp(24px,4vw,64px)] pb-10 pt-4",
-                "border-t border-platinum/[0.06]"
+                "border-t border-platinum/[0.08]"
               )}
             >
               <span className="font-brand text-[0.65rem] uppercase tracking-[0.18em] text-platinum/30">

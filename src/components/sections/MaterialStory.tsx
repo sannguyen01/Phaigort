@@ -4,7 +4,6 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { H2, H4, Body, Caption, Label } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
-import { Divider } from "@/components/ui/Divider";
 
 const pillars = [
   {
@@ -33,7 +32,11 @@ export function OurStory() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="story" ref={ref} className="py-10 md:py-16 bg-warm-ivory text-royal-navy">
+    <section
+      id="story"
+      ref={ref}
+      className="bg-warm-ivory pb-12 pt-10 text-royal-navy md:pb-20 md:pt-16"
+    >
       <Container>
         <motion.div
           {...(prefersReducedMotion
@@ -50,15 +53,14 @@ export function OurStory() {
             Some materials take forty million years to become beautiful.
           </H2>
           <Body className="mt-5 text-royal-navy/65">
-            Phaigort is built around a single conviction: the Earth&apos;s most
-            extraordinary materials carry a depth of meaning no jeweler can
-            manufacture. We find them at the source, understand them with
-            scientific rigour, and bring them to collectors who know the
-            difference between something decorative and something true.
+            Phaigort is built around a single conviction: the Earth&apos;s most extraordinary
+            materials carry a depth of meaning no jeweler can manufacture. We find them at the
+            source, understand them with scientific rigour, and bring them to collectors who know
+            the difference between something decorative and something true.
           </Body>
         </motion.div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-royal-navy/10">
+        <div className="mt-12 grid grid-cols-1 divide-y divide-royal-navy/10 md:grid-cols-3 md:divide-x md:divide-y-0">
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.number}
@@ -73,18 +75,14 @@ export function OurStory() {
                       ease: [0.22, 1, 0.36, 1],
                     },
                   })}
-              className="py-8 md:py-0 md:px-8 first:md:pl-0 last:md:pr-0 space-y-3"
+              className="space-y-3 py-8 md:px-8 md:py-0 first:md:pl-0 last:md:pr-0"
             >
-              <Label className="text-coral/70">
-                {pillar.number}
-              </Label>
+              <Label className="text-coral/70">{pillar.number}</Label>
               <H4 className="text-royal-navy">{pillar.title}</H4>
               <Body className="text-royal-navy/60">{pillar.description}</Body>
             </motion.div>
           ))}
         </div>
-
-        <Divider className="mt-16 mb-0 border-royal-navy/10" />
       </Container>
     </section>
   );

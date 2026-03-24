@@ -3,16 +3,31 @@ import { H1, H2, H4, Body, Caption, Label } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
-import { SectionBridge } from "@/components/ui/SectionBridge";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const metadata = createMetadata({ title: "Atelier", description: "Custom acquisition and consultation — patient discovery, guided exploration, and collaborative conversation.", path: "/atelier" });
 
 const APPROACHES = [
-  { number: "01", title: "Quick Discovery", duration: "15–20 minutes", description: "Drop in anytime. See what is new. Get the story. Use the microscopes. No appointment needed." },
-  { number: "02", title: "Guided Exploration", duration: "60–90 minutes", description: "Curators facilitate discovery through questions rather than lectures. Focus on building your independent judgment." },
-  { number: "03", title: "Contemplative Time", duration: "Unhurried", description: "Private examination without curator presence. No pressure, no urgency. Materials that took millions of years to form deserve patient consideration." },
-  { number: "04", title: "Collaborative Conversation", duration: "By request", description: "Detailed discussions answering questions, exploring considerations, discussing collection philosophies." },
+  {
+    number: "01",
+    title: "First Look",
+    description: "Walk in. See what is here. The microscopes are always available. Our curators know when to speak and when to let a stone speak for itself.",
+  },
+  {
+    number: "02",
+    title: "Guided Exploration",
+    description: "A conversation shaped by what interests you — your questions, your instincts, your hesitations. We do not lecture. We look together, and find what is worth looking at.",
+  },
+  {
+    number: "03",
+    title: "Unhurried Time",
+    description: "A stone that formed over forty million years deserves more than two minutes of consideration. Reserve the room. Take your time. We will be nearby if you need us.",
+  },
+  {
+    number: "04",
+    title: "Private Consultation",
+    description: "For collectors with specific intentions — a piece in mind, a commission to consider, a question that requires more than a visit. These conversations are built around you, not around inventory.",
+  },
 ] as const;
 
 export default function AtelierPage() {
@@ -33,8 +48,6 @@ export default function AtelierPage() {
         </Container>
       </DarkFieldStage>
 
-      <SectionBridge direction="navy-to-platinum" />
-
       {/* Discovery Approaches */}
       <section className="py-10 md:py-16 bg-platinum text-royal-navy">
         <Container>
@@ -49,10 +62,7 @@ export default function AtelierPage() {
                   <Label className="text-coral/70">
                     {a.number}
                   </Label>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <H4 className="text-platinum">{a.title}</H4>
-                    <Label className="text-coral/70 whitespace-nowrap">{a.duration}</Label>
-                  </div>
+                  <H4 className="text-platinum">{a.title}</H4>
                   <Body className="text-platinum/70">{a.description}</Body>
                 </div>
               </ScrollReveal>
@@ -60,8 +70,6 @@ export default function AtelierPage() {
           </div>
         </Container>
       </section>
-
-      <SectionBridge direction="platinum-to-navy" />
 
       {/* CTA */}
       <DarkFieldStage intensity="full" className="py-12 md:py-16">

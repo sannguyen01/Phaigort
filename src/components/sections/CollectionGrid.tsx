@@ -14,7 +14,7 @@ export function CollectionGrid() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="collections" ref={ref} className="py-10 md:py-16 bg-platinum text-royal-navy">
+    <section id="collections" ref={ref} className="bg-platinum py-10 text-royal-navy md:py-16">
       <Container>
         <motion.div
           {...(prefersReducedMotion
@@ -26,11 +26,11 @@ export function CollectionGrid() {
               })}
           className="mb-10"
         >
-          <Caption>Explore</Caption>
-          <H2 className="mt-4">Our Collection</H2>
+          <Caption className="text-royal-navy/45">The Collection</Caption>
+          <H2 className="mt-4 text-royal-navy">Four domains of rarity</H2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {TREASURE_DOMAINS.map((domain, i) => (
             <motion.div
               key={domain.title}
@@ -48,7 +48,7 @@ export function CollectionGrid() {
             >
               <Link
                 href={domain.href}
-                className="group block h-full bg-royal-navy border border-royal-navy/10 hover:border-coral/30 transition-all duration-500 overflow-hidden"
+                className="border-royal-navy/8 group block h-full overflow-hidden border bg-[#F0EEE9] transition-all duration-500 hover:border-royal-navy/20"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
@@ -60,21 +60,15 @@ export function CollectionGrid() {
                   />
                 </div>
                 <div className="flex flex-col p-6 md:p-8">
-                  <Label className="text-coral/80 group-hover:text-coral transition-colors duration-300">
+                  <Label className="text-coral/80 transition-colors duration-300 group-hover:text-coral">
                     {String(i + 1).padStart(2, "0")}
                   </Label>
-                  <H3 className="mt-3 text-platinum group-hover:text-coral transition-colors duration-500">
+                  <H3 className="mt-3 text-royal-navy transition-colors duration-300 group-hover:text-royal-navy/70">
                     {domain.title}
                   </H3>
-                  <Body className="mt-3 text-platinum/70 group-hover:text-platinum/90 transition-colors duration-500">
+                  <Body className="mt-3 text-royal-navy/60 transition-colors duration-300 group-hover:text-royal-navy/80">
                     {domain.description}
                   </Body>
-                  <Label className="mt-5 inline-flex items-center gap-2 text-coral/80 group-hover:text-coral transition-colors duration-300">
-                    Explore{" "}
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-                      &rarr;
-                    </span>
-                  </Label>
                 </div>
               </Link>
             </motion.div>
