@@ -21,7 +21,10 @@ export function Hero() {
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.8], [0.08, 0.02]);
 
   return (
-    <DarkFieldStage ref={heroRef} className="-mt-16 md:-mt-20 flex min-h-[80vh] md:min-h-[85vh] items-center justify-center overflow-hidden py-0">
+    <DarkFieldStage
+      ref={heroRef}
+      className="-mt-16 flex min-h-[80vh] items-center justify-center overflow-hidden py-0 md:-mt-20 md:min-h-[85vh]"
+    >
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -39,7 +42,7 @@ export function Hero() {
         style={prefersReducedMotion ? {} : { y: contentY }}
       >
         {/* Inner: entry animation */}
-        <Container className="flex flex-col items-center text-center py-20 md:py-24">
+        <Container className="flex flex-col items-center py-20 text-center md:py-24">
           <motion.div
             {...(prefersReducedMotion
               ? {}
@@ -50,24 +53,46 @@ export function Hero() {
                 })}
             className="space-y-8"
           >
-            <Caption>Material Consciousness</Caption>
+            <Caption>Rare Gemstones · Precious Metals · Material Culture</Caption>
             <Display className="text-platinum">
-              Wonderhouse of<br />Material Consciousness
+              Some things take forty million years
+              <br />
+              to become beautiful.
             </Display>
             <Body className="mx-auto max-w-2xl text-platinum/70">
-              Where Earth&apos;s geological creativity, humanity&apos;s craft traditions, precious metals, and contemporary innovations converge into vessels of personal meaning.
+              We find them at the source. We bring them to those who understand what they hold.
             </Body>
           </motion.div>
-          <motion.div {...(prefersReducedMotion ? {} : { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: { delay: 0.6, duration: 0.8 } })} className="mt-12">
-            <Button href="/collections">Explore Collections</Button>
+          <motion.div
+            {...(prefersReducedMotion
+              ? {}
+              : {
+                  initial: { opacity: 0 },
+                  animate: { opacity: 1 },
+                  transition: { delay: 0.6, duration: 0.8 },
+                })}
+            className="mt-12"
+          >
+            <Button href="/collections">Enter the Collection</Button>
           </motion.div>
         </Container>
       </motion.div>
 
       {!prefersReducedMotion && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.8 }} className="absolute bottom-12 left-1/2 -translate-x-1/2">
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} className="flex flex-col items-center gap-2">
-            <span className="font-body text-[10px] uppercase tracking-widest text-platinum/50">Scroll</span>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-2"
+          >
+            <span className="font-body text-[10px] uppercase tracking-widest text-platinum/50">
+              Scroll
+            </span>
             <div className="h-8 w-px bg-gradient-to-b from-platinum/30 to-transparent" />
           </motion.div>
         </motion.div>

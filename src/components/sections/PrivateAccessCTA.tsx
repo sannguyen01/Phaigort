@@ -38,20 +38,23 @@ export function PrivateAccessCTA() {
           className="flex flex-col items-center space-y-8"
         >
           <h2 className="font-heading text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl">
-            Not everything precious
+            Not every exceptional stone
             <br />
-            is displayed.
+            reaches the open market.
             <br />
-            <em className="font-normal italic text-platinum/90">Some of it is discovered.</em>
+            <em className="font-normal italic text-platinum/90">
+              Some are reserved. Some are waiting.
+            </em>
           </h2>
           <p className="mx-auto max-w-md text-balance font-body text-[15px] leading-relaxed text-platinum/65 md:text-base">
-            Some of what we carry has never been listed publicly. Some pieces are reserved for those
-            who arrive knowing what they are looking for — and some for those who arrive not
-            knowing, and find it anyway. Either way, the conversation begins here.
+            Certain pieces in the Phaigort archive have never been publicly listed — not because
+            they are unavailable, but because the right conversation has not yet happened. We do not
+            believe rarity should be announced. It should be discovered, by those who are looking,
+            and occasionally by those who did not know they were.
           </p>
           <div className="pt-2">
             <Button href="/contact" variant="secondary" onDark>
-              Request a Private Introduction
+              Begin a Private Conversation
             </Button>
           </div>
         </motion.div>

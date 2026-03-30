@@ -31,15 +31,29 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(BRAND.url),
   title: {
-    default: `${BRAND.name} — ${BRAND.tagline}`,
-    template: `%s — ${BRAND.name}`,
+    default: "Phaigort — Rare Gemstones & Precious Materials",
+    template: "%s | Phaigort",
   },
   description: BRAND.description,
+  keywords: [
+    "rare gemstones",
+    "coloured gemstones",
+    "Kashmir sapphire",
+    "Burmese spinel",
+    "precious metals",
+    "gemstone collection",
+    "investment gemstones",
+    "natural unheated sapphire",
+    "gemstone provenance",
+    "fine jewellery",
+    "historical artifacts",
+    "Phaigort",
+  ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: `${BRAND.name} — ${BRAND.tagline}`,
+    title: "Phaigort — Rare Gemstones & Precious Materials",
     description: BRAND.description,
     url: BRAND.url,
     siteName: BRAND.name,
@@ -49,7 +63,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: `${BRAND.name} — ${BRAND.tagline}`,
+        alt: "Phaigort — Rare Gemstones & Precious Materials",
       },
     ],
   },
@@ -60,11 +74,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${jost.variable} ${cormorant.variable} ${inter.variable}`}>
       <head>
@@ -83,16 +93,18 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-platinum text-royal-navy font-body antialiased">
+      <body className="min-h-screen bg-platinum font-body text-royal-navy antialiased">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-coral focus:text-platinum focus:font-body focus:text-sm focus:rounded"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-coral focus:px-4 focus:py-2 focus:font-body focus:text-sm focus:text-platinum"
         >
           Skip to content
         </a>
         <Header />
         <ScrollProgress />
-        <main id="main-content" className="pt-[72px]">{children}</main>
+        <main id="main-content" className="pt-[72px]">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

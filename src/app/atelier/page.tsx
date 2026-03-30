@@ -5,28 +5,37 @@ import { Container } from "@/components/ui/Container";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
-export const metadata = createMetadata({ title: "Atelier", description: "Custom acquisition and consultation — patient discovery, guided exploration, and collaborative conversation.", path: "/atelier" });
+export const metadata = createMetadata({
+  title: "The Atelier — Private Consultation & Gemstone Discovery",
+  description:
+    "The Phaigort Atelier offers private consultations for collectors and first-time visitors seeking rare gemstones, precious metals, and authenticated historical pieces. No appointment required for an initial visit.",
+  path: "/atelier",
+});
 
 const APPROACHES = [
   {
     number: "01",
     title: "First Look",
-    description: "Walk in. See what is here. The microscopes are always available. Our curators know when to speak and when to let a stone speak for itself.",
+    description:
+      "There is no prepared presentation. The cases contain what they contain. The microscopes are always available, and the curators have been asked to let the material do its own work — speaking only when the visitor has a question worth answering.",
   },
   {
     number: "02",
     title: "Guided Exploration",
-    description: "A conversation shaped by what interests you — your questions, your instincts, your hesitations. We do not lecture. We look together, and find what is worth looking at.",
+    description:
+      "A conversation structured by your curiosity rather than our inventory. We begin with what interests you — a period, a material, a question — and follow where the collection leads. There is no predetermined sequence. Hesitation is as informative as certainty.",
   },
   {
     number: "03",
     title: "Unhurried Time",
-    description: "A stone that formed over forty million years deserves more than two minutes of consideration. Reserve the room. Take your time. We will be nearby if you need us.",
+    description:
+      "The private viewing room is available without time constraint. A Kashmir sapphire that spent sixty-five million years in metamorphic rock does not need to be decided upon quickly. Reserve it for an afternoon. We will be available, but not present unless asked.",
   },
   {
     number: "04",
     title: "Private Consultation",
-    description: "For collectors with specific intentions — a piece in mind, a commission to consider, a question that requires more than a visit. These conversations are built around you, not around inventory.",
+    description:
+      "For collectors with a specific intention — a commission, an acquisition target, a question about treatment status or origin correlation that requires more than a case note can answer. We make no recommendation that we would not stand behind in writing. These conversations are built around the material, the collector, and the truth of what we know.",
   },
 ] as const;
 
@@ -36,14 +45,13 @@ export default function AtelierPage() {
       {/* Hero */}
       <DarkFieldStage intensity="full" className="py-16 md:py-24">
         <Container className="max-w-3xl">
-          <Caption>The Wonderhouse Experience</Caption>
-          <H1 className="mt-5 text-platinum">Atelier</H1>
+          <Caption>Private Discovery</Caption>
+          <H1 className="mt-5 text-platinum">The Atelier</H1>
           <Body className="mt-6 text-platinum/70">
-            Entering a Wonderhouse feels like stepping into the generative
-            depths where treasures form — an immersive environment from which
-            materials emerge like geological revelations. We celebrate extended
-            contemplation and explicitly give permission for unlimited
-            deliberation.
+            The Atelier is not a showroom. It is a place designed for the kind of attention that
+            rare materials deserve — unhurried, curious, and informed by the knowledge of people
+            who have spent years in the field. We do not believe that a stone formed over forty
+            million years should be evaluated in four minutes.
           </Body>
         </Container>
       </DarkFieldStage>
@@ -75,15 +83,18 @@ export default function AtelierPage() {
       <DarkFieldStage intensity="full" className="py-12 md:py-16">
         <Container className="max-w-3xl text-center">
           <ScrollReveal>
-            <H2 className="text-platinum">Begin Your Voyage</H2>
+            <H2 className="text-platinum">
+              The Atelier receives visitors by inclination, not by appointment.
+            </H2>
             <Body className="mt-4 mx-auto text-platinum/70">
-              Whether you are a first-time visitor curious about geological
-              wonders or a seasoned collector seeking specific treasures, the
-              Wonderhouse welcomes your presence. No purchase requirements, no
-              wealth qualifications — only genuine curiosity.
+              First-time visitors are as welcome as established collectors. The only qualification
+              is genuine curiosity about what the Earth was capable of making, and what human craft
+              traditions built around that capability. When you are ready to take the next step — a
+              private consultation, a commission conversation, a question about a specific piece —
+              we are here.
             </Body>
             <div className="mt-8">
-              <Button href="/contact">Schedule a Visit</Button>
+              <Button href="/contact">Arrange a Consultation</Button>
             </div>
           </ScrollReveal>
         </Container>

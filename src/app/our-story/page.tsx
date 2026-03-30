@@ -6,9 +6,9 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Our Story",
+  title: "Our Story — The Origin of Phaigort",
   description:
-    "Phaigort exists at the intersection of geological science and human artistry. Discover the story behind our pursuit of Earth's most extraordinary materials.",
+    "Phaigort was founded on a single conviction: rare gemstones and precious materials carry meaning no jeweller can manufacture. Discover how we source, authenticate, and present the Earth's rarest geological formations.",
 };
 
 export default function OurStoryPage() {
@@ -18,15 +18,16 @@ export default function OurStoryPage() {
         <Container className="max-w-3xl">
           <Caption>Our Story</Caption>
           <H1 className="mt-5 text-platinum">
-            The Earth as artist.
+            The Earth spent forty million years
             <br />
-            The expedition as practice.
+            making this. We went to find it.
           </H1>
           <Body className="mt-6 text-platinum/70">
-            Some things take time to be understood. A great sapphire spends forty million years
-            becoming what it is — its colour a record of iron and titanium bonded under temperatures
-            far beyond anything above ground. Phaigort exists because of a conviction that these
-            materials deserve to be known, not just owned.
+            A Kashmir sapphire&apos;s colour is not pigment — it is iron and titanium compressed
+            under temperatures that would vaporise everything familiar, then cooled over geological
+            time into a crystal of exact violet-blue saturation. Phaigort was founded on the
+            conviction that objects formed under these conditions deserve to be understood, not
+            merely acquired.
           </Body>
         </Container>
       </DarkFieldStage>
@@ -38,7 +39,7 @@ export default function OurStoryPage() {
               <div>
                 <Caption className="text-silver">The Earth as Artist</Caption>
                 <H2 className="mt-4">
-                  Colour, light, pressure — forces no craftsperson can replicate
+                  Colour is chemistry. Chemistry is provenance.
                 </H2>
               </div>
               <div className="space-y-5">
@@ -54,6 +55,12 @@ export default function OurStoryPage() {
                   in a Phaigort collection is chosen because its beauty is inseparable from its
                   science — and both are documented, not assumed.
                 </Body>
+                <Body>
+                  This is why origin matters in ways that go beyond geography. A Sri Lankan
+                  sapphire and a Burmese sapphire of identical colour have different geological
+                  biographies — different host rocks, different trace element concentrations,
+                  different pressure histories. We select for biography as much as beauty.
+                </Body>
               </div>
             </div>
           </ScrollReveal>
@@ -67,7 +74,7 @@ export default function OurStoryPage() {
               <div>
                 <Caption>The Expedition Mind</Caption>
                 <H2 className="mt-4">
-                  We go where the stones are, before the market decides their value
+                  We go to the source before the market arrives.
                 </H2>
               </div>
               <div className="space-y-5">
@@ -81,7 +88,11 @@ export default function OurStoryPage() {
                 <Body className="text-platinum/70">
                   This expedition instinct is how Phaigort accesses material that never reaches open
                   markets. It is also how we maintain direct knowledge of provenance — not
-                  certificates issued after the fact, but relationships built at the source itself.
+                  certificates issued after the fact, but field documentation — geological
+                  assessments, origin correlation studies, and in many cases, direct knowledge of
+                  the mining locality. In an era when provenance is frequently claimed and rarely
+                  verified, we treat it as the foundation of the object&apos;s value, not its
+                  footnote.
                 </Body>
               </div>
             </div>
@@ -111,6 +122,14 @@ export default function OurStoryPage() {
                   occasion — pieces worth explaining to someone who finds them in fifty years,
                   carrying their story visibly in the material itself.
                 </Body>
+                <Body>
+                  Phaigort does not issue condition reports against future uncertainty. We issue
+                  them because we believe a collector deserves to understand exactly what they
+                  hold — the mineral species, the treatment status (heated or unheated,
+                  clarity-enhanced or natural), the geographic origin, and the chain of custody
+                  from mine to hand. These are not marketing claims. They are the permanent record
+                  of the material.
+                </Body>
               </div>
             </div>
           </ScrollReveal>
@@ -121,13 +140,15 @@ export default function OurStoryPage() {
         <Container className="text-center">
           <ScrollReveal>
             <H2 className="mx-auto max-w-xl text-platinum">
-              Discover what the Earth made possible.
+              Every collection begins with a geological event.
             </H2>
             <Body className="mx-auto mt-4 text-platinum/70">
-              Every collection begins with a geological event. Browse what we have found.
+              Browse the four domains of rarity that Phaigort has assembled — coloured gemstones
+              of documented origin, precious metals in their natural state, historical artifacts of
+              verified provenance, and contemporary materials of irreproducible specification.
             </Body>
             <div className="mt-8">
-              <Button href="/collections">Explore Our Collection</Button>
+              <Button href="/collections">Enter the Collection</Button>
             </div>
           </ScrollReveal>
         </Container>

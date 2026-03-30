@@ -6,7 +6,12 @@ import { H3 } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
-interface FormData { name: string; email: string; interest: string; message: string; }
+interface FormData {
+  name: string;
+  email: string;
+  interest: string;
+  message: string;
+}
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClasses = cn(
@@ -34,7 +39,7 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      const data = await res.json() as { error?: string; success?: boolean };
+      const data = (await res.json()) as { error?: string; success?: boolean };
 
       if (!res.ok) {
         setStatus("error");
@@ -61,7 +66,7 @@ export function ContactForm() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center py-16 space-y-4"
+          className="space-y-4 py-16 text-center"
         >
           <H3>Thank You</H3>
           <p className="font-body text-[15px] text-royal-navy/70">
@@ -69,7 +74,7 @@ export function ContactForm() {
           </p>
           <button
             onClick={() => setStatus("idle")}
-            className="mt-6 font-body text-sm uppercase tracking-widest text-coral hover:text-coral/80 transition-colors duration-300"
+            className="mt-6 font-body text-sm uppercase tracking-widest text-coral transition-colors duration-300 hover:text-coral/80"
           >
             Send Another Inquiry
           </button>
@@ -85,7 +90,7 @@ export function ContactForm() {
           <H3 className="mb-8">Send an Inquiry</H3>
           <form onSubmit={handleSubmit} className="space-y-6" noValidate>
             {/* Name & Email — side by side */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
                 <label htmlFor="contact-name" className={labelClasses}>
                   Name
@@ -150,7 +155,7 @@ export function ContactForm() {
               </label>
               <textarea
                 id="contact-message"
-                placeholder="Tell us about your curiosity..."
+                placeholder="Describe what you are looking for, or simply say hello — either is a sufficient beginning."
                 rows={6}
                 required
                 minLength={10}

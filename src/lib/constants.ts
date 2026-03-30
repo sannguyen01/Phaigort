@@ -1,5 +1,5 @@
 export const NAV_LINKS = [
-  { label: "Our Collection", href: "/collections" },
+  { label: "The Collection", href: "/collections" },
   { label: "Our Story", href: "/our-story" },
   { label: "Atelier", href: "/atelier" },
   { label: "Contact", href: "/contact" },
@@ -7,10 +7,10 @@ export const NAV_LINKS = [
 
 export const BRAND = {
   name: "Phaigort",
-  tagline: "Wonderhouse of Material Consciousness",
+  tagline: "The House of Geological Rarity",
   description:
-    "Where Earth's geological creativity, humanity's craft traditions, precious metals, and contemporary innovations converge into vessels of personal meaning.",
-  promise: "Phaigort connects you with materials that matter.",
+    "Phaigort curates rare gemstones, precious metals, and historical material culture — sourced directly from origin, documented with scientific rigour, and presented to those who recognise the difference between something beautiful and something true.",
+  promise: "Some things take forty million years to become what they are. We find them.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://phaigort.com",
 } as const;
 
@@ -23,33 +23,33 @@ export const TREASURE_DOMAINS = [
   {
     title: "Geological Rarities",
     description:
-      "Gemstones curated for compelling formation stories — sapphires revealing how iron and titanium created blue over millions of years, spinels demonstrating cobalt concentrations in ancient marble.",
+      "Coloured gemstones of exceptional origin — Kashmir sapphires of violet-blue saturation, Burmese spinels with chromium fluorescence, alexandrites whose absorption spectrum bridges daylight and incandescent light. Each stone is selected for the geological event it represents, not the market category it occupies.",
     href: "/collections#geological-rarities",
     image: "/collections/geological-rarities.jpg",
-    imageAlt: "A brilliant blue sapphire resting on natural rock formation",
+    imageAlt: "An unheated Kashmir sapphire, oval cut, displaying deep cornflower-blue saturation",
   },
   {
     title: "Precious Metals",
     description:
-      "Gold, platinum, silver, and palladium — both wealth preservation and geological wonder. Native metal specimens showcasing Earth's chemistry creating elemental purity.",
+      "Native gold specimens from alluvial deposits, platinum in its elemental state, silver of dendritic formation — materials that are simultaneously geological documents and stores of enduring value. The finest specimens are indistinguishable from sculpture.",
     href: "/collections#precious-metals",
     image: "/collections/precious-metals.jpg",
-    imageAlt: "Collection of deep blue sapphires arranged in a display tray",
+    imageAlt: "Native gold specimen on matrix, alluvial formation",
   },
   {
     title: "Historical Artifacts",
     description:
-      "Cultural pieces with documented stories — Portuguese filigree, Spanish colonial jewelry, and Asian trade objects connecting five centuries of craft and civilisation.",
+      "Objects carrying the accumulated intelligence of craft traditions across centuries — Portuguese filigree of the sixteenth century, Spanish colonial goldwork, Asian export pieces whose trade routes are inscribed in their materials. Provenance is documented, not asserted.",
     href: "/collections#historical-artifacts",
     image: "/collections/historical-artifacts.jpg",
-    imageAlt: "A cabochon-cut emerald displaying rich green translucency",
+    imageAlt: "Portuguese filigree pendant, sixteenth century, white gold wirework",
   },
   {
     title: "Contemporary Innovations",
     description:
-      "Advanced materials demonstrating genuine technical achievement — aerospace alloys, proprietary finishes, experimental composites requiring years to develop.",
+      "Materials at the boundary of what science currently permits — metamorphic composites, aerospace-grade alloys applied beyond their industrial context, proprietary surface treatments that require years to develop and cannot be replicated at scale. The category is defined by irreproducibility.",
     href: "/collections#contemporary-innovations",
     image: "/collections/contemporary-innovations.jpg",
-    imageAlt: "Assorted tourmaline gemstones in green and pink hues",
+    imageAlt: "Experimental composite panel with iridescent surface treatment",
   },
 ] as const;
