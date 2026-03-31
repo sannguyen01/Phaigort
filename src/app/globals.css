@@ -82,4 +82,11 @@
   .ease-chrome {
     transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
   }
+
+  /* SectionBridge — half-pixel blur for light-to-light transitions only.
+     Eliminates sub-pixel rendering artifacts at the dissolve boundary.
+     Do NOT apply to navy transitions — it creates a visible glow halo. */
+  .bridge-blur {
+    filter: blur(0.5px);
+  }
 }

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { SectionBridge } from "@/components/ui/SectionBridge";
 
 export const metadata = createMetadata({
   title: "The Atelier — Private Consultation & Gemstone Discovery",
@@ -42,7 +43,7 @@ const APPROACHES = [
 export default function AtelierPage() {
   return (
     <>
-      {/* Hero */}
+      {/* royal-navy */}
       <DarkFieldStage intensity="full" className="py-16 md:py-24">
         <Container className="max-w-3xl">
           <Caption>Private Discovery</Caption>
@@ -56,7 +57,10 @@ export default function AtelierPage() {
         </Container>
       </DarkFieldStage>
 
-      {/* Discovery Approaches */}
+      {/* royal-navy → platinum */}
+      <SectionBridge transition="navy-to-platinum" />
+
+      {/* platinum */}
       <section className="py-10 md:py-16 bg-platinum text-royal-navy">
         <Container>
           <ScrollReveal>
@@ -79,7 +83,10 @@ export default function AtelierPage() {
         </Container>
       </section>
 
-      {/* CTA */}
+      {/* platinum → royal-navy */}
+      <SectionBridge transition="platinum-to-navy" />
+
+      {/* royal-navy */}
       <DarkFieldStage intensity="full" className="py-12 md:py-16">
         <Container className="max-w-3xl text-center">
           <ScrollReveal>

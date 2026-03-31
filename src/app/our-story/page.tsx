@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
+import { SectionBridge } from "@/components/ui/SectionBridge";
 
 export const metadata: Metadata = {
   title: "Our Story — The Origin of Phaigort",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function OurStoryPage() {
   return (
     <>
+      {/* royal-navy */}
       <DarkFieldStage intensity="full" className="py-16 md:py-24">
         <Container className="max-w-3xl">
           <Caption>Our Story</Caption>
@@ -32,6 +34,10 @@ export default function OurStoryPage() {
         </Container>
       </DarkFieldStage>
 
+      {/* royal-navy → platinum */}
+      <SectionBridge transition="navy-to-platinum" />
+
+      {/* platinum */}
       <section className="bg-platinum py-10 text-royal-navy md:py-16">
         <Container>
           <ScrollReveal>
@@ -67,6 +73,10 @@ export default function OurStoryPage() {
         </Container>
       </section>
 
+      {/* platinum → royal-navy */}
+      <SectionBridge transition="platinum-to-navy" />
+
+      {/* royal-navy */}
       <section className="bg-royal-navy py-10 text-platinum md:py-16">
         <Container>
           <ScrollReveal>
@@ -100,6 +110,10 @@ export default function OurStoryPage() {
         </Container>
       </section>
 
+      {/* royal-navy → platinum */}
+      <SectionBridge transition="navy-to-platinum" />
+
+      {/* platinum */}
       <section className="bg-platinum py-10 text-royal-navy md:py-16">
         <Container>
           <ScrollReveal>
@@ -136,6 +150,10 @@ export default function OurStoryPage() {
         </Container>
       </section>
 
+      {/* platinum → royal-navy */}
+      <SectionBridge transition="platinum-to-navy" />
+
+      {/* royal-navy */}
       <DarkFieldStage intensity="full" className="py-12 md:py-16">
         <Container className="text-center">
           <ScrollReveal>

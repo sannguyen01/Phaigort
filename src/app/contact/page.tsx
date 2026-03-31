@@ -3,6 +3,7 @@ import { H1, Body, Caption, Label } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
+import { SectionBridge } from "@/components/ui/SectionBridge";
 
 export const metadata = createMetadata({
   title: "Contact Phaigort — Gemstone Inquiries & Private Consultations",
@@ -14,7 +15,7 @@ export const metadata = createMetadata({
 export default function ContactPage() {
   return (
     <div>
-      {/* Hero Banner */}
+      {/* royal-navy */}
       <DarkFieldStage className="py-16 md:py-24 text-center">
         <Container className="max-w-3xl">
           <Caption className="text-platinum/60">Open a Dialogue</Caption>
@@ -28,7 +29,10 @@ export default function ContactPage() {
         </Container>
       </DarkFieldStage>
 
-      {/* Two-Column Layout: Info + Form */}
+      {/* royal-navy → platinum */}
+      <SectionBridge transition="navy-to-platinum" />
+
+      {/* platinum */}
       <section className="py-16 md:py-24 bg-platinum text-royal-navy">
         <Container className="max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-20">
