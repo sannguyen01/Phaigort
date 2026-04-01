@@ -24,6 +24,9 @@
     "resend": "^6.9.3",
     "tailwind-merge": "^3.0.2"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp", "unrs-resolver"]
+  },
   "devDependencies": {
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.58.2",
