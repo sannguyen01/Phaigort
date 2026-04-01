@@ -78,7 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${jost.variable} ${cormorant.variable} ${inter.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.png" sizes="48x48" type="image/png" />
+        {/* favicon: resolved by src/app/icon.svg — Next.js App Router auto-generates <link rel="icon"> */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

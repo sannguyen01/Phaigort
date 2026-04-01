@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createMetadata } from "@/lib/metadata";
 import { H1, H2, Body, Caption } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
@@ -6,11 +6,12 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
 import { SectionBridge } from "@/components/ui/SectionBridge";
 
-export const metadata: Metadata = {
+export const metadata = createMetadata({
   title: "Our Story — The Origin of Phaigort",
   description:
     "Phaigort was founded on a single conviction: rare gemstones and precious materials carry meaning no jeweller can manufacture. Discover how we source, authenticate, and present the Earth's rarest geological formations.",
-};
+  path: "/our-story",
+});
 
 export default function OurStoryPage() {
   return (
@@ -44,9 +45,7 @@ export default function OurStoryPage() {
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
               <div>
                 <Caption className="text-silver">The Earth as Artist</Caption>
-                <H2 className="mt-4">
-                  Colour is chemistry. Chemistry is provenance.
-                </H2>
+                <H2 className="mt-4">Colour is chemistry. Chemistry is provenance.</H2>
               </div>
               <div className="space-y-5">
                 <Body>
@@ -62,10 +61,10 @@ export default function OurStoryPage() {
                   science — and both are documented, not assumed.
                 </Body>
                 <Body>
-                  This is why origin matters in ways that go beyond geography. A Sri Lankan
-                  sapphire and a Burmese sapphire of identical colour have different geological
-                  biographies — different host rocks, different trace element concentrations,
-                  different pressure histories. We select for biography as much as beauty.
+                  This is why origin matters in ways that go beyond geography. A Sri Lankan sapphire
+                  and a Burmese sapphire of identical colour have different geological biographies —
+                  different host rocks, different trace element concentrations, different pressure
+                  histories. We select for biography as much as beauty.
                 </Body>
               </div>
             </div>
@@ -83,9 +82,7 @@ export default function OurStoryPage() {
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
               <div>
                 <Caption>The Expedition Mind</Caption>
-                <H2 className="mt-4">
-                  We go to the source before the market arrives.
-                </H2>
+                <H2 className="mt-4">We go to the source before the market arrives.</H2>
               </div>
               <div className="space-y-5">
                 <Body className="text-platinum/70">
@@ -138,11 +135,10 @@ export default function OurStoryPage() {
                 </Body>
                 <Body>
                   Phaigort does not issue condition reports against future uncertainty. We issue
-                  them because we believe a collector deserves to understand exactly what they
-                  hold — the mineral species, the treatment status (heated or unheated,
-                  clarity-enhanced or natural), the geographic origin, and the chain of custody
-                  from mine to hand. These are not marketing claims. They are the permanent record
-                  of the material.
+                  them because we believe a collector deserves to understand exactly what they hold
+                  — the mineral species, the treatment status (heated or unheated, clarity-enhanced
+                  or natural), the geographic origin, and the chain of custody from mine to hand.
+                  These are not marketing claims. They are the permanent record of the material.
                 </Body>
               </div>
             </div>
@@ -161,8 +157,8 @@ export default function OurStoryPage() {
               Every collection begins with a geological event.
             </H2>
             <Body className="mx-auto mt-4 text-platinum/70">
-              Browse the four domains of rarity that Phaigort has assembled — coloured gemstones
-              of documented origin, precious metals in their natural state, historical artifacts of
+              Browse the four domains of rarity that Phaigort has assembled — coloured gemstones of
+              documented origin, precious metals in their natural state, historical artifacts of
               verified provenance, and contemporary materials of irreproducible specification.
             </Body>
             <div className="mt-8">
