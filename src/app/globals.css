@@ -39,7 +39,7 @@
 
 @layer base {
   *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-coral rounded-sm;
+    @apply outline-2 outline-offset-2 outline-royal-navy rounded-sm;
   }
 }
 
@@ -57,7 +57,7 @@
 
   .nav-link::after {
     content: "";
-    @apply absolute -bottom-1 left-0 h-px w-full bg-coral origin-left;
+    @apply absolute -bottom-1 left-0 h-px w-full bg-royal-navy origin-left;
     transform: scaleX(0);
     transition: transform 300ms ease-out;
   }

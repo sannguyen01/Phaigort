@@ -17,7 +17,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 const inputClasses = cn(
   "w-full px-4 py-3 bg-white border border-royal-navy/15 rounded-sm",
   "font-body text-sm text-royal-navy placeholder:text-royal-navy/40",
-  "focus:outline-none focus:border-coral/50 focus:ring-1 focus:ring-coral/20 transition-all duration-300",
+  "focus:outline-none focus:border-royal-navy/30 focus:ring-1 focus:ring-royal-navy/10 transition-all duration-300",
   "disabled:opacity-50 disabled:cursor-not-allowed"
 );
 
@@ -74,7 +74,7 @@ export function ContactForm() {
           </p>
           <button
             onClick={() => setStatus("idle")}
-            className="mt-6 font-body text-sm uppercase tracking-widest text-coral transition-colors duration-300 hover:text-coral/80"
+            className="mt-6 font-body text-sm uppercase tracking-widest text-royal-navy/60 transition-colors duration-300 hover:text-royal-navy"
           >
             Send Another Inquiry
           </button>

@@ -1,11 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useCallback, useId } from "react";
+import { useState, useEffect, useCallback, useRef, useId } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { NAV_LINKS, BRAND } from "@/lib/constants";
+import { NAV_LINKS, BRAND, TREASURE_DOMAINS } from "@/lib/constants";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+type TreasureDomain = (typeof TREASURE_DOMAINS)[number];
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 
@@ -28,13 +33,33 @@ const FOOTER_STRIP_VARIANTS = {
   exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
+const DROPDOWN_VARIANTS = {
+  hidden: { opacity: 0, y: -6 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] },
+  },
+  exit: {
+    opacity: 0,
+    y: -6,
+    transition: { duration: 0.18, ease: [0.42, 0, 1, 1] },
+  },
+};
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [hoveredDomain, setHoveredDomain] = useState<TreasureDomain>(
+    TREASURE_DOMAINS[0]
+  );
   const pathname = usePathname();
   const overlayId = useId();
   const prefersReducedMotion = useReducedMotion();
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Reduced-motion: collapse all animation durations to imperceptible
   const reducedVariants = <T extends Record<string, unknown>>(variants: T): T =>
@@ -47,14 +72,25 @@ export function Header() {
         ) as T)
       : variants;
 
+  // Scroll transparency
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   // Close on route change
   useEffect(() => {
     setIsOpen(false);
+    setActiveDropdown(null);
   }, [pathname]);
 
-  // ESC key closes overlay
+  // ESC key
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === "Escape") setIsOpen(false);
+    if (e.key === "Escape") {
+      setIsOpen(false);
+      setActiveDropdown(null);
+    }
   }, []);
 
   useEffect(() => {
@@ -62,7 +98,7 @@ export function Header() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
 
-  // Body scroll lock
+  // Body scroll lock — mobile overlay only
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
@@ -70,23 +106,51 @@ export function Header() {
     };
   }, [isOpen]);
 
-  // Active route check
+  // Dropdown hover with 120ms close delay (prevents accidental dismissal)
+  const openDropdown = useCallback((key: string) => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    setActiveDropdown(key);
+  }, []);
+
+  const scheduleClose = useCallback(() => {
+    closeTimerRef.current = setTimeout(() => setActiveDropdown(null), 120);
+  }, []);
+
+  const cancelClose = useCallback(() => {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
+
   const isActive = (href: string) => pathname === href;
+
+  // Solid state: scrolled OR dropdown open (dropdown panel is bg-platinum,
+  // so transparent header behind it would create a visual seam)
+  const isSolid = scrolled || activeDropdown !== null;
 
   return (
     <>
       {/* ── LAYER 1: PERSISTENT CHROME STRIP ─────────────────────────────── */}
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-[60] h-[72px] transition-colors duration-[350ms] ease-[cubic-bezier(0,0,0.58,1)]",
+          "fixed inset-x-0 top-0 z-[60] h-[72px]",
+          "transition-all duration-[350ms] ease-[cubic-bezier(0,0,0.58,1)]",
           isOpen
             ? "border-b border-transparent bg-royal-navy"
-            : "border-b border-royal-navy/[0.07] bg-platinum"
+            : isSolid
+              ? "border-b border-royal-navy/[0.07] bg-platinum/95 backdrop-blur-md"
+              : "border-b border-transparent bg-transparent"
         )}
       >
-        {/* Three-element layout: trigger | wordmark | spacer */}
         <div className="relative flex h-full items-center justify-between px-6 md:px-10 lg:px-14">
-          {/* LEFT — Menu / Close text trigger */}
+
+          {/* ── LEFT: Mobile = Menu/Close | Desktop = Nav links ──────────── */}
+
+          {/* Mobile trigger — hidden on md+ */}
           <button
             onClick={() => setIsOpen((prev) => !prev)}
             aria-expanded={isOpen}
@@ -95,10 +159,12 @@ export function Header() {
             className={cn(
               "relative z-10 -ml-2 flex min-h-[44px] min-w-[44px] items-center justify-center px-2",
               "font-brand text-[0.65rem] uppercase tracking-[0.18em]",
-              "transition-colors duration-[350ms]",
+              "transition-colors duration-[350ms] md:hidden",
               isOpen
                 ? "text-platinum/70 hover:text-platinum"
-                : "text-royal-navy/55 hover:text-royal-navy"
+                : isSolid
+                  ? "text-royal-navy/55 hover:text-royal-navy"
+                  : "text-platinum/70 hover:text-platinum"
             )}
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -126,30 +192,181 @@ export function Header() {
             </AnimatePresence>
           </button>
 
-          {/* CENTER — Wordmark, absolute-centered in strip */}
+          {/* Desktop persistent nav — hidden below md */}
+          <nav
+            aria-label="Site navigation"
+            className="hidden md:flex items-center gap-7 lg:gap-9"
+          >
+            {NAV_LINKS.map((link) =>
+              link.href === "/collections" ? (
+                <button
+                  key={link.href}
+                  onMouseEnter={() => openDropdown("collections")}
+                  onMouseLeave={scheduleClose}
+                  aria-expanded={activeDropdown === "collections"}
+                  aria-haspopup="true"
+                  className={cn(
+                    "relative font-brand text-[0.68rem] uppercase tracking-[0.14em]",
+                    "transition-colors duration-[350ms]",
+                    activeDropdown === "collections" || isActive(link.href)
+                      ? isSolid
+                        ? "text-royal-navy"
+                        : "text-platinum"
+                      : isSolid
+                        ? "text-royal-navy/55 hover:text-royal-navy"
+                        : "text-platinum/65 hover:text-platinum"
+                  )}
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "relative font-brand text-[0.68rem] uppercase tracking-[0.14em]",
+                    "transition-colors duration-[350ms]",
+                    isActive(link.href)
+                      ? isSolid
+                        ? "text-royal-navy"
+                        : "text-platinum"
+                      : isSolid
+                        ? "text-royal-navy/55 hover:text-royal-navy"
+                        : "text-platinum/65 hover:text-platinum"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
+          </nav>
+
+          {/* ── CENTER: Logo — absolute anchor ───────────────────────────── */}
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <Link
               href="/"
-              className={cn(
-                "pointer-events-auto font-brand text-[1.1rem] md:text-[1.2rem]",
-                "font-medium uppercase tracking-[0.25em]",
-                "transition-colors duration-[350ms]",
-                isOpen
-                  ? "text-platinum hover:text-platinum/80"
-                  : "text-royal-navy hover:text-royal-navy/70"
-              )}
+              className="pointer-events-auto"
               onClick={() => setIsOpen(false)}
+              aria-label={BRAND.name}
             >
-              {BRAND.name}
+              <Image
+                src="/phaigort-logo.png"
+                alt={BRAND.name}
+                width={120}
+                height={44}
+                priority
+                className="object-contain transition-opacity duration-[350ms]"
+              />
             </Link>
           </div>
 
-          {/* RIGHT — Spacer (balances flex layout) */}
-          <div className="h-[44px] min-w-[44px]" aria-hidden="true" />
+          {/* ── RIGHT: Private Enquiry (desktop) | Spacer (mobile) ───────── */}
+          <Link
+            href="/contact"
+            className={cn(
+              "hidden md:block font-brand text-[0.62rem] uppercase tracking-[0.18em]",
+              "transition-colors duration-[350ms]",
+              isSolid
+                ? "text-royal-navy/45 hover:text-royal-navy"
+                : "text-platinum/55 hover:text-platinum"
+            )}
+          >
+            Private Enquiry
+          </Link>
+          <div className="md:hidden h-[44px] min-w-[44px]" aria-hidden="true" />
         </div>
+
+        {/* ── DESKTOP MEGA-MENU DROPDOWN ───────────────────────────────────── */}
+        <AnimatePresence>
+          {activeDropdown === "collections" && (
+            <motion.div
+              role="region"
+              aria-label="Collection categories"
+              onMouseEnter={cancelClose}
+              onMouseLeave={scheduleClose}
+              variants={reducedVariants(DROPDOWN_VARIANTS)}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className={cn(
+                "absolute top-full left-0 right-0 bg-platinum",
+                "border-b border-royal-navy/[0.07]",
+                "grid grid-cols-[1fr_1.8fr] min-h-[320px]"
+              )}
+            >
+              {/* Left: typographic domain list */}
+              <div className="flex flex-col justify-center gap-1 border-r border-royal-navy/[0.06] px-10 py-10 lg:px-14">
+                {TREASURE_DOMAINS.map((domain, i) => (
+                  <motion.a
+                    key={domain.title}
+                    href={domain.href}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={
+                      prefersReducedMotion
+                        ? { duration: 0.01 }
+                        : { delay: i * 0.04, duration: 0.18 }
+                    }
+                    onMouseEnter={() => setHoveredDomain(domain)}
+                    className={cn(
+                      "block py-2 font-heading text-[1.3rem] font-light tracking-[0.02em]",
+                      "transition-colors duration-150 cursor-pointer",
+                      hoveredDomain.title === domain.title
+                        ? "text-royal-navy"
+                        : "text-royal-navy/38 hover:text-royal-navy/70"
+                    )}
+                  >
+                    {domain.title}
+                  </motion.a>
+                ))}
+              </div>
+
+              {/* Right: editorial image panel — crossfades on hover */}
+              <div className="relative overflow-hidden bg-deep-navy">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={hoveredDomain.title}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={
+                      prefersReducedMotion ? { duration: 0.01 } : { duration: 0.3 }
+                    }
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${hoveredDomain.image})` }}
+                    role="img"
+                    aria-label={hoveredDomain.imageAlt}
+                  />
+                </AnimatePresence>
+                {/* Depth gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/65 via-transparent to-transparent pointer-events-none" />
+                {/* Domain caption */}
+                <div className="absolute bottom-6 left-6">
+                  <p className="font-brand text-[0.62rem] uppercase tracking-[0.18em] text-platinum/55">
+                    {hoveredDomain.title}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
-      {/* ── LAYER 2: FULL-VIEWPORT CURTAIN OVERLAY ───────────────────────── */}
+      {/* ── PAGE DIMMING: desktop dropdown backdrop ──────────────────────────── */}
+      <AnimatePresence>
+        {activeDropdown !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[58] bg-royal-navy/20 pointer-events-none"
+            style={{ top: "72px" }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* ── LAYER 2: FULL-VIEWPORT CURTAIN OVERLAY (mobile) ─────────────────── */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -170,7 +387,7 @@ export function Header() {
             }
             className="fixed inset-0 z-[55] flex flex-col bg-royal-navy"
           >
-            {/* ── NAV CONTENT ──────────────────────────────────────────── */}
+            {/* NAV CONTENT */}
             <div
               className={cn(
                 "flex flex-1 flex-col justify-center",
@@ -199,7 +416,9 @@ export function Header() {
                               "tracking-[0.04em]",
                               "text-[clamp(1.8rem,3.5vw,3.2rem)]",
                               "transition-colors duration-[250ms]",
-                              active ? "text-[#F0EBE3]" : "text-platinum/80 hover:text-platinum/45"
+                              active
+                                ? "text-[#F0EBE3]"
+                                : "text-platinum/80 hover:text-platinum/45"
                             )}
                           >
                             {link.label}
@@ -212,7 +431,7 @@ export function Header() {
               </nav>
             </div>
 
-            {/* FOOTER STRIP — fades in after nav items */}
+            {/* Footer strip — fades in after nav items */}
             <motion.div
               variants={reducedVariants(FOOTER_STRIP_VARIANTS)}
               initial="hidden"

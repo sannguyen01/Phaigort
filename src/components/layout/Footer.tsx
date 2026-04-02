@@ -13,7 +13,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link
               href="/"
-              className="font-brand text-2xl font-medium uppercase tracking-logo text-platinum transition-colors duration-300 hover:text-coral"
+              className="font-brand text-2xl font-medium uppercase tracking-logo text-platinum transition-colors duration-300 hover:text-platinum/70"
             >
               {BRAND.name}
             </Link>
