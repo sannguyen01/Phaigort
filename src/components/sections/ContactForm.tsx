@@ -169,7 +169,7 @@ export function ContactForm() {
 
             {/* Error */}
             {status === "error" && (
-              <p role="alert" className="font-body text-sm text-coral">
+              <p role="alert" className="font-body text-sm text-red-600">
                 {errorMsg}
               </p>
             )}

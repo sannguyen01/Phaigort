@@ -16,9 +16,9 @@ import { cn } from "@/lib/utils";
 // ─── Colour token hex values ────────────────────────────────────────────────
 // These must stay in sync with tailwind.config.ts
 const HEX = {
-  platinum:   "#F8F9FB", // primary bg (60–75%)
-  warmIvory:  "#F7F3EE", // OurStory section bg
-  royalNavy:  "#1A2851", // primary text, DarkFieldStage full, PrivateAccessCTA
+  platinum: "#F8F9FB", // primary bg (60–75%)
+  warmIvory: "#F7F3EE", // OurStory section bg
+  royalNavy: "#03195e", // primary text, DarkFieldStage full, PrivateAccessCTA
 } as const;
 
 // ─── Transition type ─────────────────────────────────────────────────────────
@@ -29,8 +29,8 @@ export type BridgeTransition =
   | "navy-to-platinum"
   | "ivory-to-navy"
   | "navy-to-ivory"
-  | "navy-to-navy"            // same-surface — renders nothing
-  | "platinum-to-platinum";   // same-surface — renders nothing
+  | "navy-to-navy" // same-surface — renders nothing
+  | "platinum-to-platinum"; // same-surface — renders nothing
 
 // ─── Bridge configuration ────────────────────────────────────────────────────
 interface BridgeConfig {
@@ -48,7 +48,7 @@ interface BridgeConfig {
 
 const BRIDGE_MAP: Record<BridgeTransition, BridgeConfig | null> = {
   // Same-surface — no bridge
-  "navy-to-navy":         null,
+  "navy-to-navy": null,
   "platinum-to-platinum": null,
 
   // Light ↔ light — 40px, full dissolve (luminance shift is ~3%)
@@ -56,14 +56,14 @@ const BRIDGE_MAP: Record<BridgeTransition, BridgeConfig | null> = {
   // appear to share one continuous surface with a warm/cool temperature shift.
   "platinum-to-ivory": {
     fromHex: HEX.platinum,
-    toHex:   HEX.warmIvory,
-    height:  40,
+    toHex: HEX.warmIvory,
+    height: 40,
     midOpacity: 0.0,
   },
   "ivory-to-platinum": {
     fromHex: HEX.warmIvory,
-    toHex:   HEX.platinum,
-    height:  40,
+    toHex: HEX.platinum,
+    height: 40,
     midOpacity: 0.0,
   },
 
@@ -72,26 +72,26 @@ const BRIDGE_MAP: Record<BridgeTransition, BridgeConfig | null> = {
   // producing the "oil pigments meeting at a waterline" effect.
   "platinum-to-navy": {
     fromHex: HEX.platinum,
-    toHex:   HEX.royalNavy,
-    height:  96,
+    toHex: HEX.royalNavy,
+    height: 96,
     midOpacity: 0.25,
   },
   "navy-to-platinum": {
     fromHex: HEX.royalNavy,
-    toHex:   HEX.platinum,
-    height:  96,
+    toHex: HEX.platinum,
+    height: 96,
     midOpacity: 0.25,
   },
   "ivory-to-navy": {
     fromHex: HEX.warmIvory,
-    toHex:   HEX.royalNavy,
-    height:  96,
+    toHex: HEX.royalNavy,
+    height: 96,
     midOpacity: 0.25,
   },
   "navy-to-ivory": {
     fromHex: HEX.royalNavy,
-    toHex:   HEX.warmIvory,
-    height:  96,
+    toHex: HEX.warmIvory,
+    height: 96,
     midOpacity: 0.25,
   },
 };
@@ -142,17 +142,17 @@ export function SectionBridge({ transition, className }: SectionBridgeProps) {
         <defs>
           <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
             {/* Outgoing section colour — fully opaque at the top */}
-            <stop offset="0%"   stopColor={fromHex} stopOpacity={1} />
+            <stop offset="0%" stopColor={fromHex} stopOpacity={1} />
 
             {/* Mid-zone: both colours fade toward transparent.
                 At midOpacity 0.0 → pure alpha blending through the document
                 stack ("clear window"). At 0.25 → partial colour collision,
                 the "oil-on-water" effect for high-contrast pairs. */}
-            <stop offset="35%"  stopColor={fromHex} stopOpacity={midOpacity} />
-            <stop offset="65%"  stopColor={toHex}   stopOpacity={midOpacity} />
+            <stop offset="35%" stopColor={fromHex} stopOpacity={midOpacity} />
+            <stop offset="65%" stopColor={toHex} stopOpacity={midOpacity} />
 
             {/* Incoming section colour — fully opaque at the bottom */}
-            <stop offset="100%" stopColor={toHex}   stopOpacity={1} />
+            <stop offset="100%" stopColor={toHex} stopOpacity={1} />
           </linearGradient>
         </defs>
         <rect width="1440" height={height} fill={`url(#${gradId})`} />

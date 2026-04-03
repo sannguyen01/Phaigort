@@ -5,10 +5,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#1A2851",
+        navy: "#03195e",
         "deep-navy": "#0F172A",
         platinum: "#F8F9FB",
-        "royal-navy": "#1A2851",
+        "royal-navy": "#03195e",
         silver: "#8B9DC3",
         "warm-ivory": "#F7F3EE",
         // @deprecated — coral is reserved for decorative accents only (timeline spine,

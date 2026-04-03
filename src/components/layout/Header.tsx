@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, useId } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -11,6 +10,40 @@ import { NAV_LINKS, BRAND, TREASURE_DOMAINS } from "@/lib/constants";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type TreasureDomain = (typeof TREASURE_DOMAINS)[number];
+
+// ─── Logo mark ────────────────────────────────────────────────────────────────
+// Inline SVG ensures crisp rendering at all DPI levels and full color control
+// across transparent (dark hero), solid (platinum), and overlay (royal-navy) states.
+// navy=true → deep-navy diamond + white label (on platinum header)
+// navy=false → white diamond + deep-navy label (on dark/overlay backgrounds)
+
+function PhaigortLogoMark({ navy }: { navy: boolean }) {
+  const diamond = navy ? "#03195e" : "#ffffff";
+  const label = navy ? "#ffffff" : "#03195e";
+  return (
+    <svg
+      viewBox="0 0 300 106"
+      width={108}
+      height={38}
+      aria-hidden="true"
+      className="transition-all duration-[350ms]"
+    >
+      <polygon points="150,3 297,53 150,103 3,53" fill={diamond} />
+      <text
+        x="150"
+        y="59"
+        textAnchor="middle"
+        fontFamily="var(--font-jost), Jost, sans-serif"
+        fontSize="19"
+        fontWeight="400"
+        letterSpacing="3.5"
+        fill={label}
+      >
+        PHAIGORT
+      </text>
+    </svg>
+  );
+}
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 
@@ -53,9 +86,7 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [hoveredDomain, setHoveredDomain] = useState<TreasureDomain>(
-    TREASURE_DOMAINS[0]
-  );
+  const [hoveredDomain, setHoveredDomain] = useState<TreasureDomain>(TREASURE_DOMAINS[0]);
   const pathname = usePathname();
   const overlayId = useId();
   const prefersReducedMotion = useReducedMotion();
@@ -147,7 +178,6 @@ export function Header() {
         )}
       >
         <div className="relative flex h-full items-center justify-between px-6 md:px-10 lg:px-14">
-
           {/* ── LEFT: Mobile = Menu/Close | Desktop = Nav links ──────────── */}
 
           {/* Mobile trigger — hidden on md+ */}
@@ -193,10 +223,7 @@ export function Header() {
           </button>
 
           {/* Desktop persistent nav — hidden below md */}
-          <nav
-            aria-label="Site navigation"
-            className="hidden md:flex items-center gap-7 lg:gap-9"
-          >
+          <nav aria-label="Site navigation" className="hidden items-center gap-7 md:flex lg:gap-9">
             {NAV_LINKS.map((link) =>
               link.href === "/collections" ? (
                 <button
@@ -249,14 +276,7 @@ export function Header() {
               onClick={() => setIsOpen(false)}
               aria-label={BRAND.name}
             >
-              <Image
-                src="/phaigort-logo.png"
-                alt={BRAND.name}
-                width={120}
-                height={44}
-                priority
-                className="object-contain transition-opacity duration-[350ms]"
-              />
+              <PhaigortLogoMark navy={isSolid && !isOpen} />
             </Link>
           </div>
 
@@ -264,7 +284,7 @@ export function Header() {
           <Link
             href="/contact"
             className={cn(
-              "hidden md:block font-brand text-[0.62rem] uppercase tracking-[0.18em]",
+              "hidden font-brand text-[0.62rem] uppercase tracking-[0.18em] md:block",
               "transition-colors duration-[350ms]",
               isSolid
                 ? "text-royal-navy/45 hover:text-royal-navy"
@@ -273,7 +293,7 @@ export function Header() {
           >
             Private Enquiry
           </Link>
-          <div className="md:hidden h-[44px] min-w-[44px]" aria-hidden="true" />
+          <div className="h-[44px] min-w-[44px] md:hidden" aria-hidden="true" />
         </div>
 
         {/* ── DESKTOP MEGA-MENU DROPDOWN ───────────────────────────────────── */}
@@ -289,9 +309,9 @@ export function Header() {
               animate="visible"
               exit="exit"
               className={cn(
-                "absolute top-full left-0 right-0 bg-platinum",
+                "absolute left-0 right-0 top-full bg-platinum",
                 "border-b border-royal-navy/[0.07]",
-                "grid grid-cols-[1fr_1.8fr] min-h-[320px]"
+                "grid min-h-[320px] grid-cols-[1fr_1.8fr]"
               )}
             >
               {/* Left: typographic domain list */}
@@ -310,7 +330,7 @@ export function Header() {
                     onMouseEnter={() => setHoveredDomain(domain)}
                     className={cn(
                       "block py-2 font-heading text-[1.3rem] font-light tracking-[0.02em]",
-                      "transition-colors duration-150 cursor-pointer",
+                      "cursor-pointer transition-colors duration-150",
                       hoveredDomain.title === domain.title
                         ? "text-royal-navy"
                         : "text-royal-navy/38 hover:text-royal-navy/70"
@@ -329,9 +349,7 @@ export function Header() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={
-                      prefersReducedMotion ? { duration: 0.01 } : { duration: 0.3 }
-                    }
+                    transition={prefersReducedMotion ? { duration: 0.01 } : { duration: 0.3 }}
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${hoveredDomain.image})` }}
                     role="img"
@@ -339,7 +357,7 @@ export function Header() {
                   />
                 </AnimatePresence>
                 {/* Depth gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/65 via-transparent to-transparent pointer-events-none" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-navy/65 via-transparent to-transparent" />
                 {/* Domain caption */}
                 <div className="absolute bottom-6 left-6">
                   <p className="font-brand text-[0.62rem] uppercase tracking-[0.18em] text-platinum/55">
@@ -360,7 +378,7 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[58] bg-royal-navy/20 pointer-events-none"
+            className="pointer-events-none fixed inset-0 z-[58] bg-royal-navy/20"
             style={{ top: "72px" }}
           />
         )}
@@ -416,9 +434,7 @@ export function Header() {
                               "tracking-[0.04em]",
                               "text-[clamp(1.8rem,3.5vw,3.2rem)]",
                               "transition-colors duration-[250ms]",
-                              active
-                                ? "text-[#F0EBE3]"
-                                : "text-platinum/80 hover:text-platinum/45"
+                              active ? "text-[#F0EBE3]" : "text-platinum/80 hover:text-platinum/45"
                             )}
                           >
                             {link.label}
