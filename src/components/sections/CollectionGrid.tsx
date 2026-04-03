@@ -60,7 +60,7 @@ export function CollectionGrid() {
                   />
                 </div>
                 <div className="flex flex-col p-6 md:p-8">
-                  <Label className="text-coral/80 transition-colors duration-300 group-hover:text-coral">
+                  <Label className="text-royal-navy/50 transition-colors duration-300 group-hover:text-royal-navy">
                     {String(i + 1).padStart(2, "0")}
                   </Label>
                   <H3 className="mt-3 text-royal-navy transition-colors duration-300 group-hover:text-royal-navy/70">

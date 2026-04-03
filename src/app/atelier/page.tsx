@@ -50,9 +50,9 @@ export default function AtelierPage() {
           <H1 className="mt-5 text-platinum">The Atelier</H1>
           <Body className="mt-6 text-platinum/70">
             The Atelier is not a showroom. It is a place designed for the kind of attention that
-            rare materials deserve — unhurried, curious, and informed by the knowledge of people
-            who have spent years in the field. We do not believe that a stone formed over forty
-            million years should be evaluated in four minutes.
+            rare materials deserve — unhurried, curious, and informed by the knowledge of people who
+            have spent years in the field. We do not believe that a stone formed over forty million
+            years should be evaluated in four minutes.
           </Body>
         </Container>
       </DarkFieldStage>
@@ -61,19 +61,17 @@ export default function AtelierPage() {
       <SectionBridge transition="navy-to-platinum" />
 
       {/* platinum */}
-      <section className="py-10 md:py-16 bg-platinum text-royal-navy">
+      <section className="bg-platinum py-10 text-royal-navy md:py-16">
         <Container>
           <ScrollReveal>
             <Caption className="text-silver">How We Work</Caption>
-            <H2 className="mt-4 mb-10">Discovery Approaches</H2>
+            <H2 className="mb-10 mt-4">Discovery Approaches</H2>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {APPROACHES.map((a, i) => (
               <ScrollReveal key={a.title} delay={i * 0.1}>
-                <div className="h-full p-8 md:p-10 bg-royal-navy border border-royal-navy/10 space-y-4 text-platinum">
-                  <Label className="text-coral/70">
-                    {a.number}
-                  </Label>
+                <div className="h-full space-y-4 border border-royal-navy/10 bg-royal-navy p-8 text-platinum md:p-10">
+                  <Label className="text-platinum/40">{a.number}</Label>
                   <H4 className="text-platinum">{a.title}</H4>
                   <Body className="text-platinum/70">{a.description}</Body>
                 </div>
@@ -93,7 +91,7 @@ export default function AtelierPage() {
             <H2 className="text-platinum">
               The Atelier receives visitors by inclination, not by appointment.
             </H2>
-            <Body className="mt-4 mx-auto text-platinum/70">
+            <Body className="mx-auto mt-4 text-platinum/70">
               First-time visitors are as welcome as established collectors. The only qualification
               is genuine curiosity about what the Earth was capable of making, and what human craft
               traditions built around that capability. When you are ready to take the next step — a

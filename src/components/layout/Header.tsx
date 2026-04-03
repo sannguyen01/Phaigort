@@ -159,9 +159,9 @@ export function Header() {
 
   const isActive = (href: string) => pathname === href;
 
-  // Solid state: scrolled OR dropdown open (dropdown panel is bg-platinum,
-  // so transparent header behind it would create a visual seam)
-  const isSolid = scrolled || activeDropdown !== null;
+  // Solid state: always solid on subpages (no dark hero guarantees at y=0),
+  // or when scrolled / dropdown open on the homepage.
+  const isSolid = pathname !== "/" || scrolled || activeDropdown !== null;
 
   return (
     <>

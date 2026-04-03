@@ -77,7 +77,7 @@ export function OurStory() {
                   })}
               className="space-y-3 py-8 md:px-8 md:py-0 first:md:pl-0 last:md:pr-0"
             >
-              <Label className="text-coral/70">{pillar.number}</Label>
+              <Label className="text-royal-navy/45">{pillar.number}</Label>
               <H4 className="text-royal-navy">{pillar.title}</H4>
               <Body className="text-royal-navy/60">{pillar.description}</Body>
             </motion.div>

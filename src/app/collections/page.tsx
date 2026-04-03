@@ -44,7 +44,7 @@ const DOMAIN_DETAILS = [
 export default function CollectionsPage() {
   return (
     <div>
-      <section className="pt-10 md:pt-16 bg-platinum text-royal-navy">
+      <section className="bg-platinum pt-10 text-royal-navy md:pt-16">
         <Container>
           <ScrollReveal>
             <Caption>The Collection</Caption>
@@ -52,35 +52,39 @@ export default function CollectionsPage() {
               Four domains of rarity. One standard of documentation.
             </H1>
             <Body className="mt-6 max-w-2xl text-royal-navy/70">
-              Phaigort assembles rare gemstones, precious metal specimens, historical artifacts,
-              and contemporary material innovations under a single framework: every piece must
-              carry its own evidence. Geological origin, treatment status, provenance chain, and
-              material specification are documented as a condition of presentation — not offered
-              as a premium.
+              Phaigort assembles rare gemstones, precious metal specimens, historical artifacts, and
+              contemporary material innovations under a single framework: every piece must carry its
+              own evidence. Geological origin, treatment status, provenance chain, and material
+              specification are documented as a condition of presentation — not offered as a
+              premium.
             </Body>
           </ScrollReveal>
         </Container>
       </section>
       <Divider />
-      <section className="pb-10 md:pb-16 bg-platinum text-royal-navy">
+      <section className="bg-platinum pb-10 text-royal-navy md:pb-16">
         <Container>
           <div className="space-y-16 md:space-y-20">
             {TREASURE_DOMAINS.map((domain, i) => (
               <section key={domain.title} id={domain.href.split("#")[1]} className="scroll-mt-24">
                 <ScrollReveal>
-                  <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12">
+                  <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_2fr]">
                     <div>
-                      <Label className="text-coral/70">Domain {String(i + 1).padStart(2, "0")}</Label>
+                      <Label className="text-royal-navy/45">
+                        Domain {String(i + 1).padStart(2, "0")}
+                      </Label>
                       <H3 className="mt-4">{domain.title}</H3>
                     </div>
                     <div>
                       <div className="space-y-4">
                         {DOMAIN_DETAILS[i].paragraphs.map((para, j) => (
-                          <Body key={j} className="text-royal-navy/70">{para}</Body>
+                          <Body key={j} className="text-royal-navy/70">
+                            {para}
+                          </Body>
                         ))}
                       </div>
                       <ImageReveal delay={0.15} className="mt-8">
-                        <div className="relative aspect-[16/9] overflow-hidden bg-royal-navy/5 border border-royal-navy/10">
+                        <div className="relative aspect-[16/9] overflow-hidden border border-royal-navy/10 bg-royal-navy/5">
                           <Image
                             src={domain.image}
                             alt={domain.imageAlt}
