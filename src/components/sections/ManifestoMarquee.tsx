@@ -10,8 +10,8 @@ export function ManifestoMarquee() {
 
   if (prefersReducedMotion) {
     return (
-      <section className="py-10 md:py-12 bg-[#F5F0EB] overflow-hidden">
-        <p className="font-heading italic text-royal-navy text-2xl md:text-3xl text-center px-6">
+      <section className="overflow-hidden bg-[#F5F0EB] py-10 md:py-12">
+        <p className="px-6 text-center font-heading text-2xl italic text-royal-navy md:text-3xl">
           {MANIFESTO}
         </p>
       </section>
@@ -19,15 +19,18 @@ export function ManifestoMarquee() {
   }
 
   return (
-    <section className="py-10 md:py-12 bg-[#F5F0EB] overflow-hidden" aria-hidden="true">
+    <section className="overflow-hidden bg-[#F5F0EB] py-10 md:py-12" aria-hidden="true">
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
         transition={{ duration: 28, ease: "linear", repeat: Infinity }}
-        className="flex whitespace-nowrap gap-16"
+        className="flex gap-16 whitespace-nowrap"
       >
         {repeated.map((text, i) => (
-          <span key={i} className="font-heading italic text-royal-navy/60 text-2xl md:text-3xl shrink-0">
-            {text} <span className="text-coral/50 mx-4">·</span>
+          <span
+            key={i}
+            className="shrink-0 font-heading text-2xl italic text-royal-navy/85 md:text-3xl"
+          >
+            {text} <span className="mx-4 text-coral">·</span>
           </span>
         ))}
       </motion.div>

@@ -27,6 +27,9 @@ export const TREASURE_DOMAINS = [
     href: "/collections#geological-rarities",
     image: "/collections/geological-rarities.jpg",
     imageAlt: "An unheated Kashmir sapphire, oval cut, displaying deep cornflower-blue saturation",
+    hoverImage: "/collections/geological-rarities-detail.jpg",
+    hoverImageAlt:
+      "Macro detail of Kashmir sapphire showing silk inclusion pattern and natural colour zoning under darkfield illumination",
   },
   {
     title: "Precious Metals",
@@ -35,6 +38,9 @@ export const TREASURE_DOMAINS = [
     href: "/collections#precious-metals",
     image: "/collections/precious-metals.jpg",
     imageAlt: "Native gold specimen on matrix, alluvial formation",
+    hoverImage: "/collections/precious-metals-detail.jpg",
+    hoverImageAlt:
+      "Close-up of crystalline gold formation showing dendritic branching structure on quartz matrix",
   },
   {
     title: "Historical Artifacts",
@@ -43,6 +49,9 @@ export const TREASURE_DOMAINS = [
     href: "/collections#historical-artifacts",
     image: "/collections/historical-artifacts.jpg",
     imageAlt: "Portuguese filigree pendant, sixteenth century, white gold wirework",
+    hoverImage: "/collections/historical-artifacts-detail.jpg",
+    hoverImageAlt:
+      "Detail of sixteenth-century Portuguese filigree wirework showing twisted gold threads and granulation technique",
   },
   {
     title: "Contemporary Innovations",
@@ -51,5 +60,8 @@ export const TREASURE_DOMAINS = [
     href: "/collections#contemporary-innovations",
     image: "/collections/contemporary-innovations.jpg",
     imageAlt: "Experimental composite panel with iridescent surface treatment",
+    hoverImage: "/collections/contemporary-innovations-detail.jpg",
+    hoverImageAlt:
+      "Macro surface detail of iridescent composite material showing structural colour interference patterns",
   },
 ] as const;

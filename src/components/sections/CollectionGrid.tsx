@@ -51,12 +51,22 @@ export function CollectionGrid() {
                 className="border-royal-navy/8 group block h-full overflow-hidden border bg-[#F0EEE9] transition-all duration-500 hover:border-royal-navy/20"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
+                  {/* Primary image */}
                   <Image
                     src={domain.image}
                     alt={domain.imageAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-0"
+                  />
+                  {/* Hover detail image — crossfades in on hover */}
+                  <Image
+                    src={domain.hoverImage}
+                    alt={domain.hoverImageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover opacity-0 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
+                    loading="lazy"
                   />
                 </div>
                 <div className="flex flex-col p-6 md:p-8">

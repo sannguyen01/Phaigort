@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Display, Body, Caption } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
@@ -30,8 +31,20 @@ export function Hero() {
         className="pointer-events-none absolute inset-0"
         style={prefersReducedMotion ? {} : { y: overlayY }}
       >
+        {/* Gemstone photograph — dark field macro, sits at base of the stack */}
+        <Image
+          src="/hero/hero-gemstone.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-30"
+        />
+        {/* Darkening vignette over the photo */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1D]/60 via-[#0A0F1D]/40 to-[#0A0F1D]/80" />
+        {/* Original blue radial accent — retained, now layered on top of photo */}
         <motion.div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(15,82,186,1)_0%,_transparent_70%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(15,82,186,0.6)_0%,_transparent_70%)]"
           style={prefersReducedMotion ? { opacity: 0.08 } : { opacity: overlayOpacity }}
         />
       </motion.div>

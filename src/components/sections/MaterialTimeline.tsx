@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { H2, Body, Caption } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
@@ -13,6 +14,9 @@ const TIMELINE_DATA = [
       "A ruby's red comes from chromium — the same element that colours emeralds green, depending entirely on the mineral that hosts it. An alexandrite shifts from teal in daylight to deep raspberry under incandescent light because its absorption spectrum falls precisely on the boundary between two light sources. These are not accidents of beauty. They are chemistry operating under conditions that exist only deep within the Earth, only under specific geological circumstance, only once.",
     body2:
       "We choose materials where this geological intelligence is still visible in the object itself — not polished away, not set so the stone becomes decoration. Every piece in a Phaigort collection is selected because you cannot separate its beauty from its science. The two arrived together. They do not come apart.",
+    image: "/story/earth-as-artist.jpg",
+    imageAlt:
+      "Macro close-up of a Kashmir sapphire crystal face showing natural colour zoning and silk inclusions",
   },
   {
     caption: "II. The Expedition Mind",
@@ -21,6 +25,9 @@ const TIMELINE_DATA = [
       "Great gemstones do not announce themselves. They surface in river gravels outside Ratnapura at dawn, in the metamorphic corridors of the Malagasy highlands, in marble seams running through mountains that most maps do not bother naming. Finding them rough — ungraded, unvalued, still carrying the earth they came from — requires something closer to geological intuition than to commerce.",
     body2:
       "This is how Phaigort reaches material that never reaches open markets. Not through sourcing networks or supply chain partnerships — through relationships built over years at origin, with people who know which riverbank to stand on after the rains, and why. Provenance, here, is not a certificate issued after the fact. It is a conversation that began at the ground itself.",
+    image: "/story/expedition-mind.jpg",
+    imageAlt:
+      "River gravel deposit in Sri Lanka showing rough corundum crystals in alluvial sediment",
   },
   {
     caption: "III. The Standard We Keep",
@@ -29,6 +36,9 @@ const TIMELINE_DATA = [
       "A stone cut to maximise weight retention is not the same stone cut to reveal what the Earth intended. Metal chosen for production efficiency is not the same metal chosen for how it changes over decades of wear — the way gold develops patina that records the life lived alongside it. These distinctions are not aesthetic preferences. They are the difference between an object and an heirloom.",
     body2:
       "Every piece in the Phaigort collection is held to a single question before it leaves: will this matter more in twenty years? Not simply hold its value — matter. To someone who finds it in a drawer. To someone who receives it without context. To someone who has not yet been born. If the answer is uncertain, the piece does not leave.",
+    image: "/story/standard-we-keep.jpg",
+    imageAlt:
+      "Jeweller's loupe over a finished alexandrite ring, atelier workbench with tools in background",
   },
 ];
 
@@ -60,7 +70,7 @@ export function MaterialTimeline() {
   );
 }
 
-function TimelineItem({ item, index }: { item: any; index: number }) {
+function TimelineItem({ item, index }: { item: (typeof TIMELINE_DATA)[number]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -95,17 +105,18 @@ function TimelineItem({ item, index }: { item: any; index: number }) {
         </div>
       </div>
 
-      {/* Abstract Graphic / Placeholder */}
+      {/* Gemstone Photography */}
       <div className="group ml-16 cursor-crosshair md:ml-0 md:w-1/2">
-        <div className="relative aspect-[3/4] transform overflow-hidden border border-platinum/10 bg-platinum/5 shadow-2xl transition-transform duration-[2s] hover:border-platinum/30 group-hover:scale-[1.02] md:aspect-[4/5]">
+        <div className="relative aspect-[3/4] overflow-hidden border border-platinum/10 shadow-2xl transition-all duration-[2s] hover:border-platinum/30 group-hover:scale-[1.02] md:aspect-[4/5]">
+          <Image
+            src={item.image}
+            alt={item.imageAlt}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover opacity-75 transition-opacity duration-700 group-hover:opacity-90"
+            loading="lazy"
+          />
           <div className="absolute inset-0 bg-gradient-to-tr from-coral/10 to-transparent opacity-0 mix-blend-screen transition-opacity duration-1000 group-hover:opacity-100" />
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center font-brand text-xs uppercase tracking-[0.4em] text-platinum/20"
-            whileHover={{ scale: 1.1, rotate: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          >
-            Visual Artifact {String(index + 1).padStart(2, "0")}
-          </motion.div>
         </div>
       </div>
     </motion.div>

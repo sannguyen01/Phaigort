@@ -3,6 +3,7 @@
 "use client";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
@@ -16,6 +17,16 @@ export function PrivateAccessCTA() {
       ref={ref}
       className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-royal-navy py-28 text-platinum md:py-40"
     >
+      {/* Photographed backdrop — cut stone pavilion, extreme close-up */}
+      <Image
+        src="/cta/private-access-backdrop.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-center opacity-15"
+        loading="lazy"
+      />
+
       {/* Ambient glowing radial effect */}
       <motion.div
         {...(!prefersReducedMotion && {
