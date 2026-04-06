@@ -10,7 +10,7 @@ export function Display({ children, className }: TypographyProps) {
   return (
     <h1
       className={cn(
-        "font-heading text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-none",
+        "font-heading text-6xl font-semibold leading-none tracking-tight md:text-7xl lg:text-8xl",
         className
       )}
     >
@@ -23,7 +23,7 @@ export function H1({ children, className }: TypographyProps) {
   return (
     <h1
       className={cn(
-        "font-heading text-4xl md:text-5xl font-semibold tracking-tight leading-tight",
+        "font-heading text-5xl font-semibold leading-tight tracking-tight md:text-6xl",
         className
       )}
     >
@@ -34,12 +34,7 @@ export function H1({ children, className }: TypographyProps) {
 
 export function H2({ children, className }: TypographyProps) {
   return (
-    <h2
-      className={cn(
-        "font-heading text-3xl md:text-4xl font-medium leading-snug",
-        className
-      )}
-    >
+    <h2 className={cn("font-heading text-4xl font-medium leading-snug md:text-5xl", className)}>
       {children}
     </h2>
   );
@@ -47,25 +42,13 @@ export function H2({ children, className }: TypographyProps) {
 
 export function H3({ children, className }: TypographyProps) {
   return (
-    <h3
-      className={cn(
-        "font-heading text-2xl font-medium leading-snug",
-        className
-      )}
-    >
-      {children}
-    </h3>
+    <h3 className={cn("font-heading text-3xl font-medium leading-snug", className)}>{children}</h3>
   );
 }
 
 export function H4({ children, className }: TypographyProps) {
   return (
-    <h4
-      className={cn(
-        "font-heading text-lg md:text-xl font-semibold leading-snug",
-        className
-      )}
-    >
+    <h4 className={cn("font-heading text-xl font-semibold leading-snug md:text-2xl", className)}>
       {children}
     </h4>
   );
@@ -73,14 +56,7 @@ export function H4({ children, className }: TypographyProps) {
 
 export function Body({ children, className }: TypographyProps) {
   return (
-    <p
-      className={cn(
-        "font-body text-[15px] leading-relaxed max-w-prose",
-        className
-      )}
-    >
-      {children}
-    </p>
+    <p className={cn("max-w-prose font-body text-base leading-relaxed", className)}>{children}</p>
   );
 }
 
@@ -88,7 +64,7 @@ export function Caption({ children, className }: TypographyProps) {
   return (
     <span
       className={cn(
-        "font-brand text-[11px] uppercase tracking-[0.35em] font-medium text-silver",
+        "font-brand text-[12px] font-medium uppercase tracking-[0.35em] text-silver",
         className
       )}
     >
@@ -99,19 +75,21 @@ export function Caption({ children, className }: TypographyProps) {
 
 export function Label({ children, className }: TypographyProps) {
   return (
-    <span
-      className={cn(
-        "font-brand text-xs uppercase tracking-widest font-medium",
-        className
-      )}
-    >
+    <span className={cn("font-brand text-[12px] font-medium uppercase tracking-widest", className)}>
       {children}
     </span>
   );
 }
 
 const Typography = {
-  Display, H1, H2, H3, H4, Body, Caption, Label,
+  Display,
+  H1,
+  H2,
+  H3,
+  H4,
+  Body,
+  Caption,
+  Label,
 };
 
 export default Typography;

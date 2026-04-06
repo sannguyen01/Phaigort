@@ -23,8 +23,8 @@ function PhaigortLogoMark({ navy }: { navy: boolean }) {
   return (
     <svg
       viewBox="0 0 300 106"
-      width={108}
-      height={38}
+      width={132}
+      height={46}
       aria-hidden="true"
       className="transition-all duration-[350ms]"
     >
@@ -34,7 +34,7 @@ function PhaigortLogoMark({ navy }: { navy: boolean }) {
         y="59"
         textAnchor="middle"
         fontFamily="var(--font-jost), Jost, sans-serif"
-        fontSize="19"
+        fontSize="23"
         fontWeight="400"
         letterSpacing="3.5"
         fill={label}
@@ -188,7 +188,7 @@ export function Header() {
             aria-label={isOpen ? "Close navigation" : "Open navigation"}
             className={cn(
               "relative z-10 -ml-2 flex min-h-[44px] min-w-[44px] items-center justify-center px-2",
-              "font-brand text-[0.65rem] uppercase tracking-[0.18em]",
+              "font-brand text-[0.72rem] uppercase tracking-[0.18em]",
               "transition-colors duration-[350ms] md:hidden",
               isOpen
                 ? "text-platinum/70 hover:text-platinum"
@@ -233,7 +233,7 @@ export function Header() {
                   aria-expanded={activeDropdown === "collections"}
                   aria-haspopup="true"
                   className={cn(
-                    "relative font-brand text-[0.68rem] uppercase tracking-[0.14em]",
+                    "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
                     "transition-colors duration-[350ms]",
                     activeDropdown === "collections" || isActive(link.href)
                       ? isSolid
@@ -251,7 +251,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "relative font-brand text-[0.68rem] uppercase tracking-[0.14em]",
+                    "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
                     "transition-colors duration-[350ms]",
                     isActive(link.href)
                       ? isSolid
@@ -284,7 +284,7 @@ export function Header() {
           <Link
             href="/contact"
             className={cn(
-              "hidden font-brand text-[0.62rem] uppercase tracking-[0.18em] md:block",
+              "hidden font-brand text-[0.72rem] uppercase tracking-[0.18em] md:block",
               "transition-colors duration-[350ms]",
               isSolid
                 ? "text-royal-navy/45 hover:text-royal-navy"
@@ -329,7 +329,7 @@ export function Header() {
                     }
                     onMouseEnter={() => setHoveredDomain(domain)}
                     className={cn(
-                      "block py-2 font-heading text-[1.3rem] font-light tracking-[0.02em]",
+                      "block py-2 font-heading text-[1.45rem] font-light tracking-[0.02em]",
                       "cursor-pointer transition-colors duration-150",
                       hoveredDomain.title === domain.title
                         ? "text-royal-navy"
@@ -360,7 +360,7 @@ export function Header() {
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-navy/65 via-transparent to-transparent" />
                 {/* Domain caption */}
                 <div className="absolute bottom-6 left-6">
-                  <p className="font-brand text-[0.62rem] uppercase tracking-[0.18em] text-platinum/55">
+                  <p className="font-brand text-[0.72rem] uppercase tracking-[0.18em] text-platinum/55">
                     {hoveredDomain.title}
                   </p>
                 </div>
@@ -460,12 +460,16 @@ export function Header() {
                 "border-t border-platinum/[0.08]"
               )}
             >
-              <span className="font-brand text-[0.65rem] uppercase tracking-[0.18em] text-platinum/30">
+              <span className="font-brand text-[0.72rem] uppercase tracking-[0.18em] text-platinum/30">
                 {BRAND.tagline}
               </span>
-              <span className="font-brand text-[0.65rem] uppercase tracking-[0.18em] text-platinum/30">
-                Est. Hanoi
-              </span>
+              <Link
+                href="/contact"
+                onClick={() => setIsOpen(false)}
+                className="font-brand text-[0.72rem] uppercase tracking-[0.18em] text-platinum/30 transition-colors duration-[250ms] hover:text-platinum/60"
+              >
+                Private Enquiry
+              </Link>
             </motion.div>
           </motion.div>
         )}
