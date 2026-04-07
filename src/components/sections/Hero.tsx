@@ -44,35 +44,13 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Diamond — absolute top-right, desktop only */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute right-0 top-0 hidden w-[42%] md:block"
-        {...(!prefersReducedMotion && {
-          initial: { opacity: 0, x: 40 },
-          animate: { opacity: 1, x: 0 },
-          transition: { duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.2 },
-        })}
-      >
-        <div className="relative" style={{ aspectRatio: "1/1" }}>
-          <Image
-            src="/hero/hero-diamond.jpg"
-            alt=""
-            fill
-            priority
-            sizes="42vw"
-            className="object-contain object-top"
-          />
-        </div>
-      </motion.div>
-
-      {/* Main content */}
+      {/* Centred main content */}
       <div className="relative flex min-h-[80vh] items-center md:min-h-[85vh]">
         <motion.div
           className="relative z-10 w-full"
           style={prefersReducedMotion ? {} : { y: contentY }}
         >
-          <Container className="flex flex-col items-center text-center md:items-start md:max-w-[58%] md:text-left">
+          <Container className="flex flex-col items-center text-center">
             <motion.div
               {...(prefersReducedMotion
                 ? {}
@@ -81,7 +59,7 @@ export function Hero() {
                     animate: { opacity: 1, y: 0 },
                     transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
                   })}
-              className="space-y-8"
+              className="max-w-4xl space-y-8"
             >
               <Caption>Rare Gemstones · Precious Metals · Material Culture</Caption>
               <Display className="text-platinum">
@@ -89,7 +67,7 @@ export function Hero() {
                 <br />
                 to become beautiful.
               </Display>
-              <Body className="mx-auto max-w-2xl text-platinum/70 md:mx-0">
+              <Body className="mx-auto max-w-2xl text-platinum/70">
                 We find them at the source. We bring them to those who understand what they hold.
               </Body>
             </motion.div>
