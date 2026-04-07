@@ -115,7 +115,6 @@ export function OurStory() {
         {/* ── Brand Lineage ─────────────────────────────────────────────────── */}
         <div className="mt-20 border-t border-platinum/10 pt-16 md:mt-24">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-[3fr_2fr] md:gap-20">
-
             {/* Left — editorial text */}
             <motion.div
               {...(prefersReducedMotion
@@ -135,16 +134,14 @@ export function OurStory() {
 
               <p className="font-body text-sm leading-relaxed text-platinum/60">
                 The name synthesises the Greek{" "}
-                <em className="not-italic font-semibold text-platinum/85">phainomenon</em> — that
+                <em className="font-semibold not-italic text-platinum/85">phainomenon</em> — that
                 which reveals itself through observation — and the Portuguese{" "}
-                <em className="not-italic font-semibold text-platinum/85">fazer</em> — to create.
+                <em className="font-semibold not-italic text-platinum/85">fazer</em> — to create.
                 Two words for the same act: the moment something becomes knowable.
               </p>
 
               <p className="font-body text-sm leading-relaxed text-platinum/60">
-                <strong className="font-semibold text-platinum/85">
-                  We honour García de Orta
-                </strong>
+                <strong className="font-semibold text-platinum/85">We honour García de Orta</strong>
                 , the pioneering Portuguese physician who in 1563 authored the first scientific
                 treatise on gemstones in everyday language. By choosing to share knowledge with
                 merchants and locals rather than keeping it exclusive, he embodied the same spirit
@@ -160,12 +157,12 @@ export function OurStory() {
                   of contemporary innovation.
                 </p>
                 <p className="font-body text-sm leading-relaxed text-platinum/55">
-                  Our philosophy draws from the 16th-century Portuguese and Spanish trade routes —
-                  a time when seafaring vessels carried more than cargo; they carried the collective
+                  Our philosophy draws from the 16th-century Portuguese and Spanish trade routes — a
+                  time when seafaring vessels carried more than cargo; they carried the collective
                   knowledge of distant horizons. In that same spirit, we welcome all who seek a
                   deeper understanding of what truly makes a treasure meaningful. At Phaigort, the
-                  beauty of the Earth and the mastery of the hand are no longer distant secrets,
-                  but a shared journey of discovery.
+                  beauty of the Earth and the mastery of the hand are no longer distant secrets, but
+                  a shared journey of discovery.
                 </p>
               </div>
             </motion.div>
@@ -182,8 +179,12 @@ export function OurStory() {
                   })}
               className="flex flex-row items-start justify-center gap-6 md:flex-col md:items-end md:justify-start md:gap-10"
             >
-              {/* Full brilliant-cut diamond */}
-              <div className="relative w-36 flex-shrink-0 md:w-[220px]">
+              {/* Full brilliant-cut diamond — slow float */}
+              <motion.div
+                className="relative w-36 flex-shrink-0 md:w-[220px]"
+                animate={prefersReducedMotion ? {} : { y: [0, -10, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+              >
                 <div className="relative" style={{ aspectRatio: "1/1" }}>
                   <Image
                     src="/story/full-diamond.png"
@@ -195,10 +196,14 @@ export function OurStory() {
                     loading="lazy"
                   />
                 </div>
-              </div>
+              </motion.div>
 
-              {/* García de Orta stipple portrait */}
-              <div className="relative w-32 flex-shrink-0 md:w-[180px]">
+              {/* García de Orta stipple portrait — offset float phase */}
+              <motion.div
+                className="relative w-32 flex-shrink-0 md:w-[180px]"
+                animate={prefersReducedMotion ? {} : { y: [0, -7, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
+              >
                 <div className="relative" style={{ aspectRatio: "1/1.25" }}>
                   <Image
                     src="/story/garcia-de-orta.jpg"
@@ -213,9 +218,8 @@ export function OurStory() {
                 <p className="mt-3 text-right font-brand text-[9px] uppercase tracking-[0.35em] text-platinum/30">
                   García de Orta, 1563
                 </p>
-              </div>
+              </motion.div>
             </motion.div>
-
           </div>
         </div>
       </Container>

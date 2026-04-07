@@ -3,6 +3,7 @@ import { Jost, Cormorant, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { DiamondCursor } from "@/components/ui/DiamondCursor";
 import { BRAND, SOCIAL } from "@/lib/constants";
 import "./globals.css";
 
@@ -100,6 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        <DiamondCursor />
         <Header />
         <ScrollProgress />
         <main id="main-content" className="pt-[72px]">

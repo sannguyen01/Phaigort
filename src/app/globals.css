@@ -44,6 +44,13 @@
   }
 }
 
+/* Custom diamond cursor — hides default cursor on hover-capable desktops */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
 @layer utilities {
   .font-brand {
     font-family: var(--font-jost), sans-serif;

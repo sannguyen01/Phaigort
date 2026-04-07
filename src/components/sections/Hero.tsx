@@ -2,7 +2,15 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { Display, Body, Caption } from "@/components/ui/Typography";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -20,6 +28,19 @@ export function Hero() {
   const overlayY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 40]);
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.8], [0.08, 0.02]);
+
+  // Mouse-reactive glow — coral/sapphire radial follows cursor
+  const rawX = useMotionValue(50);
+  const rawY = useMotionValue(50);
+  const springX = useSpring(rawX, { stiffness: 80, damping: 20 });
+  const springY = useSpring(rawY, { stiffness: 80, damping: 20 });
+  const glowBg = useMotionTemplate`radial-gradient(circle at ${springX}% ${springY}%, rgba(255,107,74,0.07) 0%, rgba(15,82,186,0.05) 40%, transparent 65%)`;
+
+  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    rawX.set(((e.clientX - left) / width) * 100);
+    rawY.set(((e.clientY - top) / height) * 100);
+  }
 
   return (
     <DarkFieldStage ref={heroRef} className="-mt-16 overflow-hidden py-0 md:-mt-20">
@@ -44,12 +65,21 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Centred main content */}
-      <div className="relative flex min-h-[80vh] items-center md:min-h-[85vh]">
+      {/* Cursor-reactive glow overlay */}
+      {!prefersReducedMotion && (
         <motion.div
-          className="relative z-10 w-full"
-          style={prefersReducedMotion ? {} : { y: contentY }}
-        >
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-[1]"
+          style={{ background: glowBg }}
+        />
+      )}
+
+      {/* Centred main content */}
+      <div
+        className="relative z-10 flex min-h-[80vh] items-center md:min-h-[85vh]"
+        onMouseMove={handleMouseMove}
+      >
+        <motion.div className="w-full" style={prefersReducedMotion ? {} : { y: contentY }}>
           <Container className="flex flex-col items-center text-center">
             <motion.div
               {...(prefersReducedMotion
