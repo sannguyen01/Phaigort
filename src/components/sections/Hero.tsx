@@ -38,10 +38,10 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-30"
+          className="object-cover object-[center_35%] opacity-[0.38]"
         />
         {/* Darkening vignette over the photo */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1D]/60 via-[#0A0F1D]/40 to-[#0A0F1D]/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1D]/70 via-[#0A0F1D]/25 to-[#0A0F1D]/85" />
         {/* Original blue radial accent — retained, now layered on top of photo */}
         <motion.div
           className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(15,82,186,0.6)_0%,_transparent_70%)]"

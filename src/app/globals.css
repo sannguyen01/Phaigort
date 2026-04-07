@@ -29,11 +29,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-royal-navy/20 rounded-full;
+    @apply rounded-full bg-royal-navy/15;
+    transition: background 200ms ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-royal-navy/40;
+    @apply bg-royal-navy/35;
   }
 }
 
@@ -51,6 +52,10 @@
 }
 
 @layer components {
+  .coral-rule {
+    @apply h-px w-12 bg-coral/60;
+  }
+
   .gold-line {
     @apply h-px bg-gradient-to-r from-transparent via-platinum/15 to-transparent;
   }

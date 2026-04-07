@@ -11,7 +11,7 @@ export function ManifestoMarquee() {
   if (prefersReducedMotion) {
     return (
       <section className="overflow-hidden bg-[#F5F0EB] py-10 md:py-12">
-        <p className="px-6 text-center font-heading text-2xl italic text-royal-navy md:text-3xl">
+        <p className="px-6 text-center font-heading text-2xl italic text-royal-navy/80 md:text-3xl">
           {MANIFESTO}
         </p>
       </section>
@@ -28,9 +28,12 @@ export function ManifestoMarquee() {
         {repeated.map((text, i) => (
           <span
             key={i}
-            className="shrink-0 font-heading text-2xl italic text-royal-navy/85 md:text-3xl"
+            className="shrink-0 font-heading text-2xl italic text-royal-navy/80 md:text-3xl"
           >
-            {text} <span className="mx-4 text-coral">·</span>
+            {text}{" "}
+            <span className="mx-6 text-coral" aria-hidden="true">
+              ✦
+            </span>
           </span>
         ))}
       </motion.div>

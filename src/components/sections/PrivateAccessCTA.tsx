@@ -17,15 +17,19 @@ export function PrivateAccessCTA() {
       ref={ref}
       className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-royal-navy py-28 text-platinum md:py-40"
     >
-      {/* Photographed backdrop — cut stone pavilion, extreme close-up */}
-      <Image
-        src="/cta/private-access-backdrop.jpg"
-        alt=""
-        fill
-        sizes="100vw"
-        className="object-cover object-center opacity-15"
-        loading="lazy"
-      />
+      {/* Photographic backdrop — extreme close-up stone pavilion at low opacity */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <Image
+          src="/editorial/hero-break.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center opacity-[0.18]"
+          loading="lazy"
+        />
+        {/* Colour-correction overlay — pulls image toward royal-navy palette */}
+        <div className="absolute inset-0 bg-royal-navy/55 mix-blend-multiply" />
+      </div>
 
       {/* Ambient glowing radial effect */}
       <motion.div
@@ -33,11 +37,11 @@ export function PrivateAccessCTA() {
           animate: { scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] },
           transition: { duration: 8, repeat: Infinity, ease: "easeInOut" },
         })}
-        className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,_rgba(15,82,186,0.15)_0%,_transparent_70%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_center,_rgba(15,82,186,0.15)_0%,_transparent_70%)]"
       />
 
       {/* Subtle floating particles / noise pattern */}
-      <div className="pointer-events-none absolute inset-0 z-0 bg-platinum/5 opacity-5" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-platinum/5 opacity-5" />
 
       <Container className="relative z-10 max-w-2xl text-center">
         <motion.div

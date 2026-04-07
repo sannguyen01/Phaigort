@@ -51,23 +51,25 @@ export function CollectionGrid() {
                 className="border-royal-navy/8 group block h-full overflow-hidden border bg-[#F0EEE9] transition-all duration-500 hover:border-royal-navy/20"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
-                  {/* Primary image */}
+                  {/* Primary image — scales out on hover */}
                   <Image
                     src={domain.image}
                     alt={domain.imageAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-0"
+                    className="object-cover transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-0"
                   />
-                  {/* Hover detail image — crossfades in on hover */}
+                  {/* Detail image — crossfades in on hover */}
                   <Image
                     src={domain.hoverImage}
                     alt={domain.hoverImageAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover opacity-0 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100"
+                    className="scale-105 object-cover opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
                     loading="lazy"
                   />
+                  {/* Subtle dark gradient at bottom of image */}
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#F0EEE9]/60 to-transparent" />
                 </div>
                 <div className="flex flex-col p-6 md:p-8">
                   <Label className="text-royal-navy/50 transition-colors duration-300 group-hover:text-royal-navy">

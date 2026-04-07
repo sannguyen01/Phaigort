@@ -29,12 +29,12 @@ export function EditorialStrip({ image, imageAlt, caption }: EditorialStripProps
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1.05, 1.1]);
 
   return (
-    <section ref={ref} className="relative h-[60vh] md:h-[80vh] overflow-hidden bg-[#0D0D0D]">
+    <section ref={ref} className="relative h-[60vh] overflow-hidden bg-[#0D0D0D] md:h-[80vh]">
       <motion.div
         style={{ y: prefersReducedMotion ? 0 : y, scale: prefersReducedMotion ? 1 : scale }}
         className="absolute -inset-y-12 inset-x-0"
       >
-        <Image src={image} alt={imageAlt} fill className="object-cover opacity-[0.55]" />
+        <Image src={image} alt={imageAlt} fill className="object-cover opacity-[0.65]" />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1D] via-transparent to-[#0A0F1D]/50" />
       <motion.div
@@ -45,7 +45,7 @@ export function EditorialStrip({ image, imageAlt, caption }: EditorialStripProps
         })}
         className="absolute inset-0 flex items-center justify-center px-6"
       >
-        <p className="font-heading italic text-platinum text-3xl md:text-5xl text-center max-w-4xl tracking-tight drop-shadow-2xl">
+        <p className="max-w-4xl text-center font-heading text-3xl italic leading-[1.1] tracking-[-0.01em] text-platinum drop-shadow-2xl md:text-[3.25rem] lg:text-[4rem]">
           {caption}
         </p>
       </motion.div>
