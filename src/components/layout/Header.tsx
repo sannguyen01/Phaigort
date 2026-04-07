@@ -177,152 +177,152 @@ export function Header() {
               : "border-b border-transparent bg-transparent"
         )}
       >
-        <div className="relative flex h-full items-center justify-between px-6 md:px-10 lg:px-14">
-          {/* ── LEFT: Mobile = Menu/Close | Desktop = Nav links ──────────── */}
-
-          {/* Mobile trigger — hidden on md+ */}
-          <button
-            onClick={() => setIsOpen((prev) => !prev)}
-            aria-expanded={isOpen}
-            aria-controls={overlayId}
-            aria-label={isOpen ? "Close navigation" : "Open navigation"}
-            className={cn(
-              "relative z-10 -ml-2 flex min-h-[44px] min-w-[44px] items-center justify-center px-2",
-              "font-brand text-[0.72rem] uppercase tracking-[0.18em]",
-              "transition-colors duration-[350ms] md:hidden",
-              isOpen
-                ? "text-platinum/70 hover:text-platinum"
-                : isSolid
-                  ? "text-royal-navy/55 hover:text-royal-navy"
-                  : "text-platinum/70 hover:text-platinum"
-            )}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {isOpen ? (
-                <motion.span
-                  key="close"
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  Close
-                </motion.span>
-              ) : (
-                <motion.span
-                  key="menu"
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  Menu
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </button>
-
-          {/* ── Desktop left nav: The Collection · Our Story ─────────────── */}
-          <nav
-            aria-label="Primary navigation"
-            className="hidden items-center gap-7 md:flex lg:gap-9"
-          >
-            {/* The Collection — triggers mega-menu dropdown */}
+        <div className="relative grid h-full grid-cols-[1fr_auto_1fr] items-center px-6 md:px-10 lg:px-14">
+          {/* ── CELL 1: Mobile = Menu/Close | Desktop = Left nav (right-aligned toward logo) ── */}
+          <div className="flex items-center justify-start md:justify-end">
+            {/* Mobile trigger */}
             <button
-              onMouseEnter={() => openDropdown("collections")}
-              onMouseLeave={scheduleClose}
-              aria-expanded={activeDropdown === "collections"}
-              aria-haspopup="true"
+              onClick={() => setIsOpen((prev) => !prev)}
+              aria-expanded={isOpen}
+              aria-controls={overlayId}
+              aria-label={isOpen ? "Close navigation" : "Open navigation"}
               className={cn(
-                "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
-                "transition-colors duration-[350ms]",
-                activeDropdown === "collections" || isActive("/collections")
-                  ? isSolid
-                    ? "text-royal-navy"
-                    : "text-platinum"
+                "relative z-10 -ml-2 flex min-h-[44px] min-w-[44px] items-center justify-center px-2",
+                "font-brand text-[0.72rem] uppercase tracking-[0.18em]",
+                "transition-colors duration-[350ms] md:hidden",
+                isOpen
+                  ? "text-platinum/70 hover:text-platinum"
                   : isSolid
                     ? "text-royal-navy/55 hover:text-royal-navy"
-                    : "text-platinum/65 hover:text-platinum"
+                    : "text-platinum/70 hover:text-platinum"
               )}
             >
-              {NAV_LINKS[0].label}
+              <AnimatePresence mode="wait" initial={false}>
+                {isOpen ? (
+                  <motion.span
+                    key="close"
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Close
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="menu"
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Menu
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </button>
 
-            {/* Our Story */}
-            <Link
-              href={NAV_LINKS[1].href}
-              className={cn(
-                "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
-                "transition-colors duration-[350ms]",
-                isActive(NAV_LINKS[1].href)
-                  ? isSolid
-                    ? "text-royal-navy"
-                    : "text-platinum"
-                  : isSolid
-                    ? "text-royal-navy/55 hover:text-royal-navy"
-                    : "text-platinum/65 hover:text-platinum"
-              )}
+            {/* Desktop left nav: The Collection · Our Story */}
+            <nav
+              aria-label="Primary navigation"
+              className="hidden items-center gap-7 md:flex lg:gap-9"
             >
-              {NAV_LINKS[1].label}
-            </Link>
-          </nav>
+              {/* The Collection — triggers mega-menu dropdown */}
+              <button
+                onMouseEnter={() => openDropdown("collections")}
+                onMouseLeave={scheduleClose}
+                aria-expanded={activeDropdown === "collections"}
+                aria-haspopup="true"
+                className={cn(
+                  "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                  "transition-colors duration-[350ms]",
+                  activeDropdown === "collections" || isActive("/collections")
+                    ? isSolid
+                      ? "text-royal-navy"
+                      : "text-platinum"
+                    : isSolid
+                      ? "text-royal-navy/55 hover:text-royal-navy"
+                      : "text-platinum/65 hover:text-platinum"
+                )}
+              >
+                {NAV_LINKS[0].label}
+              </button>
 
-          {/* ── Logo — absolute centre on all viewports ───────────────────── */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <Link
-              href="/"
-              className="pointer-events-auto"
-              onClick={() => setIsOpen(false)}
-              aria-label={BRAND.name}
-            >
+              {/* Our Story */}
+              <Link
+                href={NAV_LINKS[1].href}
+                className={cn(
+                  "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                  "transition-colors duration-[350ms]",
+                  isActive(NAV_LINKS[1].href)
+                    ? isSolid
+                      ? "text-royal-navy"
+                      : "text-platinum"
+                    : isSolid
+                      ? "text-royal-navy/55 hover:text-royal-navy"
+                      : "text-platinum/65 hover:text-platinum"
+                )}
+              >
+                {NAV_LINKS[1].label}
+              </Link>
+            </nav>
+          </div>
+
+          {/* ── CELL 2: Logo — natural grid centre (no longer absolute) ──────── */}
+          {/* px-6 = 24px clearance on each side between logo edge and nav text */}
+          <div className="flex items-center justify-center px-6">
+            <Link href="/" onClick={() => setIsOpen(false)} aria-label={BRAND.name}>
               <PhaigortLogoMark navy={isSolid && !isOpen} />
             </Link>
           </div>
 
-          {/* ── Desktop right nav: Atelier · Private Enquiry ─────────────── */}
-          <nav
-            aria-label="Secondary navigation"
-            className="hidden items-center gap-7 md:flex lg:gap-9"
-          >
-            {/* Atelier */}
-            <Link
-              href={NAV_LINKS[2].href}
-              className={cn(
-                "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
-                "transition-colors duration-[350ms]",
-                isActive(NAV_LINKS[2].href)
-                  ? isSolid
-                    ? "text-royal-navy"
-                    : "text-platinum"
-                  : isSolid
-                    ? "text-royal-navy/55 hover:text-royal-navy"
-                    : "text-platinum/65 hover:text-platinum"
-              )}
+          {/* ── CELL 3: Mobile = spacer | Desktop = Right nav (left-aligned toward logo) ── */}
+          <div className="flex items-center justify-end md:justify-start">
+            {/* Desktop right nav: Atelier · Private Enquiry */}
+            <nav
+              aria-label="Secondary navigation"
+              className="hidden items-center gap-7 md:flex lg:gap-9"
             >
-              {NAV_LINKS[2].label}
-            </Link>
+              {/* Atelier */}
+              <Link
+                href={NAV_LINKS[2].href}
+                className={cn(
+                  "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                  "transition-colors duration-[350ms]",
+                  isActive(NAV_LINKS[2].href)
+                    ? isSolid
+                      ? "text-royal-navy"
+                      : "text-platinum"
+                    : isSolid
+                      ? "text-royal-navy/55 hover:text-royal-navy"
+                      : "text-platinum/65 hover:text-platinum"
+                )}
+              >
+                {NAV_LINKS[2].label}
+              </Link>
 
-            {/* Private Enquiry */}
-            <Link
-              href={NAV_LINKS[3].href}
-              className={cn(
-                "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
-                "transition-colors duration-[350ms]",
-                isActive(NAV_LINKS[3].href)
-                  ? isSolid
-                    ? "text-royal-navy"
-                    : "text-platinum"
-                  : isSolid
-                    ? "text-royal-navy/55 hover:text-royal-navy"
-                    : "text-platinum/65 hover:text-platinum"
-              )}
-            >
-              {NAV_LINKS[3].label}
-            </Link>
-          </nav>
+              {/* Private Enquiry */}
+              <Link
+                href={NAV_LINKS[3].href}
+                className={cn(
+                  "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                  "transition-colors duration-[350ms]",
+                  isActive(NAV_LINKS[3].href)
+                    ? isSolid
+                      ? "text-royal-navy"
+                      : "text-platinum"
+                    : isSolid
+                      ? "text-royal-navy/55 hover:text-royal-navy"
+                      : "text-platinum/65 hover:text-platinum"
+                )}
+              >
+                {NAV_LINKS[3].label}
+              </Link>
+            </nav>
 
-          {/* Mobile spacer — mirrors Menu button width for logo centering */}
-          <div className="h-[44px] min-w-[44px] md:hidden" aria-hidden="true" />
+            {/* Mobile spacer — keeps logo centred on mobile (mirrors menu button) */}
+            <div className="h-[44px] min-w-[44px] md:hidden" aria-hidden="true" />
+          </div>
         </div>
 
         {/* ── DESKTOP MEGA-MENU DROPDOWN ───────────────────────────────────── */}
