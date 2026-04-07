@@ -4,7 +4,7 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { H2, H3, Body, Caption, Label } from "@/components/ui/Typography";
+import { H2, Caption } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
 import { TREASURE_DOMAINS } from "@/lib/constants";
 
@@ -50,14 +50,18 @@ export function CollectionGrid() {
                 href={domain.href}
                 className="border-royal-navy/8 group block h-full overflow-hidden border bg-[#F0EEE9] transition-all duration-500 hover:border-royal-navy/20"
               >
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  {/* Primary image — scales out on hover */}
+                {/* Arch-masked image — portrait proportions with cathedral arch top */}
+                <div
+                  className="arch-mask relative w-full overflow-hidden"
+                  style={{ aspectRatio: "3/4" }}
+                >
+                  {/* Primary image — fades and scales out on hover */}
                   <Image
                     src={domain.image}
                     alt={domain.imageAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-0"
+                    className="object-cover object-center transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-0"
                   />
                   {/* Detail image — crossfades in on hover */}
                   <Image
@@ -65,22 +69,15 @@ export function CollectionGrid() {
                     alt={domain.hoverImageAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="scale-105 object-cover opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
+                    className="scale-105 object-cover object-center opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-100"
                     loading="lazy"
                   />
-                  {/* Subtle dark gradient at bottom of image */}
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#F0EEE9]/60 to-transparent" />
                 </div>
-                <div className="flex flex-col p-6 md:p-8">
-                  <Label className="text-royal-navy/50 transition-colors duration-300 group-hover:text-royal-navy">
-                    {String(i + 1).padStart(2, "0")}
-                  </Label>
-                  <H3 className="mt-3 text-royal-navy transition-colors duration-300 group-hover:text-royal-navy/70">
+                {/* Museum vitrine caption — title only, no description */}
+                <div className="px-6 pb-8 pt-5 text-center md:px-8">
+                  <p className="font-brand text-xs uppercase tracking-[0.35em] text-royal-navy/60 transition-colors duration-300 group-hover:text-royal-navy/90">
                     {domain.title}
-                  </H3>
-                  <Body className="mt-3 text-royal-navy/60 transition-colors duration-300 group-hover:text-royal-navy/80">
-                    {domain.description}
-                  </Body>
+                  </p>
                 </div>
               </Link>
             </motion.div>

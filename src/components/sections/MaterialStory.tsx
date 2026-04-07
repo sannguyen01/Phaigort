@@ -60,7 +60,7 @@ export function OurStory() {
           </Body>
         </motion.div>
 
-        <div className="mt-12 grid grid-cols-1 divide-y divide-royal-navy/10 md:grid-cols-3 md:divide-x md:divide-y-0">
+        <div className="mt-12 grid grid-cols-1 divide-y divide-royal-navy/[0.08] md:grid-cols-3 md:divide-x md:divide-y-0">
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.number}

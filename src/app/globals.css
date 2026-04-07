@@ -56,6 +56,14 @@
     @apply h-px w-12 bg-coral/60;
   }
 
+  /* Arch mask — cathedral arch top, applied to image containers in CollectionGrid
+     and MaterialTimeline. The ratio 50% 50% 0 0 / 30% 30% 0 0 produces a shallow,
+     wide arch (not a semicircle) matching the Canva mockup proportions. */
+  .arch-mask {
+    border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+    overflow: hidden;
+  }
+
   .gold-line {
     @apply h-px bg-gradient-to-r from-transparent via-platinum/15 to-transparent;
   }

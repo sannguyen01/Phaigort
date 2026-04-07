@@ -43,7 +43,7 @@ export function Button({
           ? "ghostOnDark"
           : variant;
   const classes = cn(
-    "inline-flex items-center justify-center px-8 py-3",
+    "inline-flex items-center justify-center px-10 py-[13px]",
     "font-body text-sm uppercase tracking-widest",
     "transition-all duration-300 ease-out",
     "disabled:opacity-50 disabled:cursor-not-allowed",

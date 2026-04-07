@@ -14,8 +14,8 @@ const TIMELINE_DATA = [
       "A ruby's red comes from chromium — the same element that colours emeralds green, depending entirely on the mineral that hosts it. An alexandrite shifts from teal in daylight to deep raspberry under incandescent light because its absorption spectrum falls precisely on the boundary between two light sources. These are not accidents of beauty. They are chemistry operating under conditions that exist only deep within the Earth, only under specific geological circumstance, only once.",
     body2:
       "We choose materials where this geological intelligence is still visible in the object itself — not polished away, not set so the stone becomes decoration. Every piece in a Phaigort collection is selected because you cannot separate its beauty from its science. The two arrived together. They do not come apart.",
-    image: "/story/timeline-earth.jpg",
-    imageAlt: "Uncut rough gemstone in mineral matrix, geological specimen",
+    image: "/collections/geological-rarities.jpg",
+    imageAlt: "Cut gemstones representing the geological forces that create colour — Phaigort",
   },
   {
     caption: "II. The Expedition Mind",
@@ -24,8 +24,9 @@ const TIMELINE_DATA = [
       "Great gemstones do not announce themselves. They surface in river gravels outside Ratnapura at dawn, in the metamorphic corridors of the Malagasy highlands, in marble seams running through mountains that most maps do not bother naming. Finding them rough — ungraded, unvalued, still carrying the earth they came from — requires something closer to geological intuition than to commerce.",
     body2:
       "This is how Phaigort reaches material that never reaches open markets. Not through sourcing networks or supply chain partnerships — through relationships built over years at origin, with people who know which riverbank to stand on after the rains, and why. Provenance, here, is not a certificate issued after the fact. It is a conversation that began at the ground itself.",
-    image: "/story/timeline-expedition.jpg",
-    imageAlt: "River gravel mining site at origin, documentary photograph",
+    image: "/story/expedition-rough.jpg",
+    imageAlt:
+      "Rough multicolour corundum pebbles from alluvial mining — Phaigort The Expedition Mind",
   },
   {
     caption: "III. The Standard We Keep",
@@ -34,8 +35,9 @@ const TIMELINE_DATA = [
       "A stone cut to maximise weight retention is not the same stone cut to reveal what the Earth intended. Metal chosen for production efficiency is not the same metal chosen for how it changes over decades of wear — the way gold develops patina that records the life lived alongside it. These distinctions are not aesthetic preferences. They are the difference between an object and an heirloom.",
     body2:
       "Every piece in the Phaigort collection is held to a single question before it leaves: will this matter more in twenty years? Not simply hold its value — matter. To someone who finds it in a drawer. To someone who receives it without context. To someone who has not yet been born. If the answer is uncertain, the piece does not leave.",
-    image: "/story/timeline-standard.jpg",
-    imageAlt: "Artisan hands examining a cut gemstone under loupe, warm atelier light",
+    image: "/story/garcia-de-orta.jpg",
+    imageAlt:
+      "García de Orta — Iberian naturalist and intellectual precursor to Phaigort's material philosophy",
   },
 ];
 
@@ -62,6 +64,45 @@ export function MaterialTimeline() {
         {TIMELINE_DATA.map((item, i) => (
           <TimelineItem key={i} item={item} index={i} />
         ))}
+
+        {/* García de Orta — lineage anchor after the three timeline items */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="border-t border-platinum/10 pt-16 md:flex md:items-start md:gap-12"
+        >
+          {/* Portrait — screen blend dissolves the black bg into the dark section */}
+          <div className="relative mx-auto mb-8 w-[160px] flex-shrink-0 overflow-hidden md:mx-0 md:mb-0 md:w-[200px]">
+            <div className="relative" style={{ aspectRatio: "1/1.15" }}>
+              <Image
+                src="/story/garcia-de-orta.jpg"
+                alt="García de Orta — 16th century Iberian naturalist and father of tropical pharmacology"
+                fill
+                sizes="200px"
+                className="object-cover object-top"
+                style={{ mixBlendMode: "screen" }}
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          {/* Text */}
+          <div className="flex-1 text-center md:text-left">
+            <p className="font-brand text-[9px] uppercase tracking-[0.45em] text-platinum/30">
+              The Lineage
+            </p>
+            <h3 className="mt-3 font-heading text-2xl text-platinum/90 md:text-3xl">
+              García de Orta, 1563
+            </h3>
+            <p className="mt-4 max-w-prose font-body text-sm leading-relaxed text-platinum/55">
+              The first European to document the gemstone trade routes of Goa, Hormuz, and Ceylon —
+              recording colour, clarity, and origin with the rigour of a naturalist and the instinct
+              of a merchant. Phaigort&apos;s discipline begins here.
+            </p>
+          </div>
+        </motion.div>
       </Container>
     </section>
   );
