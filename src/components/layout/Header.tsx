@@ -222,60 +222,53 @@ export function Header() {
             </AnimatePresence>
           </button>
 
-          {/* Desktop: Logo + Nav side-by-side (left group) — hidden below md */}
-          <div className="hidden items-center gap-10 md:flex lg:gap-12">
-            <Link href="/" onClick={() => setIsOpen(false)} aria-label={BRAND.name}>
-              <PhaigortLogoMark navy={isSolid && !isOpen} />
-            </Link>
-
-            <nav aria-label="Site navigation" className="flex items-center gap-7 lg:gap-9">
-              {NAV_LINKS.map((link) =>
-                link.href === "/collections" ? (
-                  <button
-                    key={link.href}
-                    onMouseEnter={() => openDropdown("collections")}
-                    onMouseLeave={scheduleClose}
-                    aria-expanded={activeDropdown === "collections"}
-                    aria-haspopup="true"
-                    className={cn(
-                      "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
-                      "transition-colors duration-[350ms]",
-                      activeDropdown === "collections" || isActive(link.href)
-                        ? isSolid
-                          ? "text-royal-navy"
-                          : "text-platinum"
-                        : isSolid
-                          ? "text-royal-navy/55 hover:text-royal-navy"
-                          : "text-platinum/65 hover:text-platinum"
-                    )}
-                  >
-                    {link.label}
-                  </button>
-                ) : (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={cn(
-                      "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
-                      "transition-colors duration-[350ms]",
-                      isActive(link.href)
-                        ? isSolid
-                          ? "text-royal-navy"
-                          : "text-platinum"
-                        : isSolid
-                          ? "text-royal-navy/55 hover:text-royal-navy"
-                          : "text-platinum/65 hover:text-platinum"
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                )
+          {/* ── Desktop left nav: The Collection · Our Story ─────────────── */}
+          <nav
+            aria-label="Primary navigation"
+            className="hidden items-center gap-7 md:flex lg:gap-9"
+          >
+            {/* The Collection — triggers mega-menu dropdown */}
+            <button
+              onMouseEnter={() => openDropdown("collections")}
+              onMouseLeave={scheduleClose}
+              aria-expanded={activeDropdown === "collections"}
+              aria-haspopup="true"
+              className={cn(
+                "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                "transition-colors duration-[350ms]",
+                activeDropdown === "collections" || isActive("/collections")
+                  ? isSolid
+                    ? "text-royal-navy"
+                    : "text-platinum"
+                  : isSolid
+                    ? "text-royal-navy/55 hover:text-royal-navy"
+                    : "text-platinum/65 hover:text-platinum"
               )}
-            </nav>
-          </div>
+            >
+              {NAV_LINKS[0].label}
+            </button>
 
-          {/* Mobile: Logo — absolute centre (unchanged) */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center md:hidden">
+            {/* Our Story */}
+            <Link
+              href={NAV_LINKS[1].href}
+              className={cn(
+                "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                "transition-colors duration-[350ms]",
+                isActive(NAV_LINKS[1].href)
+                  ? isSolid
+                    ? "text-royal-navy"
+                    : "text-platinum"
+                  : isSolid
+                    ? "text-royal-navy/55 hover:text-royal-navy"
+                    : "text-platinum/65 hover:text-platinum"
+              )}
+            >
+              {NAV_LINKS[1].label}
+            </Link>
+          </nav>
+
+          {/* ── Logo — absolute centre on all viewports ───────────────────── */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <Link
               href="/"
               className="pointer-events-auto"
@@ -286,19 +279,49 @@ export function Header() {
             </Link>
           </div>
 
-          {/* ── RIGHT: Private Enquiry (desktop) | Spacer (mobile) ───────── */}
-          <Link
-            href="/contact"
-            className={cn(
-              "hidden font-brand text-[0.72rem] uppercase tracking-[0.18em] md:block",
-              "transition-colors duration-[350ms]",
-              isSolid
-                ? "text-royal-navy/45 hover:text-royal-navy"
-                : "text-platinum/55 hover:text-platinum"
-            )}
+          {/* ── Desktop right nav: Atelier · Private Enquiry ─────────────── */}
+          <nav
+            aria-label="Secondary navigation"
+            className="hidden items-center gap-7 md:flex lg:gap-9"
           >
-            Private Enquiry
-          </Link>
+            {/* Atelier */}
+            <Link
+              href={NAV_LINKS[2].href}
+              className={cn(
+                "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                "transition-colors duration-[350ms]",
+                isActive(NAV_LINKS[2].href)
+                  ? isSolid
+                    ? "text-royal-navy"
+                    : "text-platinum"
+                  : isSolid
+                    ? "text-royal-navy/55 hover:text-royal-navy"
+                    : "text-platinum/65 hover:text-platinum"
+              )}
+            >
+              {NAV_LINKS[2].label}
+            </Link>
+
+            {/* Private Enquiry */}
+            <Link
+              href={NAV_LINKS[3].href}
+              className={cn(
+                "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                "transition-colors duration-[350ms]",
+                isActive(NAV_LINKS[3].href)
+                  ? isSolid
+                    ? "text-royal-navy"
+                    : "text-platinum"
+                  : isSolid
+                    ? "text-royal-navy/55 hover:text-royal-navy"
+                    : "text-platinum/65 hover:text-platinum"
+              )}
+            >
+              {NAV_LINKS[3].label}
+            </Link>
+          </nav>
+
+          {/* Mobile spacer — mirrors Menu button width for logo centering */}
           <div className="h-[44px] min-w-[44px] md:hidden" aria-hidden="true" />
         </div>
 
@@ -461,7 +484,7 @@ export function Header() {
               exit="exit"
               className={cn(
                 "absolute bottom-0 left-0 right-0",
-                "flex items-center justify-between",
+                "flex items-center justify-center",
                 "px-[clamp(24px,4vw,64px)] pb-10 pt-4",
                 "border-t border-platinum/[0.08]"
               )}
@@ -469,13 +492,6 @@ export function Header() {
               <span className="font-brand text-[0.72rem] uppercase tracking-[0.18em] text-platinum/30">
                 {BRAND.tagline}
               </span>
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="font-brand text-[0.72rem] uppercase tracking-[0.18em] text-platinum/30 transition-colors duration-[250ms] hover:text-platinum/60"
-              >
-                Private Enquiry
-              </Link>
             </motion.div>
           </motion.div>
         )}

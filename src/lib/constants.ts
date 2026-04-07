@@ -2,7 +2,7 @@ export const NAV_LINKS = [
   { label: "The Collection", href: "/collections" },
   { label: "Our Story", href: "/our-story" },
   { label: "Atelier", href: "/atelier" },
-  { label: "Contact", href: "/contact" },
+  { label: "Private Enquiry", href: "/contact" },
 ] as const;
 
 export const BRAND = {
