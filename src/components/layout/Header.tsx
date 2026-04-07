@@ -222,54 +222,60 @@ export function Header() {
             </AnimatePresence>
           </button>
 
-          {/* Desktop persistent nav — hidden below md */}
-          <nav aria-label="Site navigation" className="hidden items-center gap-7 md:flex lg:gap-9">
-            {NAV_LINKS.map((link) =>
-              link.href === "/collections" ? (
-                <button
-                  key={link.href}
-                  onMouseEnter={() => openDropdown("collections")}
-                  onMouseLeave={scheduleClose}
-                  aria-expanded={activeDropdown === "collections"}
-                  aria-haspopup="true"
-                  className={cn(
-                    "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
-                    "transition-colors duration-[350ms]",
-                    activeDropdown === "collections" || isActive(link.href)
-                      ? isSolid
-                        ? "text-royal-navy"
-                        : "text-platinum"
-                      : isSolid
-                        ? "text-royal-navy/55 hover:text-royal-navy"
-                        : "text-platinum/65 hover:text-platinum"
-                  )}
-                >
-                  {link.label}
-                </button>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
-                    "transition-colors duration-[350ms]",
-                    isActive(link.href)
-                      ? isSolid
-                        ? "text-royal-navy"
-                        : "text-platinum"
-                      : isSolid
-                        ? "text-royal-navy/55 hover:text-royal-navy"
-                        : "text-platinum/65 hover:text-platinum"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
-          </nav>
+          {/* Desktop: Logo + Nav side-by-side (left group) — hidden below md */}
+          <div className="hidden items-center gap-10 md:flex lg:gap-12">
+            <Link href="/" onClick={() => setIsOpen(false)} aria-label={BRAND.name}>
+              <PhaigortLogoMark navy={isSolid && !isOpen} />
+            </Link>
 
-          {/* ── CENTER: Logo — absolute anchor ───────────────────────────── */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <nav aria-label="Site navigation" className="flex items-center gap-7 lg:gap-9">
+              {NAV_LINKS.map((link) =>
+                link.href === "/collections" ? (
+                  <button
+                    key={link.href}
+                    onMouseEnter={() => openDropdown("collections")}
+                    onMouseLeave={scheduleClose}
+                    aria-expanded={activeDropdown === "collections"}
+                    aria-haspopup="true"
+                    className={cn(
+                      "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                      "transition-colors duration-[350ms]",
+                      activeDropdown === "collections" || isActive(link.href)
+                        ? isSolid
+                          ? "text-royal-navy"
+                          : "text-platinum"
+                        : isSolid
+                          ? "text-royal-navy/55 hover:text-royal-navy"
+                          : "text-platinum/65 hover:text-platinum"
+                    )}
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                      "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                      "transition-colors duration-[350ms]",
+                      isActive(link.href)
+                        ? isSolid
+                          ? "text-royal-navy"
+                          : "text-platinum"
+                        : isSolid
+                          ? "text-royal-navy/55 hover:text-royal-navy"
+                          : "text-platinum/65 hover:text-platinum"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
+            </nav>
+          </div>
+
+          {/* Mobile: Logo — absolute centre (unchanged) */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center md:hidden">
             <Link
               href="/"
               className="pointer-events-auto"

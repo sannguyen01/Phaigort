@@ -127,12 +127,12 @@ export function OurStory() {
                   })}
               className="space-y-7"
             >
-              <h3 className="font-heading text-2xl leading-snug text-platinum md:text-[1.85rem]">
+              <h3 className="font-heading text-[1.65rem] leading-snug text-platinum md:text-[2.4rem]">
                 Phaigort represents more than a jewellery house — it is the institution behind our
                 Wonderhouse of material consciousness.
               </h3>
 
-              <p className="font-body text-sm leading-relaxed text-platinum/60">
+              <p className="font-body text-base leading-relaxed text-platinum/60">
                 The name synthesises the Greek{" "}
                 <em className="font-semibold not-italic text-platinum/85">phainomenon</em> — that
                 which reveals itself through observation — and the Portuguese{" "}
@@ -140,7 +140,7 @@ export function OurStory() {
                 Two words for the same act: the moment something becomes knowable.
               </p>
 
-              <p className="font-body text-sm leading-relaxed text-platinum/60">
+              <p className="font-body text-base leading-relaxed text-platinum/60">
                 <strong className="font-semibold text-platinum/85">We honour García de Orta</strong>
                 , the pioneering Portuguese physician who in 1563 authored the first scientific
                 treatise on gemstones in everyday language. By choosing to share knowledge with
@@ -150,13 +150,13 @@ export function OurStory() {
 
               {/* Coral-bordered pull quote */}
               <div className="space-y-4 border-l-2 border-coral/50 pl-6">
-                <p className="font-body text-sm leading-relaxed text-platinum/55">
+                <p className="font-body text-base leading-relaxed text-platinum/55">
                   Phaigort is a sanctuary for material fascination — an inclusive vessel, inviting
                   curious minds on a voyage to uncover the world&apos;s geological wonders, the
                   legacy of human craftsmanship, the allure of precious metals, and the brilliance
                   of contemporary innovation.
                 </p>
-                <p className="font-body text-sm leading-relaxed text-platinum/55">
+                <p className="font-body text-base leading-relaxed text-platinum/55">
                   Our philosophy draws from the 16th-century Portuguese and Spanish trade routes — a
                   time when seafaring vessels carried more than cargo; they carried the collective
                   knowledge of distant horizons. In that same spirit, we welcome all who seek a
@@ -181,7 +181,7 @@ export function OurStory() {
             >
               {/* Full brilliant-cut diamond — slow float */}
               <motion.div
-                className="relative w-36 flex-shrink-0 md:w-[220px]"
+                className="relative w-52 flex-shrink-0 md:w-[300px]"
                 animate={prefersReducedMotion ? {} : { y: [0, -10, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
               >
@@ -190,7 +190,7 @@ export function OurStory() {
                     src="/story/full-diamond.png"
                     alt="Full brilliant-cut diamond — Phaigort material intelligence"
                     fill
-                    sizes="(max-width: 768px) 144px, 220px"
+                    sizes="(max-width: 768px) 208px, 300px"
                     className="object-contain"
                     style={{ mixBlendMode: "screen" }}
                     loading="lazy"
@@ -200,7 +200,7 @@ export function OurStory() {
 
               {/* García de Orta stipple portrait — offset float phase */}
               <motion.div
-                className="relative w-32 flex-shrink-0 md:w-[180px]"
+                className="relative w-44 flex-shrink-0 md:w-[240px]"
                 animate={prefersReducedMotion ? {} : { y: [0, -7, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
               >
@@ -209,7 +209,7 @@ export function OurStory() {
                     src="/story/garcia-de-orta.jpg"
                     alt="García de Orta — 16th century Iberian naturalist, father of gemstone science"
                     fill
-                    sizes="(max-width: 768px) 128px, 180px"
+                    sizes="(max-width: 768px) 176px, 240px"
                     className="object-cover object-top"
                     style={{ mixBlendMode: "screen" }}
                     loading="lazy"

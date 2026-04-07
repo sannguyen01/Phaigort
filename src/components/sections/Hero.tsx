@@ -95,7 +95,7 @@ export function Hero() {
               <Display className="text-platinum">
                 Some things take forty million years
                 <br />
-                to become beautiful.
+                to become extraordinary.
               </Display>
               <Body className="mx-auto max-w-2xl text-platinum/70">
                 We find them at the source. We bring them to those who understand what they hold.
