@@ -2,6 +2,7 @@
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { H2, H4, Body, Caption, Label } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
 
@@ -35,9 +36,27 @@ export function OurStory() {
     <section
       id="story"
       ref={ref}
-      className="bg-warm-ivory pb-12 pt-10 text-royal-navy md:pb-20 md:pt-16"
+      className="relative overflow-hidden bg-[#0A0F1D] pb-16 pt-14 text-platinum"
     >
-      <Container>
+      {/* Diamond — absolute top-right, desktop only, shared with Hero */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-0 hidden w-[38%] md:block"
+      >
+        <div className="relative" style={{ aspectRatio: "1/1" }}>
+          <Image
+            src="/hero/hero-diamond.jpg"
+            alt=""
+            fill
+            sizes="38vw"
+            className="object-contain object-top opacity-50"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <Container className="relative z-10">
+        {/* Intro text — constrained width, sits left of diamond */}
         <motion.div
           {...(prefersReducedMotion
             ? {}
@@ -46,13 +65,13 @@ export function OurStory() {
                 animate: isInView ? { opacity: 1, y: 0 } : {},
                 transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
               })}
-          className="max-w-3xl"
+          className="max-w-2xl md:max-w-[55%]"
         >
-          <Caption className="text-royal-navy/50">Our Story</Caption>
-          <H2 className="mt-4 text-royal-navy">
+          <Caption className="text-platinum/50">Our Story</Caption>
+          <H2 className="mt-4 text-platinum">
             Some materials take forty million years to become beautiful.
           </H2>
-          <Body className="mt-5 text-royal-navy/65">
+          <Body className="mt-5 text-platinum/65">
             Phaigort is built around a single conviction: the Earth&apos;s most extraordinary
             materials carry a depth of meaning no jeweler can manufacture. We find them at the
             source, understand them with scientific rigour, and bring them to collectors who know
@@ -60,7 +79,15 @@ export function OurStory() {
           </Body>
         </motion.div>
 
-        <div className="mt-12 grid grid-cols-1 divide-y divide-royal-navy/[0.08] md:grid-cols-3 md:divide-x md:divide-y-0">
+        {/* Diamond divider — centred between text and pillars */}
+        <div className="my-10 flex items-center justify-center md:my-14">
+          <div className="h-px w-24 bg-platinum/15" />
+          <div className="mx-4 h-3 w-3 rotate-45 border border-coral/60" />
+          <div className="h-px w-24 bg-platinum/15" />
+        </div>
+
+        {/* Three pillars */}
+        <div className="grid grid-cols-1 divide-y divide-platinum/[0.08] md:grid-cols-3 md:divide-x md:divide-y-0">
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.number}
@@ -77,9 +104,9 @@ export function OurStory() {
                   })}
               className="space-y-3 py-8 md:px-8 md:py-0 first:md:pl-0 last:md:pr-0"
             >
-              <Label className="text-royal-navy/45">{pillar.number}</Label>
-              <H4 className="text-royal-navy">{pillar.title}</H4>
-              <Body className="text-royal-navy/60">{pillar.description}</Body>
+              <Label className="text-platinum/45">{pillar.number}</Label>
+              <H4 className="text-platinum">{pillar.title}</H4>
+              <Body className="text-platinum/60">{pillar.description}</Body>
             </motion.div>
           ))}
         </div>

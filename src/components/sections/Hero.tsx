@@ -22,14 +22,11 @@ export function Hero() {
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.8], [0.08, 0.02]);
 
   return (
-    <DarkFieldStage
-      ref={heroRef}
-      className="-mt-16 overflow-hidden py-0 md:-mt-20"
-    >
-      {/* Background overlay — covers full width on mobile, left panel only on desktop */}
+    <DarkFieldStage ref={heroRef} className="-mt-16 overflow-hidden py-0 md:-mt-20">
+      {/* Full-bleed background gemstone image */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute inset-0 md:right-[45%]"
+        className="pointer-events-none absolute inset-0"
         style={prefersReducedMotion ? {} : { y: overlayY }}
       >
         <Image
@@ -37,7 +34,7 @@ export function Hero() {
           alt=""
           fill
           priority
-          sizes="(max-width: 768px) 100vw, 55vw"
+          sizes="100vw"
           className="object-cover object-[center_35%] opacity-[0.38]"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1D]/70 via-[#0A0F1D]/25 to-[#0A0F1D]/85" />
@@ -47,15 +44,35 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Split layout — single column mobile, two-column desktop */}
-      <div className="relative flex min-h-[80vh] flex-col md:min-h-[85vh] md:flex-row">
+      {/* Diamond — absolute top-right, desktop only */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-0 hidden w-[42%] md:block"
+        {...(!prefersReducedMotion && {
+          initial: { opacity: 0, x: 40 },
+          animate: { opacity: 1, x: 0 },
+          transition: { duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.2 },
+        })}
+      >
+        <div className="relative" style={{ aspectRatio: "1/1" }}>
+          <Image
+            src="/hero/hero-diamond.jpg"
+            alt=""
+            fill
+            priority
+            sizes="42vw"
+            className="object-contain object-top"
+          />
+        </div>
+      </motion.div>
 
-        {/* Left panel — dark text side */}
+      {/* Main content */}
+      <div className="relative flex min-h-[80vh] items-center md:min-h-[85vh]">
         <motion.div
-          className="relative z-10 flex flex-1 items-center py-20 md:py-24"
+          className="relative z-10 w-full"
           style={prefersReducedMotion ? {} : { y: contentY }}
         >
-          <Container className="flex flex-col items-center text-center md:items-start md:pr-12 md:text-left">
+          <Container className="flex flex-col items-center text-center md:items-start md:max-w-[58%] md:text-left">
             <motion.div
               {...(prefersReducedMotion
                 ? {}
@@ -90,27 +107,6 @@ export function Hero() {
             </motion.div>
           </Container>
         </motion.div>
-
-        {/* Right panel — diamond specimen, desktop only */}
-        <motion.div
-          className="relative hidden overflow-hidden bg-white md:block md:w-[45%]"
-          {...(!prefersReducedMotion && {
-            initial: { opacity: 0, x: 40 },
-            animate: { opacity: 1, x: 0 },
-            transition: { duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.2 },
-          })}
-        >
-          <Image
-            src="/hero/hero-diamond.jpg"
-            alt="Extreme close-up of a brilliant-cut diamond's upper facets — Phaigort"
-            fill
-            priority
-            sizes="45vw"
-            className="object-cover object-bottom"
-          />
-          {/* Left-edge shadow — softens the dark/light panel boundary */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#0A0F1D]/25 to-transparent" />
-        </motion.div>
       </div>
 
       {/* Scroll indicator */}
@@ -119,7 +115,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 md:left-[27.5%]"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}

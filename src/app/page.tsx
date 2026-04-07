@@ -1,5 +1,4 @@
 import { Hero } from "@/components/sections/Hero";
-import { EditorialStrip } from "@/components/sections/EditorialStrip";
 import { OurStory } from "@/components/sections/MaterialStory";
 import { CollectionGrid } from "@/components/sections/CollectionGrid";
 import { TrustSignalStrip } from "@/components/sections/TrustSignalStrip";
@@ -10,17 +9,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      {/* Full-bleed gemstone editorial break — bg-[#0D0D0D] matches Hero's dark field */}
-      <EditorialStrip
-        image="/editorial/hero-break.jpg"
-        imageAlt="Garcia de Orta — the Portuguese physician who authored the first scientific treatise on gemstones"
-        caption="Forty million years of pressure. One moment of clarity."
-      />
-      {/* dark → warm-ivory: 96px theatrical dissolve */}
-      <SectionBridge transition="navy-to-ivory" />
+      {/* Hero and OurStory share the same dark navy field — no bridge needed */}
       <OurStory />
-      {/* warm-ivory → platinum: 40px near-invisible temperature shift */}
-      <SectionBridge transition="ivory-to-platinum" className="bridge-blur" />
+      {/* dark navy → platinum: theatrical dissolve into the collection */}
+      <SectionBridge transition="navy-to-platinum" />
       <CollectionGrid />
       {/* platinum → warm-ivory: TrustSignal sits on warm-ivory bg */}
       <SectionBridge transition="platinum-to-ivory" className="bridge-blur" />
