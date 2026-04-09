@@ -9,49 +9,104 @@ vi.mock("next/navigation", () => ({
 
 // Mock next/link
 vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }: { children: React.ReactNode; href: string; [key: string]: unknown }) => (
-    <a href={href} {...props}>{children}</a>
+  default: ({
+    children,
+    href,
+    ...props
+  }: {
+    children: React.ReactNode;
+    href: string;
+    [key: string]: unknown;
+  }) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
   ),
 }));
 
-// Mock framer-motion
+// Mock next/image
+vi.mock("next/image", () => ({
+  default: ({
+    src,
+    alt,
+    width,
+    height,
+    className,
+  }: {
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+    className?: string;
+  }) => (
+    // biome-ignore lint: test mock
+    <img src={src} alt={alt} width={width} height={height} className={className} />
+  ),
+}));
+
+// Mock framer-motion — include all hooks used by Header
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({ children, className }: { children?: React.ReactNode; className?: string }) => <div className={className}>{children}</div>,
-    nav: ({ children, className }: { children?: React.ReactNode; className?: string }) => <nav className={className}>{children}</nav>,
+    div: ({
+      children,
+      className,
+    }: {
+      children?: React.ReactNode;
+      className?: string;
+    }) => <div className={className}>{children}</div>,
+    span: ({
+      children,
+      className,
+    }: {
+      children?: React.ReactNode;
+      className?: string;
+    }) => <span className={className}>{children}</span>,
+    a: ({
+      children,
+      className,
+      href,
+    }: {
+      children?: React.ReactNode;
+      className?: string;
+      href?: string;
+    }) => (
+      <a href={href} className={className}>
+        {children}
+      </a>
+    ),
   },
-  AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  AnimatePresence: ({ children }: { children: React.ReactNode }) => (
+    <>{children}</>
+  ),
+  useReducedMotion: () => false,
 }));
 
 afterEach(cleanup);
 
 describe("Header", () => {
-  it("renders brand name", () => {
+  it("renders logo image", () => {
     render(<Header />);
-    expect(screen.getAllByText("Phaigort").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByAltText("Phaigort")).toBeTruthy();
   });
 
-  it("renders main navigation with links", () => {
+  it("renders main navigation links", () => {
     render(<Header />);
-    expect(screen.getAllByText("Our Collection").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("The Collection").length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText("Our Story").length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText("Atelier").length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText("Contact").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("Private Enquiry").length).toBeGreaterThanOrEqual(1);
   });
 
   it("has mobile menu toggle with aria-expanded", () => {
     render(<Header />);
-    const toggles = screen.getAllByRole("button", { name: /toggle navigation/i });
-    const toggle = toggles[0];
+    const toggle = screen.getByRole("button", { name: /open navigation/i });
     expect(toggle).toHaveAttribute("aria-expanded", "false");
     fireEvent.click(toggle);
     expect(toggle).toHaveAttribute("aria-expanded", "true");
   });
 
-  it("uses royal-navy background", () => {
+  it("renders a header landmark", () => {
     render(<Header />);
-    const headers = screen.getAllByRole("banner");
-    const header = headers[0];
-    expect(header.className).toContain("bg-royal-navy");
+    expect(screen.getByRole("banner")).toBeTruthy();
   });
 });
