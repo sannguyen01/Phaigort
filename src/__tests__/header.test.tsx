@@ -24,43 +24,15 @@ vi.mock("next/link", () => ({
   ),
 }));
 
-// Mock next/image
-vi.mock("next/image", () => ({
-  default: ({
-    src,
-    alt,
-    width,
-    height,
-    className,
-  }: {
-    src: string;
-    alt: string;
-    width?: number;
-    height?: number;
-    className?: string;
-  }) => (
-    // biome-ignore lint: test mock
-    <img src={src} alt={alt} width={width} height={height} className={className} />
-  ),
-}));
-
 // Mock framer-motion — include all hooks used by Header
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({
-      children,
-      className,
-    }: {
-      children?: React.ReactNode;
-      className?: string;
-    }) => <div className={className}>{children}</div>,
-    span: ({
-      children,
-      className,
-    }: {
-      children?: React.ReactNode;
-      className?: string;
-    }) => <span className={className}>{children}</span>,
+    div: ({ children, className }: { children?: React.ReactNode; className?: string }) => (
+      <div className={className}>{children}</div>
+    ),
+    span: ({ children, className }: { children?: React.ReactNode; className?: string }) => (
+      <span className={className}>{children}</span>
+    ),
     a: ({
       children,
       className,
@@ -75,18 +47,16 @@ vi.mock("framer-motion", () => ({
       </a>
     ),
   },
-  AnimatePresence: ({ children }: { children: React.ReactNode }) => (
-    <>{children}</>
-  ),
+  AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   useReducedMotion: () => false,
 }));
 
 afterEach(cleanup);
 
 describe("Header", () => {
-  it("renders logo image", () => {
+  it("renders logo link", () => {
     render(<Header />);
-    expect(screen.getByAltText("Phaigort")).toBeTruthy();
+    expect(screen.getByRole("link", { name: /phaigort/i })).toBeTruthy();
   });
 
   it("renders main navigation links", () => {
