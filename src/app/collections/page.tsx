@@ -44,7 +44,7 @@ const DOMAIN_DETAILS = [
 export default function CollectionsPage() {
   return (
     <div>
-      <section className="bg-platinum pt-10 text-royal-navy md:pt-16">
+      <section className="bg-platinum pt-16 text-royal-navy md:pt-24">
         <Container>
           <ScrollReveal>
             <Caption>The Collection</Caption>
@@ -68,7 +68,7 @@ export default function CollectionsPage() {
             {TREASURE_DOMAINS.map((domain, i) => (
               <section key={domain.title} id={domain.href.split("#")[1]} className="scroll-mt-24">
                 <ScrollReveal>
-                  <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_2fr]">
+                  <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_2fr] md:gap-12">
                     <div>
                       <Label className="text-royal-navy/45">
                         Domain {String(i + 1).padStart(2, "0")}
@@ -84,7 +84,7 @@ export default function CollectionsPage() {
                         ))}
                       </div>
                       <ImageReveal delay={0.15} className="mt-8">
-                        <div className="relative aspect-[16/9] overflow-hidden border border-royal-navy/10 bg-royal-navy/5">
+                        <div className="relative aspect-[4/3] overflow-hidden border border-royal-navy/10 bg-royal-navy/5">
                           <Image
                             src={domain.image}
                             alt={domain.imageAlt}

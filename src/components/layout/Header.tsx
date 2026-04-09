@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, useId } from "react";
@@ -18,30 +19,18 @@ type TreasureDomain = (typeof TREASURE_DOMAINS)[number];
 // navy=false → white diamond + deep-navy label (on dark/overlay backgrounds)
 
 function PhaigortLogoMark({ navy }: { navy: boolean }) {
-  const diamond = navy ? "#03195e" : "#ffffff";
-  const label = navy ? "#ffffff" : "#03195e";
   return (
-    <svg
-      viewBox="0 0 300 106"
+    <Image
+      src="/brand/phaigort-logo-navy.png"
+      alt="Phaigort"
       width={132}
       height={46}
-      aria-hidden="true"
-      className="transition-all duration-[350ms]"
-    >
-      <polygon points="150,3 297,53 150,103 3,53" fill={diamond} />
-      <text
-        x="150"
-        y="59"
-        textAnchor="middle"
-        fontFamily="var(--font-jost), Jost, sans-serif"
-        fontSize="23"
-        fontWeight="400"
-        letterSpacing="3.5"
-        fill={label}
-      >
-        PHAIGORT
-      </text>
-    </svg>
+      className={cn(
+        "object-contain transition-all duration-[350ms]",
+        !navy && "brightness-0 invert"
+      )}
+      priority
+    />
   );
 }
 

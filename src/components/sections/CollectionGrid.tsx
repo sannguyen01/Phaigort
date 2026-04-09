@@ -70,7 +70,7 @@ function TiltCard({ domain, index, isInView, prefersReducedMotion }: TiltCardPro
     >
       <Link
         href={domain.href}
-        className="group relative block h-full overflow-hidden bg-[#0A1240] transition-colors duration-500 hover:bg-[#0F1A4A]"
+        className="group relative block h-full overflow-hidden bg-transparent"
       >
         {/* Arch-masked image with numbered badge */}
         <div className="arch-mask relative w-full overflow-hidden" style={{ aspectRatio: "3/4" }}>
@@ -100,7 +100,7 @@ function TiltCard({ domain, index, isInView, prefersReducedMotion }: TiltCardPro
         </div>
 
         {/* Card caption — title + body description */}
-        <div className="px-4 pb-6 pt-4 text-center md:px-5">
+        <div className="bg-[#0A1240] px-4 pb-6 pt-4 text-center transition-colors duration-500 group-hover:bg-[#0F1A4A] md:px-5">
           <p className="font-brand text-xs uppercase tracking-[0.35em] text-platinum/90 transition-colors duration-300 group-hover:text-platinum">
             {domain.title}
           </p>

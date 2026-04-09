@@ -88,7 +88,7 @@ export function OurStory() {
         </div>
 
         {/* ── Three pillars ─────────────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 divide-y divide-platinum/[0.08] md:grid-cols-3 md:divide-x md:divide-y-0">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.number}
@@ -103,7 +103,7 @@ export function OurStory() {
                       ease: [0.22, 1, 0.36, 1],
                     },
                   })}
-              className="space-y-3 py-8 md:px-8 md:py-0 first:md:pl-0 last:md:pr-0"
+              className="space-y-3 py-8 md:py-0"
             >
               <Label className="text-platinum/45">{pillar.number}</Label>
               <H4 className="text-platinum">{pillar.title}</H4>
@@ -149,7 +149,7 @@ export function OurStory() {
               </p>
 
               {/* Coral-bordered pull quote */}
-              <div className="space-y-4 border-l-2 border-coral/50 pl-6">
+              <div className="space-y-4">
                 <p className="font-body text-base leading-relaxed text-platinum/55">
                   Phaigort is a sanctuary for material fascination — an inclusive vessel, inviting
                   curious minds on a voyage to uncover the world&apos;s geological wonders, the
@@ -177,11 +177,11 @@ export function OurStory() {
                     viewport: { once: true, margin: "-80px" },
                     transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.15 },
                   })}
-              className="flex flex-row items-start justify-center gap-6 md:flex-col md:items-end md:justify-start md:gap-10"
+              className="flex max-w-full flex-row items-start justify-center gap-6 overflow-hidden md:flex-col md:items-end md:justify-start md:gap-10"
             >
               {/* Full brilliant-cut diamond — slow float */}
               <motion.div
-                className="relative w-52 flex-shrink-0 md:w-[300px]"
+                className="relative w-64 max-w-[45vw] flex-shrink-0 md:w-[520px] md:max-w-none"
                 animate={prefersReducedMotion ? {} : { y: [0, -10, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
               >
@@ -190,7 +190,7 @@ export function OurStory() {
                     src="/story/full-diamond.png"
                     alt="Full brilliant-cut diamond — Phaigort material intelligence"
                     fill
-                    sizes="(max-width: 768px) 208px, 300px"
+                    sizes="(max-width: 768px) 256px, 520px"
                     className="object-contain"
                     style={{ mixBlendMode: "screen" }}
                     loading="lazy"
@@ -200,7 +200,7 @@ export function OurStory() {
 
               {/* García de Orta stipple portrait — offset float phase */}
               <motion.div
-                className="relative w-44 flex-shrink-0 md:w-[240px]"
+                className="relative w-56 max-w-[45vw] flex-shrink-0 md:w-[440px] md:max-w-none"
                 animate={prefersReducedMotion ? {} : { y: [0, -7, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
               >
@@ -209,7 +209,7 @@ export function OurStory() {
                     src="/story/garcia-de-orta.jpg"
                     alt="García de Orta — 16th century Iberian naturalist, father of gemstone science"
                     fill
-                    sizes="(max-width: 768px) 176px, 240px"
+                    sizes="(max-width: 768px) 224px, 440px"
                     className="object-cover object-top"
                     style={{ mixBlendMode: "screen" }}
                     loading="lazy"

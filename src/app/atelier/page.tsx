@@ -46,8 +46,8 @@ export default function AtelierPage() {
       {/* royal-navy */}
       <DarkFieldStage intensity="full" className="py-16 md:py-24">
         <Container className="max-w-3xl">
-          <Caption>Private Discovery</Caption>
-          <H1 className="mt-5 text-platinum">The Atelier</H1>
+          <Caption className="mb-3 block">Private Discovery</Caption>
+          <H1 className="mt-4 text-platinum">The Atelier</H1>
           <Body className="mt-6 text-platinum/70">
             The Atelier is not a showroom. It is a place designed for the kind of attention that
             rare materials deserve — unhurried, curious, and informed by the knowledge of people who
@@ -64,13 +64,13 @@ export default function AtelierPage() {
       <section className="bg-platinum py-10 text-royal-navy md:py-16">
         <Container>
           <ScrollReveal>
-            <Caption className="text-silver">How We Work</Caption>
+            <Caption className="text-royal-navy/40">How We Work</Caption>
             <H2 className="mb-10 mt-4">Discovery Approaches</H2>
           </ScrollReveal>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {APPROACHES.map((a, i) => (
               <ScrollReveal key={a.title} delay={i * 0.1}>
-                <div className="h-full space-y-4 border border-royal-navy/10 bg-royal-navy p-8 text-platinum md:p-10">
+                <div className="h-full space-y-4 border border-royal-navy/10 bg-royal-navy p-8 text-platinum transition-all duration-300 hover:bg-[#0A1240] md:p-10">
                   <Label className="text-platinum/40">{a.number}</Label>
                   <H4 className="text-platinum">{a.title}</H4>
                   <Body className="text-platinum/70">{a.description}</Body>
@@ -88,7 +88,7 @@ export default function AtelierPage() {
       <DarkFieldStage intensity="full" className="py-12 md:py-16">
         <Container className="max-w-3xl text-center">
           <ScrollReveal>
-            <H2 className="text-platinum">
+            <H2 className="mx-auto max-w-2xl text-platinum">
               The Atelier receives visitors by inclination, not by appointment.
             </H2>
             <Body className="mx-auto mt-4 text-platinum/70">

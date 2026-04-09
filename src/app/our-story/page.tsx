@@ -17,7 +17,7 @@ export default function OurStoryPage() {
   return (
     <>
       {/* royal-navy */}
-      <DarkFieldStage intensity="full" className="py-16 md:py-24">
+      <DarkFieldStage intensity="full" className="py-24 md:py-36">
         <Container className="max-w-3xl">
           <Caption>Our Story</Caption>
           <H1 className="mt-5 text-platinum">
@@ -44,7 +44,8 @@ export default function OurStoryPage() {
           <ScrollReveal>
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
               <div>
-                <Caption className="text-silver">The Earth as Artist</Caption>
+                <div className="mb-6 h-px w-8 bg-coral" />
+                <Caption className="text-royal-navy/40">The Earth as Artist</Caption>
                 <H2 className="mt-4">Colour is chemistry. Chemistry is provenance.</H2>
               </div>
               <div className="space-y-5">
@@ -116,7 +117,8 @@ export default function OurStoryPage() {
           <ScrollReveal>
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
               <div>
-                <Caption className="text-silver">The Standard</Caption>
+                <div className="mb-6 h-px w-8 bg-coral" />
+                <Caption className="text-royal-navy/40">The Standard</Caption>
                 <H2 className="mt-4">
                   Every piece asks one question: will it matter more in twenty years?
                 </H2>
