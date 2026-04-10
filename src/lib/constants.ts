@@ -25,20 +25,20 @@ export const TREASURE_DOMAINS = [
     description:
       "Native gold specimens from alluvial deposits, platinum in its elemental state, silver of dendritic formation — materials that are simultaneously geological documents and stores of enduring value. The finest specimens are indistinguishable from sculpture.",
     href: "/collections#precious-metals",
-    image: "/collections/geological-rarities.jpg",
+    image: "/collections/precious-metals.jpg",
     imageAlt: "Aquamarine and emerald collar necklace — Phaigort Precious Metals",
     hoverImage: "/collections/geological-rarities.jpg",
-    hoverImageAlt: "Aquamarine and emerald collar necklace, detail — Phaigort Precious Metals",
+    hoverImageAlt: "Cut sapphires detail — Phaigort Precious Metals",
   },
   {
     title: "Geological Rarities",
     description:
       "Coloured gemstones of exceptional origin — Kashmir sapphires of violet-blue saturation, Burmese spinels with chromium fluorescence, alexandrites whose absorption spectrum bridges daylight and incandescent light. Each stone is selected for the geological event it represents, not the market category it occupies.",
     href: "/collections#geological-rarities",
-    image: "/collections/precious-metals.jpg",
+    image: "/collections/geological-rarities.jpg",
     imageAlt: "Cut blue-green sapphires arranged on white ground — Phaigort Geological Rarities",
-    hoverImage: "/collections/precious-metals.jpg",
-    hoverImageAlt: "Cut blue-green sapphires, detail — Phaigort Geological Rarities",
+    hoverImage: "/collections/geological-rarities-detail.jpg",
+    hoverImageAlt: "Cut blue-green sapphires, close detail — Phaigort Geological Rarities",
   },
   {
     title: "Historical Artifacts",
@@ -48,8 +48,8 @@ export const TREASURE_DOMAINS = [
     image: "/collections/historical-artifacts.jpg",
     imageAlt:
       "Hands adorned with diamond rings and citrine bracelet — Phaigort Historical Artifacts",
-    hoverImage: "/collections/historical-artifacts.jpg",
-    hoverImageAlt: "Diamond rings and citrine bracelet, detail — Phaigort Historical Artifacts",
+    hoverImage: "/collections/precious-metals.jpg",
+    hoverImageAlt: "Precious metals detail — Phaigort Historical Artifacts",
   },
   {
     title: "Contemporary Innovations",
@@ -58,7 +58,7 @@ export const TREASURE_DOMAINS = [
     href: "/collections#contemporary-innovations",
     image: "/collections/contemporary-innovations.jpg",
     imageAlt: "Multicolour rough corundum pebbles — Phaigort Contemporary Innovations",
-    hoverImage: "/collections/contemporary-innovations.jpg",
-    hoverImageAlt: "Rough corundum pebbles, detail — Phaigort Contemporary Innovations",
+    hoverImage: "/collections/geological-rarities-detail.jpg",
+    hoverImageAlt: "Geological rarities detail — Phaigort Contemporary Innovations",
   },
 ] as const;

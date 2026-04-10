@@ -103,7 +103,7 @@ export function OurStory() {
                       ease: [0.22, 1, 0.36, 1],
                     },
                   })}
-              className="space-y-3 py-8 md:py-0"
+              className="space-y-3 py-4 md:py-0"
             >
               <Label className="text-platinum/45">{pillar.number}</Label>
               <H4 className="text-platinum">{pillar.title}</H4>
@@ -177,7 +177,7 @@ export function OurStory() {
                     viewport: { once: true, margin: "-80px" },
                     transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.15 },
                   })}
-              className="flex max-w-full flex-row items-start justify-center gap-6 overflow-hidden md:flex-col md:items-end md:justify-start md:gap-10"
+              className="flex flex-col items-center gap-8 md:flex-col md:items-end md:gap-10"
             >
               {/* Full brilliant-cut diamond — slow float */}
               <motion.div

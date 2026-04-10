@@ -1,49 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, useId } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, BRAND, TREASURE_DOMAINS } from "@/lib/constants";
+import { PhaigortLogoMark } from "@/components/ui/LogoMark";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type TreasureDomain = (typeof TREASURE_DOMAINS)[number];
-
-// ─── Logo mark ────────────────────────────────────────────────────────────────
-// Inline SVG ensures crisp rendering at all DPI levels and full color control
-// across transparent (dark hero), solid (platinum), and overlay (royal-navy) states.
-// navy=true → deep-navy diamond + white label (on platinum header)
-// navy=false → white diamond + deep-navy label (on dark/overlay backgrounds)
-
-function PhaigortLogoMark({ navy }: { navy: boolean }) {
-  const diamond = navy ? "#03195e" : "#ffffff";
-  const label = navy ? "#ffffff" : "#03195e";
-  return (
-    <svg
-      viewBox="0 0 300 106"
-      width={132}
-      height={46}
-      aria-hidden="true"
-      className="transition-all duration-[350ms]"
-    >
-      <polygon points="150,3 297,53 150,103 3,53" fill={diamond} />
-      <text
-        x="150"
-        y="59"
-        textAnchor="middle"
-        fontFamily="var(--font-jost), Jost, sans-serif"
-        fontSize="23"
-        fontWeight="400"
-        letterSpacing="3.5"
-        fill={label}
-      >
-        PHAIGORT
-      </text>
-    </svg>
-  );
-}
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 
@@ -370,7 +338,9 @@ export function Header() {
                 ))}
               </div>
 
-              {/* Right: editorial image panel — crossfades on hover */}
+              {/* Right: editorial image panel — crossfades on hover via Next.js <Image>.
+                  Using <Image fill> instead of background-image enables WebP conversion,
+                  lazy-loading handoff, and proper dimension attributes for CLS scoring. */}
               <div className="relative overflow-hidden bg-deep-navy">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -379,11 +349,16 @@ export function Header() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={prefersReducedMotion ? { duration: 0.01 } : { duration: 0.3 }}
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${hoveredDomain.image})` }}
-                    role="img"
-                    aria-label={hoveredDomain.imageAlt}
-                  />
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={hoveredDomain.image}
+                      alt={hoveredDomain.imageAlt}
+                      fill
+                      sizes="(max-width: 1280px) 60vw, 800px"
+                      className="object-cover object-center"
+                    />
+                  </motion.div>
                 </AnimatePresence>
                 {/* Depth gradient */}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-navy/65 via-transparent to-transparent" />

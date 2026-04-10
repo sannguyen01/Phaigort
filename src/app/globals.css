@@ -44,12 +44,10 @@
   }
 }
 
-/* Custom diamond cursor — hides default cursor on hover-capable desktops */
-@media (hover: hover) and (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
-}
+/* Custom diamond cursor — intentionally disabled until DiamondCursor is
+   mounted in layout.tsx. Suppressing the native cursor without a live
+   replacement makes every interactive element invisible on desktop.
+   Re-enable this block once <DiamondCursor /> is wired into the root layout. */
 
 @layer utilities {
   .font-brand {
@@ -69,6 +67,10 @@
   .arch-mask {
     border-radius: 50% 50% 0 0 / 30% 30% 0 0;
     overflow: hidden;
+    /* Safari iOS 15–17: percentage border-radius + overflow:hidden fails to clip
+       position:fill children. The radial-gradient mask forces a repaint that
+       re-applies clipping correctly. No visible effect on other browsers. */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
 
   .gold-line {

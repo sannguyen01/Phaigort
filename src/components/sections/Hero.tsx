@@ -65,6 +65,27 @@ export function Hero() {
         />
       </motion.div>
 
+      {/* Right-panel diamond — absolutely positioned, right-anchored, desktop only.
+          Half-shaped-Diamond-2.jpg with screen blend mode dissolves into the dark
+          field — the bright facets float, the background drops to transparency. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 right-0 hidden w-[48%] md:block"
+        style={{ height: "110%" }}
+      >
+        <div className="relative h-full w-full">
+          <Image
+            src="/hero/hero-diamond.jpg"
+            alt=""
+            fill
+            priority
+            sizes="48vw"
+            className="object-contain object-bottom"
+            style={{ mixBlendMode: "screen", opacity: 0.82 }}
+          />
+        </div>
+      </div>
+
       {/* Cursor-reactive glow overlay */}
       {!prefersReducedMotion && (
         <motion.div

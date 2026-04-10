@@ -104,7 +104,7 @@ function TiltCard({ domain, index, isInView, prefersReducedMotion }: TiltCardPro
           <p className="font-brand text-xs uppercase tracking-[0.35em] text-platinum/90 transition-colors duration-300 group-hover:text-platinum">
             {domain.title}
           </p>
-          <Body className="mt-2 line-clamp-3 text-xs leading-relaxed text-platinum/50">
+          <Body className="mt-2 line-clamp-3 text-[13px] leading-relaxed text-platinum/70">
             {domain.description}
           </Body>
         </div>

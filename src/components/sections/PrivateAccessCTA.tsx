@@ -52,7 +52,7 @@ export function PrivateAccessCTA() {
           })}
           className="flex flex-col items-center space-y-8"
         >
-          <h2 className="font-heading text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl">
+          <h2 className="font-heading text-4xl font-light leading-tight md:text-5xl lg:text-6xl">
             Not every exceptional stone
             <br />
             reaches the open market.
