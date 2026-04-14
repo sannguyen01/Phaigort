@@ -2,29 +2,138 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   PHAIGORT DESIGN SYSTEM — CSS TOKEN FOUNDATION
+   Scope: global CSS / design token layer only.
+   Components and pages consume these variables via Tailwind or var() directly.
+   Do not place component-level overrides in this file.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 @layer base {
   :root {
-    /* Garet is loaded via external CDN link in layout.tsx head.
-       Declaring the family name here makes it available to font-ui
-       Tailwind utility without any build-time resolution. */
-    --font-garet: "Garet";
+    /* ── TYPOGRAPHY ────────────────────────────────────────────────────────
+       Cardo:  loaded via next/font/google (weights 400, 700 + italic 400).
+               Self-hosted and optimised — no external CDN request needed.
+               CSS variable injected by Next.js as --font-cardo.
+       Garet:  loaded via Fontshare CDN <link> in layout.tsx <head>.
+               CDN url: https://api.fontshare.com/v2/css?f[]=garet@400,500,700&display=swap
+               CSS variable declared below as --font-garet.
+    ──────────────────────────────────────────────────────────────────────── */
+    --font-display: 'Cardo', Georgia, serif;
+    --font-body:    'Garet', Inter, sans-serif;
+
+    /* Legacy font variables — consumed by tailwind.config.ts fontFamily map. */
+    --font-garet:     "Garet";
+    --font-jost:      var(--font-jost);
+    --font-cormorant: var(--font-cormorant);
+    --font-inter:     var(--font-inter);
+    --font-cardo:     var(--font-cardo);
+
+    /* ── FLUID TYPE SCALE ──────────────────────────────────────────────────
+       Viewport-responsive sizes using clamp(min, preferred, max).
+       Apply via: font-size: var(--text-*) or compose Tailwind utilities.
+    ──────────────────────────────────────────────────────────────────────── */
+    --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+    --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+    --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+    --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+    --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+    --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+    --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+    --text-hero: clamp(3rem,     0.5rem  + 7vw,    8rem);
+
+    /* ── 4PX SPACING SCALE ─────────────────────────────────────────────────
+       Base unit: 4px (0.25rem). All values are multiples.
+       Use these tokens for section padding, gaps, and layout rhythm.
+    ──────────────────────────────────────────────────────────────────────── */
+    --space-1:  0.25rem;   /*  4px */
+    --space-2:  0.5rem;    /*  8px */
+    --space-3:  0.75rem;   /* 12px */
+    --space-4:  1rem;      /* 16px */
+    --space-6:  1.5rem;    /* 24px */
+    --space-8:  2rem;      /* 32px */
+    --space-10: 2.5rem;    /* 40px */
+    --space-12: 3rem;      /* 48px */
+    --space-16: 4rem;      /* 64px */
+    --space-20: 5rem;      /* 80px */
+    --space-24: 6rem;      /* 96px */
+    --space-32: 8rem;      /* 128px */
+
+    /* ── COLOR PALETTE — Phaigort Light Mode (primary) ─────────────────────
+       Light-mode ground system. Dark sections override locally with
+       bg-[#0A0F1D] or bg-near-black (defined in tailwind.config.ts).
+       Static rgba() fallbacks declared here; modern oklch() overrides follow
+       in the @supports block below for progressive enhancement.
+    ──────────────────────────────────────────────────────────────────────── */
+    --color-bg:           #F8F7F3;
+    --color-surface:      #F3F0EC;
+    --color-surface-warm: #EDE8E0;
+    --color-dark:         #1A1917;
+    --color-dark-surface: #221F1D;
+    --color-text:         #18170F;
+    --color-text-muted:   #7A7872;
+    --color-text-faint:   #B8B5B0;
+    --color-text-inverse: #F0EDE8;
+    --color-accent:       #FF6B4A;
+    --color-accent-hover: #E55A3A;
+
+    /* Static fallbacks for relative-color border tokens (browsers < Chrome 119,
+       < Safari 16.4, < Firefox 128). Overridden by @supports block below. */
+    --color-border:  rgba(24, 23, 15, 0.10);
+    --color-divider: rgba(24, 23, 15, 0.07);
+
+    /* ── BORDER RADIUS ─────────────────────────────────────────────────────
+       Consistent rounding scale. Use via var(--radius-*) or Tailwind.
+    ──────────────────────────────────────────────────────────────────────── */
+    --radius-sm:   0.25rem;
+    --radius-md:   0.5rem;
+    --radius-lg:   0.75rem;
+    --radius-full: 9999px;
+
+    /* ── TRANSITIONS ───────────────────────────────────────────────────────
+       Cubic-bezier(0.16, 1, 0.3, 1) — snappy ease-out, ideal for UI reveals.
+       base: micro-interactions (hover, focus). slow: reveals, overlays.
+    ──────────────────────────────────────────────────────────────────────── */
+    --transition-base: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-slow: 480ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* ── CONTENT WIDTHS ────────────────────────────────────────────────────
+       Use as max-width constraints on Container primitives.
+    ──────────────────────────────────────────────────────────────────────── */
+    --content-narrow:  640px;
+    --content-default: 960px;
+    --content-wide:    1200px;
   }
+
+  /* CSS relative-color syntax (Level 5) — Chrome 119+, Safari 16.4+, Firefox 128+.
+     Overrides the static rgba() fallbacks above in supporting browsers.
+     Produces the identical alpha-modified value derived from --color-text (#18170F). */
+  @supports (color: oklch(from red l c h)) {
+    :root {
+      --color-border:  oklch(from #18170F l c h / 0.10);
+      --color-divider: oklch(from #18170F l c h / 0.07);
+    }
+  }
+
+  /* ── BASE ELEMENT STYLES ─────────────────────────────────────────────── */
 
   html {
     scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: var(--text-base);
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  body {
-    @apply bg-[#0A0F1D] text-platinum font-ui;
-    font-size: 16px;
-    line-height: 1.65;
-  }
-
   ::selection {
-    background-color: theme('colors.royal-navy');
-    color: theme('colors.platinum');
+    background-color: var(--color-dark);
+    color: var(--color-text-inverse);
   }
 
   ::-webkit-scrollbar {
@@ -32,29 +141,27 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-platinum;
+    background: var(--color-surface);
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-royal-navy/15;
-    transition: background 200ms ease;
+    background: rgba(24, 23, 15, 0.18);
+    border-radius: var(--radius-full);
+    transition: background var(--transition-base);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-royal-navy/35;
+    background: rgba(24, 23, 15, 0.36);
   }
-}
 
-@layer base {
   *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-royal-navy rounded-sm;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
   }
 }
 
-/* Custom diamond cursor — intentionally disabled until DiamondCursor is
-   mounted in layout.tsx. Suppressing the native cursor without a live
-   replacement makes every interactive element invisible on desktop.
-   Re-enable this block once <DiamondCursor /> is wired into the root layout. */
+/* ── COMPONENT UTILITIES ─────────────────────────────────────────────────── */
 
 @layer utilities {
   .font-brand {
@@ -70,7 +177,7 @@
 
   /* Arch mask — cathedral arch top, applied to image containers in CollectionGrid
      and MaterialTimeline. The ratio 50% 50% 0 0 / 30% 30% 0 0 produces a shallow,
-     wide arch (not a semicircle) matching the Canva mockup proportions. */
+     wide arch (not a semicircle) matching the reference design proportions. */
   .arch-mask {
     border-radius: 50% 50% 0 0 / 30% 30% 0 0;
     overflow: hidden;
