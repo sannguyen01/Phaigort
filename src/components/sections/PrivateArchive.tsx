@@ -11,10 +11,7 @@ export function PrivateArchive() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section
-      ref={ref}
-      className="relative bg-near-black py-28 text-platinum md:py-40"
-    >
+    <section ref={ref} className="relative bg-near-black py-28 text-platinum md:py-40">
       {/* Ambient radial glow */}
       <div
         aria-hidden
@@ -50,17 +47,18 @@ export function PrivateArchive() {
 
           {/* Body — Garet */}
           <p className="mx-auto max-w-md font-ui text-[15px] leading-relaxed text-platinum/55 md:text-base">
-            Certain pieces in the Phaigort archive have never been publicly listed — not
-            because they are unavailable, but because the right conversation has not yet
-            happened. We do not believe rarity should be announced. It should be discovered.
+            Certain pieces in the Phaigort archive have never been publicly listed — not because
+            they are unavailable, but because the right conversation has not yet happened. We do not
+            believe rarity should be announced. It should be discovered.
           </p>
 
           {/* Coral CTA */}
           <div className="pt-2">
             <Button
               href="/contact"
-              className="border-coral/60 text-coral hover:bg-coral hover:text-platinum active:bg-coral/90"
+              variant="ghost"
               onDark
+              className="border border-coral/50 text-coral hover:bg-coral hover:text-platinum active:bg-coral/90"
             >
               Begin a Private Consultation
             </Button>

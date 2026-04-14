@@ -156,7 +156,7 @@ export function Header() {
               aria-label={isOpen ? "Close navigation" : "Open navigation"}
               className={cn(
                 "relative z-10 -ml-2 flex min-h-[44px] min-w-[44px] items-center justify-center px-2",
-                "font-brand text-[0.72rem] uppercase tracking-[0.18em]",
+                "font-ui text-[0.72rem] uppercase tracking-[0.18em]",
                 "transition-colors duration-[350ms] md:hidden",
                 isOpen
                   ? "text-platinum/70 hover:text-platinum"
@@ -416,11 +416,11 @@ export function Header() {
                             href={link.href}
                             onClick={() => setIsOpen(false)}
                             className={cn(
-                              "block font-heading font-light leading-[1.15]",
-                              "tracking-[0.04em]",
+                              "block font-display font-bold leading-[1.15]",
+                              "tracking-[0.02em]",
                               "text-[clamp(1.8rem,3.5vw,3.2rem)]",
                               "transition-colors duration-[250ms]",
-                              active ? "text-[#F0EBE3]" : "text-platinum/80 hover:text-platinum/45"
+                              active ? "text-platinum" : "text-platinum/45 hover:text-platinum"
                             )}
                           >
                             {link.label}
@@ -446,7 +446,7 @@ export function Header() {
                 "border-t border-platinum/[0.08]"
               )}
             >
-              <span className="font-brand text-[0.72rem] uppercase tracking-[0.18em] text-platinum/30">
+              <span className="font-ui text-[0.72rem] uppercase tracking-[0.18em] text-platinum/30">
                 {BRAND.tagline}
               </span>
             </motion.div>
