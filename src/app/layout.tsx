@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Jost, Cormorant, Inter } from "next/font/google";
+import { Jost, Cormorant, Inter, Cardo } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
@@ -26,6 +26,15 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+// Cardo — display face for headlines, hero text, philosophical statements (24px+)
+const cardo = Cardo({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cardo",
   display: "swap",
 });
 
@@ -77,9 +86,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${jost.variable} ${cormorant.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${jost.variable} ${cormorant.variable} ${inter.variable} ${cardo.variable}`}
+    >
       <head>
-        {/* favicon: resolved by src/app/icon.svg — Next.js App Router auto-generates <link rel="icon"> */}
+        {/* Garet — display/UI body font, loaded from Fontshare (not on Google Fonts) */}
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=garet@400,500,700&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

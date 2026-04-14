@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Garet is loaded via external CDN link in layout.tsx head.
+       Declaring the family name here makes it available to font-ui
+       Tailwind utility without any build-time resolution. */
+    --font-garet: "Garet";
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;

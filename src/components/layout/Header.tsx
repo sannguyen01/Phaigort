@@ -139,9 +139,9 @@ export function Header() {
           "fixed inset-x-0 top-0 z-[60] h-[72px]",
           "transition-all duration-[350ms] ease-[cubic-bezier(0,0,0.58,1)]",
           isOpen
-            ? "border-b border-transparent bg-royal-navy"
+            ? "border-b border-transparent bg-near-black"
             : isSolid
-              ? "border-b border-royal-navy/[0.07] bg-platinum/95 backdrop-blur-md"
+              ? "border-b border-ink/[0.07] bg-ground/95 backdrop-blur-md"
               : "border-b border-transparent bg-transparent"
         )}
       >
@@ -161,8 +161,8 @@ export function Header() {
                 isOpen
                   ? "text-platinum/70 hover:text-platinum"
                   : isSolid
-                    ? "text-royal-navy/55 hover:text-royal-navy"
-                    : "text-platinum/70 hover:text-platinum"
+                    ? "text-ink/55 hover:text-ink"
+                    : "text-ink/70 hover:text-ink"
               )}
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -202,15 +202,15 @@ export function Header() {
                 aria-expanded={activeDropdown === "collections"}
                 aria-haspopup="true"
                 className={cn(
-                  "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                  "relative font-ui text-[0.72rem] uppercase tracking-[0.16em]",
                   "transition-colors duration-[350ms]",
                   activeDropdown === "collections" || isActive("/collections")
                     ? isSolid
-                      ? "text-royal-navy"
-                      : "text-platinum"
+                      ? "text-ink"
+                      : "text-ink"
                     : isSolid
-                      ? "text-royal-navy/55 hover:text-royal-navy"
-                      : "text-platinum/65 hover:text-platinum"
+                      ? "text-ink/55 hover:text-ink"
+                      : "text-ink/70 hover:text-ink"
                 )}
               >
                 {NAV_LINKS[0].label}
@@ -220,15 +220,15 @@ export function Header() {
               <Link
                 href={NAV_LINKS[1].href}
                 className={cn(
-                  "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                  "relative font-ui text-[0.72rem] uppercase tracking-[0.16em]",
                   "transition-colors duration-[350ms]",
                   isActive(NAV_LINKS[1].href)
                     ? isSolid
-                      ? "text-royal-navy"
-                      : "text-platinum"
+                      ? "text-ink"
+                      : "text-ink"
                     : isSolid
-                      ? "text-royal-navy/55 hover:text-royal-navy"
-                      : "text-platinum/65 hover:text-platinum"
+                      ? "text-ink/55 hover:text-ink"
+                      : "text-ink/70 hover:text-ink"
                 )}
               >
                 {NAV_LINKS[1].label}
@@ -240,7 +240,7 @@ export function Header() {
           {/* px-6 = 24px clearance on each side between logo edge and nav text */}
           <div className="flex items-center justify-center px-6">
             <Link href="/" onClick={() => setIsOpen(false)} aria-label={BRAND.name}>
-              <PhaigortLogoMark navy={isSolid && !isOpen} />
+              <PhaigortLogoMark variant={isSolid && !isOpen ? "light" : "dark"} />
             </Link>
           </div>
 
@@ -255,15 +255,15 @@ export function Header() {
               <Link
                 href={NAV_LINKS[2].href}
                 className={cn(
-                  "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                  "relative font-ui text-[0.72rem] uppercase tracking-[0.16em]",
                   "transition-colors duration-[350ms]",
                   isActive(NAV_LINKS[2].href)
                     ? isSolid
-                      ? "text-royal-navy"
-                      : "text-platinum"
+                      ? "text-ink"
+                      : "text-ink"
                     : isSolid
-                      ? "text-royal-navy/55 hover:text-royal-navy"
-                      : "text-platinum/65 hover:text-platinum"
+                      ? "text-ink/55 hover:text-ink"
+                      : "text-ink/70 hover:text-ink"
                 )}
               >
                 {NAV_LINKS[2].label}
@@ -273,15 +273,15 @@ export function Header() {
               <Link
                 href={NAV_LINKS[3].href}
                 className={cn(
-                  "relative font-brand text-[0.78rem] uppercase tracking-[0.14em]",
+                  "relative font-ui text-[0.72rem] uppercase tracking-[0.16em]",
                   "transition-colors duration-[350ms]",
                   isActive(NAV_LINKS[3].href)
                     ? isSolid
-                      ? "text-royal-navy"
-                      : "text-platinum"
+                      ? "text-ink"
+                      : "text-ink"
                     : isSolid
-                      ? "text-royal-navy/55 hover:text-royal-navy"
-                      : "text-platinum/65 hover:text-platinum"
+                      ? "text-ink/55 hover:text-ink"
+                      : "text-ink/70 hover:text-ink"
                 )}
               >
                 {NAV_LINKS[3].label}
@@ -306,13 +306,13 @@ export function Header() {
               animate="visible"
               exit="exit"
               className={cn(
-                "absolute left-0 right-0 top-full bg-platinum",
-                "border-b border-royal-navy/[0.07]",
+                "absolute left-0 right-0 top-full bg-ground",
+                "border-b border-ink/[0.07]",
                 "grid min-h-[320px] grid-cols-[1fr_1.8fr]"
               )}
             >
               {/* Left: typographic domain list */}
-              <div className="flex flex-col justify-center gap-1 border-r border-royal-navy/[0.06] px-10 py-10 lg:px-14">
+              <div className="flex flex-col justify-center gap-1 border-r border-ink/[0.06] px-10 py-10 lg:px-14">
                 {TREASURE_DOMAINS.map((domain, i) => (
                   <motion.a
                     key={domain.title}
@@ -329,8 +329,8 @@ export function Header() {
                       "block py-2 font-heading text-[1.45rem] font-light tracking-[0.02em]",
                       "cursor-pointer transition-colors duration-150",
                       hoveredDomain.title === domain.title
-                        ? "text-royal-navy"
-                        : "text-royal-navy/38 hover:text-royal-navy/70"
+                        ? "text-ink"
+                        : "text-ink/35 hover:text-ink/70"
                     )}
                   >
                     {domain.title}
@@ -382,7 +382,7 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="pointer-events-none fixed inset-0 z-[58] bg-royal-navy/20"
+            className="pointer-events-none fixed inset-0 z-[58] bg-ink/20"
             style={{ top: "72px" }}
           />
         )}
@@ -407,7 +407,7 @@ export function Header() {
                     opacity: { duration: 0.01 },
                   }
             }
-            className="fixed inset-0 z-[55] flex flex-col bg-royal-navy"
+            className="fixed inset-0 z-[55] flex flex-col bg-near-black"
           >
             {/* NAV CONTENT */}
             <div
