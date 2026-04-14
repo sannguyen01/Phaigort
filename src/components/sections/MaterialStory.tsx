@@ -127,12 +127,12 @@ export function OurStory() {
                   })}
               className="space-y-7"
             >
-              <h3 className="font-heading text-[1.65rem] leading-snug text-platinum md:text-[2.4rem]">
+              <h3 className="font-display text-[1.65rem] font-bold leading-snug text-platinum md:text-[2.4rem]">
                 Phaigort represents more than a jewellery house — it is the institution behind our
                 Wonderhouse of material consciousness.
               </h3>
 
-              <p className="font-body text-base leading-relaxed text-platinum/60">
+              <p className="font-ui text-base leading-relaxed text-platinum/60">
                 The name synthesises the Greek{" "}
                 <em className="font-semibold not-italic text-platinum/85">phainomenon</em> — that
                 which reveals itself through observation — and the Portuguese{" "}
@@ -140,7 +140,7 @@ export function OurStory() {
                 Two words for the same act: the moment something becomes knowable.
               </p>
 
-              <p className="font-body text-base leading-relaxed text-platinum/60">
+              <p className="font-ui text-base leading-relaxed text-platinum/60">
                 <strong className="font-semibold text-platinum/85">We honour García de Orta</strong>
                 , the pioneering Portuguese physician who in 1563 authored the first scientific
                 treatise on gemstones in everyday language. By choosing to share knowledge with
@@ -150,13 +150,13 @@ export function OurStory() {
 
               {/* Coral-bordered pull quote */}
               <div className="space-y-4">
-                <p className="font-body text-base leading-relaxed text-platinum/55">
+                <p className="font-ui text-base leading-relaxed text-platinum/55">
                   Phaigort is a sanctuary for material fascination — an inclusive vessel, inviting
                   curious minds on a voyage to uncover the world&apos;s geological wonders, the
                   legacy of human craftsmanship, the allure of precious metals, and the brilliance
                   of contemporary innovation.
                 </p>
-                <p className="font-body text-base leading-relaxed text-platinum/55">
+                <p className="font-ui text-base leading-relaxed text-platinum/55">
                   Our philosophy draws from the 16th-century Portuguese and Spanish trade routes — a
                   time when seafaring vessels carried more than cargo; they carried the collective
                   knowledge of distant horizons. In that same spirit, we welcome all who seek a
@@ -215,7 +215,7 @@ export function OurStory() {
                     loading="lazy"
                   />
                 </div>
-                <p className="mt-3 text-right font-brand text-[9px] uppercase tracking-[0.35em] text-platinum/30">
+                <p className="mt-3 text-right font-ui text-[9px] uppercase tracking-[0.35em] text-platinum/30">
                   García de Orta, 1563
                 </p>
               </motion.div>
