@@ -128,7 +128,7 @@ export function CollectionGrid() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="collections" ref={ref} className="bg-platinum py-10 text-royal-navy md:py-16">
+    <section id="collections" ref={ref} className="bg-[#0A0F1D] py-10 text-platinum md:py-16">
       <Container>
         <motion.div
           {...(prefersReducedMotion
@@ -140,8 +140,8 @@ export function CollectionGrid() {
               })}
           className="mb-10"
         >
-          <Caption className="text-royal-navy/45">The Collection</Caption>
-          <H2 className="mt-4 text-royal-navy">Four domains of rarity</H2>
+          <Caption className="text-platinum/45">The Collection</Caption>
+          <H2 className="mt-4 text-platinum">Four domains of rarity</H2>
         </motion.div>
 
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">

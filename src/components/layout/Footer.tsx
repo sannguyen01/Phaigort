@@ -6,7 +6,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-ground pb-10 pt-14 md:pt-20">
+    <footer className="bg-[#0A0F1D] pb-10 pt-14 text-platinum md:pt-20">
       <div className="mx-auto max-w-content px-[clamp(24px,4vw,64px)]">
         {/* Main row: wordmark + tagline left, nav columns right */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
@@ -17,9 +17,9 @@ export function Footer() {
               aria-label={BRAND.name}
               className="inline-block transition-opacity duration-300 hover:opacity-60"
             >
-              <PhaigortLogoMark variant="light" />
+              <PhaigortLogoMark variant="dark" />
             </Link>
-            <p className="max-w-[220px] font-ui text-[13px] leading-relaxed text-muted">
+            <p className="max-w-[220px] font-ui text-[13px] leading-relaxed text-platinum/40">
               {BRAND.tagline}
             </p>
           </div>
@@ -27,7 +27,7 @@ export function Footer() {
           {/* Nav columns */}
           <div className="flex gap-14">
             <nav aria-label="Explore">
-              <p className="mb-4 font-ui text-[10px] uppercase tracking-[0.15em] text-muted">
+              <p className="mb-4 font-ui text-[10px] uppercase tracking-[0.15em] text-platinum/35">
                 Explore
               </p>
               <ul className="space-y-3">
@@ -35,7 +35,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="font-ui text-[13px] text-ink/55 transition-colors duration-200 hover:text-ink"
+                      className="font-ui text-[13px] text-platinum/50 transition-colors duration-200 hover:text-platinum"
                     >
                       {link.label}
                     </Link>
@@ -45,7 +45,7 @@ export function Footer() {
             </nav>
 
             <nav aria-label="Connect">
-              <p className="mb-4 font-ui text-[10px] uppercase tracking-[0.15em] text-muted">
+              <p className="mb-4 font-ui text-[10px] uppercase tracking-[0.15em] text-platinum/35">
                 Connect
               </p>
               <ul className="space-y-3">
@@ -54,7 +54,7 @@ export function Footer() {
                     href={SOCIAL.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-ui text-[13px] text-ink/55 transition-colors duration-200 hover:text-ink"
+                    className="font-ui text-[13px] text-platinum/50 transition-colors duration-200 hover:text-platinum"
                   >
                     Instagram
                   </a>
@@ -64,7 +64,7 @@ export function Footer() {
                     href={SOCIAL.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-ui text-[13px] text-ink/55 transition-colors duration-200 hover:text-ink"
+                    className="font-ui text-[13px] text-platinum/50 transition-colors duration-200 hover:text-platinum"
                   >
                     LinkedIn
                   </a>
@@ -75,10 +75,10 @@ export function Footer() {
         </div>
 
         {/* 1px divider */}
-        <div className="my-10 h-px bg-stone" />
+        <div className="my-10 h-px bg-platinum/10" />
 
         {/* Copyright */}
-        <p className="font-ui text-[12px] text-muted/70">
+        <p className="font-ui text-[12px] text-platinum/30">
           &copy; {currentYear} {BRAND.name}. All rights reserved.
         </p>
       </div>
