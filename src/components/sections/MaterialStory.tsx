@@ -165,6 +165,51 @@ export function OurStory() {
                   a shared journey of discovery.
                 </p>
               </div>
+
+              {/* Calligraphic Phaigort signature */}
+              <motion.div
+                {...(prefersReducedMotion
+                  ? {}
+                  : {
+                      initial: { opacity: 0, y: 8 },
+                      whileInView: { opacity: 1, y: 0 },
+                      viewport: { once: true, margin: "-60px" },
+                      transition: { duration: 1.4, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+                    })}
+                className="pt-4"
+              >
+                <svg
+                  viewBox="0 0 248 68"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-40 md:w-48"
+                  aria-label="Phaigort"
+                  role="img"
+                >
+                  {/* Signature text — italic Cardo, loaded on page via next/font */}
+                  <text
+                    x="4"
+                    y="44"
+                    fontFamily="'Cardo', Georgia, serif"
+                    fontStyle="italic"
+                    fontSize="40"
+                    fill="rgba(248,249,251,0.72)"
+                    letterSpacing="1.5"
+                  >
+                    Phaigort
+                  </text>
+                  {/* Flowing underline flourish — coral accent at ~5% composition */}
+                  <path
+                    d="M 2 54 Q 50 62 124 54 Q 180 48 244 57"
+                    stroke="rgba(255,107,74,0.40)"
+                    strokeWidth="1.2"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <p className="text-platinum/28 mt-2 font-ui text-[9px] uppercase tracking-[0.32em]">
+                  Material Consciousness
+                </p>
+              </motion.div>
             </motion.div>
 
             {/* Right — images: full diamond top, García de Orta portrait bottom */}
