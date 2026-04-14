@@ -141,7 +141,7 @@ export function Header() {
           isOpen
             ? "border-b border-transparent bg-near-black"
             : isSolid
-              ? "border-b border-ink/[0.07] bg-ground/95 backdrop-blur-md"
+              ? "border-b border-platinum/[0.07] bg-[#0A0F1D]/90 backdrop-blur-md"
               : "border-b border-transparent bg-transparent"
         )}
       >
@@ -160,9 +160,7 @@ export function Header() {
                 "transition-colors duration-[350ms] md:hidden",
                 isOpen
                   ? "text-platinum/70 hover:text-platinum"
-                  : isSolid
-                    ? "text-ink/55 hover:text-ink"
-                    : "text-ink/70 hover:text-ink"
+                  : "text-platinum/55 hover:text-platinum"
               )}
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -205,12 +203,8 @@ export function Header() {
                   "relative font-ui text-[0.72rem] uppercase tracking-[0.16em]",
                   "transition-colors duration-[350ms]",
                   activeDropdown === "collections" || isActive("/collections")
-                    ? isSolid
-                      ? "text-ink"
-                      : "text-ink"
-                    : isSolid
-                      ? "text-ink/55 hover:text-ink"
-                      : "text-ink/70 hover:text-ink"
+                    ? "text-platinum"
+                    : "text-platinum/55 hover:text-platinum"
                 )}
               >
                 {NAV_LINKS[0].label}
@@ -223,12 +217,8 @@ export function Header() {
                   "relative font-ui text-[0.72rem] uppercase tracking-[0.16em]",
                   "transition-colors duration-[350ms]",
                   isActive(NAV_LINKS[1].href)
-                    ? isSolid
-                      ? "text-ink"
-                      : "text-ink"
-                    : isSolid
-                      ? "text-ink/55 hover:text-ink"
-                      : "text-ink/70 hover:text-ink"
+                    ? "text-platinum"
+                    : "text-platinum/55 hover:text-platinum"
                 )}
               >
                 {NAV_LINKS[1].label}
@@ -240,7 +230,7 @@ export function Header() {
           {/* px-6 = 24px clearance on each side between logo edge and nav text */}
           <div className="flex items-center justify-center px-6">
             <Link href="/" onClick={() => setIsOpen(false)} aria-label={BRAND.name}>
-              <PhaigortLogoMark variant={isSolid && !isOpen ? "light" : "dark"} />
+              <PhaigortLogoMark variant="dark" />
             </Link>
           </div>
 
@@ -258,12 +248,8 @@ export function Header() {
                   "relative font-ui text-[0.72rem] uppercase tracking-[0.16em]",
                   "transition-colors duration-[350ms]",
                   isActive(NAV_LINKS[2].href)
-                    ? isSolid
-                      ? "text-ink"
-                      : "text-ink"
-                    : isSolid
-                      ? "text-ink/55 hover:text-ink"
-                      : "text-ink/70 hover:text-ink"
+                    ? "text-platinum"
+                    : "text-platinum/55 hover:text-platinum"
                 )}
               >
                 {NAV_LINKS[2].label}
@@ -276,12 +262,8 @@ export function Header() {
                   "relative font-ui text-[0.72rem] uppercase tracking-[0.16em]",
                   "transition-colors duration-[350ms]",
                   isActive(NAV_LINKS[3].href)
-                    ? isSolid
-                      ? "text-ink"
-                      : "text-ink"
-                    : isSolid
-                      ? "text-ink/55 hover:text-ink"
-                      : "text-ink/70 hover:text-ink"
+                    ? "text-platinum"
+                    : "text-platinum/55 hover:text-platinum"
                 )}
               >
                 {NAV_LINKS[3].label}
@@ -306,13 +288,13 @@ export function Header() {
               animate="visible"
               exit="exit"
               className={cn(
-                "absolute left-0 right-0 top-full bg-ground",
-                "border-b border-ink/[0.07]",
+                "absolute left-0 right-0 top-full bg-[#0A0F1D]",
+                "border-b border-platinum/[0.07]",
                 "grid min-h-[320px] grid-cols-[1fr_1.8fr]"
               )}
             >
               {/* Left: typographic domain list */}
-              <div className="flex flex-col justify-center gap-1 border-r border-ink/[0.06] px-10 py-10 lg:px-14">
+              <div className="flex flex-col justify-center gap-1 border-r border-platinum/[0.06] px-10 py-10 lg:px-14">
                 {TREASURE_DOMAINS.map((domain, i) => (
                   <motion.a
                     key={domain.title}
@@ -326,11 +308,11 @@ export function Header() {
                     }
                     onMouseEnter={() => setHoveredDomain(domain)}
                     className={cn(
-                      "block py-2 font-heading text-[1.45rem] font-light tracking-[0.02em]",
+                      "block py-2 font-display text-[1.45rem] font-bold tracking-[0.02em]",
                       "cursor-pointer transition-colors duration-150",
                       hoveredDomain.title === domain.title
-                        ? "text-ink"
-                        : "text-ink/35 hover:text-ink/70"
+                        ? "text-platinum"
+                        : "text-platinum/35 hover:text-platinum/70"
                     )}
                   >
                     {domain.title}
@@ -364,7 +346,7 @@ export function Header() {
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep-navy/65 via-transparent to-transparent" />
                 {/* Domain caption */}
                 <div className="absolute bottom-6 left-6">
-                  <p className="font-brand text-[0.72rem] uppercase tracking-[0.18em] text-platinum/55">
+                  <p className="font-ui text-[0.72rem] uppercase tracking-[0.18em] text-platinum/55">
                     {hoveredDomain.title}
                   </p>
                 </div>
