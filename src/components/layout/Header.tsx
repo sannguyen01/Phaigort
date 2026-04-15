@@ -1,32 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, useId } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, BRAND, TREASURE_DOMAINS } from "@/lib/constants";
 
-// ── Constants ─────────────────────────────────────────────────────────────────
-
-// Centre nav: first 3 links. CTA: final link styled as ghost button.
-const PRIMARY_LINKS = [NAV_LINKS[0], NAV_LINKS[1], NAV_LINKS[2]] as const;
-const CTA_LINK = NAV_LINKS[3]; // "Private Enquiry" → /contact
+// ── Link groups ────────────────────────────────────────────────────────────────
+// Left side: The Collection + Our Story
+// Right side: Atelier + Private Enquiry
+const LEFT_LINKS  = [NAV_LINKS[0], NAV_LINKS[1]] as const;
+const RIGHT_LINKS = [NAV_LINKS[2], NAV_LINKS[3]] as const;
 
 type TreasureDomain = (typeof TREASURE_DOMAINS)[number];
 
 // ── Animation variants ────────────────────────────────────────────────────────
 
 const DROPDOWN_VARIANTS = {
-  hidden: { opacity: 0, y: -4 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } },
-  exit:    { opacity: 0, y: -4, transition: { duration: 0.15, ease: [0.42, 0, 1, 1] } },
+  hidden:  { opacity: 0, y: -4 },
+  visible: { opacity: 1, y: 0,   transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } },
+  exit:    { opacity: 0, y: -4,  transition: { duration: 0.15, ease: [0.42, 0, 1, 1] } },
 } as const;
 
 const DRAWER_VARIANTS = {
   hidden:  { x: "100%" },
-  visible: { x: "0%", transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
+  visible: { x: "0%",   transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
   exit:    { x: "100%", transition: { duration: 0.35, ease: [0.42, 0, 1, 1] } },
 } as const;
 
@@ -40,10 +40,7 @@ const DRAWER_LINK_VARIANTS = {
   exit: { opacity: 0, transition: { duration: 0.15 } },
 } as const;
 
-// ── Inline wordmark logo ──────────────────────────────────────────────────────
-// Self-contained SVG with CSS-animatable fill.
-// Using fill transition directly on <text> avoids the flash that occurs when
-// swapping two different LogoMark variants (diamond vs plain wordmark).
+// ── Inline wordmark ────────────────────────────────────────────────────────────
 
 interface NavLogoProps {
   solid: boolean;
@@ -51,7 +48,6 @@ interface NavLogoProps {
 }
 
 function NavLogo({ solid, heightPx = 20 }: NavLogoProps) {
-  // Preserve viewBox 0 0 220 36 aspect ratio
   const widthPx = Math.round((220 / 36) * heightPx);
   return (
     <svg
@@ -98,49 +94,41 @@ function instant<T extends Record<string, unknown>>(
 // ── Header ────────────────────────────────────────────────────────────────────
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen]               = useState(false);
+  const [scrolled, setScrolled]           = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [hoveredDomain, setHoveredDomain] = useState<TreasureDomain>(TREASURE_DOMAINS[0]);
-  const pathname = usePathname();
-  const overlayId = useId();
-  const prefersReducedMotion = useReducedMotion();
-  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pathname                          = usePathname();
+  const overlayId                         = useId();
+  const prefersReducedMotion              = useReducedMotion();
+  const closeTimerRef                     = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // ── Scroll threshold: 80px ─────────────────────────────────────────────────
   useEffect(() => {
-    const check = () => setScrolled(window.scrollY > 80);
+    const check = () => setScrolled(window.scrollY > 60);
     check();
     window.addEventListener("scroll", check, { passive: true });
     return () => window.removeEventListener("scroll", check);
   }, []);
 
-  // ── Close on route change ──────────────────────────────────────────────────
   useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
   }, [pathname]);
 
-  // ── ESC key ────────────────────────────────────────────────────────────────
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setIsOpen(false);
-        setActiveDropdown(null);
-      }
+      if (e.key === "Escape") { setIsOpen(false); setActiveDropdown(null); }
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
-  // ── Body scroll lock (drawer open) ────────────────────────────────────────
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  // ── Dropdown hover with 120ms grace period ─────────────────────────────────
-  const openDropdown = useCallback((key: string) => {
+  const openDropdown  = useCallback((key: string) => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
     setActiveDropdown(key);
   }, []);
@@ -149,7 +137,7 @@ export function Header() {
     closeTimerRef.current = setTimeout(() => setActiveDropdown(null), 120);
   }, []);
 
-  const cancelClose = useCallback(() => {
+  const cancelClose   = useCallback(() => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
   }, []);
 
@@ -159,52 +147,47 @@ export function Header() {
 
   const isActive = (href: string) => pathname === href;
 
-  // Solid = light-bg mode. Transparent = dark-hero mode (homepage top only).
+  // Solid = scrolled or off homepage. Transparent = dark-hero top of homepage.
   const isSolid = pathname !== "/" || scrolled || activeDropdown !== null;
 
-  // ── Derived colour helpers ──────────────────────────────────────────────────
-
-  // Default nav link color based on header state
-  const linkColor = (active: boolean) =>
+  const linkCls = (active: boolean) => cn(
+    "font-ui text-[11px] uppercase tracking-[0.1em] transition-colors duration-[180ms]",
+    "focus:outline-none focus-visible:underline",
     isSolid
       ? active
         ? "text-[var(--color-text)]"
         : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
       : active
-        ? "text-[var(--color-text-inverse)]"
-        : "text-[var(--color-text-inverse)]/60 hover:text-[var(--color-text-inverse)]";
+        ? "text-platinum"
+        : "text-platinum/55 hover:text-platinum"
+  );
 
   return (
     <>
       {/* ══════════════════════════════════════════════════════════════════
-          HEADER BAR
+          HEADER BAR — symmetric split nav · logo absolute center
       ══════════════════════════════════════════════════════════════════ */}
       <header
-        className="fixed inset-x-0 top-0 z-[60] h-14 md:h-16"
+        className="fixed inset-x-0 top-0 z-[60] h-14 md:h-[60px]"
         style={{
           backgroundColor: isSolid ? "var(--color-bg)" : "transparent",
-          boxShadow: isSolid ? "0 1px 0 var(--color-divider)" : "none",
-          transition:
-            "background-color 300ms ease, box-shadow 300ms ease",
+          boxShadow:        isSolid ? "0 1px 0 var(--color-divider)" : "none",
+          transition:       "background-color 300ms ease, box-shadow 300ms ease",
         }}
       >
-        <div
-          className="relative mx-auto flex h-full items-center justify-between px-6 md:px-10 lg:px-14"
+        {/* ── LOGO — absolute centre ──────────────────────────────────── */}
+        <div className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <Link href="/" aria-label={BRAND.name} onClick={() => setIsOpen(false)}>
+            <NavLogo solid={isSolid} heightPx={20} />
+          </Link>
+        </div>
+
+        <div className="relative mx-auto flex h-full items-center justify-between px-6 md:px-10 lg:px-14"
           style={{ maxWidth: "var(--content-wide)" }}
         >
-          {/* ── LEFT: Logo (desktop) / Hamburger (mobile) ──────────────── */}
-          <div className="flex items-center">
-            {/* Logo — desktop only (left-aligned) */}
-            <Link
-              href="/"
-              aria-label={BRAND.name}
-              onClick={() => setIsOpen(false)}
-              className="hidden focus:outline-none md:block"
-            >
-              <NavLogo solid={isSolid} heightPx={20} />
-            </Link>
-
-            {/* Hamburger / Close — mobile only */}
+          {/* ── LEFT NAV (desktop) / Hamburger (mobile) ─────────────── */}
+          <div className="flex items-center gap-6 md:gap-8">
+            {/* Mobile hamburger */}
             <button
               type="button"
               onClick={() => setIsOpen((p) => !p)}
@@ -216,7 +199,7 @@ export function Header() {
                 "transition-colors duration-[180ms]",
                 isSolid
                   ? "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
-                  : "text-[var(--color-text-inverse)]/60 hover:text-[var(--color-text-inverse)]"
+                  : "text-platinum/55 hover:text-platinum"
               )}
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -229,21 +212,9 @@ export function Header() {
                     transition={{ duration: prefersReducedMotion ? 0.01 : 0.2 }}
                     style={{ display: "flex" }}
                   >
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <line
-                        x1="3" y1="3" x2="17" y2="17"
-                        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                      />
-                      <line
-                        x1="17" y1="3" x2="3" y2="17"
-                        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                      />
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                      <line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <line x1="17" y1="3" x2="3" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                     </svg>
                   </motion.span>
                 ) : (
@@ -255,124 +226,55 @@ export function Header() {
                     transition={{ duration: prefersReducedMotion ? 0.01 : 0.15 }}
                     style={{ display: "flex" }}
                   >
-                    {/* 3-line hamburger, 20×20, currentColor */}
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <line
-                        x1="0" y1="4" x2="20" y2="4"
-                        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                      />
-                      <line
-                        x1="0" y1="10" x2="20" y2="10"
-                        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                      />
-                      <line
-                        x1="0" y1="16" x2="20" y2="16"
-                        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                      />
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                      <line x1="0" y1="4"  x2="20" y2="4"  stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <line x1="0" y1="10" x2="20" y2="10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <line x1="0" y1="16" x2="20" y2="16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                     </svg>
                   </motion.span>
                 )}
               </AnimatePresence>
             </button>
+
+            {/* Desktop left links: The Collection + Our Story */}
+            <nav aria-label="Primary navigation left" className="hidden items-center gap-7 md:flex lg:gap-9">
+              {/* "The Collection" → mega-menu trigger */}
+              <button
+                type="button"
+                onMouseEnter={() => openDropdown("collections")}
+                onMouseLeave={scheduleClose}
+                aria-expanded={activeDropdown === "collections"}
+                aria-haspopup="true"
+                className={linkCls(activeDropdown === "collections" || isActive("/collections"))}
+              >
+                {NAV_LINKS[0].label}
+              </button>
+
+              <Link href={NAV_LINKS[1].href} className={linkCls(isActive(NAV_LINKS[1].href))}>
+                {NAV_LINKS[1].label}
+              </Link>
+            </nav>
           </div>
 
-          {/* ── CENTRE: Primary nav (desktop) / Logo (mobile) ──────────── */}
-
-          {/* Desktop centre nav */}
-          <nav
-            aria-label="Primary navigation"
-            className="hidden items-center gap-8 md:flex lg:gap-10"
-          >
-            {/* "The Collection" triggers mega-menu on hover */}
-            <button
-              type="button"
-              onMouseEnter={() => openDropdown("collections")}
-              onMouseLeave={scheduleClose}
-              aria-expanded={activeDropdown === "collections"}
-              aria-haspopup="true"
-              className={cn(
-                "font-ui uppercase tracking-[0.06em]",
-                "text-[var(--text-sm)]",
-                "transition-colors duration-[180ms]",
-                "focus:outline-none focus-visible:underline",
-                linkColor(activeDropdown === "collections" || isActive("/collections"))
-              )}
-            >
-              {NAV_LINKS[0].label}
-            </button>
-
-            {PRIMARY_LINKS.slice(1).map((link) => (
+          {/* ── RIGHT NAV (desktop) / Spacer (mobile) ───────────────── */}
+          <nav aria-label="Primary navigation right" className="flex items-center gap-7 md:gap-9">
+            {/* Desktop right links: Atelier + Private Enquiry */}
+            {RIGHT_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  "font-ui uppercase tracking-[0.06em]",
-                  "text-[var(--text-sm)]",
-                  "transition-colors duration-[180ms]",
-                  "focus:outline-none focus-visible:underline",
-                  linkColor(isActive(link.href))
-                )}
+                className={cn(linkCls(isActive(link.href)), "hidden md:inline")}
               >
                 {link.label}
               </Link>
             ))}
+
+            {/* Mobile spacer — mirrors hamburger to keep logo centred */}
+            <div aria-hidden="true" className="min-h-[44px] min-w-[44px] md:hidden" />
           </nav>
-
-          {/* Mobile logo — absolute centre, independent of flex children */}
-          <div className="pointer-events-auto absolute left-1/2 -translate-x-1/2 md:hidden">
-            <Link
-              href="/"
-              aria-label={BRAND.name}
-              onClick={() => setIsOpen(false)}
-            >
-              <NavLogo solid={isSolid} heightPx={18} />
-            </Link>
-          </div>
-
-          {/* ── RIGHT: CTA button (desktop) / Spacer (mobile) ──────────── */}
-          <div className="flex items-center justify-end">
-            {/* Ghost CTA — desktop only */}
-            <Link
-              href={CTA_LINK.href}
-              className={cn(
-                "hidden items-center justify-center md:inline-flex",
-                "min-h-[44px] px-5",
-                "border font-ui uppercase tracking-[0.04em]",
-                "text-[var(--text-sm)]",
-                "bg-transparent",
-                "transition-[border-color,color] duration-[180ms]",
-                "focus:outline-none focus-visible:ring-1 focus-visible:ring-offset-1",
-                isSolid
-                  ? [
-                      "border-[var(--color-border)] text-[var(--color-text)]",
-                      "hover:border-[var(--color-text)]",
-                      "focus-visible:ring-[var(--color-text)]",
-                    ]
-                  : [
-                      "border-[var(--color-text-inverse)]/30 text-[var(--color-text-inverse)]",
-                      "hover:border-[var(--color-text-inverse)]/70",
-                      "focus-visible:ring-[var(--color-text-inverse)]",
-                    ]
-              )}
-            >
-              {CTA_LINK.label}
-            </Link>
-
-            {/* Mobile spacer — mirrors hamburger to keep logo centered */}
-            <div
-              aria-hidden="true"
-              className="min-h-[44px] min-w-[44px] md:hidden"
-            />
-          </div>
         </div>
 
-        {/* ── MEGA-MENU DROPDOWN (desktop) ────────────────────────────────── */}
+        {/* ── MEGA-MENU DROPDOWN (desktop) ──────────────────────────────── */}
         <AnimatePresence>
           {activeDropdown === "collections" && (
             <motion.div
@@ -425,9 +327,7 @@ export function Header() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={
-                      prefersReducedMotion ? { duration: 0.01 } : { duration: 0.3 }
-                    }
+                    transition={prefersReducedMotion ? { duration: 0.01 } : { duration: 0.3 }}
                     className="absolute inset-0"
                   >
                     <Image
@@ -439,7 +339,6 @@ export function Header() {
                     />
                   </motion.div>
                 </AnimatePresence>
-                {/* Depth gradient overlay */}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A0F1D]/65 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6">
                   <p className="font-ui text-[0.72rem] uppercase tracking-[0.18em] text-platinum/55">
@@ -453,7 +352,7 @@ export function Header() {
       </header>
 
       {/* ══════════════════════════════════════════════════════════════════
-          DROPDOWN BACKDROP — dims page content behind open mega-menu
+          DROPDOWN BACKDROP
       ══════════════════════════════════════════════════════════════════ */}
       <AnimatePresence>
         {activeDropdown !== null && (
@@ -464,13 +363,13 @@ export function Header() {
             transition={{ duration: 0.25 }}
             aria-hidden="true"
             className="pointer-events-none fixed inset-0 z-[58] bg-[#0A0F1D]/20"
-            style={{ top: "64px" }}
+            style={{ top: "60px" }}
           />
         )}
       </AnimatePresence>
 
       {/* ══════════════════════════════════════════════════════════════════
-          MOBILE DRAWER BACKDROP — outside-tap closes drawer
+          MOBILE DRAWER BACKDROP
       ══════════════════════════════════════════════════════════════════ */}
       <AnimatePresence>
         {isOpen && (
@@ -487,8 +386,7 @@ export function Header() {
       </AnimatePresence>
 
       {/* ══════════════════════════════════════════════════════════════════
-          MOBILE DRAWER — slides in from right
-          Background: --color-bg (warm white). Links: Cardo, dark text.
+          MOBILE DRAWER
       ══════════════════════════════════════════════════════════════════ */}
       <AnimatePresence>
         {isOpen && (
@@ -504,14 +402,9 @@ export function Header() {
             className="fixed inset-y-0 right-0 z-[65] flex w-full flex-col md:hidden"
             style={{ background: "var(--color-bg)" }}
           >
-            {/* Drawer top bar — logo left, close right */}
+            {/* Drawer top bar */}
             <div className="flex h-14 flex-shrink-0 items-center justify-between px-6">
-              <Link
-                href="/"
-                aria-label={BRAND.name}
-                onClick={() => setIsOpen(false)}
-              >
-                {/* Always solid (light bg in drawer) */}
+              <Link href="/" aria-label={BRAND.name} onClick={() => setIsOpen(false)}>
                 <NavLogo solid heightPx={18} />
               </Link>
               <button
@@ -521,26 +414,14 @@ export function Header() {
                 className="flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors duration-[180ms] text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
               >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <line
-                    x1="3" y1="3" x2="17" y2="17"
-                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                  />
-                  <line
-                    x1="17" y1="3" x2="3" y2="17"
-                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-                  />
+                  <line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="17" y1="3" x2="3" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
               </button>
             </div>
 
-            {/* Hairline divider */}
-            <div
-              aria-hidden="true"
-              className="mx-6 h-px flex-shrink-0"
-              style={{ background: "var(--color-divider)" }}
-            />
+            <div aria-hidden="true" className="mx-6 h-px flex-shrink-0" style={{ background: "var(--color-divider)" }} />
 
-            {/* Nav links — Cardo display, left-aligned */}
             <nav
               aria-label="Site navigation"
               className="flex flex-1 flex-col justify-center"
@@ -579,7 +460,6 @@ export function Header() {
               </ul>
             </nav>
 
-            {/* Drawer footer */}
             <div
               className="flex flex-shrink-0 items-center px-6 py-5"
               style={{ borderTop: "1px solid var(--color-divider)" }}

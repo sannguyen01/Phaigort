@@ -4,171 +4,243 @@ import { useRef } from "react";
 import Image from "next/image";
 import {
   motion,
-  useMotionTemplate,
-  useMotionValue,
   useReducedMotion,
   useScroll,
-  useSpring,
   useTransform,
 } from "framer-motion";
-import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
+// ── Hero ──────────────────────────────────────────────────────────────────────
+// Layout: full-viewport dark field
+//   · Top: eyebrow + H1 + body copy + CTA, centered
+//   · Bottom: diamond necklace (vongco) large, centered, with vignette mask
+//   · Floating: rough diamond crystal (kimcuongtho) lower-right, screen blend
+//   · Decorative: dark botanical radial rings, left/right edges
+
 export function Hero() {
+  const heroRef             = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
-  const heroRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
 
-  const overlayY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 40]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.8], [0.08, 0.02]);
-
-  // Mouse-reactive coral/sapphire radial glow
-  const rawX = useMotionValue(50);
-  const rawY = useMotionValue(50);
-  const springX = useSpring(rawX, { stiffness: 80, damping: 20 });
-  const springY = useSpring(rawY, { stiffness: 80, damping: 20 });
-  const glowBg = useMotionTemplate`radial-gradient(circle at ${springX}% ${springY}%, rgba(255,107,74,0.07) 0%, rgba(15,82,186,0.05) 40%, transparent 65%)`;
-
-  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    rawX.set(((e.clientX - left) / width) * 100);
-    rawY.set(((e.clientY - top) / height) * 100);
-  }
+  // Subtle parallax — necklace drifts slightly slower than scroll
+  const necklaceY   = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const roughY      = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const contentY    = useTransform(scrollYProgress, [0, 1], [0, 32]);
 
   return (
     <section
       ref={heroRef}
-      className="-mt-[72px] relative min-h-screen overflow-hidden bg-[#0A0F1D]"
-      onMouseMove={handleMouseMove}
+      className="-mt-[60px] relative min-h-screen overflow-hidden bg-[#08090D]"
+      aria-label="Hero"
     >
-      {/* Full-bleed gemstone photography with parallax */}
-      <motion.div
+      {/* ── Dark botanical radial rings (decorative, left edge) ─────────── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-[18vw] top-[8vh] h-[70vw] w-[70vw] rounded-full"
+        style={{
+          border: "1px solid rgba(248,249,251,0.04)",
+          boxShadow: [
+            "0 0 0 1px rgba(248,249,251,0.025)",
+            "inset 0 0 80px rgba(248,249,251,0.015)",
+          ].join(", "),
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-[28vw] top-[1vh] h-[90vw] w-[90vw] rounded-full"
+        style={{ border: "1px solid rgba(248,249,251,0.025)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-[36vw] -top-[5vh] h-[110vw] w-[110vw] rounded-full"
+        style={{ border: "1px solid rgba(248,249,251,0.015)" }}
+      />
+
+      {/* ── Dark botanical radial rings (decorative, right edge) ────────── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-[20vw] bottom-[5vh] h-[60vw] w-[60vw] rounded-full"
+        style={{ border: "1px solid rgba(248,249,251,0.03)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-[30vw] -bottom-[2vh] h-[80vw] w-[80vw] rounded-full"
+        style={{ border: "1px solid rgba(248,249,251,0.018)" }}
+      />
+
+      {/* ── Radial ambient glow — centre ────────────────────────────────── */}
+      <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
-        style={prefersReducedMotion ? {} : { y: overlayY }}
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 55% at 50% 68%, rgba(180,170,150,0.06) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* ── NECKLACE IMAGE — large, centred, vignette-masked ────────────── */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center"
+        style={prefersReducedMotion ? {} : { y: necklaceY }}
       >
-        <Image
-          src="/hero/hero-gemstone.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[center_35%] opacity-[0.42]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1D]/65 via-[#0A0F1D]/20 to-[#0A0F1D]/90" />
-        <motion.div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(15,82,186,0.5)_0%,_transparent_70%)]"
-          style={prefersReducedMotion ? { opacity: 0.08 } : { opacity: overlayOpacity }}
-        />
+        {/* The vignette mask fades the light background of the PNG into the dark field */}
+        <div
+          className="relative w-[min(640px,90vw)] md:w-[min(700px,75vw)] lg:w-[min(760px,60vw)]"
+          style={{
+            aspectRatio: "3/4",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 88% 90% at 50% 48%, black 28%, transparent 100%)",
+            maskImage:
+              "radial-gradient(ellipse 88% 90% at 50% 48%, black 28%, transparent 100%)",
+          }}
+        >
+          <Image
+            src="/hero/necklace.png"
+            alt="Antique diamond drop necklace — Phaigort Material Collection"
+            fill
+            priority
+            sizes="(max-width: 768px) 90vw, (max-width: 1280px) 75vw, 760px"
+            className="object-contain object-top"
+          />
+        </div>
       </motion.div>
 
-      {/* Cursor-reactive glow */}
-      {!prefersReducedMotion && (
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 z-[1]"
-          style={{ background: glowBg }}
-        />
-      )}
-
-      {/* Main content — centred, cleared of header */}
-      <div className="relative z-10 flex min-h-screen items-center">
-        <motion.div
-          className="w-full"
-          style={prefersReducedMotion ? {} : { y: contentY }}
+      {/* ── ROUGH DIAMOND — floating lower-right, screen blend ──────────── */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute bottom-[5vh] right-[4vw] hidden md:block"
+        style={prefersReducedMotion ? {} : { y: roughY }}
+        animate={prefersReducedMotion ? {} : { y: [0, -12, 0] }}
+        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <div
+          className="relative w-[clamp(140px,14vw,220px)]"
+          style={{ aspectRatio: "1/1" }}
         >
-          <Container className="flex flex-col items-center pt-[72px] text-center">
-            <motion.div
-              {...(prefersReducedMotion
-                ? {}
-                : {
-                    initial: { opacity: 0, y: 24 },
-                    animate: { opacity: 1, y: 0 },
-                    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
-                  })}
-              className="max-w-4xl space-y-7"
-            >
-              {/* Eyebrow — Garet */}
-              <p className="font-ui text-[10px] uppercase tracking-[0.18em] text-platinum/45">
-                Rare Gemstones · Precious Metals · Material Culture
-              </p>
+          <Image
+            src="/hero/rough-diamond.png"
+            alt="Rough diamond crystal specimen"
+            fill
+            sizes="(max-width: 1280px) 14vw, 220px"
+            className="object-contain"
+            style={{ mixBlendMode: "screen", opacity: 0.75 }}
+            loading="eager"
+          />
+        </div>
+      </motion.div>
 
-              {/* Headline — Cardo with letter-spacing entry animation */}
-              <motion.h1
-                className="font-display text-[clamp(2.5rem,5.5vw,5.5rem)] font-bold leading-[1.05] text-platinum"
-                {...(prefersReducedMotion
-                  ? {}
-                  : {
-                      initial: { letterSpacing: "-0.03em", opacity: 0 },
-                      animate: { letterSpacing: "0em", opacity: 1 },
-                      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-                    })}
-              >
-                Some things take million
-                <br />
-                to billion years to become
-                <br />
-                extraordinary.
-              </motion.h1>
+      {/* ── Top gradient — fades hero into header ───────────────────────── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-32"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(8,9,13,0.85) 0%, transparent 100%)",
+        }}
+      />
 
-              {/* Brand statement — Cardo italic */}
-              <motion.p
-                className="mx-auto max-w-2xl font-display text-[clamp(0.95rem,1.4vw,1.15rem)] italic leading-relaxed text-platinum/60"
-                {...(prefersReducedMotion
-                  ? {}
-                  : {
-                      initial: { opacity: 0, y: 12 },
-                      animate: { opacity: 1, y: 0 },
-                      transition: { duration: 0.6, delay: 0.35, ease: "easeOut" },
-                    })}
-              >
-                We find them at the source.
-                <br />
-                We bring them to those who understand what they hold.
-              </motion.p>
-            </motion.div>
+      {/* ── Bottom gradient — grounds the necklace ──────────────────────── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-48"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(8,9,13,1) 0%, transparent 100%)",
+        }}
+      />
 
-            {/* CTA */}
-            <motion.div
-              {...(prefersReducedMotion
-                ? {}
-                : {
-                    initial: { opacity: 0 },
-                    animate: { opacity: 1 },
-                    transition: { delay: 0.65, duration: 0.7 },
-                  })}
-              className="mt-12"
-            >
-              <Button href="/collections" variant="secondary" onDark>
-                Enter the Collection
-              </Button>
-            </motion.div>
-          </Container>
+      {/* ── TEXT CONTENT — centred upper portion ────────────────────────── */}
+      <motion.div
+        className="relative z-10 flex min-h-screen flex-col items-center justify-start pt-[clamp(100px,14vh,160px)] text-center"
+        style={prefersReducedMotion ? {} : { y: contentY }}
+      >
+        {/* Eyebrow */}
+        <motion.p
+          className="font-ui text-[10px] uppercase tracking-[0.22em] text-platinum/40"
+          {...(prefersReducedMotion
+            ? {}
+            : {
+                initial: { opacity: 0 },
+                animate: { opacity: 1 },
+                transition: { duration: 1, delay: 0.1 },
+              })}
+        >
+          Rare Gemstones · Precious Metals · Material Culture
+        </motion.p>
+
+        {/* H1 */}
+        <motion.h1
+          className="mx-auto mt-6 max-w-[800px] px-6 font-display text-[clamp(2.2rem,5vw,4.8rem)] font-bold leading-[1.06] text-platinum"
+          {...(prefersReducedMotion
+            ? {}
+            : {
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 1, delay: 0.18, ease: [0.22, 1, 0.36, 1] },
+              })}
+        >
+          Some things take million
+          <br />
+          to billion years to become
+          <br />
+          extraordinary.
+        </motion.h1>
+
+        {/* Body copy */}
+        <motion.p
+          className="mx-auto mt-6 max-w-[520px] px-6 font-display text-[clamp(0.9rem,1.3vw,1.05rem)] italic leading-relaxed text-platinum/55"
+          {...(prefersReducedMotion
+            ? {}
+            : {
+                initial: { opacity: 0, y: 12 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.8, delay: 0.38, ease: "easeOut" },
+              })}
+        >
+          We find them at the source.
+          <br />
+          We bring them to those who understand what they hold.
+        </motion.p>
+
+        {/* CTA */}
+        <motion.div
+          className="mt-10"
+          {...(prefersReducedMotion
+            ? {}
+            : {
+                initial: { opacity: 0 },
+                animate: { opacity: 1 },
+                transition: { delay: 0.62, duration: 0.7 },
+              })}
+        >
+          <Button href="/collections" variant="secondary" onDark>
+            Enter the Collection
+          </Button>
         </motion.div>
-      </div>
+      </motion.div>
 
-      {/* Scroll indicator */}
+      {/* ── Scroll indicator ────────────────────────────────────────────── */}
       {!prefersReducedMotion && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2"
           >
-            <span className="font-ui text-[9px] uppercase tracking-widest text-platinum/40">
+            <span className="font-ui text-[9px] uppercase tracking-widest text-platinum/30">
               Scroll
             </span>
-            <div className="h-8 w-px bg-gradient-to-b from-platinum/30 to-transparent" />
+            <div className="h-8 w-px bg-gradient-to-b from-platinum/20 to-transparent" />
           </motion.div>
         </motion.div>
       )}
