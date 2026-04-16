@@ -42,7 +42,7 @@ const TIMELINE_DATA = [
 ];
 
 export function MaterialTimeline() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"],

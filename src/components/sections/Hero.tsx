@@ -34,7 +34,7 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="-mt-[60px] relative min-h-screen overflow-hidden bg-[#08090D]"
+      className="-mt-[60px] relative min-h-svh max-h-svh overflow-hidden bg-[#08090D]"
       aria-label="Hero"
     >
       {/* ── Dark botanical radial rings (decorative, left edge) ─────────── */}
@@ -86,13 +86,12 @@ export function Hero() {
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center"
-        style={prefersReducedMotion ? {} : { y: necklaceY }}
+        style={prefersReducedMotion ? { height: "100%" } : { y: necklaceY, height: "100%" }}
       >
         {/* The vignette mask fades the light background of the PNG into the dark field */}
         <div
-          className="relative w-[min(640px,90vw)] md:w-[min(700px,75vw)] lg:w-[min(760px,60vw)]"
+          className="relative h-full w-[min(640px,90vw)] md:w-[min(700px,75vw)] lg:w-[min(760px,60vw)]"
           style={{
-            aspectRatio: "3/4",
             WebkitMaskImage:
               "radial-gradient(ellipse 88% 90% at 50% 48%, black 28%, transparent 100%)",
             maskImage:
@@ -156,7 +155,7 @@ export function Hero() {
 
       {/* ── TEXT CONTENT — centred upper portion ────────────────────────── */}
       <motion.div
-        className="relative z-10 flex min-h-screen flex-col items-center justify-start pt-[clamp(100px,14vh,160px)] text-center"
+        className="relative z-10 flex min-h-svh flex-col items-center justify-start pt-[clamp(100px,14vh,160px)] text-center"
         style={prefersReducedMotion ? {} : { y: contentY }}
       >
         {/* Eyebrow */}
