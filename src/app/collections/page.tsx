@@ -2,7 +2,6 @@ import Image from "next/image";
 import { createMetadata } from "@/lib/metadata";
 import { H1, H3, Body, Caption, Label } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
-import { Divider } from "@/components/ui/Divider";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ImageReveal } from "@/components/ui/ImageReveal";
 import { TREASURE_DOMAINS } from "@/lib/constants";
@@ -44,60 +43,100 @@ const DOMAIN_DETAILS = [
 export default function CollectionsPage() {
   return (
     <div>
-      <section className="bg-platinum pt-16 text-royal-navy md:pt-24">
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section className="bg-[#0A0F1D] pb-0 pt-16 text-platinum md:pt-24">
         <Container>
           <ScrollReveal>
-            <Caption>The Collection</Caption>
-            <H1 className="mt-5 max-w-4xl">
-              Four domains of rarity. One standard of documentation.
+            <Caption className="text-platinum/45">The Collection</Caption>
+            <H1 className="mt-5 max-w-4xl text-platinum">
+              Four domains of rarity.
+              <br />
+              One standard of documentation.
             </H1>
-            <Body className="mt-6 max-w-2xl text-royal-navy/70">
+            <Body className="mt-6 max-w-2xl text-platinum/65">
               Phaigort assembles rare gemstones, precious metal specimens, historical artifacts, and
               contemporary material innovations under a single framework: every piece must carry its
               own evidence. Geological origin, treatment status, provenance chain, and material
-              specification are documented as a condition of presentation — not offered as a
-              premium.
+              specification are documented as a condition of presentation — not offered as a premium.
             </Body>
           </ScrollReveal>
         </Container>
+
+        {/* Divider rule beneath hero text */}
+        <div className="mt-14 flex items-center px-[clamp(24px,4vw,64px)] pb-0">
+          <div className="h-px flex-1 bg-platinum/[0.07]" />
+          <div className="mx-5 h-2.5 w-2.5 rotate-45 border border-coral/50" />
+          <div className="h-px flex-1 bg-platinum/[0.07]" />
+        </div>
       </section>
-      <Divider />
-      <section className="bg-platinum pb-10 text-royal-navy md:pb-16">
+
+      {/* ── Full-bleed editorial break ────────────────────────────────────── */}
+      <div className="relative h-[42vh] min-h-[260px] max-h-[460px] overflow-hidden bg-[#0A0F1D]">
+        <Image
+          src="/editorial/hero-break.jpg"
+          alt="Phaigort material collection — editorial"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          priority
+        />
+        {/* Dark vignette top + bottom to blend with flanking sections */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, #0A0F1D 0%, transparent 28%, transparent 72%, #08090D 100%)",
+          }}
+        />
+      </div>
+
+      {/* ── Domains ───────────────────────────────────────────────────────── */}
+      <section className="bg-[#08090D] pb-10 text-platinum md:pb-20">
         <Container>
-          <div className="space-y-16 md:space-y-20">
+          <div className="space-y-0">
             {TREASURE_DOMAINS.map((domain, i) => (
-              <section key={domain.title} id={domain.href.split("#")[1]} className="scroll-mt-24">
+              <section
+                key={domain.title}
+                id={domain.href.split("#")[1]}
+                className={`scroll-mt-24 py-16 md:py-20 ${
+                  i > 0 ? "border-t border-platinum/[0.06]" : ""
+                }`}
+              >
                 <ScrollReveal>
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_2fr] md:gap-12">
+                    {/* Left: label + title */}
                     <div>
-                      <Label className="text-royal-navy/45">
+                      <Label className="text-platinum/35">
                         Domain {String(i + 1).padStart(2, "0")}
                       </Label>
-                      <H3 className="mt-4">{domain.title}</H3>
+                      <H3 className="mt-4 text-platinum">{domain.title}</H3>
                     </div>
+
+                    {/* Right: body text + image */}
                     <div>
                       <div className="space-y-4">
                         {DOMAIN_DETAILS[i].paragraphs.map((para, j) => (
-                          <Body key={j} className="text-royal-navy/70">
+                          <Body key={j} className="text-platinum/65">
                             {para}
                           </Body>
                         ))}
                       </div>
                       <ImageReveal delay={0.15} className="mt-8">
-                        <div className="relative aspect-[4/3] overflow-hidden border border-royal-navy/10 bg-royal-navy/5">
+                        <div className="group relative aspect-[16/10] overflow-hidden border border-platinum/[0.07] bg-platinum/[0.03]">
                           <Image
                             src={domain.image}
                             alt={domain.imageAlt}
                             fill
                             sizes="(max-width: 768px) 100vw, 66vw"
-                            className="object-cover"
+                            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                            loading={i === 0 ? "eager" : "lazy"}
                           />
                         </div>
                       </ImageReveal>
                     </div>
                   </div>
                 </ScrollReveal>
-                {i < TREASURE_DOMAINS.length - 1 && <Divider />}
               </section>
             ))}
           </div>

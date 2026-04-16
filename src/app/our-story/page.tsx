@@ -1,10 +1,10 @@
+import Image from "next/image";
 import { createMetadata } from "@/lib/metadata";
 import { H1, H2, Body, Caption } from "@/components/ui/Typography";
 import { Container } from "@/components/ui/Container";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
-import { SectionBridge } from "@/components/ui/SectionBridge";
 
 export const metadata = createMetadata({
   title: "Our Story — The Origin of Phaigort",
@@ -16,10 +16,10 @@ export const metadata = createMetadata({
 export default function OurStoryPage() {
   return (
     <>
-      {/* royal-navy */}
-      <DarkFieldStage intensity="full" className="py-24 md:py-36">
+      {/* Hero — deep dark */}
+      <DarkFieldStage intensity="deep" className="py-24 md:py-36">
         <Container className="max-w-3xl">
-          <Caption>Our Story</Caption>
+          <Caption className="text-platinum/50">Our Story</Caption>
           <H1 className="mt-5 text-platinum">
             The Earth spent forty million years
             <br />
@@ -35,33 +35,31 @@ export default function OurStoryPage() {
         </Container>
       </DarkFieldStage>
 
-      {/* royal-navy → platinum */}
-      <SectionBridge transition="navy-to-platinum" />
-
-      {/* platinum */}
-      <section className="bg-platinum py-10 text-royal-navy md:py-16">
+      {/* The Earth as Artist */}
+      <section className="bg-[#0A0F1D] py-16 text-platinum md:py-24">
         <Container>
           <ScrollReveal>
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
               <div>
-                <div className="mb-6 h-px w-8 bg-coral" />
-                <Caption className="text-royal-navy/40">The Earth as Artist</Caption>
-                <H2 className="mt-4">Colour is chemistry. Chemistry is provenance.</H2>
+                <Caption className="text-platinum/40">The Earth as Artist</Caption>
+                <H2 className="mt-4 text-platinum">
+                  Colour is chemistry. Chemistry is provenance.
+                </H2>
               </div>
               <div className="space-y-5">
-                <Body>
+                <Body className="text-platinum/70">
                   A ruby&apos;s red comes from chromium — the same element that colours emeralds
                   green, depending on the mineral host. An alexandrite shifts from teal to raspberry
                   because its absorption spectrum sits precisely on the boundary between daylight
                   and incandescent light. These are not accidents of beauty. They are chemistry
                   operating under conditions that Earth alone creates.
                 </Body>
-                <Body>
+                <Body className="text-platinum/70">
                   We select materials that carry this geological intelligence visibly. Every stone
                   in a Phaigort collection is chosen because its beauty is inseparable from its
                   science — and both are documented, not assumed.
                 </Body>
-                <Body>
+                <Body className="text-platinum/70">
                   This is why origin matters in ways that go beyond geography. A Sri Lankan sapphire
                   and a Burmese sapphire of identical colour have different geological biographies —
                   different host rocks, different trace element concentrations, different pressure
@@ -73,17 +71,16 @@ export default function OurStoryPage() {
         </Container>
       </section>
 
-      {/* platinum → royal-navy */}
-      <SectionBridge transition="platinum-to-navy" />
-
-      {/* royal-navy */}
-      <section className="bg-royal-navy py-10 text-platinum md:py-16">
+      {/* The Expedition Mind */}
+      <section className="bg-[#0D0B09] py-16 text-platinum md:py-24">
         <Container>
           <ScrollReveal>
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
               <div>
-                <Caption>The Expedition Mind</Caption>
-                <H2 className="mt-4">We go to the source before the market arrives.</H2>
+                <Caption className="text-platinum/40">The Expedition Mind</Caption>
+                <H2 className="mt-4 text-platinum">
+                  We go to the source before the market arrives.
+                </H2>
               </div>
               <div className="space-y-5">
                 <Body className="text-platinum/70">
@@ -105,37 +102,58 @@ export default function OurStoryPage() {
               </div>
             </div>
           </ScrollReveal>
+
+          {/* Expedition rough specimen — full-width image after body text */}
+          <ScrollReveal delay={0.2} className="mt-14">
+            <div className="group relative aspect-[21/9] overflow-hidden border border-platinum/[0.06]">
+              <Image
+                src="/story/expedition-rough.jpg"
+                alt="Rough gemstone specimens from the field — Phaigort expedition material"
+                fill
+                sizes="(max-width: 768px) 100vw, 90vw"
+                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 110% 100% at 50% 50%, transparent 55%, rgba(13,11,9,0.55) 100%)",
+                }}
+              />
+              <p className="absolute bottom-4 right-5 font-ui text-[9px] uppercase tracking-[0.25em] text-platinum/30">
+                Field specimens
+              </p>
+            </div>
+          </ScrollReveal>
         </Container>
       </section>
 
-      {/* royal-navy → platinum */}
-      <SectionBridge transition="navy-to-platinum" />
-
-      {/* platinum */}
-      <section className="bg-platinum py-10 text-royal-navy md:py-16">
+      {/* The Standard */}
+      <section className="bg-[#0A0F1D] py-16 text-platinum md:py-24">
         <Container>
           <ScrollReveal>
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
               <div>
-                <div className="mb-6 h-px w-8 bg-coral" />
-                <Caption className="text-royal-navy/40">The Standard</Caption>
-                <H2 className="mt-4">
+                <Caption className="text-platinum/40">The Standard</Caption>
+                <H2 className="mt-4 text-platinum">
                   Every piece asks one question: will it matter more in twenty years?
                 </H2>
               </div>
               <div className="space-y-5">
-                <Body>
+                <Body className="text-platinum/70">
                   A stone cut to maximise weight is not the same as a stone cut to maximise beauty.
                   Metal chosen for margin is not the same as metal chosen for how it wears over
                   decades. Phaigort pieces are evaluated by craftspeople with deep material
                   knowledge — not by production schedules or seasonal targets.
                 </Body>
-                <Body>
+                <Body className="text-platinum/70">
                   The result is a collection where every object is intended to outlast its purchase
                   occasion — pieces worth explaining to someone who finds them in fifty years,
                   carrying their story visibly in the material itself.
                 </Body>
-                <Body>
+                <Body className="text-platinum/70">
                   Phaigort does not issue condition reports against future uncertainty. We issue
                   them because we believe a collector deserves to understand exactly what they hold
                   — the mineral species, the treatment status (heated or unheated, clarity-enhanced
@@ -148,23 +166,22 @@ export default function OurStoryPage() {
         </Container>
       </section>
 
-      {/* platinum → royal-navy */}
-      <SectionBridge transition="platinum-to-navy" />
-
-      {/* royal-navy */}
-      <DarkFieldStage intensity="full" className="py-12 md:py-16">
+      {/* Closing CTA — deep dark */}
+      <DarkFieldStage intensity="deep" className="py-16 md:py-24">
         <Container className="text-center">
           <ScrollReveal>
             <H2 className="mx-auto max-w-xl text-platinum">
               Every collection begins with a geological event.
             </H2>
-            <Body className="mx-auto mt-4 text-platinum/70">
+            <Body className="mx-auto mt-4 max-w-lg text-platinum/70">
               Browse the four domains of rarity that Phaigort has assembled — coloured gemstones of
               documented origin, precious metals in their natural state, historical artifacts of
               verified provenance, and contemporary materials of irreproducible specification.
             </Body>
             <div className="mt-8">
-              <Button href="/collections">Enter the Collection</Button>
+              <Button href="/collections" variant="secondary" onDark>
+                Enter the Collection
+              </Button>
             </div>
           </ScrollReveal>
         </Container>
