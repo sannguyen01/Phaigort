@@ -15,13 +15,13 @@ interface FormData {
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClasses = cn(
-  "w-full px-4 py-3 bg-white border border-royal-navy/15 rounded-sm",
-  "font-body text-sm text-royal-navy placeholder:text-royal-navy/40",
-  "focus:outline-none focus:border-royal-navy/30 focus:ring-1 focus:ring-royal-navy/10 transition-all duration-300",
+  "w-full px-4 py-3 bg-[#0A1240] border border-platinum/10 rounded-sm",
+  "font-ui text-sm text-platinum placeholder:text-platinum/30",
+  "focus:outline-none focus:border-platinum/30 focus:ring-1 focus:ring-platinum/10 transition-all duration-300",
   "disabled:opacity-50 disabled:cursor-not-allowed"
 );
 
-const labelClasses = "block font-brand text-xs uppercase tracking-widest text-royal-navy/60 mb-2";
+const labelClasses = "block font-ui text-[10px] uppercase tracking-[0.15em] text-platinum/50 mb-2";
 
 export function ContactForm() {
   const [form, setForm] = useState<FormData>({ name: "", email: "", interest: "", message: "" });
@@ -69,12 +69,12 @@ export function ContactForm() {
           className="space-y-4 py-16 text-center"
         >
           <H3>Thank You</H3>
-          <p className="font-body text-[15px] text-royal-navy/70">
+          <p className="font-ui text-[15px] text-platinum/70">
             Your inquiry has been received. We will respond within 48 hours.
           </p>
           <button
             onClick={() => setStatus("idle")}
-            className="mt-6 font-body text-sm uppercase tracking-widest text-royal-navy/60 transition-colors duration-300 hover:text-royal-navy"
+            className="mt-6 font-ui text-sm uppercase tracking-widest text-platinum/50 transition-colors duration-300 hover:text-platinum"
           >
             Send Another Inquiry
           </button>
@@ -137,7 +137,7 @@ export function ContactForm() {
                 disabled={isSubmitting}
                 value={form.interest}
                 onChange={(e) => setForm({ ...form, interest: e.target.value })}
-                className={cn(inputClasses, !form.interest && "text-royal-navy/40")}
+                className={cn(inputClasses, !form.interest && "text-platinum/30")}
               >
                 <option value="">Select an area</option>
                 <option value="geological-rarities">Geological Rarities</option>
