@@ -11,7 +11,7 @@ import { NAV_LINKS, BRAND, TREASURE_DOMAINS } from "@/lib/constants";
 // ── Link groups ────────────────────────────────────────────────────────────────
 // Left side: The Collection + Our Story
 // Right side: Atelier + Private Enquiry
-const LEFT_LINKS  = [NAV_LINKS[0], NAV_LINKS[1]] as const;
+const LEFT_LINKS = [NAV_LINKS[0], NAV_LINKS[1]] as const;
 const RIGHT_LINKS = [NAV_LINKS[2], NAV_LINKS[3]] as const;
 
 type TreasureDomain = (typeof TREASURE_DOMAINS)[number];
@@ -19,19 +19,19 @@ type TreasureDomain = (typeof TREASURE_DOMAINS)[number];
 // ── Animation variants ────────────────────────────────────────────────────────
 
 const DROPDOWN_VARIANTS = {
-  hidden:  { opacity: 0, y: -4 },
-  visible: { opacity: 1, y: 0,   transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } },
-  exit:    { opacity: 0, y: -4,  transition: { duration: 0.15, ease: [0.42, 0, 1, 1] } },
+  hidden: { opacity: 0, y: -4 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] } },
+  exit: { opacity: 0, y: -4, transition: { duration: 0.15, ease: [0.42, 0, 1, 1] } },
 } as const;
 
 const DRAWER_VARIANTS = {
-  hidden:  { x: "100%" },
-  visible: { x: "0%",   transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
-  exit:    { x: "100%", transition: { duration: 0.35, ease: [0.42, 0, 1, 1] } },
+  hidden: { x: "100%" },
+  visible: { x: "0%", transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
+  exit: { x: "100%", transition: { duration: 0.35, ease: [0.42, 0, 1, 1] } },
 } as const;
 
 const DRAWER_LINK_VARIANTS = {
-  hidden:  { opacity: 0, x: 16 },
+  hidden: { opacity: 0, x: 16 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
@@ -40,48 +40,60 @@ const DRAWER_LINK_VARIANTS = {
   exit: { opacity: 0, transition: { duration: 0.15 } },
 } as const;
 
-// ── Inline wordmark ────────────────────────────────────────────────────────────
+// ── PNG logo with scroll-state crossfade ─────────────────────────────────────
+// • !solid (transparent, dark hero) → wordmark only (Logo White, inverted to white)
+// • solid (scrolled, dark header)   → diamond mark  (Logo Dark,  inverted to white diamond)
+// Both PNGs have white backgrounds; filter:invert(1) makes the white bg black → disappears on dark field.
 
 interface NavLogoProps {
   solid: boolean;
-  heightPx?: number;
+  size?: number;
 }
 
-function NavLogo({ solid, heightPx = 20 }: NavLogoProps) {
-  const widthPx = Math.round((220 / 36) * heightPx);
+function NavLogo({ solid, size = 52 }: NavLogoProps) {
+  const sizePx = `${size}px`;
   return (
-    <svg
-      viewBox="0 0 220 36"
-      width={widthPx}
-      height={heightPx}
-      aria-hidden="true"
-      style={{ display: "block", flexShrink: 0 }}
+    <div
+      className="relative flex-shrink-0"
+      style={{ width: sizePx, height: sizePx }}
+      aria-label="Phaigort"
     >
-      <text
-        x="0"
-        y="27"
-        fontFamily="var(--font-garet), 'Jost', sans-serif"
-        fontSize="17"
-        fontWeight="700"
-        letterSpacing="5"
-        textAnchor="start"
+      {/* Wordmark — fades in when header is transparent (top of page) */}
+      <Image
+        src="/brand/phaigort-logo-white.png"
+        alt="Phaigort"
+        fill
+        sizes={sizePx}
+        className="object-contain"
         style={{
-          fill: solid ? "var(--color-text)" : "var(--color-text-inverse)",
-          transition: "fill 300ms cubic-bezier(0.16, 1, 0.3, 1)",
+          filter: "invert(1)",
+          opacity: solid ? 0 : 1,
+          transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
         }}
-      >
-        PHAIGORT
-      </text>
-    </svg>
+        priority
+      />
+      {/* Diamond mark — fades in when header is solid (scrolled) */}
+      <Image
+        src="/brand/phaigort-logo-dark.png"
+        alt=""
+        aria-hidden={true}
+        fill
+        sizes={sizePx}
+        className="object-contain"
+        style={{
+          filter: "invert(1)",
+          opacity: solid ? 1 : 0,
+          transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+        priority
+      />
+    </div>
   );
 }
 
 // ── Reduced-motion helper ─────────────────────────────────────────────────────
 
-function instant<T extends Record<string, unknown>>(
-  variants: T,
-  reduced: boolean | null
-): T {
+function instant<T extends Record<string, unknown>>(variants: T, reduced: boolean | null): T {
   if (!reduced) return variants;
   return Object.fromEntries(
     Object.entries(variants).map(([k, v]) => [
@@ -94,14 +106,14 @@ function instant<T extends Record<string, unknown>>(
 // ── Header ────────────────────────────────────────────────────────────────────
 
 export function Header() {
-  const [isOpen, setIsOpen]               = useState(false);
-  const [scrolled, setScrolled]           = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [hoveredDomain, setHoveredDomain] = useState<TreasureDomain>(TREASURE_DOMAINS[0]);
-  const pathname                          = usePathname();
-  const overlayId                         = useId();
-  const prefersReducedMotion              = useReducedMotion();
-  const closeTimerRef                     = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pathname = usePathname();
+  const overlayId = useId();
+  const prefersReducedMotion = useReducedMotion();
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const check = () => setScrolled(window.scrollY > 60);
@@ -117,7 +129,10 @@ export function Header() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") { setIsOpen(false); setActiveDropdown(null); }
+      if (e.key === "Escape") {
+        setIsOpen(false);
+        setActiveDropdown(null);
+      }
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
@@ -125,10 +140,12 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
-  const openDropdown  = useCallback((key: string) => {
+  const openDropdown = useCallback((key: string) => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
     setActiveDropdown(key);
   }, []);
@@ -137,12 +154,14 @@ export function Header() {
     closeTimerRef.current = setTimeout(() => setActiveDropdown(null), 120);
   }, []);
 
-  const cancelClose   = useCallback(() => {
+  const cancelClose = useCallback(() => {
     if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
   }, []);
 
   useEffect(() => {
-    return () => { if (closeTimerRef.current) clearTimeout(closeTimerRef.current); };
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
   }, []);
 
   const isActive = (href: string) => pathname === href;
@@ -150,17 +169,18 @@ export function Header() {
   // Solid = scrolled or off homepage. Transparent = dark-hero top of homepage.
   const isSolid = pathname !== "/" || scrolled || activeDropdown !== null;
 
-  const linkCls = (active: boolean) => cn(
-    "font-ui text-[11px] uppercase tracking-[0.1em] transition-colors duration-[180ms]",
-    "focus:outline-none focus-visible:underline",
-    isSolid
-      ? active
-        ? "text-[var(--color-text)]"
-        : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
-      : active
-        ? "text-platinum"
-        : "text-platinum/55 hover:text-platinum"
-  );
+  const linkCls = (active: boolean) =>
+    cn(
+      "font-ui text-[11px] uppercase tracking-[0.1em] transition-colors duration-[180ms]",
+      "focus:outline-none focus-visible:underline",
+      isSolid
+        ? active
+          ? "text-[var(--color-text)]"
+          : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+        : active
+          ? "text-platinum"
+          : "text-platinum/55 hover:text-platinum"
+    );
 
   return (
     <>
@@ -171,18 +191,19 @@ export function Header() {
         className="fixed inset-x-0 top-0 z-[60] h-14 md:h-[60px]"
         style={{
           backgroundColor: isSolid ? "var(--color-bg)" : "transparent",
-          boxShadow:        isSolid ? "0 1px 0 var(--color-divider)" : "none",
-          transition:       "background-color 300ms ease, box-shadow 300ms ease",
+          boxShadow: isSolid ? "0 1px 0 var(--color-divider)" : "none",
+          transition: "background-color 300ms ease, box-shadow 300ms ease",
         }}
       >
         {/* ── LOGO — absolute centre ──────────────────────────────────── */}
         <div className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <Link href="/" aria-label={BRAND.name} onClick={() => setIsOpen(false)}>
-            <NavLogo solid={isSolid} heightPx={20} />
+            <NavLogo solid={isSolid} size={20} />
           </Link>
         </div>
 
-        <div className="relative mx-auto flex h-full items-center justify-between px-6 md:px-10 lg:px-14"
+        <div
+          className="relative mx-auto flex h-full items-center justify-between px-6 md:px-10 lg:px-14"
           style={{ maxWidth: "var(--content-wide)" }}
         >
           {/* ── LEFT NAV (desktop) / Hamburger (mobile) ─────────────── */}
@@ -213,8 +234,24 @@ export function Header() {
                     style={{ display: "flex" }}
                   >
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                      <line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                      <line x1="17" y1="3" x2="3" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <line
+                        x1="3"
+                        y1="3"
+                        x2="17"
+                        y2="17"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
+                      <line
+                        x1="17"
+                        y1="3"
+                        x2="3"
+                        y2="17"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
                     </svg>
                   </motion.span>
                 ) : (
@@ -227,9 +264,33 @@ export function Header() {
                     style={{ display: "flex" }}
                   >
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                      <line x1="0" y1="4"  x2="20" y2="4"  stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                      <line x1="0" y1="10" x2="20" y2="10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                      <line x1="0" y1="16" x2="20" y2="16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <line
+                        x1="0"
+                        y1="4"
+                        x2="20"
+                        y2="4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
+                      <line
+                        x1="0"
+                        y1="10"
+                        x2="20"
+                        y2="10"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
+                      <line
+                        x1="0"
+                        y1="16"
+                        x2="20"
+                        y2="16"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
                     </svg>
                   </motion.span>
                 )}
@@ -237,7 +298,10 @@ export function Header() {
             </button>
 
             {/* Desktop left links: The Collection + Our Story */}
-            <nav aria-label="Primary navigation left" className="hidden items-center gap-7 md:flex lg:gap-9">
+            <nav
+              aria-label="Primary navigation left"
+              className="hidden items-center gap-7 md:flex lg:gap-9"
+            >
               {/* "The Collection" → mega-menu trigger */}
               <button
                 type="button"
@@ -288,7 +352,7 @@ export function Header() {
               exit="exit"
               className={cn(
                 "absolute left-0 right-0 top-full",
-                "bg-[#0A0F1D] border-b border-platinum/[0.07]",
+                "border-b border-platinum/[0.07] bg-[#0A0F1D]",
                 "grid min-h-[320px] grid-cols-[1fr_1.8fr]"
               )}
             >
@@ -405,22 +469,42 @@ export function Header() {
             {/* Drawer top bar */}
             <div className="flex h-14 flex-shrink-0 items-center justify-between px-6">
               <Link href="/" aria-label={BRAND.name} onClick={() => setIsOpen(false)}>
-                <NavLogo solid heightPx={18} />
+                <NavLogo solid size={18} />
               </Link>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
                 aria-label="Close navigation"
-                className="flex min-h-[44px] min-w-[44px] items-center justify-center transition-colors duration-[180ms] text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+                className="flex min-h-[44px] min-w-[44px] items-center justify-center text-[var(--color-text-muted)] transition-colors duration-[180ms] hover:text-[var(--color-text)]"
               >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                  <line x1="17" y1="3" x2="3" y2="17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <line
+                    x1="3"
+                    y1="3"
+                    x2="17"
+                    y2="17"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1="17"
+                    y1="3"
+                    x2="3"
+                    y2="17"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
                 </svg>
               </button>
             </div>
 
-            <div aria-hidden="true" className="mx-6 h-px flex-shrink-0" style={{ background: "var(--color-divider)" }} />
+            <div
+              aria-hidden="true"
+              className="mx-6 h-px flex-shrink-0"
+              style={{ background: "var(--color-divider)" }}
+            />
 
             <nav
               aria-label="Site navigation"

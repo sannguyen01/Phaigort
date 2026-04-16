@@ -17,11 +17,13 @@ const config: Config = {
         sapphire: "#0F52BA",
         emerald: "#1B4332",
         // ── New design system tokens ──────────────────────────────────
-        ground: "#F8F7F3", // warm platinum white — primary surface
-        stone: "#EDE8E0", // warm stone — secondary surface / separators
-        "near-black": "#1A1917", // dark field (archive section, footer option)
-        ink: "#18170F", // primary text
-        muted: "#7A7872", // secondary / captions
+        ground: "#0D0B09", // warm near-black — primary surface (dark-first)
+        stone: "#1A1714", // warm dark surface — secondary surface
+        "near-black": "#0D0B09", // dark field
+        ink: "#F0EDE8", // primary text — warm platinum
+        muted: "#9B9590", // secondary / captions — warm stone gray
+        gold: "#C9A55A", // warm gold accent
+        "gold-dark": "#B8923F", // deep gold hover
       },
       fontFamily: {
         // ── Legacy (preserved for non-homepage pages) ─────────────────

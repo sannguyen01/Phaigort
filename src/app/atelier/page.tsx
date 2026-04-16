@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { SectionBridge } from "@/components/ui/SectionBridge";
 
 export const metadata = createMetadata({
   title: "The Atelier — Private Consultation & Gemstone Discovery",
@@ -43,10 +42,10 @@ const APPROACHES = [
 export default function AtelierPage() {
   return (
     <>
-      {/* royal-navy */}
-      <DarkFieldStage intensity="full" className="py-16 md:py-24">
+      {/* Hero */}
+      <DarkFieldStage intensity="deep" className="py-16 md:py-24">
         <Container className="max-w-3xl">
-          <Caption className="mb-3 block">Private Discovery</Caption>
+          <Caption className="mb-3 block text-platinum/50">Private Discovery</Caption>
           <H1 className="mt-4 text-platinum">The Atelier</H1>
           <Body className="mt-6 text-platinum/70">
             The Atelier is not a showroom. It is a place designed for the kind of attention that
@@ -57,23 +56,20 @@ export default function AtelierPage() {
         </Container>
       </DarkFieldStage>
 
-      {/* royal-navy → platinum */}
-      <SectionBridge transition="navy-to-platinum" />
-
-      {/* platinum */}
-      <section className="bg-platinum py-10 text-royal-navy md:py-16">
+      {/* Discovery Approaches */}
+      <section className="bg-[#0A0F1D] py-16 text-platinum md:py-20">
         <Container>
           <ScrollReveal>
-            <Caption className="text-royal-navy/40">How We Work</Caption>
-            <H2 className="mb-10 mt-4">Discovery Approaches</H2>
+            <Caption className="text-platinum/40">How We Work</Caption>
+            <H2 className="mb-10 mt-4 text-platinum">Discovery Approaches</H2>
           </ScrollReveal>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
             {APPROACHES.map((a, i) => (
-              <ScrollReveal key={a.title} delay={i * 0.1}>
-                <div className="h-full space-y-4 border border-royal-navy/10 bg-royal-navy p-8 text-platinum transition-all duration-300 hover:bg-[#0A1240] md:p-10">
+              <ScrollReveal key={a.title} delay={i * 0.08}>
+                <div className="h-full space-y-4 border border-platinum/[0.08] bg-[#0A1240] p-8 text-platinum transition-colors duration-300 hover:bg-[#0F1A4A] md:p-10">
                   <Label className="text-platinum/40">{a.number}</Label>
                   <H4 className="text-platinum">{a.title}</H4>
-                  <Body className="text-platinum/70">{a.description}</Body>
+                  <Body className="text-platinum/65">{a.description}</Body>
                 </div>
               </ScrollReveal>
             ))}
@@ -81,11 +77,8 @@ export default function AtelierPage() {
         </Container>
       </section>
 
-      {/* platinum → royal-navy */}
-      <SectionBridge transition="platinum-to-navy" />
-
-      {/* royal-navy */}
-      <DarkFieldStage intensity="full" className="py-12 md:py-16">
+      {/* Closing CTA */}
+      <DarkFieldStage intensity="medium" className="py-16 md:py-24">
         <Container className="max-w-3xl text-center">
           <ScrollReveal>
             <H2 className="mx-auto max-w-2xl text-platinum">
@@ -99,7 +92,9 @@ export default function AtelierPage() {
               we are here.
             </Body>
             <div className="mt-8">
-              <Button href="/contact">Arrange a Consultation</Button>
+              <Button href="/contact" variant="secondary" onDark>
+                Arrange a Consultation
+              </Button>
             </div>
           </ScrollReveal>
         </Container>

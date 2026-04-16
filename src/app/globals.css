@@ -65,22 +65,22 @@
        Static rgba() fallbacks declared here; modern oklch() overrides follow
        in the @supports block below for progressive enhancement.
     ──────────────────────────────────────────────────────────────────────── */
-    --color-bg:           #F8F7F3;
-    --color-surface:      #F3F0EC;
-    --color-surface-warm: #EDE8E0;
-    --color-dark:         #1A1917;
-    --color-dark-surface: #221F1D;
-    --color-text:         #18170F;
-    --color-text-muted:   #7A7872;
-    --color-text-faint:   #B8B5B0;
-    --color-text-inverse: #F0EDE8;
-    --color-accent:       #FF6B4A;
-    --color-accent-hover: #E55A3A;
+    --color-bg:           #0D0B09;  /* warm near-black — body & solid header bg */
+    --color-surface:      #1A1714;  /* warm dark surface */
+    --color-surface-warm: #211D19;  /* deeper warm dark */
+    --color-dark:         #060504;  /* deepest dark */
+    --color-dark-surface: #0F0D0B;  /* second dark layer */
+    --color-text:         #F0EDE8;  /* warm platinum — primary text */
+    --color-text-muted:   #9B9590;  /* warm stone gray */
+    --color-text-faint:   #6B6761;  /* faint muted */
+    --color-text-inverse: #18170F;  /* dark text for light elements */
+    --color-accent:       #C9A55A;  /* warm gold */
+    --color-accent-hover: #B8923F;  /* deep gold */
 
     /* Static fallbacks for relative-color border tokens (browsers < Chrome 119,
        < Safari 16.4, < Firefox 128). Overridden by @supports block below. */
-    --color-border:  rgba(24, 23, 15, 0.10);
-    --color-divider: rgba(24, 23, 15, 0.07);
+    --color-border:  rgba(240, 237, 232, 0.10);
+    --color-divider: rgba(240, 237, 232, 0.07);
 
     /* ── BORDER RADIUS ─────────────────────────────────────────────────────
        Consistent rounding scale. Use via var(--radius-*) or Tailwind.
@@ -110,8 +110,8 @@
      Produces the identical alpha-modified value derived from --color-text (#18170F). */
   @supports (color: oklch(from red l c h)) {
     :root {
-      --color-border:  oklch(from #18170F l c h / 0.10);
-      --color-divider: oklch(from #18170F l c h / 0.07);
+      --color-border:  oklch(from #F0EDE8 l c h / 0.10);
+      --color-divider: oklch(from #F0EDE8 l c h / 0.07);
     }
   }
 
@@ -132,8 +132,8 @@
   }
 
   ::selection {
-    background-color: var(--color-dark);
-    color: var(--color-text-inverse);
+    background-color: rgba(201, 165, 90, 0.22);
+    color: var(--color-text);
   }
 
   ::-webkit-scrollbar {
@@ -145,13 +145,13 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(24, 23, 15, 0.18);
+    background: rgba(240, 237, 232, 0.14);
     border-radius: var(--radius-full);
     transition: background var(--transition-base);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(24, 23, 15, 0.36);
+    background: rgba(240, 237, 232, 0.28);
   }
 
   *:focus-visible {
@@ -206,7 +206,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%2303195e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%23F0EDE8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' stroke-opacity='0.45'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     padding-right: 2.5rem;
