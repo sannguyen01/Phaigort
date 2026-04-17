@@ -59,28 +59,41 @@
     --space-24: 6rem;      /* 96px */
     --space-32: 8rem;      /* 128px */
 
-    /* ── COLOR PALETTE — Phaigort Light Mode (primary) ─────────────────────
-       Light-mode ground system. Dark sections override locally with
-       bg-[#0A0F1D] or bg-near-black (defined in tailwind.config.ts).
-       Static rgba() fallbacks declared here; modern oklch() overrides follow
-       in the @supports block below for progressive enhancement.
+    /* ── 12-TONE MONOCHROMATIC SCALE — Phaigort Geological Depth System ──
+       Pure achromatic scale, T-01 (void) → T-12 (pure aperture).
+       No warm cast, no blue cast, no accent color. Geological honesty.
+       Reference: SEM imagery of mineral cross-sections.
     ──────────────────────────────────────────────────────────────────────── */
-    --color-bg:           #0D0B09;  /* warm near-black — body & solid header bg */
-    --color-surface:      #1A1714;  /* warm dark surface */
-    --color-surface-warm: #211D19;  /* deeper warm dark */
-    --color-dark:         #060504;  /* deepest dark */
-    --color-dark-surface: #0F0D0B;  /* second dark layer */
-    --color-text:         #F0EDE8;  /* warm platinum — primary text */
-    --color-text-muted:   #9B9590;  /* warm stone gray */
-    --color-text-faint:   #6B6761;  /* faint muted */
-    --color-text-inverse: #18170F;  /* dark text for light elements */
-    --color-accent:       #C9A55A;  /* warm gold */
-    --color-accent-hover: #B8923F;  /* deep gold */
+    --t01: #0A0A0A;  /* Void Obsidian    — page field, packaging, premium ground */
+    --t02: #141414;  /* Abyssal Carbon   — hero section backgrounds              */
+    --t03: #1C1C1C;  /* Void Ink         — navigation, UI containers             */
+    --t04: #2E2E2E;  /* Iron Veil        — dividers, secondary surfaces          */
+    --t05: #3D3D3D;  /* Slate Cipher     — caption backgrounds, product cards    */
+    --t06: #525252;  /* Graphite Stratum — secondary text, metadata              */
+    --t07: #7A7A7A;  /* Dust of Ages     — tertiary text, timestamps, footnotes  */
+    --t08: #A8A8A8;  /* Mineral Quartz   — body copy support, inactive UI        */
+    --t09: #C8C8C8;  /* Platinum Mist    — ruled lines, fine ornamental detail   */
+    --t10: #DEDEDE;  /* Sterling Breath  — subheadings, secondary headings       */
+    --t11: #F2F2F2;  /* White Void       — primary body copy                     */
+    --t12: #FAFAFA;  /* Pure Aperture    — display headlines, logo on dark field */
 
-    /* Static fallbacks for relative-color border tokens (browsers < Chrome 119,
-       < Safari 16.4, < Firefox 128). Overridden by @supports block below. */
-    --color-border:  rgba(240, 237, 232, 0.10);
-    --color-divider: rgba(240, 237, 232, 0.07);
+    /* ── SEMANTIC ALIASES → mapped to 12-tone scale ───────────────────────
+       Components must consume these semantic tokens, not raw hex values.
+    ──────────────────────────────────────────────────────────────────────── */
+    --color-bg:           var(--t01);  /* Void Obsidian — page/header ground    */
+    --color-surface:      var(--t03);  /* Void Ink — elevated surfaces          */
+    --color-surface-mid:  var(--t04);  /* Iron Veil — divider-level surfaces    */
+    --color-dark:         var(--t02);  /* Abyssal Carbon — hero/deepest layer   */
+    --color-text:         var(--t12);  /* Pure Aperture — display text / logo   */
+    --color-text-body:    var(--t11);  /* White Void — editorial body copy      */
+    --color-text-muted:   var(--t07);  /* Dust of Ages — captions, metadata     */
+    --color-text-faint:   var(--t06);  /* Graphite Stratum — inactive / ghost   */
+    --color-text-inverse: var(--t01);  /* Void Obsidian — text on light fields  */
+
+    /* Ruled lines & ornamental detail — T-09 Platinum Mist */
+    --color-rule:    var(--t09);
+    --color-border:  rgba(250, 250, 250, 0.08);
+    --color-divider: rgba(250, 250, 250, 0.06);
 
     /* ── BORDER RADIUS ─────────────────────────────────────────────────────
        Consistent rounding scale. Use via var(--radius-*) or Tailwind.
@@ -105,13 +118,11 @@
     --content-wide:    1200px;
   }
 
-  /* CSS relative-color syntax (Level 5) — Chrome 119+, Safari 16.4+, Firefox 128+.
-     Overrides the static rgba() fallbacks above in supporting browsers.
-     Produces the identical alpha-modified value derived from --color-text (#18170F). */
+  /* CSS relative-color enhancement — Chrome 119+, Safari 16.4+, Firefox 128+ */
   @supports (color: oklch(from red l c h)) {
     :root {
-      --color-border:  oklch(from #F0EDE8 l c h / 0.10);
-      --color-divider: oklch(from #F0EDE8 l c h / 0.07);
+      --color-border:  oklch(from #FAFAFA l c h / 0.08);
+      --color-divider: oklch(from #FAFAFA l c h / 0.06);
     }
   }
 
@@ -132,7 +143,7 @@
   }
 
   ::selection {
-    background-color: rgba(201, 165, 90, 0.22);
+    background-color: rgba(200, 200, 200, 0.18);
     color: var(--color-text);
   }
 
@@ -155,7 +166,7 @@
   }
 
   *:focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-rule);
     outline-offset: 2px;
     border-radius: var(--radius-sm);
   }
@@ -171,35 +182,55 @@
 }
 
 @layer components {
-  .coral-rule {
-    @apply h-px w-12 bg-coral/60;
-  }
-
-  /* Arch mask — cathedral arch top, applied to image containers in CollectionGrid
-     and MaterialTimeline. The ratio 50% 50% 0 0 / 30% 30% 0 0 produces a shallow,
-     wide arch (not a semicircle) matching the reference design proportions. */
+  /* Arch mask — cathedral arch top, applied to image containers.
+     Ratio 50% 50% 0 0 / 30% 30% 0 0 produces a shallow wide arch.
+     Safari iOS fix: radial-gradient mask forces repaint for clip correctness. */
   .arch-mask {
     border-radius: 50% 50% 0 0 / 30% 30% 0 0;
     overflow: hidden;
-    /* Safari iOS 15–17: percentage border-radius + overflow:hidden fails to clip
-       position:fill children. The radial-gradient mask forces a repaint that
-       re-applies clipping correctly. No visible effect on other browsers. */
     -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
 
-  .gold-line {
-    @apply h-px bg-gradient-to-r from-transparent via-platinum/15 to-transparent;
+  /* Platinum rule — fine ornamental horizontal line using T-09 */
+  .platinum-line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(200, 200, 200, 0.25), transparent);
+  }
+
+  /* Monochromatic divider rule */
+  .tone-divider {
+    @apply h-px;
+    background: var(--color-divider);
   }
 
   .nav-link::after {
     content: "";
-    @apply absolute -bottom-1 left-0 h-px w-full bg-royal-navy origin-left;
+    @apply absolute -bottom-1 left-0 h-px w-full origin-left;
+    background: var(--t09);
     transform: scaleX(0);
     transition: transform 300ms ease-out;
   }
   .nav-link:hover::after,
   .nav-link[data-active]::after {
     transform: scaleX(1);
+  }
+
+  /* SEM grain texture — simulates gemstone electron-microscope surface depth.
+     Apply to hero and primary ground sections at 4–8% opacity overlay.
+     This is a CSS approximation; real SEM PNG should replace if available. */
+  .grain-field {
+    position: relative;
+  }
+  .grain-field::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    background-repeat: repeat;
+    z-index: 1;
   }
 
   select {

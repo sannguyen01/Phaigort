@@ -111,10 +111,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className="min-h-screen bg-[#0A0F1D] font-ui text-platinum antialiased">
+      <body className="min-h-screen bg-[#0A0A0A] font-ui text-[#FAFAFA] antialiased">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-royal-navy focus:px-4 focus:py-2 focus:font-body focus:text-sm focus:text-platinum"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:border focus:border-[rgba(240,237,232,0.35)] focus:bg-[#0D0B09] focus:px-4 focus:py-2 focus:font-ui focus:text-sm focus:text-platinum"
         >
           Skip to content
         </a>

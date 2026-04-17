@@ -2,12 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
@@ -18,7 +13,7 @@ import { Button } from "@/components/ui/Button";
 //   · Decorative: dark botanical radial rings, left/right edges
 
 export function Hero() {
-  const heroRef             = useRef<HTMLElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
@@ -27,14 +22,14 @@ export function Hero() {
   });
 
   // Subtle parallax — necklace drifts slightly slower than scroll
-  const necklaceY   = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const roughY      = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const contentY    = useTransform(scrollYProgress, [0, 1], [0, 32]);
+  const necklaceY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const roughY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 32]);
 
   return (
     <section
       ref={heroRef}
-      className="-mt-[60px] relative min-h-screen overflow-hidden bg-[#08090D]"
+      className="relative -mt-[60px] min-h-screen overflow-hidden bg-[#08090D] md:-mt-[72px]"
       aria-label="Hero"
     >
       {/* ── Dark botanical radial rings (decorative, left edge) ─────────── */}
@@ -68,7 +63,7 @@ export function Hero() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-[30vw] -bottom-[2vh] h-[80vw] w-[80vw] rounded-full"
+        className="pointer-events-none absolute -bottom-[2vh] -right-[30vw] h-[80vw] w-[80vw] rounded-full"
         style={{ border: "1px solid rgba(248,249,251,0.018)" }}
       />
 
@@ -95,8 +90,7 @@ export function Hero() {
             aspectRatio: "3/4",
             WebkitMaskImage:
               "radial-gradient(ellipse 88% 90% at 50% 48%, black 28%, transparent 100%)",
-            maskImage:
-              "radial-gradient(ellipse 88% 90% at 50% 48%, black 28%, transparent 100%)",
+            maskImage: "radial-gradient(ellipse 88% 90% at 50% 48%, black 28%, transparent 100%)",
           }}
         >
           <Image
@@ -118,10 +112,7 @@ export function Hero() {
         animate={prefersReducedMotion ? {} : { y: [0, -12, 0] }}
         transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <div
-          className="relative w-[clamp(140px,14vw,220px)]"
-          style={{ aspectRatio: "1/1" }}
-        >
+        <div className="relative w-[clamp(140px,14vw,220px)]" style={{ aspectRatio: "1/1" }}>
           <Image
             src="/hero/rough-diamond.png"
             alt="Rough diamond crystal specimen"
@@ -139,8 +130,7 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-32"
         style={{
-          background:
-            "linear-gradient(to bottom, rgba(8,9,13,0.85) 0%, transparent 100%)",
+          background: "linear-gradient(to bottom, rgba(8,9,13,0.85) 0%, transparent 100%)",
         }}
       />
 
@@ -149,8 +139,7 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-x-0 bottom-0 h-48"
         style={{
-          background:
-            "linear-gradient(to top, rgba(8,9,13,1) 0%, transparent 100%)",
+          background: "linear-gradient(to top, rgba(8,9,13,1) 0%, transparent 100%)",
         }}
       />
 

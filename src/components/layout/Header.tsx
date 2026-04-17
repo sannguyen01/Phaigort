@@ -47,15 +47,13 @@ const DRAWER_LINK_VARIANTS = {
 
 interface NavLogoProps {
   solid: boolean;
-  size?: number;
 }
 
-function NavLogo({ solid, size = 52 }: NavLogoProps) {
-  const sizePx = `${size}px`;
+function NavLogo({ solid }: NavLogoProps) {
   return (
     <div
       className="relative flex-shrink-0"
-      style={{ width: sizePx, height: sizePx }}
+      style={{ width: "clamp(140px, 15vw, 180px)", height: "clamp(48px, 5vw, 64px)" }}
       aria-label="Phaigort"
     >
       {/* Wordmark — fades in when header is transparent (top of page) */}
@@ -63,8 +61,8 @@ function NavLogo({ solid, size = 52 }: NavLogoProps) {
         src="/brand/phaigort-logo-white.png"
         alt="Phaigort"
         fill
-        sizes={sizePx}
-        className="object-contain"
+        sizes="144px"
+        className="object-contain object-left"
         style={{
           filter: "invert(1)",
           opacity: solid ? 0 : 1,
@@ -78,8 +76,8 @@ function NavLogo({ solid, size = 52 }: NavLogoProps) {
         alt=""
         aria-hidden={true}
         fill
-        sizes={sizePx}
-        className="object-contain"
+        sizes="144px"
+        className="object-contain object-left"
         style={{
           filter: "invert(1)",
           opacity: solid ? 1 : 0,
@@ -188,7 +186,7 @@ export function Header() {
           HEADER BAR — symmetric split nav · logo absolute center
       ══════════════════════════════════════════════════════════════════ */}
       <header
-        className="fixed inset-x-0 top-0 z-[60] h-14 md:h-[60px]"
+        className="fixed inset-x-0 top-0 z-[60] h-[60px] md:h-[72px]"
         style={{
           backgroundColor: isSolid ? "var(--color-bg)" : "transparent",
           boxShadow: isSolid ? "0 1px 0 var(--color-divider)" : "none",
@@ -198,7 +196,7 @@ export function Header() {
         {/* ── LOGO — absolute centre ──────────────────────────────────── */}
         <div className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <Link href="/" aria-label={BRAND.name} onClick={() => setIsOpen(false)}>
-            <NavLogo solid={isSolid} size={20} />
+            <NavLogo solid={isSolid} />
           </Link>
         </div>
 
@@ -352,7 +350,7 @@ export function Header() {
               exit="exit"
               className={cn(
                 "absolute left-0 right-0 top-full",
-                "border-b border-platinum/[0.07] bg-[#0A0F1D]",
+                "border-b border-platinum/[0.07] bg-[#0D0B09]",
                 "grid min-h-[320px] grid-cols-[1fr_1.8fr]"
               )}
             >
@@ -384,7 +382,7 @@ export function Header() {
               </div>
 
               {/* Right: editorial image crossfade panel */}
-              <div className="relative overflow-hidden bg-[#0A1240]">
+              <div className="relative overflow-hidden bg-[#0F0D0B]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={hoveredDomain.title}
@@ -426,8 +424,8 @@ export function Header() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             aria-hidden="true"
-            className="pointer-events-none fixed inset-0 z-[58] bg-[#0A0F1D]/20"
-            style={{ top: "60px" }}
+            className="pointer-events-none fixed inset-0 z-[58] bg-[#0D0B09]/20"
+            style={{ top: "72px" }}
           />
         )}
       </AnimatePresence>
@@ -469,7 +467,7 @@ export function Header() {
             {/* Drawer top bar */}
             <div className="flex h-14 flex-shrink-0 items-center justify-between px-6">
               <Link href="/" aria-label={BRAND.name} onClick={() => setIsOpen(false)}>
-                <NavLogo solid size={18} />
+                <NavLogo solid />
               </Link>
               <button
                 type="button"
