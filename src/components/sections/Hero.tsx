@@ -23,13 +23,12 @@ export function Hero() {
 
   // Subtle parallax — necklace drifts slightly slower than scroll
   const necklaceY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const roughY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 32]);
 
   return (
     <section
       ref={heroRef}
-      className="relative -mt-[60px] min-h-screen overflow-hidden bg-[#08090D] md:-mt-[72px]"
+      className="relative -mt-[80px] min-h-screen overflow-hidden bg-[#08090D] pb-32 md:-mt-[88px]"
       aria-label="Hero"
     >
       {/* ── Dark botanical radial rings (decorative, left edge) ─────────── */}
@@ -100,27 +99,6 @@ export function Hero() {
             priority
             sizes="(max-width: 768px) 90vw, (max-width: 1280px) 75vw, 760px"
             className="object-contain object-top"
-          />
-        </div>
-      </motion.div>
-
-      {/* ── ROUGH DIAMOND — floating lower-right, screen blend ──────────── */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute bottom-[5vh] right-[4vw] hidden md:block"
-        style={prefersReducedMotion ? {} : { y: roughY }}
-        animate={prefersReducedMotion ? {} : { y: [0, -12, 0] }}
-        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <div className="relative w-[clamp(140px,14vw,220px)]" style={{ aspectRatio: "1/1" }}>
-          <Image
-            src="/hero/rough-diamond.png"
-            alt="Rough diamond crystal specimen"
-            fill
-            sizes="(max-width: 1280px) 14vw, 220px"
-            className="object-contain"
-            style={{ mixBlendMode: "screen", opacity: 0.75 }}
-            loading="eager"
           />
         </div>
       </motion.div>
@@ -210,6 +188,41 @@ export function Hero() {
           <Button href="/collections" variant="secondary" onDark>
             Enter the Collection
           </Button>
+        </motion.div>
+
+        {/* ── Our Story — merged into Hero ──────────────────────────────── */}
+        <motion.div
+          className="mx-auto mt-24 max-w-[600px] border-t px-6 pt-16 text-center"
+          style={{ borderColor: "rgba(200,200,200,0.1)" }}
+          {...(prefersReducedMotion
+            ? {}
+            : {
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.9, delay: 0.9, ease: [0.22, 1, 0.36, 1] },
+              })}
+        >
+          <p
+            className="font-ui uppercase tracking-[0.18em] text-platinum/40"
+            style={{ fontSize: "var(--text-xs)" }}
+          >
+            Our Story
+          </p>
+          <p
+            className="mt-6 font-display italic leading-[1.8] text-platinum/55"
+            style={{ fontSize: "clamp(0.95rem,1.3vw,1.08rem)" }}
+          >
+            Where you build collections worth explaining, worth keeping, worth passing down. Every
+            piece carries its true story. Every collector joins a community of material
+            consciousness.
+          </p>
+          <a
+            href="/material-consciousness"
+            className="mt-8 inline-flex items-center gap-3 font-ui text-[11px] uppercase tracking-[0.16em] text-platinum/40 transition-colors duration-200 hover:text-platinum/70"
+          >
+            Discover the Origin
+            <span className="inline-block h-px w-7" style={{ background: "currentColor" }} />
+          </a>
         </motion.div>
       </motion.div>
 

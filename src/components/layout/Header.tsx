@@ -53,7 +53,7 @@ function NavLogo({ solid }: NavLogoProps) {
   return (
     <div
       className="relative flex-shrink-0"
-      style={{ width: "clamp(140px, 15vw, 180px)", height: "clamp(48px, 5vw, 64px)" }}
+      style={{ width: "clamp(160px, 16vw, 210px)", height: "clamp(64px, 6vw, 80px)" }}
       aria-label="Phaigort"
     >
       {/* Wordmark — fades in when header is transparent (top of page) */}
@@ -186,7 +186,7 @@ export function Header() {
           HEADER BAR — symmetric split nav · logo absolute center
       ══════════════════════════════════════════════════════════════════ */}
       <header
-        className="fixed inset-x-0 top-0 z-[60] h-[60px] md:h-[72px]"
+        className="fixed inset-x-0 top-0 z-[60] h-[80px] md:h-[88px]"
         style={{
           backgroundColor: isSolid ? "var(--color-bg)" : "transparent",
           boxShadow: isSolid ? "0 1px 0 var(--color-divider)" : "none",
@@ -425,7 +425,7 @@ export function Header() {
             transition={{ duration: 0.25 }}
             aria-hidden="true"
             className="pointer-events-none fixed inset-0 z-[58] bg-[#0D0B09]/20"
-            style={{ top: "72px" }}
+            style={{ top: "88px" }}
           />
         )}
       </AnimatePresence>

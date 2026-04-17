@@ -33,12 +33,11 @@ export function DomainsGrid() {
           </h2>
         </motion.div>
 
-        {/* Asymmetric grid — first card spans 2 columns */}
+        {/* Equal four-column grid */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
           {TREASURE_DOMAINS.map((domain, i) => (
             <motion.div
               key={domain.href}
-              className={i === 0 ? "md:col-span-2" : ""}
               {...(prefersReducedMotion
                 ? {}
                 : {
@@ -47,25 +46,14 @@ export function DomainsGrid() {
                     transition: { duration: 0.48, delay: i * 0.08, ease: "easeOut" },
                   })}
             >
-              <Link
-                href={domain.href}
-                className="group block overflow-hidden bg-ground"
-              >
+              <Link href={domain.href} className="group block overflow-hidden bg-ground">
                 {/* Image */}
-                <div
-                  className={`relative w-full overflow-hidden ${
-                    i === 0 ? "h-[340px] md:h-[420px]" : "h-[240px] md:h-[300px]"
-                  }`}
-                >
+                <div className="relative h-[280px] w-full overflow-hidden md:h-[340px]">
                   <Image
                     src={domain.image}
                     alt={domain.imageAlt}
                     fill
-                    sizes={
-                      i === 0
-                        ? "(max-width: 768px) 100vw, 50vw"
-                        : "(max-width: 768px) 100vw, 25vw"
-                    }
+                    sizes="(max-width: 768px) 100vw, 25vw"
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
                 </div>
@@ -75,14 +63,8 @@ export function DomainsGrid() {
                   <p className="font-ui text-[10px] uppercase tracking-[0.12em] text-muted">
                     {domain.title}
                   </p>
-                  <p
-                    className={`mt-2 font-display italic leading-snug text-ink/70 ${
-                      i === 0 ? "text-[1rem]" : "line-clamp-3 text-[0.875rem]"
-                    }`}
-                  >
-                    {i === 0
-                      ? domain.description
-                      : domain.description.split("—")[0].trim()}
+                  <p className="mt-2 line-clamp-3 font-display text-[0.875rem] italic leading-snug text-ink/70">
+                    {domain.description.split("—")[0].trim()}
                   </p>
                 </div>
               </Link>
