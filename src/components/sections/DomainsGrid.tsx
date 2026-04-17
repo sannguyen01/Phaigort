@@ -26,10 +26,10 @@ export function DomainsGrid() {
               })}
         >
           <p className="font-ui text-[11px] uppercase tracking-[0.15em] text-muted">
-            The Four Domains
+            The Collection
           </p>
           <h2 className="mt-3 font-display text-[clamp(1.75rem,3.5vw,3rem)] font-bold leading-tight text-ink">
-            What we source
+            Four domains of Rarity
           </h2>
         </motion.div>
 

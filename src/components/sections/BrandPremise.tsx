@@ -4,6 +4,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
 export function BrandPremise() {
@@ -45,8 +46,8 @@ export function BrandPremise() {
             className="mt-5 font-display font-bold leading-[1.2]"
             style={{ fontSize: "var(--text-2xl)", color: "var(--color-text)" }}
           >
-            More than a jewellery house — the institution behind our Wonderhouse
-            of material consciousness.
+            More than a jewellery house — the institution behind our Wonderhouse of material
+            consciousness.
           </h2>
 
           {/* Etymology */}
@@ -58,11 +59,10 @@ export function BrandPremise() {
               opacity: 0.65,
             }}
           >
-            The name synthesises the Greek{" "}
-            <em style={{ opacity: 1 }}>phainomenon</em> — that which reveals
-            itself through observation — and the Portuguese{" "}
-            <em style={{ opacity: 1 }}>fazer</em> — to create. Two words for
-            the same act: the moment something becomes knowable.
+            The name synthesises the Greek <em style={{ opacity: 1 }}>phainomenon</em> — that which
+            reveals itself through observation — and the Portuguese{" "}
+            <em style={{ opacity: 1 }}>fazer</em> — to create. Two words for the same act: the
+            moment something becomes knowable.
           </p>
 
           {/* García de Orta */}
@@ -75,13 +75,11 @@ export function BrandPremise() {
             }}
           >
             We honour{" "}
-            <strong style={{ color: "var(--color-text-body)", opacity: 1 }}>
-              García de Orta
-            </strong>
-            , the pioneering Portuguese physician who in 1563 authored the first
-            scientific treatise on gemstones in everyday language — choosing to
-            share knowledge rather than keep it exclusive. He embodied the same
-            spirit of accessibility and rigour that defines Phaigort today.
+            <strong style={{ color: "var(--color-text-body)", opacity: 1 }}>García de Orta</strong>,
+            the pioneering Portuguese physician who in 1563 authored the first scientific treatise
+            on gemstones in everyday language — choosing to share knowledge rather than keep it
+            exclusive. He embodied the same spirit of accessibility and rigour that defines Phaigort
+            today.
           </p>
 
           {/* T-09 hairline */}
@@ -103,10 +101,9 @@ export function BrandPremise() {
               opacity: 0.72,
             }}
           >
-            A sanctuary for material fascination — an inclusive vessel, inviting
-            curious minds on a voyage to uncover the world&apos;s geological
-            wonders, the legacy of human craftsmanship, and the brilliance of
-            contemporary innovation.
+            A sanctuary for material fascination — an inclusive vessel, inviting curious minds on a
+            voyage to uncover the world&apos;s geological wonders, the legacy of human
+            craftsmanship, and the brilliance of contemporary innovation.
           </p>
         </motion.div>
 
@@ -125,40 +122,22 @@ export function BrandPremise() {
             style={{ height: "1px", background: "rgba(200,200,200,0.1)" }}
           />
 
-          {/* Signature SVG — large, slow float */}
+          {/* Signature — real calligraphic PNG asset, slow float */}
           <motion.div
             animate={prefersReducedMotion ? {} : { y: [0, -8, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            className="w-full"
-            style={{ maxWidth: "300px" }}
+            className="relative w-full"
+            style={{ maxWidth: "300px", aspectRatio: "4/1.4" }}
           >
-            <svg
-              viewBox="0 0 248 68"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-full"
-              aria-label="Phaigort"
-              role="img"
-            >
-              <text
-                x="4"
-                y="44"
-                fontFamily="'Cardo', Georgia, serif"
-                fontStyle="italic"
-                fontSize="40"
-                fill="rgba(250,250,250,0.88)"
-                letterSpacing="1.5"
-              >
-                Phaigort
-              </text>
-              {/* T-09 Platinum Mist flourish — no warm color */}
-              <path
-                d="M 2 54 Q 50 62 124 54 Q 180 48 244 57"
-                stroke="rgba(200,200,200,0.22)"
-                strokeWidth="1.2"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </svg>
+            <Image
+              src="/brand/signature.png"
+              alt="Phaigort"
+              fill
+              sizes="300px"
+              className="object-contain"
+              style={{ filter: "invert(1)", opacity: 0.88 }}
+              loading="lazy"
+            />
           </motion.div>
 
           <p

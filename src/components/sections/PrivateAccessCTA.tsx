@@ -62,7 +62,10 @@ export function PrivateAccessCTA() {
             <br />
             reaches the open market.
             <br />
-            <em className="font-normal italic" style={{ color: "var(--color-text-body)", opacity: 0.85 }}>
+            <em
+              className="font-normal italic"
+              style={{ color: "var(--color-text-body)", opacity: 0.85 }}
+            >
               Some are reserved. Some are waiting.
             </em>
           </h2>
@@ -83,7 +86,7 @@ export function PrivateAccessCTA() {
 
           <div className="pt-2">
             <Button href="/contact" variant="secondary" onDark>
-              Begin a Private Conversation
+              Begin a Private Consultation
             </Button>
           </div>
         </motion.div>

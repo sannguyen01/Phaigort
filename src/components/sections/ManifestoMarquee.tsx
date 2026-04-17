@@ -5,6 +5,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
 export function ManifestoMarquee() {
@@ -20,8 +21,22 @@ export function ManifestoMarquee() {
       className="relative py-24 md:py-32"
       style={{ background: "var(--color-bg)" }}
     >
+      {/* Gemstone backdrop — near-invisible, grounds the text in material reality */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/editorial/gemstone-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+          style={{ opacity: 0.07, filter: "grayscale(100%)" }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0" style={{ background: "var(--color-bg)", opacity: 0.7 }} />
+      </div>
+
       <div
-        className="mx-auto px-[clamp(24px,4vw,64px)]"
+        className="relative z-10 mx-auto px-[clamp(24px,4vw,64px)]"
         style={{ maxWidth: "800px" }}
       >
         {/* T-09 Platinum Mist rule — above */}
@@ -52,8 +67,8 @@ export function ManifestoMarquee() {
             transition: { duration: 0.9, delay: 0.3, ease: "easeOut" },
           })}
         >
-          Phaigort represents more than a jewellery house — it is the institution
-          behind our Wonderhouse of material and craftmanship consciousness.
+          Phaigort represents more than a jewellery house — it is the institution behind our
+          Wonderhouse of material and craftmanship consciousness.
         </motion.p>
 
         {/* T-09 Platinum Mist rule — below */}

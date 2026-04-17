@@ -6,7 +6,10 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0A0F1D] pb-10 pt-14 text-platinum md:pt-20">
+    <footer
+      className="pb-10 pt-14 text-platinum md:pt-20"
+      style={{ background: "var(--color-bg)" }}
+    >
       <div className="mx-auto max-w-content px-[clamp(24px,4vw,64px)]">
         {/* Main row: wordmark + tagline left, nav columns right */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">

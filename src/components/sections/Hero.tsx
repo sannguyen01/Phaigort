@@ -137,7 +137,7 @@ export function Hero() {
                 transition: { duration: 1, delay: 0.1 },
               })}
         >
-          Rare Gemstones · Precious Metals · Material Culture
+          Rare Gemstone · Precious Metals · Material Culture · High Jewellery
         </motion.p>
 
         {/* H1 */}

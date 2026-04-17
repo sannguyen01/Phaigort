@@ -46,12 +46,12 @@ export function OurStory() {
       >
         <div className="relative" style={{ aspectRatio: "1/1" }}>
           <Image
-            src="/story/expedition-rough.jpg"
+            src="/story/rough-stone.png"
             alt=""
             fill
             sizes="42vw"
             className="object-contain object-top"
-            style={{ mixBlendMode: "screen", opacity: 0.55 }}
+            style={{ mixBlendMode: "screen", opacity: 0.65 }}
             loading="lazy"
           />
         </div>
