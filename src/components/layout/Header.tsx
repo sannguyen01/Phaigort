@@ -54,16 +54,16 @@ function NavLogo({ solid }: NavLogoProps) {
   return (
     <div
       className="relative flex-shrink-0"
-      style={{ width: "clamp(160px, 15vw, 220px)", height: "clamp(52px, 5.5vw, 70px)" }}
+      style={{ width: "clamp(180px, 16vw, 240px)", height: "clamp(64px, 6vw, 80px)" }}
     >
       <Image
         src="/brand/phaigort-logo-white.png"
         alt="Phaigort"
         fill
-        sizes="220px"
-        className="object-contain object-left"
+        sizes="240px"
+        className="object-contain object-center"
         style={{
-          filter: solid ? "invert(1)" : "none",
+          filter: solid ? "none" : "invert(1)",
           transition: "filter 350ms ease",
         }}
         priority
