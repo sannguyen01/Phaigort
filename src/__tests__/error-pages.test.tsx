@@ -5,8 +5,18 @@ import Loading from "@/app/loading";
 
 // Mock next/link
 vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }: { children: React.ReactNode; href: string; [key: string]: unknown }) => (
-    <a href={href} {...props}>{children}</a>
+  default: ({
+    children,
+    href,
+    ...props
+  }: {
+    children: React.ReactNode;
+    href: string;
+    [key: string]: unknown;
+  }) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
   ),
 }));
 
@@ -32,6 +42,6 @@ describe("Loading page", () => {
   it("renders loading indicator with platinum background", () => {
     const { container } = render(<Loading />);
     const wrapper = container.firstChild as HTMLElement;
-    expect(wrapper.className).toContain("bg-platinum");
+    expect(wrapper.className).toContain("bg-ground");
   });
 });
