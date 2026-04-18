@@ -54,17 +54,17 @@ function NavLogo({ solid }: NavLogoProps) {
   return (
     <div
       className="relative flex-shrink-0"
-      style={{ width: "clamp(120px, 12vw, 160px)", height: "clamp(40px, 4.5vw, 52px)" }}
+      style={{ width: "clamp(160px, 15vw, 220px)", height: "clamp(52px, 5.5vw, 70px)" }}
     >
       <Image
         src="/brand/phaigort-logo-white.png"
         alt="Phaigort"
         fill
-        sizes="160px"
+        sizes="220px"
         className="object-contain object-left"
         style={{
           filter: solid ? "none" : "invert(1)",
-          transition: "filter 300ms ease",
+          transition: "filter 350ms ease",
         }}
         priority
       />
@@ -190,7 +190,7 @@ export function Header() {
           style={{ maxWidth: "var(--content-wide)" }}
         >
           {/* ── LEFT NAV (desktop) / Hamburger (mobile) ─────────────── */}
-          <div className="flex items-center gap-6 md:gap-8">
+          <div className="flex flex-1 items-center gap-3 md:gap-4">
             {/* Mobile hamburger */}
             <button
               type="button"
@@ -304,7 +304,10 @@ export function Header() {
           </div>
 
           {/* ── RIGHT NAV (desktop) / Spacer (mobile) ───────────────── */}
-          <nav aria-label="Primary navigation right" className="flex items-center gap-4 md:gap-5">
+          <nav
+            aria-label="Primary navigation right"
+            className="flex flex-1 items-center justify-end gap-4 md:gap-5"
+          >
             {/* Desktop right links: Atelier + Private Enquiry */}
             {RIGHT_LINKS.map((link) => (
               <Link

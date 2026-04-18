@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
@@ -160,6 +161,8 @@ export function Hero() {
   });
 
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const necklaceY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const necklaceOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
     <section
@@ -195,8 +198,57 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-32"
         style={{
-          background:
-            "linear-gradient(to bottom, var(--color-bg) 0%, transparent 100%)",
+          background: "linear-gradient(to bottom, var(--color-bg) 0%, transparent 100%)",
+        }}
+      />
+
+      {/* ── Necklace — hero focal specimen ──────────────────────────── */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] flex justify-center"
+        style={prefersReducedMotion ? {} : { y: necklaceY, opacity: necklaceOpacity }}
+      >
+        <motion.div
+          className="relative w-full max-w-[680px]"
+          style={{ aspectRatio: "1 / 1" }}
+          {...(!prefersReducedMotion && {
+            initial: { opacity: 0, scale: 0.96 },
+            animate: { opacity: 1, scale: 1 },
+            transition: { duration: 1.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] },
+          })}
+        >
+          {/* Ambient glow behind necklace */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 55% 45% at 50% 55%, rgba(220,215,210,0.06) 0%, transparent 75%)",
+            }}
+          />
+          <Image
+            src="/hero/necklace.png"
+            alt="Diamond and gemstone necklace — Phaigort collection"
+            fill
+            sizes="(max-width: 768px) 100vw, 680px"
+            className="object-contain object-center"
+            style={{
+              mixBlendMode: "screen",
+              opacity: 0.88,
+              maskImage: "radial-gradient(ellipse 90% 80% at 50% 50%, black 30%, transparent 100%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 90% 80% at 50% 50%, black 30%, transparent 100%)",
+            }}
+            priority
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* ── Bottom fade — necklace dissolves into void ───────────────── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-32"
+        style={{
+          background: "linear-gradient(to top, var(--color-bg) 0%, transparent 100%)",
         }}
       />
 
@@ -296,8 +348,7 @@ export function Hero() {
             <div
               className="h-8 w-px"
               style={{
-                background:
-                  "linear-gradient(to bottom, rgba(200,200,200,0.18), transparent)",
+                background: "linear-gradient(to bottom, rgba(200,200,200,0.18), transparent)",
               }}
             />
           </motion.div>
