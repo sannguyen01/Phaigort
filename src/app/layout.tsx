@@ -121,7 +121,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <DiamondCursor />
         <Header />
         <ScrollProgress />
-        <main id="main-content" className="pt-[80px]">
+        <main id="main-content" className="pt-[80px] md:pt-[88px]">
           {children}
         </main>
         <Footer />

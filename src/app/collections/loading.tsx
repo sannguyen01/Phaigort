@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/Container";
 
 export default function CollectionsLoading() {
   return (
-    <div className="bg-[#0A0F1D] pt-16 md:pt-20">
+    <div className="bg-ground pt-16 md:pt-20">
       <Container>
         <div className="animate-pulse space-y-6">
           <div className="h-3 w-24 rounded bg-platinum/[0.06]" />

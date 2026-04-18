@@ -30,7 +30,7 @@ export default function ContactPage() {
       </DarkFieldStage>
 
       {/* Form section */}
-      <section className="bg-[#0A0F1D] py-16 text-platinum md:py-24">
+      <section className="py-16 text-platinum md:py-24" style={{ background: "var(--color-bg)" }}>
         <Container className="max-w-5xl">
           <ScrollReveal>
             <Caption className="text-platinum/40">Private Enquiry</Caption>
@@ -69,7 +69,7 @@ export default function ContactPage() {
               </div>
 
               {/* Thin gold rule */}
-              <div className="h-px w-16 bg-[#C9A55A]/30" />
+              <div className="h-px w-16 bg-platinum/10" />
             </aside>
 
             {/* Right Column — Form */}

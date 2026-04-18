@@ -37,7 +37,7 @@ export function DiamondCursor() {
     }
 
     const interactives = document.querySelectorAll<HTMLElement>(
-      "a, button, [role='button'], label, input, select, textarea",
+      "a, button, [role='button'], label, input, select, textarea"
     );
 
     window.addEventListener("mousemove", onMouseMove);
@@ -71,11 +71,19 @@ export function DiamondCursor() {
         opacity: visible ? 1 : 0,
         scale: hovered ? 1.8 : 1,
       }}
-      transition={{ opacity: { duration: 0.2 }, scale: { type: "spring", stiffness: 400, damping: 25 } }}
+      transition={{
+        opacity: { duration: 0.2 },
+        scale: { type: "spring", stiffness: 400, damping: 25 },
+      }}
     >
       <div
-        className="h-2.5 w-2.5 rotate-45 border border-coral/80 bg-coral/20 shadow-[0_0_10px_rgba(255,107,74,0.35)]"
-        style={{ transition: "background 200ms" }}
+        className="h-2.5 w-2.5 rotate-45"
+        style={{
+          border: "1px solid rgba(200,200,200,0.5)",
+          background: "rgba(200,200,200,0.08)",
+          boxShadow: "0 0 8px rgba(200,200,200,0.15)",
+          transition: "background 200ms, border-color 200ms",
+        }}
       />
     </motion.div>
   );

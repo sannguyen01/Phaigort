@@ -57,32 +57,32 @@ export default function ArchivePage() {
             <Caption className="text-platinum/45">Historical Treasures</Caption>
             <H1 className="mt-5 text-platinum">The Archive</H1>
             <Body className="mt-6 text-platinum/65">
-              Cultural pieces with documented stories — objects embodying human
-              civilisation&apos;s creative achievements across centuries and continents.
-              Provenance is the foundation here, not the footnote.
+              Cultural pieces with documented stories — objects embodying human civilisation&apos;s
+              creative achievements across centuries and continents. Provenance is the foundation
+              here, not the footnote.
             </Body>
           </ScrollReveal>
         </Container>
       </DarkFieldStage>
 
       {/* ── Divider rule ──────────────────────────────────────────────────── */}
-      <div className="bg-[#08090D]">
+      <div style={{ background: "var(--color-bg)" }}>
         <Container>
           <div className="flex items-center gap-4 py-8">
             <div className="h-px flex-1 bg-platinum/[0.07]" />
-            <div className="h-2.5 w-2.5 rotate-45 border border-coral/50" />
+            <div className="h-2.5 w-2.5 rotate-45 border border-platinum/15" />
             <div className="h-px flex-1 bg-platinum/[0.07]" />
           </div>
         </Container>
       </div>
 
       {/* ── Category cards ────────────────────────────────────────────────── */}
-      <section className="bg-[#08090D] pb-20 text-platinum md:pb-28">
+      <section className="pb-20 text-platinum md:pb-28" style={{ background: "var(--color-bg)" }}>
         <Container>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {ARCHIVE_CATEGORIES.map((cat, i) => (
               <ScrollReveal key={cat.title} delay={i * 0.1}>
-                <article className="group overflow-hidden bg-[#0A1240] transition-colors duration-500 hover:bg-[#0F1A4A]">
+                <article className="group overflow-hidden bg-t04 transition-colors duration-500 hover:bg-t05">
                   {/* Image — scales subtly on hover */}
                   <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/10" }}>
                     <Image
@@ -96,7 +96,7 @@ export default function ArchivePage() {
                     {/* Bottom fade — grounds image into card body */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0A1240] to-transparent transition-colors duration-500 group-hover:from-[#0F1A4A]"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#2E2E2E] to-transparent transition-colors duration-500 group-hover:from-[#3D3D3D]"
                     />
                   </div>
 
@@ -104,9 +104,7 @@ export default function ArchivePage() {
                   <div className="px-7 pb-8 pt-5">
                     <Caption className="text-platinum/38">{cat.period}</Caption>
                     <H3 className="mt-3 text-platinum">{cat.title}</H3>
-                    <Body className="mt-3 text-platinum/60 leading-relaxed">
-                      {cat.description}
-                    </Body>
+                    <Body className="mt-3 leading-relaxed text-platinum/60">{cat.description}</Body>
                   </div>
                 </article>
               </ScrollReveal>
@@ -116,7 +114,10 @@ export default function ArchivePage() {
       </section>
 
       {/* ── Closing note ─────────────────────────────────────────────────── */}
-      <section className="bg-[#0A0F1D] py-14 text-center text-platinum md:py-20">
+      <section
+        className="py-14 text-center text-platinum md:py-20"
+        style={{ background: "var(--color-bg)" }}
+      >
         <Container className="max-w-xl">
           <ScrollReveal>
             <div className="flex justify-center">
@@ -124,7 +125,7 @@ export default function ArchivePage() {
                 <polygon
                   points="20,2 38,20 20,38 2,20"
                   fill="none"
-                  stroke="rgba(255,107,74,0.50)"
+                  stroke="rgba(200,200,200,0.25)"
                   strokeWidth="1"
                 />
               </svg>

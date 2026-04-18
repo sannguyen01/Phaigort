@@ -44,7 +44,10 @@ export default function CollectionsPage() {
   return (
     <div>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="bg-[#0A0F1D] pb-0 pt-16 text-platinum md:pt-24">
+      <section
+        className="pb-0 pt-16 text-platinum md:pt-24"
+        style={{ background: "var(--color-bg)" }}
+      >
         <Container>
           <ScrollReveal>
             <Caption className="text-platinum/45">The Collection</Caption>
@@ -57,7 +60,8 @@ export default function CollectionsPage() {
               Phaigort assembles rare gemstones, precious metal specimens, historical artifacts, and
               contemporary material innovations under a single framework: every piece must carry its
               own evidence. Geological origin, treatment status, provenance chain, and material
-              specification are documented as a condition of presentation — not offered as a premium.
+              specification are documented as a condition of presentation — not offered as a
+              premium.
             </Body>
           </ScrollReveal>
         </Container>
@@ -65,13 +69,16 @@ export default function CollectionsPage() {
         {/* Divider rule beneath hero text */}
         <div className="mt-14 flex items-center px-[clamp(24px,4vw,64px)] pb-0">
           <div className="h-px flex-1 bg-platinum/[0.07]" />
-          <div className="mx-5 h-2.5 w-2.5 rotate-45 border border-coral/50" />
+          <div className="mx-5 h-2.5 w-2.5 rotate-45 border border-platinum/15" />
           <div className="h-px flex-1 bg-platinum/[0.07]" />
         </div>
       </section>
 
       {/* ── Full-bleed editorial break ────────────────────────────────────── */}
-      <div className="relative h-[42vh] min-h-[260px] max-h-[460px] overflow-hidden bg-[#0A0F1D]">
+      <div
+        className="relative h-[42vh] max-h-[460px] min-h-[260px] overflow-hidden"
+        style={{ background: "var(--color-bg)" }}
+      >
         <Image
           src="/editorial/hero-break.jpg"
           alt="Phaigort material collection — editorial"
@@ -86,13 +93,13 @@ export default function CollectionsPage() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, #0A0F1D 0%, transparent 28%, transparent 72%, #08090D 100%)",
+              "linear-gradient(to bottom, var(--color-bg) 0%, transparent 28%, transparent 72%, var(--color-bg) 100%)",
           }}
         />
       </div>
 
       {/* ── Domains ───────────────────────────────────────────────────────── */}
-      <section className="bg-[#08090D] pb-10 text-platinum md:pb-20">
+      <section className="pb-10 text-platinum md:pb-20" style={{ background: "var(--color-bg)" }}>
         <Container>
           <div className="space-y-0">
             {TREASURE_DOMAINS.map((domain, i) => (

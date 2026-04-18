@@ -23,16 +23,16 @@ export default function MaterialConsciousnessPage() {
             <Caption className="text-platinum/45">The Philosophy</Caption>
             <H1 className="mt-5 text-platinum">Material Consciousness</H1>
             <Body className="mt-6 text-platinum/65">
-              The profound understanding that exceptional materials spanning geological time, cultural
-              heritage, and human innovation deserve equal reverence. Not a marketing concept —
-              an empirical worldview connecting visible beauty to invisible forces.
+              The profound understanding that exceptional materials spanning geological time,
+              cultural heritage, and human innovation deserve equal reverence. Not a marketing
+              concept — an empirical worldview connecting visible beauty to invisible forces.
             </Body>
           </ScrollReveal>
         </Container>
       </DarkFieldStage>
 
       {/* ── Philosophy sections ───────────────────────────────────────────── */}
-      <section className="bg-[#08090D] pb-0 text-platinum">
+      <section className="pb-0 text-platinum" style={{ background: "var(--color-bg)" }}>
         <Container className="max-w-3xl py-16 md:py-20">
           <div className="space-y-16">
             {/* Etymology */}
@@ -75,8 +75,8 @@ export default function MaterialConsciousnessPage() {
                 <Body className="mt-4 text-platinum/65">
                   We inherit this spirit: the intellectual rigour and geometric clarity, the voyage
                   romance and artisan reverence. Where great luxury houses built fortresses, we
-                  build harbours. Where they gatekeep, we welcome. Where they whisper
-                  &ldquo;for the chosen few,&rdquo; we declare &ldquo;for the genuinely curious.&rdquo;
+                  build harbours. Where they gatekeep, we welcome. Where they whisper &ldquo;for the
+                  chosen few,&rdquo; we declare &ldquo;for the genuinely curious.&rdquo;
                 </Body>
               </div>
             </ScrollReveal>
@@ -85,7 +85,10 @@ export default function MaterialConsciousnessPage() {
       </section>
 
       {/* ── Full-bleed image break — geological deep time ─────────────────── */}
-      <div className="relative h-[45vh] min-h-[300px] max-h-[480px] overflow-hidden bg-[#08090D]">
+      <div
+        className="relative h-[45vh] max-h-[480px] min-h-[300px] overflow-hidden"
+        style={{ background: "var(--color-bg)" }}
+      >
         <Image
           src="/story/timeline-earth.jpg"
           alt="Geological timeline — Earth's deep time layers"
@@ -100,16 +103,16 @@ export default function MaterialConsciousnessPage() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, #08090D 0%, transparent 30%, transparent 70%, #08090D 100%)",
+              "linear-gradient(to bottom, var(--color-bg) 0%, transparent 30%, transparent 70%, var(--color-bg) 100%)",
           }}
         />
         {/* Centred pull-quote */}
-        <div className="relative z-10 flex h-full items-center justify-center text-center px-6">
+        <div className="relative z-10 flex h-full items-center justify-center px-6 text-center">
           <ScrollReveal>
-            <blockquote className="font-display text-[clamp(1.1rem,2.2vw,1.9rem)] italic leading-relaxed text-platinum/65 max-w-2xl">
+            <blockquote className="max-w-2xl font-display text-[clamp(1.1rem,2.2vw,1.9rem)] italic leading-relaxed text-platinum/65">
               Some things take forty million years to become extraordinary.
               <br />
-              <span className="text-platinum/35 text-[0.65em] not-italic tracking-[0.12em] uppercase">
+              <span className="text-[0.65em] uppercase not-italic tracking-[0.12em] text-platinum/35">
                 — Phaigort
               </span>
             </blockquote>
@@ -118,7 +121,7 @@ export default function MaterialConsciousnessPage() {
       </div>
 
       {/* ── Three Convergences ────────────────────────────────────────────── */}
-      <section className="bg-[#08090D] pb-20 text-platinum md:pb-28">
+      <section className="pb-20 text-platinum md:pb-28" style={{ background: "var(--color-bg)" }}>
         <Container className="max-w-3xl pt-16 md:pt-20">
           <ScrollReveal>
             <div>
@@ -140,7 +143,7 @@ export default function MaterialConsciousnessPage() {
                   },
                 ].map((item, i) => (
                   <ScrollReveal key={item.label} delay={i * 0.12}>
-                    <div className="border-l-2 border-coral/40 pl-6 transition-all duration-300 hover:border-coral/70">
+                    <div className="border-l-2 border-platinum/20 pl-6 transition-all duration-300 hover:border-platinum/40">
                       <H4 className="text-platinum">{item.label}</H4>
                       <Body className="mt-2 text-platinum/60">{item.text}</Body>
                     </div>
