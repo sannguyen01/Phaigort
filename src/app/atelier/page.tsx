@@ -57,7 +57,7 @@ export default function AtelierPage() {
       </DarkFieldStage>
 
       {/* Discovery Approaches */}
-      <section className="bg-[#0A0F1D] py-16 text-platinum md:py-20">
+      <section className="py-16 text-platinum md:py-20" style={{ background: "var(--color-bg)" }}>
         <Container>
           <ScrollReveal>
             <Caption className="text-platinum/40">How We Work</Caption>
@@ -66,7 +66,7 @@ export default function AtelierPage() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
             {APPROACHES.map((a, i) => (
               <ScrollReveal key={a.title} delay={i * 0.08}>
-                <div className="h-full space-y-4 border border-platinum/[0.08] bg-[#0A1240] p-8 text-platinum transition-colors duration-300 hover:bg-[#0F1A4A] md:p-10">
+                <div className="h-full space-y-4 border border-platinum/[0.08] bg-t04 p-8 text-platinum transition-colors duration-300 hover:bg-t05 md:p-10">
                   <Label className="text-platinum/40">{a.number}</Label>
                   <H4 className="text-platinum">{a.title}</H4>
                   <Body className="text-platinum/65">{a.description}</Body>
@@ -92,9 +92,7 @@ export default function AtelierPage() {
               we are here.
             </Body>
             <div className="mt-8">
-              <Button href="/contact" variant="secondary" onDark>
-                Arrange a Consultation
-              </Button>
+              <Button href="/contact">Arrange a Consultation</Button>
             </div>
           </ScrollReveal>
         </Container>

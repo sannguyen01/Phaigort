@@ -12,8 +12,8 @@ export function ScrollProgress() {
   return (
     <motion.div
       aria-hidden
-      style={{ scaleX, transformOrigin: "0%" }}
-      className="fixed top-16 md:top-20 inset-x-0 z-50 h-[2px] bg-coral/80"
+      style={{ scaleX, transformOrigin: "0%", background: "var(--color-rule)" }}
+      className="fixed inset-x-0 top-16 z-50 h-[1px] md:top-20"
     />
   );
 }

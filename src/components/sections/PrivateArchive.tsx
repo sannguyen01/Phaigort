@@ -35,12 +35,18 @@ export function PrivateArchive() {
           </p>
 
           {/* Headline — Cardo, off-white */}
-          <h2 className="font-display text-[clamp(2rem,4vw,3.75rem)] font-bold leading-[1.1] text-[#F0EDE8]">
+          <h2
+            className="font-display text-[clamp(2rem,4vw,3.75rem)] font-bold leading-[1.1]"
+            style={{ color: "var(--color-text)" }}
+          >
             Not every exceptional stone
             <br />
             reaches the open market.
             <br />
-            <em className="font-normal italic text-[#F0EDE8]/70">
+            <em
+              className="font-normal italic"
+              style={{ color: "var(--color-text-body)", opacity: 0.7 }}
+            >
               Some are reserved. Some are waiting.
             </em>
           </h2>
@@ -54,14 +60,7 @@ export function PrivateArchive() {
 
           {/* Coral CTA */}
           <div className="pt-2">
-            <Button
-              href="/contact"
-              variant="ghost"
-              onDark
-              className="border border-coral/50 text-coral hover:bg-coral hover:text-platinum active:bg-coral/90"
-            >
-              Begin a Private Consultation
-            </Button>
+            <Button href="/contact">Begin a Private Consultation</Button>
           </div>
         </motion.div>
 

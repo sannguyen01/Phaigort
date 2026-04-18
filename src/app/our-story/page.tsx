@@ -36,7 +36,7 @@ export default function OurStoryPage() {
       </DarkFieldStage>
 
       {/* The Earth as Artist */}
-      <section className="bg-[#0A0F1D] py-16 text-platinum md:py-24">
+      <section className="py-16 text-platinum md:py-24" style={{ background: "var(--color-bg)" }}>
         <Container>
           <ScrollReveal>
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
@@ -72,7 +72,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* The Expedition Mind */}
-      <section className="bg-[#0D0B09] py-16 text-platinum md:py-24">
+      <section className="py-16 text-platinum md:py-24" style={{ background: "var(--color-dark)" }}>
         <Container>
           <ScrollReveal>
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
@@ -131,7 +131,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* The Standard */}
-      <section className="bg-[#0A0F1D] py-16 text-platinum md:py-24">
+      <section className="py-16 text-platinum md:py-24" style={{ background: "var(--color-bg)" }}>
         <Container>
           <ScrollReveal>
             <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-16">
@@ -179,9 +179,7 @@ export default function OurStoryPage() {
               verified provenance, and contemporary materials of irreproducible specification.
             </Body>
             <div className="mt-8">
-              <Button href="/collections" variant="secondary" onDark>
-                Enter the Collection
-              </Button>
+              <Button href="/collections">Enter the Collection</Button>
             </div>
           </ScrollReveal>
         </Container>

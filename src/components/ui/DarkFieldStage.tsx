@@ -7,18 +7,26 @@ export interface DarkFieldStageProps {
   intensity?: "full" | "deep" | "medium";
 }
 
+// 12-tone mapping — CLAUDE.md §Design System
+// deep   → T-01 Void Obsidian #0A0A0A (bg-ground) — deepest void
+// full   → T-02 Abyssal Carbon #141414 (bg-t02)   — hero-depth layer
+// medium → T-03 Void Ink #1C1C1C (bg-stone)       — elevated surface
 export const DarkFieldStage = forwardRef<HTMLElement, DarkFieldStageProps>(function DarkFieldStage(
   { children, className, intensity = "full" },
   ref
 ) {
   const bg = {
-    full: "bg-[#0A0F1D] text-platinum",
-    deep: "bg-[#08090D] text-platinum",
-    medium: "bg-[#0D0B09] text-platinum",
+    deep:   "bg-ground",
+    full:   "bg-t02",
+    medium: "bg-stone",
   }[intensity];
 
   return (
-    <section ref={ref} className={cn(bg, "relative py-16 md:py-20", className)}>
+    <section
+      ref={ref}
+      className={cn(bg, "relative py-16 md:py-20", className)}
+      style={{ color: "var(--color-text)" }}
+    >
       {children}
     </section>
   );

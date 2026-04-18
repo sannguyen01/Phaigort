@@ -350,7 +350,7 @@ export function Header() {
               exit="exit"
               className={cn(
                 "absolute left-0 right-0 top-full",
-                "border-b border-platinum/[0.07] bg-[#0D0B09]",
+                "border-b border-platinum/[0.07] bg-ground",
                 "grid min-h-[320px] grid-cols-[1fr_1.8fr]"
               )}
             >
@@ -382,7 +382,7 @@ export function Header() {
               </div>
 
               {/* Right: editorial image crossfade panel */}
-              <div className="relative overflow-hidden bg-[#0F0D0B]">
+              <div className="relative overflow-hidden bg-t02">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={hoveredDomain.title}
@@ -401,7 +401,7 @@ export function Header() {
                     />
                   </motion.div>
                 </AnimatePresence>
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A0F1D]/65 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ground/65 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6">
                   <p className="font-ui text-[0.72rem] uppercase tracking-[0.18em] text-platinum/55">
                     {hoveredDomain.title}

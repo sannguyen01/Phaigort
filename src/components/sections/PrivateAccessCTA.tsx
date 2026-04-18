@@ -85,9 +85,7 @@ export function PrivateAccessCTA() {
           </p>
 
           <div className="pt-2">
-            <Button href="/contact" variant="secondary" onDark>
-              Begin a Private Consultation
-            </Button>
+            <Button href="/contact">Begin a Private Consultation</Button>
           </div>
         </motion.div>
       </Container>

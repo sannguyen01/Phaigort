@@ -1,5 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
-import { OurStory } from "@/components/sections/MaterialStory";
+import { Philosophy } from "@/components/sections/Philosophy";
+import { MaterialStory } from "@/components/sections/MaterialStory";
+import { Statement } from "@/components/sections/Statement";
 import { ManifestoMarquee } from "@/components/sections/ManifestoMarquee";
 import { BrandPremise } from "@/components/sections/BrandPremise";
 import { DomainsGrid } from "@/components/sections/DomainsGrid";
@@ -9,7 +11,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <OurStory />
+      <Philosophy />
+      <MaterialStory />
+      <Statement />
       <ManifestoMarquee />
       <BrandPremise />
       <DomainsGrid />
