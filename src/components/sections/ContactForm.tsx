@@ -15,7 +15,7 @@ interface FormData {
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClasses = cn(
-  "w-full px-4 py-3 bg-[#0A1240] border border-platinum/10 rounded-sm",
+  "w-full px-4 py-3 bg-[#1C1C1C] border border-platinum/10 rounded-sm",
   "font-ui text-sm text-platinum placeholder:text-platinum/30",
   "focus:outline-none focus:border-platinum/30 focus:ring-1 focus:ring-platinum/10 transition-all duration-300",
   "disabled:opacity-50 disabled:cursor-not-allowed"
@@ -169,7 +169,7 @@ export function ContactForm() {
 
             {/* Error */}
             {status === "error" && (
-              <p role="alert" className="font-body text-sm text-red-600">
+              <p role="alert" className="font-ui text-sm text-red-600">
                 {errorMsg}
               </p>
             )}

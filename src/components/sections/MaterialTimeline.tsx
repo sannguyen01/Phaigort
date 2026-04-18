@@ -49,14 +49,15 @@ export function MaterialTimeline() {
   });
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden bg-[#0A0F1D] py-32 md:py-48">
-      {/* Background Particles / Depth Feel */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(236,91,19,0.15)_0%,_transparent_70%)] opacity-20" />
-
+    <section
+      ref={containerRef}
+      className="relative overflow-hidden py-32 md:py-48"
+      style={{ background: "var(--color-bg)" }}
+    >
       {/* Progress Track Line */}
       <div className="absolute bottom-0 left-6 top-0 w-px bg-platinum/10 md:left-1/2 md:-translate-x-1/2" />
       <motion.div
-        className="absolute bottom-0 left-6 top-0 w-px origin-top bg-coral shadow-[0_0_10px_rgba(236,91,19,0.5)] md:left-1/2 md:-translate-x-1/2"
+        className="absolute bottom-0 left-6 top-0 w-px origin-top bg-platinum/20 md:left-1/2 md:-translate-x-1/2"
         style={{ scaleY: scrollYProgress }}
       />
 
@@ -90,13 +91,13 @@ export function MaterialTimeline() {
 
           {/* Text */}
           <div className="flex-1 text-center md:text-left">
-            <p className="font-brand text-[9px] uppercase tracking-[0.45em] text-platinum/30">
+            <p className="font-ui text-[9px] uppercase tracking-[0.45em] text-platinum/30">
               The Lineage
             </p>
-            <h3 className="mt-3 font-heading text-2xl text-platinum/90 md:text-3xl">
+            <h3 className="mt-3 font-display text-2xl text-platinum/90 md:text-3xl">
               García de Orta, 1563
             </h3>
-            <p className="mt-4 max-w-prose font-body text-sm leading-relaxed text-platinum/55">
+            <p className="mt-4 max-w-prose font-ui text-sm leading-relaxed text-platinum/55">
               The first European to document the gemstone trade routes of Goa, Hormuz, and Ceylon —
               recording colour, clarity, and origin with the rigour of a naturalist and the instinct
               of a merchant. Phaigort&apos;s discipline begins here.
@@ -127,11 +128,11 @@ function TimelineItem({ item, index }: { item: (typeof TIMELINE_DATA)[number]; i
       className={`relative flex flex-col items-center gap-12 md:flex-row md:gap-24 ${isEven ? "md:flex-row-reverse" : ""}`}
     >
       {/* Connector Dot */}
-      <div className="absolute left-6 top-12 z-20 h-4 w-4 -translate-x-[7px] rounded-full border border-coral bg-[#0A0F1D] shadow-[0_0_15px_rgba(236,91,19,0.3)] transition-transform duration-700 hover:scale-150 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2" />
+      <div className="absolute left-6 top-12 z-20 h-4 w-4 -translate-x-[7px] rounded-full border border-platinum/20 bg-ground transition-transform duration-700 hover:scale-150 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2" />
 
       {/* Content Block */}
       <div className="ml-16 flex flex-col justify-center md:ml-0 md:w-1/2">
-        <Caption className="tracking-widest text-silver">{item.caption}</Caption>
+        <Caption className="tracking-widest">{item.caption}</Caption>
         <H2 className="mt-8 text-balance leading-tight text-platinum">{item.title}</H2>
         <div className="mt-8 space-y-6">
           <Body className="text-balance text-lg leading-relaxed text-platinum/60">
@@ -158,11 +159,11 @@ function TimelineItem({ item, index }: { item: (typeof TIMELINE_DATA)[number]; i
             className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105"
             loading="lazy"
           />
-          {/* Hover vignette — coral tint bleeds in on hover */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-coral/15 to-transparent opacity-0 mix-blend-screen transition-opacity duration-1000 group-hover:opacity-100" />
+          {/* Hover vignette — achromatic depth on hover */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-platinum/5 to-transparent opacity-0 mix-blend-screen transition-opacity duration-1000 group-hover:opacity-100" />
           {/* Bottom caption strip */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0A0F1D]/70 to-transparent px-6 pb-5 pt-12">
-            <span className="font-brand text-[10px] uppercase tracking-[0.3em] text-platinum/45">
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0A0A0A]/70 to-transparent px-6 pb-5 pt-12">
+            <span className="font-ui text-[10px] uppercase tracking-[0.3em] text-platinum/45">
               {item.caption}
             </span>
           </div>

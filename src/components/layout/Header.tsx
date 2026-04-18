@@ -412,7 +412,7 @@ export function Header() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             aria-hidden="true"
-            className="pointer-events-none fixed inset-0 z-[58] bg-[#0D0B09]/20"
+            className="pointer-events-none fixed inset-0 z-[58] bg-[#0A0A0A]/20"
             style={{ top: "88px" }}
           />
         )}
