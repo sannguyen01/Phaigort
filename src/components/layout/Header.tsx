@@ -63,7 +63,7 @@ function NavLogo({ solid }: NavLogoProps) {
         sizes="220px"
         className="object-contain object-left"
         style={{
-          filter: solid ? "none" : "invert(1)",
+          filter: solid ? "invert(1)" : "none",
           transition: "filter 350ms ease",
         }}
         priority
