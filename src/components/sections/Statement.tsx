@@ -10,18 +10,18 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 const PILLARS = [
   {
     number: "01",
-    headline: "Sourced at Origin",
-    body: "Every specimen is acquired at the geological source — mines, riverbed estates, and lapidary workshops in Burma, Colombia, Kashmir, and the Iberian belt. No intermediaries. Full provenance documented.",
+    headline: "Formed Under Pressure",
+    body: "A sapphire's colour is pigment — it is iron and titanium locked in crystal under temperatures that would vaporise everything familiar. A spinel forms where marble meets limestone under ancient mountain roots. These are geological events you can hold in your hand.",
   },
   {
     number: "02",
-    headline: "Documented with Rigour",
-    body: "Each piece carries a scientific record: formation type, origin certification, spectral analysis, and a chain of custody tracing the material from earth to collection.",
+    headline: "Found by Those Who Know",
+    body: "Great stones do not reveal themselves easily. They surface from river gravels in Sri Lanka, metamorphic corridors in Madagascar, marble seams in Vietnam. Finding them demands literacy across continents, and the instinct to recognise beauty before the lapidary's wheel has touched it.",
   },
   {
     number: "03",
-    headline: "Presented to the Curious",
-    body: "Phaigort is not built for the market. It is built for those who understand what a stone holds — its deep time, its rarity, its irreversibility. That understanding is the admission.",
+    headline: "Made to Outlast Everything",
+    body: "Every stone is held to one question: will it matter more when it is rarer? The cutting must honour the stone's natural optics. The metalwork must be worthy of the material. The provenance must be more rigorous than claimed. This is the discipline of making things built to be passed down.",
   },
 ] as const;
 

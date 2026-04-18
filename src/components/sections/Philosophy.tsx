@@ -16,10 +16,7 @@ export function Philosophy() {
       className="relative py-28 md:py-40"
       style={{ background: "var(--color-bg)" }}
     >
-      <div
-        className="mx-auto px-[clamp(24px,4vw,64px)] text-center"
-        style={{ maxWidth: "640px" }}
-      >
+      <div className="mx-auto px-[clamp(24px,4vw,64px)] text-center" style={{ maxWidth: "640px" }}>
         <motion.div
           {...(!prefersReducedMotion && {
             initial: { opacity: 0, y: 32 },
@@ -27,20 +24,12 @@ export function Philosophy() {
             transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
           })}
         >
-          {/* Eyebrow */}
-          <p
-            className="font-ui uppercase tracking-[0.18em]"
-            style={{ fontSize: "var(--text-xs)", color: "var(--color-text-muted)" }}
-          >
-            Our Promise
-          </p>
-
           {/* Heading — Cardo display */}
           <h2
-            className="mt-5 font-display font-bold leading-[1.15]"
+            className="font-display font-bold leading-[1.15]"
             style={{ fontSize: "var(--text-2xl)", color: "var(--color-text)" }}
           >
-            This is where curiosity meets substance
+            We find them at the source. We bring them to those who understand what they hold.
           </h2>
 
           {/* T-09 rule */}
@@ -67,10 +56,10 @@ export function Philosophy() {
               opacity: 0.68,
             }}
           >
-            Where you build collections worth explaining, worth keeping, worth
-            passing down. Where materials become more meaningful over time through
-            understanding and connection. Every piece comes with its true story.
-            Every collector joins a community of material enthusiasts.
+            Our philosophy draws inspiration from the 16th-century Portuguese and Spanish trade
+            routes — a time when seafaring vessels carried more than just cargo; they carried the
+            collective knowledge of distant horizons across the oceans. In that same spirit, we
+            welcome all who seek a deeper understanding of what truly makes a treasure meaningful.
           </p>
 
           {/* Text CTA */}

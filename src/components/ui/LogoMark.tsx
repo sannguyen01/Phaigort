@@ -9,14 +9,40 @@
 interface LogoMarkProps {
   /** @deprecated Use variant instead */
   navy?: boolean;
-  variant?: "light" | "dark";
+  variant?: "light" | "dark" | "wordmark-white";
   width?: number;
   height?: number;
 }
 
 export function PhaigortLogoMark({ navy, variant, width = 132, height = 46 }: LogoMarkProps) {
   // Resolve effective variant: new prop wins, legacy navy prop as fallback
-  const resolved: "light" | "dark" = variant ?? (navy ? "light" : "dark");
+  const resolved: "light" | "dark" | "wordmark-white" = variant ?? (navy ? "light" : "dark");
+
+  if (resolved === "wordmark-white") {
+    // Plain wordmark — white on dark ground, no diamond
+    return (
+      <svg
+        viewBox="0 0 220 36"
+        width={width}
+        height={height}
+        aria-hidden="true"
+        className="transition-all duration-[350ms]"
+      >
+        <text
+          x="0"
+          y="27"
+          fontFamily="var(--font-garet), var(--font-jost), Jost, sans-serif"
+          fontSize="17"
+          fontWeight="700"
+          letterSpacing="5"
+          fill="#FAFAFA"
+          textAnchor="start"
+        >
+          PHAIGORT
+        </text>
+      </svg>
+    );
+  }
 
   if (resolved === "light") {
     // Plain wordmark — near-black on light ground

@@ -40,10 +40,11 @@ const DRAWER_LINK_VARIANTS = {
   exit: { opacity: 0, transition: { duration: 0.15 } },
 } as const;
 
-// ── PNG logo with scroll-state crossfade ─────────────────────────────────────
-// • !solid (transparent, dark hero) → wordmark only (Logo White, inverted to white)
-// • solid (scrolled, dark header)   → diamond mark  (Logo Dark,  inverted to white diamond)
-// Both PNGs have white backgrounds; filter:invert(1) makes the white bg black → disappears on dark field.
+// ── PNG logo with filter-based colour swap ───────────────────────────────────
+// phaigort-logo-white.png has a white background with dark lettering.
+// • !solid (transparent, dark hero): filter:invert(1) → black bg disappears, text becomes white ✓
+// • solid  (bright void-white header): filter:none   → white bg matches header, dark text visible ✓
+// Single image, no crossfade needed.
 
 interface NavLogoProps {
   solid: boolean;
@@ -53,35 +54,17 @@ function NavLogo({ solid }: NavLogoProps) {
   return (
     <div
       className="relative flex-shrink-0"
-      style={{ width: "clamp(160px, 16vw, 210px)", height: "clamp(64px, 6vw, 80px)" }}
-      aria-label="Phaigort"
+      style={{ width: "clamp(120px, 12vw, 160px)", height: "clamp(40px, 4.5vw, 52px)" }}
     >
-      {/* Wordmark — fades in when header is transparent (top of page) */}
       <Image
         src="/brand/phaigort-logo-white.png"
         alt="Phaigort"
         fill
-        sizes="144px"
+        sizes="160px"
         className="object-contain object-left"
         style={{
-          filter: "invert(1)",
-          opacity: solid ? 0 : 1,
-          transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-        }}
-        priority
-      />
-      {/* Diamond mark — fades in when header is solid (scrolled) */}
-      <Image
-        src="/brand/phaigort-logo-dark.png"
-        alt=""
-        aria-hidden={true}
-        fill
-        sizes="144px"
-        className="object-contain object-left"
-        style={{
-          filter: "invert(1)",
-          opacity: solid ? 1 : 0,
-          transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+          filter: solid ? "none" : "invert(1)",
+          transition: "filter 300ms ease",
         }}
         priority
       />
@@ -169,12 +152,12 @@ export function Header() {
 
   const linkCls = (active: boolean) =>
     cn(
-      "font-ui text-[11px] uppercase tracking-[0.1em] transition-colors duration-[180ms]",
+      "font-ui text-[11px] uppercase tracking-[0.1em] transition-colors duration-300",
       "focus:outline-none focus-visible:underline",
       isSolid
         ? active
-          ? "text-[var(--color-text)]"
-          : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+          ? "text-[#0A0A0A]"
+          : "text-[#525252] hover:text-[#0A0A0A]"
         : active
           ? "text-platinum"
           : "text-platinum/55 hover:text-platinum"
@@ -188,9 +171,11 @@ export function Header() {
       <header
         className="fixed inset-x-0 top-0 z-[60] h-[80px] md:h-[88px]"
         style={{
-          backgroundColor: isSolid ? "var(--color-bg)" : "transparent",
-          boxShadow: isSolid ? "0 1px 0 var(--color-divider)" : "none",
-          transition: "background-color 300ms ease, box-shadow 300ms ease",
+          backgroundColor: isSolid ? "rgba(250, 250, 250, 0.97)" : "transparent",
+          boxShadow: isSolid ? "0 1px 0 rgba(0,0,0,0.07)" : "none",
+          backdropFilter: isSolid ? "blur(12px)" : "none",
+          transition:
+            "background-color 350ms ease, box-shadow 350ms ease, backdrop-filter 350ms ease",
         }}
       >
         {/* ── LOGO — absolute centre ──────────────────────────────────── */}
@@ -215,9 +200,9 @@ export function Header() {
               aria-label={isOpen ? "Close navigation" : "Open navigation"}
               className={cn(
                 "-ml-2 flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden",
-                "transition-colors duration-[180ms]",
+                "transition-colors duration-300",
                 isSolid
-                  ? "text-[var(--color-text-muted)] hover:text-[var(--color-text)]"
+                  ? "text-[#525252] hover:text-[#0A0A0A]"
                   : "text-platinum/55 hover:text-platinum"
               )}
             >
@@ -298,7 +283,7 @@ export function Header() {
             {/* Desktop left links: The Collection + Our Story */}
             <nav
               aria-label="Primary navigation left"
-              className="hidden items-center gap-7 md:flex lg:gap-9"
+              className="hidden items-center gap-4 md:flex lg:gap-5"
             >
               {/* "The Collection" → mega-menu trigger */}
               <button
@@ -319,7 +304,7 @@ export function Header() {
           </div>
 
           {/* ── RIGHT NAV (desktop) / Spacer (mobile) ───────────────── */}
-          <nav aria-label="Primary navigation right" className="flex items-center gap-7 md:gap-9">
+          <nav aria-label="Primary navigation right" className="flex items-center gap-4 md:gap-5">
             {/* Desktop right links: Atelier + Private Enquiry */}
             {RIGHT_LINKS.map((link) => (
               <Link
