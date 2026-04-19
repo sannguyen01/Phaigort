@@ -40,7 +40,7 @@ export function MaterialStory() {
           </p>
 
           <h2
-            className="mt-5 font-display font-bold leading-[1.15]"
+            className="mt-5 font-display font-normal leading-[1.15]"
             style={{ fontSize: "var(--text-2xl)", color: "var(--color-text)" }}
           >
             Some materials take forty million years to become beautiful.

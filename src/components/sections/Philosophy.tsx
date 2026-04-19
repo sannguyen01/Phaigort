@@ -26,10 +26,10 @@ export function Philosophy() {
         >
           {/* Heading — Cardo display */}
           <h2
-            className="font-display font-bold leading-[1.15]"
+            className="font-display font-normal leading-[1.15]"
             style={{ fontSize: "var(--text-2xl)", color: "var(--color-text)" }}
           >
-            We find them at the source. We bring them to those who understand what they hold.
+            Material consciousness is not a luxury concept. It is the empirical practice of understanding what Earth creates and what human craft tradition builds around it.
           </h2>
 
           {/* T-09 rule */}

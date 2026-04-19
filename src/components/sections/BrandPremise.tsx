@@ -43,7 +43,7 @@ export function BrandPremise() {
 
           {/* Pull headline — Cardo */}
           <h2
-            className="mt-5 font-display font-bold leading-[1.2]"
+            className="mt-5 font-display font-normal leading-[1.2]"
             style={{ fontSize: "var(--text-2xl)", color: "var(--color-text)" }}
           >
             More than a jewellery house — the institution behind our Wonderhouse of material
@@ -127,7 +127,7 @@ export function BrandPremise() {
             animate={prefersReducedMotion ? {} : { y: [0, -8, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             className="relative w-full"
-            style={{ maxWidth: "380px", aspectRatio: "6/1" }}
+            style={{ maxWidth: "420px", aspectRatio: "4/1" }}
           >
             <Image
               src="/brand/signature-v2.png"

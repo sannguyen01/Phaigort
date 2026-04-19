@@ -31,7 +31,7 @@ export function PhaigortLogoMark({ navy, variant, width = 132, height = 46 }: Lo
         <text
           x="0"
           y="27"
-          fontFamily="var(--font-garet), var(--font-jost), Jost, sans-serif"
+          fontFamily="var(--font-ui), sans-serif"
           fontSize="17"
           fontWeight="700"
           letterSpacing="5"
@@ -57,7 +57,7 @@ export function PhaigortLogoMark({ navy, variant, width = 132, height = 46 }: Lo
         <text
           x="0"
           y="27"
-          fontFamily="var(--font-garet), var(--font-jost), Jost, sans-serif"
+          fontFamily="var(--font-ui), sans-serif"
           fontSize="17"
           fontWeight="700"
           letterSpacing="5"
@@ -93,7 +93,7 @@ export function PhaigortLogoMark({ navy, variant, width = 132, height = 46 }: Lo
         x="150"
         y="59"
         textAnchor="middle"
-        fontFamily="var(--font-garet), var(--font-jost), Jost, sans-serif"
+        fontFamily="var(--font-ui), sans-serif"
         fontSize="19"
         fontWeight="700"
         letterSpacing="4"

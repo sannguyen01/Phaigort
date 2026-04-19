@@ -164,7 +164,7 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative -mt-[80px] min-h-[100dvh] overflow-hidden md:-mt-[88px]"
+      className="grain-field relative -mt-[80px] min-h-[100dvh] overflow-hidden md:-mt-[88px]"
       style={{ background: "var(--color-bg)" }}
       aria-label="Hero"
     >
@@ -291,8 +291,8 @@ export function Hero() {
           className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2"
         >
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ opacity: [0.25, 0.6, 0.25] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2"
           >
             <span

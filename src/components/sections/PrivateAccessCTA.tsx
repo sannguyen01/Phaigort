@@ -15,7 +15,7 @@ export function PrivateAccessCTA() {
   return (
     <section
       ref={ref}
-      className="relative flex min-h-[60vh] items-center justify-center overflow-hidden py-28 text-platinum md:py-40"
+      className="grain-field relative flex min-h-[60vh] items-center justify-center overflow-hidden py-28 text-platinum md:py-40"
       style={{ background: "var(--color-dark)" }}
     >
       {/* Photographic backdrop — extreme close-up stone pavilion at low opacity */}
@@ -55,7 +55,7 @@ export function PrivateAccessCTA() {
           className="flex flex-col items-center space-y-8"
         >
           <h2
-            className="font-display font-bold leading-[1.18]"
+            className="font-display font-normal leading-[1.18]"
             style={{ fontSize: "var(--text-2xl)", color: "var(--color-text)" }}
           >
             Not every exceptional stone
