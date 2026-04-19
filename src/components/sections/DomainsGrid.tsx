@@ -46,7 +46,7 @@ export function DomainsGrid() {
             The Collection
           </p>
           <h2
-            className="mt-4 font-display font-bold leading-[1.15]"
+            className="mt-4 font-display font-normal leading-[1.15]"
             style={{ fontSize: "var(--text-2xl)", color: "var(--color-text)" }}
           >
             Four Domains of Rarity
@@ -120,11 +120,10 @@ export function DomainsGrid() {
 
                     {/* Ghost inline CTA */}
                     <span
-                      className="mt-4 inline-flex items-center gap-3 font-ui uppercase tracking-[0.14em] transition-opacity duration-200 group-hover:opacity-80"
+                      className="mt-4 inline-flex items-center gap-3 font-ui uppercase tracking-[0.14em] opacity-50 transition-opacity duration-200 group-hover:opacity-100"
                       style={{
                         fontSize: "var(--text-xs)",
                         color: "var(--color-text-muted)",
-                        opacity: 0.5,
                       }}
                     >
                       Explore

@@ -41,16 +41,37 @@ const DRAWER_LINK_VARIANTS = {
   exit: { opacity: 0, transition: { duration: 0.15 } },
 } as const;
 
-// ── SVG wordmark — colour-adaptive via PhaigortLogoMark variants ─────────────
-// solid=false (transparent header on dark hero): wordmark-white (T-12 text, no bg)
-// solid=true  (scrolled / sub-pages, header rgba(250,250,250,0.97)): light (dark text, no bg)
+// ── Diamond logo with crossfade between solid and transparent header states ───
+// solid=false → dark-fill diamond + white text (floats over dark hero)
+// solid=true  → white-fill diamond + near-black text (on near-white scrolled header)
+// AnimatePresence crossfades between the two when isSolid flips.
 
 interface NavLogoProps {
   solid: boolean;
 }
 
 function NavLogo({ solid }: NavLogoProps) {
-  return <PhaigortLogoMark variant={solid ? "light" : "wordmark-white"} width={180} height={30} />;
+  return (
+    // Container sized to the diamond's 2.59:1 aspect ratio
+    <div className="relative" style={{ width: 164, height: 63 }}>
+      <AnimatePresence mode="sync">
+        <motion.span
+          key={solid ? "light" : "dark"}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <PhaigortLogoMark
+            variant={solid ? "light" : "dark"}
+            width={164}
+            height={63}
+          />
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  );
 }
 
 // ── Reduced-motion helper ─────────────────────────────────────────────────────
@@ -159,19 +180,14 @@ export function Header() {
             "background-color 350ms ease, box-shadow 350ms ease, backdrop-filter 350ms ease",
         }}
       >
-        {/* ── LOGO — absolute centre ──────────────────────────────────── */}
-        <div className="pointer-events-auto absolute left-1/2 top-1/2 z-[30] -translate-x-1/2 -translate-y-1/2">
-          <Link href="/" aria-label={BRAND.name} onClick={() => setIsOpen(false)}>
-            <NavLogo solid={isSolid} />
-          </Link>
-        </div>
-
+        {/* ── 3-column grid: [left-nav] [logo] [right-nav] ──────────── */}
+        {/* CSS grid guarantees the centre column is always pixel-perfect centre */}
         <div
-          className="relative mx-auto flex h-full items-center justify-between px-6 md:px-10 lg:px-14"
+          className="relative mx-auto grid h-full grid-cols-[1fr_auto_1fr] items-center px-6 md:px-10 lg:px-14"
           style={{ maxWidth: "var(--content-wide)" }}
         >
           {/* ── LEFT NAV (desktop) / Hamburger (mobile) ─────────────── */}
-          <div className="flex flex-1 items-center gap-3 md:gap-4">
+          <div className="flex items-center gap-3 md:gap-4">
             {/* Mobile hamburger */}
             <button
               type="button"
@@ -284,10 +300,20 @@ export function Header() {
             </nav>
           </div>
 
+          {/* ── LOGO — grid centre column ────────────────────────────── */}
+          <Link
+            href="/"
+            aria-label={BRAND.name}
+            onClick={() => setIsOpen(false)}
+            className="flex items-center justify-center"
+          >
+            <NavLogo solid={isSolid} />
+          </Link>
+
           {/* ── RIGHT NAV (desktop) / Spacer (mobile) ───────────────── */}
           <nav
             aria-label="Primary navigation right"
-            className="flex flex-1 items-center justify-end gap-4 md:gap-5"
+            className="flex items-center justify-end gap-4 md:gap-5"
           >
             {/* Desktop right links: Atelier + Private Enquiry */}
             {RIGHT_LINKS.map((link) => (
@@ -300,8 +326,6 @@ export function Header() {
               </Link>
             ))}
 
-            {/* Mobile spacer — mirrors hamburger to keep logo centred */}
-            <div aria-hidden="true" className="min-h-[44px] min-w-[44px] md:hidden" />
           </nav>
         </div>
 
@@ -436,7 +460,7 @@ export function Header() {
             {/* Drawer top bar */}
             <div className="flex h-14 flex-shrink-0 items-center justify-between px-6">
               <Link href="/" aria-label={BRAND.name} onClick={() => setIsOpen(false)}>
-                <NavLogo solid={false} />
+                <PhaigortLogoMark variant="dark" width={140} height={54} />
               </Link>
               <button
                 type="button"

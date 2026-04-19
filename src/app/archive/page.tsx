@@ -84,7 +84,7 @@ export default function ArchivePage() {
               <ScrollReveal key={cat.title} delay={i * 0.1}>
                 <article className="group overflow-hidden bg-t04 transition-colors duration-500 hover:bg-t05">
                   {/* Image — scales subtly on hover */}
-                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/10" }}>
+                  <div className="arch-mask relative w-full overflow-hidden" style={{ aspectRatio: "16/10" }}>
                     <Image
                       src={cat.image}
                       alt={cat.imageAlt}
