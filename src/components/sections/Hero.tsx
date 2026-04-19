@@ -228,7 +228,7 @@ export function Hero() {
 
         {/* H1 */}
         <motion.h1
-          className="mx-auto mt-7 max-w-[820px] px-6 font-display leading-[1.06] tracking-[0.01em]"
+          className="mx-auto mt-7 max-w-[820px] px-6 font-display font-normal leading-[1.06] tracking-[0.01em]"
           style={{ fontSize: "var(--text-hero)", color: "var(--color-text)" }}
           {...(!prefersReducedMotion && {
             initial: { opacity: 0, y: 22 },
