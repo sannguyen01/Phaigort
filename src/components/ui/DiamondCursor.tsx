@@ -14,8 +14,8 @@ export function DiamondCursor() {
   const [hovered, setHovered] = useState(false);
   const [visible, setVisible] = useState(false);
 
-  const springX = useSpring(cursorX, { stiffness: 600, damping: 35, mass: 0.25 });
-  const springY = useSpring(cursorY, { stiffness: 600, damping: 35, mass: 0.25 });
+  const springX = useSpring(cursorX, { stiffness: 200, damping: 20 });
+  const springY = useSpring(cursorY, { stiffness: 200, damping: 20 });
 
   useEffect(() => {
     function onMouseMove(e: MouseEvent) {
@@ -68,12 +68,12 @@ export function DiamondCursor() {
         translateY: "-50%",
       }}
       animate={{
-        opacity: visible ? 1 : 0,
-        scale: hovered ? 1.8 : 1,
+        opacity: visible ? (hovered ? 0.5 : 1) : 0,
+        scale: hovered ? 1.5 : 1,
       }}
       transition={{
         opacity: { duration: 0.2 },
-        scale: { type: "spring", stiffness: 400, damping: 25 },
+        scale: { type: "spring", stiffness: 200, damping: 20 },
       }}
     >
       <div

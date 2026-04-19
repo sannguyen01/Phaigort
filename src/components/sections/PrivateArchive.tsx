@@ -11,7 +11,7 @@ export function PrivateArchive() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section ref={ref} className="relative bg-near-black py-28 text-platinum md:py-40">
+    <section ref={ref} className="relative bg-ground py-28 text-platinum md:py-40">
       {/* Ambient radial glow */}
       <div
         aria-hidden
@@ -58,7 +58,7 @@ export function PrivateArchive() {
             believe rarity should be announced. It should be discovered.
           </p>
 
-          {/* Coral CTA */}
+          {/* Ghost CTA */}
           <div className="pt-2">
             <Button href="/contact">Begin a Private Consultation</Button>
           </div>

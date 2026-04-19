@@ -17,7 +17,7 @@ import { Container } from "@/components/ui/Container";
 import { TREASURE_DOMAINS } from "@/lib/constants";
 
 // ── TiltCard ─────────────────────────────────────────────────────────────────
-// Each card tilts in 3D toward the cursor and shows a coral spotlight gradient.
+// Each card tilts in 3D toward the cursor and shows an achromatic spotlight.
 
 interface TiltCardProps {
   domain: (typeof TREASURE_DOMAINS)[number];
@@ -38,7 +38,7 @@ function TiltCard({ domain, index, isInView, prefersReducedMotion }: TiltCardPro
   const rotateY = useTransform(x, [0, 1], [-4, 4]);
   const spotX = useTransform(x, [0, 1], [0, 100]);
   const spotY = useTransform(y, [0, 1], [0, 100]);
-  const spotBg = useMotionTemplate`radial-gradient(circle at ${spotX}% ${spotY}%, rgba(255,107,74,0.10) 0%, transparent 55%)`;
+  const spotBg = useMotionTemplate`radial-gradient(circle at ${spotX}% ${spotY}%, rgba(200,200,200,0.06) 0%, transparent 55%)`;
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     if (!cardRef.current || prefersReducedMotion) return;
@@ -92,15 +92,15 @@ function TiltCard({ domain, index, isInView, prefersReducedMotion }: TiltCardPro
             loading="lazy"
           />
           {/* Circular numbered badge — bottom-centre */}
-          <div className="absolute bottom-4 left-1/2 z-10 flex h-9 w-9 -translate-x-1/2 items-center justify-center rounded-full bg-[#0A1240]">
-            <span className="font-brand text-[11px] font-semibold text-platinum">
+          <div className="absolute bottom-4 left-1/2 z-10 flex h-9 w-9 -translate-x-1/2 items-center justify-center rounded-full bg-stone">
+            <span className="font-ui text-[11px] font-semibold text-platinum">
               {String(index + 1).padStart(2, "0")}
             </span>
           </div>
         </div>
 
         {/* Card caption — title + body description */}
-        <div className="bg-[#0A1240] px-4 pb-6 pt-4 text-center transition-colors duration-500 group-hover:bg-[#0F1A4A] md:px-5">
+        <div className="bg-t02 px-4 pb-6 pt-4 text-center transition-colors duration-500 group-hover:bg-t04 md:px-5">
           <p className="font-ui text-xs uppercase tracking-[0.35em] text-platinum/90 transition-colors duration-300 group-hover:text-platinum">
             {domain.title}
           </p>
@@ -128,7 +128,7 @@ export function CollectionGrid() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="collections" ref={ref} className="bg-[#0A0F1D] py-10 text-platinum md:py-16">
+    <section id="collections" ref={ref} className="bg-ground py-10 text-platinum md:py-16">
       <Container>
         <motion.div
           {...(prefersReducedMotion

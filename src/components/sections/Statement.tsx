@@ -50,7 +50,7 @@ export function Statement() {
               animate: isInView ? { opacity: 1, y: 0 } : {},
               transition: {
                 duration: 0.75,
-                delay: i * 0.14,
+                delay: i * 0.12,
                 ease: [0.22, 1, 0.36, 1],
               },
             })}

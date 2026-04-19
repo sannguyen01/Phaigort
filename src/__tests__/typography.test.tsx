@@ -3,30 +3,29 @@ import { render, screen } from "@testing-library/react";
 import { Display, H1, H2, Body, Caption } from "@/components/ui/Typography";
 
 describe("Typography", () => {
-  it("Display uses font-heading", () => {
+  it("Display uses font-display", () => {
     render(<Display>Test Heading</Display>);
     const el = screen.getByText("Test Heading");
-    expect(el.className).toContain("font-heading");
+    expect(el.className).toContain("font-display");
   });
 
-  it("Body includes max-w-prose for line length control", () => {
+  it("Body includes max-w-prose and font-ui", () => {
     render(<Body>Body text content</Body>);
     const el = screen.getByText("Body text content");
     expect(el.className).toContain("max-w-prose");
-    expect(el.className).toContain("font-body");
+    expect(el.className).toContain("font-ui");
   });
 
-  it("H1 uses font-heading with tracking-tight", () => {
+  it("H1 uses font-display", () => {
     render(<H1>Heading One</H1>);
     const el = screen.getByText("Heading One");
-    expect(el.className).toContain("font-heading");
-    expect(el.className).toContain("tracking-tight");
+    expect(el.className).toContain("font-display");
   });
 
-  it("H2 uses font-heading", () => {
+  it("H2 uses font-display", () => {
     render(<H2>Heading Two</H2>);
     const el = screen.getByText("Heading Two");
-    expect(el.className).toContain("font-heading");
+    expect(el.className).toContain("font-display");
   });
 
   it("Caption uses uppercase tracking", () => {

@@ -73,7 +73,7 @@ export function Philosophy() {
           >
             <a
               href="/material-consciousness"
-              className="inline-flex items-center gap-3 font-ui text-[11px] uppercase tracking-[0.16em] transition-colors duration-200 hover:opacity-100"
+              className="group inline-flex items-center gap-3 font-ui text-[11px] uppercase tracking-[0.16em] transition-opacity duration-200 hover:opacity-100"
               style={{ color: "var(--color-text-muted)", opacity: 0.7 }}
             >
               Discover Our Story

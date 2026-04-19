@@ -45,7 +45,7 @@ export function EditorialStrip({ image, imageAlt, caption }: EditorialStripProps
         })}
         className="absolute inset-0 flex items-center justify-center px-6"
       >
-        <p className="max-w-4xl text-center font-heading text-3xl italic leading-[1.1] tracking-[-0.01em] text-platinum drop-shadow-2xl md:text-[3.25rem] lg:text-[4rem]">
+        <p className="max-w-4xl text-center font-display text-3xl italic leading-[1.1] tracking-[-0.01em] text-platinum drop-shadow-2xl md:text-[3.25rem] lg:text-[4rem]">
           {caption}
         </p>
       </motion.div>
