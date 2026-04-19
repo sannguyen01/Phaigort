@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, useId } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { PhaigortLogoMark } from "@/components/ui/LogoMark";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, BRAND, TREASURE_DOMAINS } from "@/lib/constants";
 
@@ -40,36 +41,16 @@ const DRAWER_LINK_VARIANTS = {
   exit: { opacity: 0, transition: { duration: 0.15 } },
 } as const;
 
-// ── PNG logo with filter-based colour swap ───────────────────────────────────
-// phaigort-logo-white.png has a white background with dark lettering.
-// • !solid (transparent, dark hero): filter:invert(1) → black bg disappears, text becomes white ✓
-// • solid  (bright void-white header): filter:none   → white bg matches header, dark text visible ✓
-// Single image, no crossfade needed.
+// ── SVG wordmark — colour-adaptive via PhaigortLogoMark variants ─────────────
+// solid=false (transparent header on dark hero): wordmark-white (T-12 text, no bg)
+// solid=true  (scrolled / sub-pages, header rgba(250,250,250,0.97)): light (dark text, no bg)
 
 interface NavLogoProps {
   solid: boolean;
 }
 
 function NavLogo({ solid }: NavLogoProps) {
-  return (
-    <div
-      className="relative flex-shrink-0"
-      style={{ width: "clamp(180px, 16vw, 240px)", height: "clamp(64px, 6vw, 80px)" }}
-    >
-      <Image
-        src="/brand/phaigort-logo-white.png"
-        alt="Phaigort"
-        fill
-        sizes="240px"
-        className="object-contain object-center"
-        style={{
-          filter: solid ? "none" : "invert(1)",
-          transition: "filter 350ms ease",
-        }}
-        priority
-      />
-    </div>
-  );
+  return <PhaigortLogoMark variant={solid ? "light" : "wordmark-white"} width={180} height={30} />;
 }
 
 // ── Reduced-motion helper ─────────────────────────────────────────────────────
@@ -179,7 +160,7 @@ export function Header() {
         }}
       >
         {/* ── LOGO — absolute centre ──────────────────────────────────── */}
-        <div className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="pointer-events-auto absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
           <Link href="/" aria-label={BRAND.name} onClick={() => setIsOpen(false)}>
             <NavLogo solid={isSolid} />
           </Link>
@@ -455,7 +436,7 @@ export function Header() {
             {/* Drawer top bar */}
             <div className="flex h-14 flex-shrink-0 items-center justify-between px-6">
               <Link href="/" aria-label={BRAND.name} onClick={() => setIsOpen(false)}>
-                <NavLogo solid />
+                <NavLogo solid={false} />
               </Link>
               <button
                 type="button"

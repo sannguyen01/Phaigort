@@ -127,15 +127,15 @@ export function BrandPremise() {
             animate={prefersReducedMotion ? {} : { y: [0, -8, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             className="relative w-full"
-            style={{ maxWidth: "300px", aspectRatio: "4/1.4" }}
+            style={{ maxWidth: "380px", aspectRatio: "6/1" }}
           >
             <Image
-              src="/brand/signature.png"
+              src="/brand/signature-v2.png"
               alt="Phaigort"
               fill
-              sizes="300px"
+              sizes="380px"
               className="object-contain"
-              style={{ filter: "invert(1)", opacity: 0.88 }}
+              style={{ opacity: 0.88 }}
               loading="lazy"
             />
           </motion.div>

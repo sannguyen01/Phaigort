@@ -9,9 +9,9 @@ import { TREASURE_DOMAINS } from "@/lib/constants";
 // Domain-specific tone mapping — CLAUDE.md §Domain Tone Mapping
 // Each domain feels like a distinct room in the same house.
 const DOMAIN_TONES: Record<string, { ground: string; headline: string }> = {
-  "Geological Rarities":      { ground: "#141414", headline: "#FAFAFA" }, // T-02 / T-12
-  "Historical Artifacts":     { ground: "#2E2E2E", headline: "#DEDEDE" }, // T-04 / T-10
-  "Precious Metals":          { ground: "#1C1C1C", headline: "#C8C8C8" }, // T-03 / T-09
+  "Geological Rarities": { ground: "#141414", headline: "#FAFAFA" }, // T-02 / T-12
+  "Historical Artifacts": { ground: "#2E2E2E", headline: "#DEDEDE" }, // T-04 / T-10
+  "Precious Metals": { ground: "#1C1C1C", headline: "#C8C8C8" }, // T-03 / T-09
   "Contemporary Innovations": { ground: "#3D3D3D", headline: "#F2F2F2" }, // T-05 / T-11
 };
 
@@ -25,18 +25,14 @@ export function DomainsGrid() {
   const animate = !prefersReducedMotion;
 
   return (
-    <section
-      ref={ref}
-      className="py-24 md:py-36"
-      style={{ background: "var(--color-bg)" }}
-    >
+    <section ref={ref} className="py-16 md:py-24" style={{ background: "var(--color-bg)" }}>
       <div
         className="mx-auto px-[clamp(24px,4vw,64px)]"
         style={{ maxWidth: "var(--content-wide)" }}
       >
         {/* Section heading */}
         <motion.div
-          className="mb-14 md:mb-20"
+          className="mb-10 md:mb-14"
           {...(animate && {
             initial: { opacity: 0, y: 16 },
             animate: isInView ? { opacity: 1, y: 0 } : {},
@@ -58,7 +54,7 @@ export function DomainsGrid() {
         </motion.div>
 
         {/* 2 × 2 domain grid */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           {TREASURE_DOMAINS.map((domain, i) => {
             const tone = DOMAIN_TONES[domain.title] ?? DEFAULT_TONE;
 
@@ -76,15 +72,11 @@ export function DomainsGrid() {
                 })}
                 style={{ background: tone.ground }}
               >
-                <Link
-                  href={domain.href}
-                  className="group block"
-                  aria-label={domain.title}
-                >
+                <Link href={domain.href} className="group block" aria-label={domain.title}>
                   {/* Arch-masked image container */}
                   <div
                     className="arch-mask relative w-full overflow-hidden"
-                    style={{ aspectRatio: "4 / 3" }}
+                    style={{ aspectRatio: "3 / 2" }}
                   >
                     <Image
                       src={domain.image}
@@ -104,7 +96,7 @@ export function DomainsGrid() {
                   </div>
 
                   {/* Card body */}
-                  <div className="p-6 md:p-8">
+                  <div className="p-4 md:p-5">
                     <p
                       className="font-ui uppercase tracking-[0.2em]"
                       style={{
@@ -128,7 +120,7 @@ export function DomainsGrid() {
 
                     {/* Ghost inline CTA */}
                     <span
-                      className="mt-6 inline-flex items-center gap-3 font-ui uppercase tracking-[0.14em] transition-opacity duration-200 group-hover:opacity-80"
+                      className="mt-4 inline-flex items-center gap-3 font-ui uppercase tracking-[0.14em] transition-opacity duration-200 group-hover:opacity-80"
                       style={{
                         fontSize: "var(--text-xs)",
                         color: "var(--color-text-muted)",
