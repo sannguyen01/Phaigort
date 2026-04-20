@@ -16,9 +16,7 @@ vi.mock("framer-motion", () => ({
       </section>
     ),
     svg: ({ children, ...p }: any) => <svg {...p}>{children}</svg>,
-    span: ({ children, className }: any) => (
-      <span className={className}>{children}</span>
-    ),
+    span: ({ children, className }: any) => <span className={className}>{children}</span>,
     p: ({ children, className, style }: any) => (
       <p className={className} style={style}>
         {children}
@@ -52,18 +50,11 @@ vi.mock("next/image", () => ({
 import { Hero } from "@/components/sections/Hero";
 
 describe("Hero section", () => {
-  it("contains a decorative SVG with aria-hidden", () => {
+  it("renders the necklace hero image with descriptive alt text", () => {
     render(<Hero />);
-    const svgs = document.querySelectorAll('svg[aria-hidden="true"]');
-    expect(svgs.length).toBeGreaterThan(0);
-  });
-
-  it("does NOT contain any img with src matching /necklace/i", () => {
-    render(<Hero />);
-    const images = document.querySelectorAll("img");
-    images.forEach((img) => {
-      expect(img.getAttribute("src") ?? "").not.toMatch(/necklace/i);
-    });
+    const img = document.querySelector('img[src*="necklace"]') as HTMLImageElement | null;
+    expect(img).toBeTruthy();
+    expect(img?.getAttribute("alt") ?? "").toMatch(/necklace|gemstone|diamond|extraordinary/i);
   });
 
   it("does NOT contain any img with src matching /photo/i", () => {
@@ -91,7 +82,11 @@ describe("Hero section", () => {
 
   it("contains the brand headline text about geological time", () => {
     render(<Hero />);
-    // The H1 spans multiple lines — check for key phrase fragments
     expect(screen.getByText(/extraordinary/i)).toBeTruthy();
+  });
+
+  it("renders left-aligned text content with the eyebrow line", () => {
+    render(<Hero />);
+    expect(screen.getByText(/Rare Gemstone/i)).toBeTruthy();
   });
 });

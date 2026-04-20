@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef, useId } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { PhaigortLogoMark } from "@/components/ui/LogoMark";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS, BRAND, TREASURE_DOMAINS } from "@/lib/constants";
 
@@ -41,16 +40,34 @@ const DRAWER_LINK_VARIANTS = {
   exit: { opacity: 0, transition: { duration: 0.15 } },
 } as const;
 
-// ── SVG wordmark — colour-adaptive via PhaigortLogoMark variants ─────────────
-// solid=false (transparent header on dark hero): wordmark-white (T-12 text, no bg)
-// solid=true  (scrolled / sub-pages, header rgba(250,250,250,0.97)): light (dark text, no bg)
+// ── SVG wordmark — single element with CSS fill transition ────────────────────
+// dark header (transparent on dark hero) → fill #FAFAFA (T-12, bright white)
+// solid header (scrolled / sub-pages)   → fill #1A1917 (near-black)
+// Fill transitions in sync with header background-color (both 350ms ease).
+// Never switch SVG elements — that causes a flash. Always transition fill only.
 
 interface NavLogoProps {
   solid: boolean;
 }
 
 function NavLogo({ solid }: NavLogoProps) {
-  return <PhaigortLogoMark variant={solid ? "light" : "wordmark-white"} width={180} height={30} />;
+  return (
+    <svg viewBox="0 0 220 36" width={180} height={30} aria-hidden="true" focusable="false">
+      <text
+        x="0"
+        y="27"
+        fontFamily="var(--font-garet), var(--font-jost), Jost, sans-serif"
+        fontSize="17"
+        fontWeight="700"
+        letterSpacing="5"
+        fill={solid ? "#1A1917" : "#FAFAFA"}
+        textAnchor="start"
+        style={{ transition: "fill 350ms ease" }}
+      >
+        PHAIGORT
+      </text>
+    </svg>
+  );
 }
 
 // ── Reduced-motion helper ─────────────────────────────────────────────────────
