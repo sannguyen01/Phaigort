@@ -91,6 +91,16 @@ function DomainCard({
           >
             {domain.title}
           </p>
+          {/* Slide-underline — grows left→right on card hover */}
+          <span
+            className="mt-1 block h-px"
+            style={{
+              width: animate && hovered ? "28px" : "0px",
+              background: tone.headline,
+              opacity: 0.35,
+              transition: animate ? "width 500ms cubic-bezier(0.22, 1, 0.36, 1)" : undefined,
+            }}
+          />
 
           <p
             className="mt-3 font-display italic leading-[1.65]"

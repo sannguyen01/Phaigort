@@ -114,7 +114,18 @@ export function Hero() {
           ...(prefersReducedMotion ? {} : { y: contentY }),
         }}
       >
-        <div className="max-w-[520px]">
+        {/* On narrow mobile the centred necklace can overlap left text.
+            A subtle left-side radial gradient sits behind the text block to
+            ensure legibility. pointer-events-none so it never blocks taps. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 z-0 w-[70%] sm:hidden"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, transparent 100%)",
+          }}
+        />
+        <div className="max-w-[520px] pb-[38%] sm:pb-0">
           {/* Eyebrow */}
           <motion.p
             className="font-ui uppercase tracking-[0.22em]"

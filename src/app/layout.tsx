@@ -94,6 +94,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Garet — display/UI body font, loaded from Fontshare (not on Google Fonts) */}
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link
+          rel="preload"
+          href="https://api.fontshare.com/v2/css?f[]=garet@400,500,700&display=swap"
+          as="style"
+        />
+        <link
           href="https://api.fontshare.com/v2/css?f[]=garet@400,500,700&display=swap"
           rel="stylesheet"
         />

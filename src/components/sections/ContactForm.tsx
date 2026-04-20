@@ -169,16 +169,21 @@ export function ContactForm() {
 
             {/* Error */}
             {status === "error" && (
-              <p role="alert" className="font-ui text-sm text-red-600">
+              <p role="alert" className="font-ui text-sm italic text-platinum/60">
                 {errorMsg}
               </p>
             )}
 
             {/* Submit — left-aligned */}
             <div className="pt-2">
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : "Send Inquiry"}
-              </Button>
+              <motion.div
+                animate={isSubmitting ? { opacity: [1, 0.5, 1] } : {}}
+                transition={{ repeat: Infinity, duration: 1.2 }}
+              >
+                <Button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Inquiry"}
+                </Button>
+              </motion.div>
             </div>
           </form>
         </motion.div>

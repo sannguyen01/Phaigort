@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { DarkFieldStage } from "@/components/ui/DarkFieldStage";
 import { Divider } from "@/components/ui/Divider";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { MaterialTimeline } from "@/components/sections/MaterialTimeline";
 
 export const metadata = createMetadata({
   title: "Material Consciousness",
@@ -154,6 +155,9 @@ export default function MaterialConsciousnessPage() {
           </ScrollReveal>
         </Container>
       </section>
+
+      {/* ── Parallax material story ─────────────────────────────────── */}
+      <MaterialTimeline />
     </>
   );
 }
