@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/Button";
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [necklaceLoaded, setNecklaceLoaded] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -42,17 +43,17 @@ export function Hero() {
       {/* ── NECKLACE — centred hero focal point, deep parallax ──────── */}
       {prefersReducedMotion ? (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <NecklaceImage />
+          <NecklaceImage onLoad={() => setNecklaceLoaded(true)} />
         </div>
       ) : (
         <motion.div
           className="pointer-events-none absolute inset-0 flex items-center justify-center"
           style={{ y: necklaceY, scale: necklaceScale, opacity: necklaceOpacity }}
           initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          animate={necklaceLoaded ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.04 }}
+          transition={{ duration: 1.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          <NecklaceImage />
+          <NecklaceImage onLoad={() => setNecklaceLoaded(true)} />
         </motion.div>
       )}
 
@@ -221,10 +222,18 @@ export function Hero() {
 }
 
 // ── Sub-component: necklace image ──────────────────────────────────────────────
-// Extracted to keep motion wrappers clean for both reduced/full motion paths.
-function NecklaceImage() {
+// Mask shifts the radial center rightward (65% X) so the left edge fades to
+// transparent — preventing the image from bleeding into the left text column.
+// onLoad gates the parent motion so animation only fires after paint.
+function NecklaceImage({ onLoad }: { onLoad?: () => void }) {
   return (
-    <div className="relative w-full max-w-[min(640px,80vw)] px-4 md:max-w-[min(720px,55vw)]">
+    <div
+      className="relative w-full max-w-[min(640px,80vw)] px-4 md:max-w-[min(720px,55vw)]"
+      style={{
+        maskImage: "radial-gradient(ellipse 70% 88% at 62% 50%, black 20%, transparent 72%)",
+        WebkitMaskImage: "radial-gradient(ellipse 70% 88% at 62% 50%, black 20%, transparent 72%)",
+      }}
+    >
       <Image
         src="/hero/necklace.png"
         alt="An extraordinary diamond necklace — geological formation over millions of years"
@@ -233,7 +242,8 @@ function NecklaceImage() {
         priority
         sizes="(max-width: 768px) 80vw, 55vw"
         className="h-auto w-full object-contain"
-        style={{ opacity: 0.88 }}
+        style={{ opacity: 0.9 }}
+        onLoad={onLoad}
       />
     </div>
   );

@@ -40,11 +40,15 @@ const DRAWER_LINK_VARIANTS = {
   exit: { opacity: 0, transition: { duration: 0.15 } },
 } as const;
 
-// ── SVG wordmark — single element with CSS fill transition ────────────────────
-// dark header (transparent on dark hero) → fill #FAFAFA (T-12, bright white)
-// solid header (scrolled / sub-pages)   → fill #1A1917 (near-black)
-// Fill transitions in sync with header background-color (both 350ms ease).
-// Never switch SVG elements — that causes a flash. Always transition fill only.
+// ── Diamond logomark — CSS fill transition (no element swap = no flash) ───────
+// dark header (transparent on dark hero):
+//   diamond fill #141414 (near-invisible silhouette on dark bg), text #FAFAFA
+// solid header (scrolled / sub-pages):
+//   diamond fill #FAFAFA (invisible on light bg → pure wordmark appearance), text #0A0A0A
+// Both fills transition at 350ms ease, in sync with header background-color.
+// The diamond's disappearance on the solid state is intentional — matches reference Image 1.
+
+const HEADER_DIAMOND = "210,6 414,81 210,156 6,81";
 
 interface NavLogoProps {
   solid: boolean;
@@ -52,16 +56,29 @@ interface NavLogoProps {
 
 function NavLogo({ solid }: NavLogoProps) {
   return (
-    <svg viewBox="0 0 220 36" width={180} height={30} aria-hidden="true" focusable="false">
+    <svg
+      viewBox="0 0 420 162"
+      width={112}
+      height={43}
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <polygon
+        points={HEADER_DIAMOND}
+        fill={solid ? "#FAFAFA" : "#141414"}
+        style={{ transition: "fill 350ms ease" }}
+      />
       <text
-        x="0"
-        y="27"
-        fontFamily="var(--font-garet), var(--font-jost), Jost, sans-serif"
-        fontSize="17"
-        fontWeight="700"
+        x="210"
+        y="90"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontFamily="Garet, Inter, system-ui, sans-serif"
+        fontSize="22"
+        fontWeight="600"
         letterSpacing="5"
-        fill={solid ? "#1A1917" : "#FAFAFA"}
-        textAnchor="start"
+        fill={solid ? "#0A0A0A" : "#FAFAFA"}
         style={{ transition: "fill 350ms ease" }}
       >
         PHAIGORT
