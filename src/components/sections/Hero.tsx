@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/Button";
@@ -16,7 +16,6 @@ import { Button } from "@/components/ui/Button";
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
-  const [necklaceLoaded, setNecklaceLoaded] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -43,17 +42,17 @@ export function Hero() {
       {/* ── NECKLACE — centred hero focal point, deep parallax ──────── */}
       {prefersReducedMotion ? (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <NecklaceImage onLoad={() => setNecklaceLoaded(true)} />
+          <NecklaceImage />
         </div>
       ) : (
         <motion.div
           className="pointer-events-none absolute inset-0 flex items-center justify-center"
           style={{ y: necklaceY, scale: necklaceScale, opacity: necklaceOpacity }}
           initial={{ opacity: 0, scale: 1.04 }}
-          animate={necklaceLoaded ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          <NecklaceImage onLoad={() => setNecklaceLoaded(true)} />
+          <NecklaceImage />
         </motion.div>
       )}
 
@@ -68,10 +67,11 @@ export function Hero() {
           transition={{ duration: 1.8, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
         >
           <Image
-            src="/hero/pattern.png"
+            src="/hero/pattern.webp"
             alt=""
             width={340}
             height={520}
+            priority
             className="h-auto w-full object-contain"
             style={{ mixBlendMode: "screen" }}
           />
@@ -125,7 +125,7 @@ export function Hero() {
               "linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, transparent 100%)",
           }}
         />
-        <div className="max-w-[520px] pb-[38%] sm:pb-0">
+        <div className="max-w-[min(600px,55vw)] pb-[38%] sm:pb-0">
           {/* Eyebrow */}
           <motion.p
             className="font-ui uppercase tracking-[0.22em]"
@@ -169,7 +169,7 @@ export function Hero() {
 
           {/* Body copy */}
           <motion.p
-            className="mt-7 max-w-[400px] font-display italic leading-[1.75]"
+            className="mt-7 max-w-[min(520px,48vw)] font-display italic leading-[1.75]"
             style={{
               fontSize: "var(--text-base)",
               color: "var(--color-text-body)",
@@ -235,8 +235,8 @@ export function Hero() {
 // ── Sub-component: necklace image ──────────────────────────────────────────────
 // Mask shifts the radial center rightward (65% X) so the left edge fades to
 // transparent — preventing the image from bleeding into the left text column.
-// onLoad gates the parent motion so animation only fires after paint.
-function NecklaceImage({ onLoad }: { onLoad?: () => void }) {
+// Animation is handled unconditionally by the parent motion div on mount.
+function NecklaceImage() {
   return (
     <div
       className="relative w-full max-w-[min(640px,80vw)] px-4 md:max-w-[min(720px,55vw)]"
@@ -246,15 +246,16 @@ function NecklaceImage({ onLoad }: { onLoad?: () => void }) {
       }}
     >
       <Image
-        src="/hero/necklace.png"
+        src="/hero/necklace.webp"
         alt="An extraordinary diamond necklace — geological formation over millions of years"
         width={720}
         height={900}
         priority
+        placeholder="blur"
+        blurDataURL="data:image/webp;base64,UklGRrYAAABXRUJQVlA4WAoAAAAQAAAABwAACQAAQUxQSE8AAAABcFvbtmmtZ1sFfKS2zSJ+xiqs6LcfEYFRb5dbPmI/hWwlpEMkiUEWjBAlWoly6UDv4kqH6+/32IulafHzb29yWLtKf6SISMxmSCAQRQgAAFZQOCBAAAAAEAIAnQEqCAAKAAVAfCWUAsOxFKUHCjnwAAD+WBsRDlit1ocF7oZRhwoeOZRrDDCcDn95+p4wYDZxavOV9gAAAA=="
         sizes="(max-width: 768px) 80vw, 55vw"
         className="h-auto w-full object-contain"
         style={{ opacity: 0.9 }}
-        onLoad={onLoad}
       />
     </div>
   );

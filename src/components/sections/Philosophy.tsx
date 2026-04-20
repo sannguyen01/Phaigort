@@ -30,7 +30,10 @@ export function Philosophy() {
       className="relative py-28 md:py-40"
       style={{ background: "var(--color-bg)" }}
     >
-      <div className="mx-auto px-[clamp(24px,4vw,64px)] text-center" style={{ maxWidth: "640px" }}>
+      <div
+        className="mx-auto px-[clamp(24px,4vw,64px)] text-center"
+        style={{ maxWidth: "min(960px, 92vw)" }}
+      >
         {/* Heading — Cardo display — step 0 */}
         <motion.h2
           className="font-display font-normal leading-[1.15]"

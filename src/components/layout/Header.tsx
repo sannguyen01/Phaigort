@@ -41,12 +41,9 @@ const DRAWER_LINK_VARIANTS = {
 } as const;
 
 // ── Diamond logomark — CSS fill transition (no element swap = no flash) ───────
-// dark header (transparent on dark hero):
-//   diamond fill #141414 (near-invisible silhouette on dark bg), text #FAFAFA
-// solid header (scrolled / sub-pages):
-//   diamond fill #FAFAFA (invisible on light bg → pure wordmark appearance), text #0A0A0A
+// dark header (transparent on dark hero):  diamond #FAFAFA bright, text #FAFAFA
+// solid header (scrolled / sub-pages):    diamond #141414 dark,   text #0A0A0A
 // Both fills transition at 350ms ease, in sync with header background-color.
-// The diamond's disappearance on the solid state is intentional — matches reference Image 1.
 
 const HEADER_DIAMOND = "210,6 414,81 210,156 6,81";
 
@@ -58,15 +55,15 @@ function NavLogo({ solid }: NavLogoProps) {
   return (
     <svg
       viewBox="0 0 420 162"
-      width={112}
-      height={43}
+      width={150}
+      height={58}
       fill="none"
       aria-hidden="true"
       focusable="false"
     >
       <polygon
         points={HEADER_DIAMOND}
-        fill={solid ? "#FAFAFA" : "#141414"}
+        fill={solid ? "#141414" : "#FAFAFA"}
         style={{ transition: "fill 350ms ease" }}
       />
       <text

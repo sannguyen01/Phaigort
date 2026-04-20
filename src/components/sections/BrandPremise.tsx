@@ -21,7 +21,7 @@ export function BrandPremise() {
       style={{ background: "var(--color-bg)" }}
     >
       <div
-        className="mx-auto grid grid-cols-1 gap-16 px-[clamp(24px,4vw,64px)] md:grid-cols-[1.4fr_1fr] md:gap-20 lg:gap-32"
+        className="mx-auto grid grid-cols-1 gap-16 px-[clamp(16px,3vw,48px)] md:grid-cols-[1.3fr_1fr] md:gap-16 lg:gap-24"
         style={{ maxWidth: "var(--content-wide)" }}
       >
         {/* Left — editorial copy */}
@@ -127,7 +127,7 @@ export function BrandPremise() {
             animate={prefersReducedMotion ? {} : { y: [0, -8, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             className="relative w-full"
-            style={{ maxWidth: "420px", aspectRatio: "4/1" }}
+            style={{ maxWidth: "480px", aspectRatio: "3/1" }}
           >
             <Image
               src="/brand/signature-v2.png"
