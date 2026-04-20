@@ -20,7 +20,7 @@ export function Display({ children, className }: TypographyProps) {
 export function H1({ children, className }: TypographyProps) {
   return (
     <h1
-      className={cn("font-display font-bold leading-[1.1]", className)}
+      className={cn("font-display font-normal leading-[1.1]", className)}
       style={{ fontSize: "var(--text-3xl)", color: "var(--color-text)" }}
     >
       {children}
@@ -31,7 +31,7 @@ export function H1({ children, className }: TypographyProps) {
 export function H2({ children, className }: TypographyProps) {
   return (
     <h2
-      className={cn("font-display font-bold leading-[1.2]", className)}
+      className={cn("font-display font-normal leading-[1.2]", className)}
       style={{ fontSize: "var(--text-2xl)", color: "var(--color-text)" }}
     >
       {children}
@@ -42,7 +42,7 @@ export function H2({ children, className }: TypographyProps) {
 export function H3({ children, className }: TypographyProps) {
   return (
     <h3
-      className={cn("font-display font-bold leading-[1.3]", className)}
+      className={cn("font-display font-normal leading-[1.3]", className)}
       style={{ fontSize: "var(--text-xl)", color: "var(--color-text)" }}
     >
       {children}
@@ -53,7 +53,7 @@ export function H3({ children, className }: TypographyProps) {
 export function H4({ children, className }: TypographyProps) {
   return (
     <h4
-      className={cn("font-display font-bold leading-snug", className)}
+      className={cn("font-display font-normal leading-snug", className)}
       style={{ fontSize: "var(--text-lg)", color: "var(--color-text)" }}
     >
       {children}

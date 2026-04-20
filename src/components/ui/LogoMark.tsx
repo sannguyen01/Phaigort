@@ -1,10 +1,12 @@
 // src/components/ui/LogoMark.tsx
-// Two logo variants:
-//   variant="light" — plain wordmark in near-black (#1A1917), for light ground sections
-//   variant="dark"  — wordmark inside diamond/rhombus in white, for dark field sections
+// Diamond logo — solid-filled rhombus matching brand reference images.
+// Two display variants:
+//   "dark"  — dark fill (#141414), white text — transparent header / footer on dark ground
+//   "light" — white fill (#FAFAFA), void-black text — solid light header
+// "wordmark-white" maps to "dark" for backward compatibility.
 //
-// Legacy navy prop preserved for backward compatibility with Header/Footer callers
-// that haven't migrated yet.
+// SVG viewBox 0 0 420 162 gives ~2.59:1 aspect ratio matching the brand mark.
+// All text uses textAnchor="middle" so the diamond is always visually centered.
 
 interface LogoMarkProps {
   /** @deprecated Use variant instead */
@@ -12,92 +14,52 @@ interface LogoMarkProps {
   variant?: "light" | "dark" | "wordmark-white";
   width?: number;
   height?: number;
+  className?: string;
 }
 
-export function PhaigortLogoMark({ navy, variant, width = 132, height = 46 }: LogoMarkProps) {
-  // Resolve effective variant: new prop wins, legacy navy prop as fallback
-  const resolved: "light" | "dark" | "wordmark-white" = variant ?? (navy ? "light" : "dark");
+// Diamond proportions: wide flat rhombus, 2.59:1 (width:height).
+// Points: top-center, right, bottom-center, left.
+const DIAMOND = "210,6 414,81 210,156 6,81";
 
-  if (resolved === "wordmark-white") {
-    // Plain wordmark — white on dark ground, no diamond
-    return (
-      <svg
-        viewBox="0 0 220 36"
-        width={width}
-        height={height}
-        aria-hidden="true"
-        className="transition-all duration-[350ms]"
-      >
-        <text
-          x="0"
-          y="27"
-          fontFamily="var(--font-garet), var(--font-jost), Jost, sans-serif"
-          fontSize="17"
-          fontWeight="700"
-          letterSpacing="5"
-          fill="#FAFAFA"
-          textAnchor="start"
-        >
-          PHAIGORT
-        </text>
-      </svg>
-    );
-  }
+export function PhaigortLogoMark({
+  navy,
+  variant,
+  width = 164,
+  height = 63,
+  className,
+}: LogoMarkProps) {
+  const resolved: "light" | "dark" =
+    variant === "light" ? "light" : "dark"; // wordmark-white and dark → dark diamond
 
-  if (resolved === "light") {
-    // Plain wordmark — near-black on light ground
-    return (
-      <svg
-        viewBox="0 0 220 36"
-        width={width}
-        height={height}
-        aria-hidden="true"
-        className="transition-all duration-[350ms]"
-      >
-        <text
-          x="0"
-          y="27"
-          fontFamily="var(--font-garet), var(--font-jost), Jost, sans-serif"
-          fontSize="17"
-          fontWeight="700"
-          letterSpacing="5"
-          fill="#1A1917"
-          textAnchor="start"
-        >
-          PHAIGORT
-        </text>
-      </svg>
-    );
-  }
+  const _ = navy; // suppress unused-var lint (legacy prop, no longer drives rendering)
 
-  // Dark variant — diamond/rhombus form with white wordmark
+  const diamondFill = resolved === "light" ? "#FAFAFA" : "#141414";
+  const textFill = resolved === "light" ? "#0A0A0A" : "#FAFAFA";
+
   return (
     <svg
-      viewBox="0 0 300 106"
+      viewBox="0 0 420 162"
       width={width}
       height={height}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-      className="transition-all duration-[350ms]"
+      className={className}
     >
-      {/* Rhombus outline */}
-      <polygon
-        points="150,3 297,53 150,103 3,53"
-        fill="none"
-        stroke="rgba(255,255,255,0.25)"
-        strokeWidth="1"
-      />
-      {/* Subtle fill */}
-      <polygon points="150,3 297,53 150,103 3,53" fill="rgba(255,255,255,0.04)" />
-      {/* Wordmark */}
+      {/* Solid diamond fill */}
+      <polygon points={DIAMOND} fill={diamondFill} />
+
+      {/* Wordmark — Garet, centered inside diamond */}
       <text
-        x="150"
-        y="59"
+        x="210"
+        y="90"
         textAnchor="middle"
-        fontFamily="var(--font-garet), var(--font-jost), Jost, sans-serif"
-        fontSize="19"
-        fontWeight="700"
-        letterSpacing="4"
-        fill="#ffffff"
+        dominantBaseline="middle"
+        fontFamily="Garet, Inter, system-ui, sans-serif"
+        fontSize="22"
+        fontWeight="600"
+        letterSpacing="5"
+        fill={textFill}
       >
         PHAIGORT
       </text>

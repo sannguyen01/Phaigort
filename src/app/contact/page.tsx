@@ -68,7 +68,7 @@ export default function ContactPage() {
                 </ul>
               </div>
 
-              {/* Thin gold rule */}
+              {/* T-09 Platinum rule */}
               <div className="h-px w-16 bg-platinum/10" />
             </aside>
 

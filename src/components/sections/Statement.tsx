@@ -68,7 +68,7 @@ export function Statement() {
 
             {/* Headline — Cardo bold, T-12 Pure Aperture */}
             <h3
-              className="mb-4 font-display font-bold leading-[1.15]"
+              className="mb-4 font-display font-normal leading-[1.15]"
               style={{
                 fontSize: "var(--text-xl)",
                 color: "var(--color-text)",

@@ -1,3 +1,4 @@
+// Legacy component — not currently in use. Colors pre-date 12-tone system.
 // src/components/ui/SectionBridge.tsx
 //
 // SVG-based translucent colour diffusion bridge between page sections.

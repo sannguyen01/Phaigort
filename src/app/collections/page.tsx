@@ -130,7 +130,7 @@ export default function CollectionsPage() {
                         ))}
                       </div>
                       <ImageReveal delay={0.15} className="mt-8">
-                        <div className="group relative aspect-[16/10] overflow-hidden border border-platinum/[0.07] bg-platinum/[0.03]">
+                        <div className="arch-mask group relative aspect-[16/10] overflow-hidden border border-platinum/[0.07] bg-platinum/[0.03]">
                           <Image
                             src={domain.image}
                             alt={domain.imageAlt}
