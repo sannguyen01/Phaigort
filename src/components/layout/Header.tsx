@@ -75,7 +75,7 @@ function NavLogo({ solid }: NavLogoProps) {
         fontSize="22"
         fontWeight="600"
         letterSpacing="5"
-        fill={solid ? "#0A0A0A" : "#FAFAFA"}
+        fill={solid ? "#FAFAFA" : "#141414"}
         style={{ transition: "fill 350ms ease" }}
       >
         PHAIGORT

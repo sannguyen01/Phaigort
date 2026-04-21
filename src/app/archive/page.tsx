@@ -84,7 +84,10 @@ export default function ArchivePage() {
               <ScrollReveal key={cat.title} delay={i * 0.1}>
                 <article className="group overflow-hidden bg-t04 transition-colors duration-500 hover:bg-t05">
                   {/* Image — scales subtly on hover */}
-                  <div className="arch-mask relative w-full overflow-hidden" style={{ aspectRatio: "16/10" }}>
+                  <div
+                    className="arch-mask relative w-full overflow-hidden"
+                    style={{ aspectRatio: "16/10" }}
+                  >
                     <Image
                       src={cat.image}
                       alt={cat.imageAlt}
@@ -96,7 +99,7 @@ export default function ArchivePage() {
                     {/* Bottom fade — grounds image into card body */}
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#2E2E2E] to-transparent transition-colors duration-500 group-hover:from-[#3D3D3D]"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-t04 to-transparent transition-colors duration-500 group-hover:from-t05"
                     />
                   </div>
 

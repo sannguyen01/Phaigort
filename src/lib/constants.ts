@@ -1,6 +1,6 @@
 export const NAV_LINKS = [
   { label: "The Collection", href: "/collections" },
-  { label: "Our Story", href: "/our-story" },
+  { label: "Our Story", href: "/material-consciousness" },
   { label: "Atelier", href: "/atelier" },
   { label: "Private Enquiry", href: "/contact" },
 ] as const;

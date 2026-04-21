@@ -149,9 +149,9 @@ export function Hero() {
               transition: { duration: 1.1, delay: 0.25, ease: [0.22, 1, 0.36, 1] },
             })}
           >
-            Some things take million
+            Some things take a million
             <br />
-            to billion years to become
+            to a billion years to become
             <br />
             extraordinary.
           </motion.h1>

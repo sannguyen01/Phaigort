@@ -54,7 +54,7 @@ const config: Config = {
       },
       spacing: {},
       maxWidth: {
-        content: "1280px",
+        content: "1200px",
       },
       letterSpacing: {
         logo: "0.25em",

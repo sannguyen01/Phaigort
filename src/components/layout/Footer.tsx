@@ -10,7 +10,10 @@ export function Footer() {
       className="pb-10 pt-14 text-platinum md:pt-20"
       style={{ background: "var(--color-bg)" }}
     >
-      <div className="mx-auto max-w-content px-[clamp(24px,4vw,64px)]">
+      <div
+        className="mx-auto px-[clamp(24px,4vw,64px)]"
+        style={{ maxWidth: "var(--content-wide)" }}
+      >
         {/* Main row: wordmark + tagline left, nav columns right */}
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           {/* Wordmark + tagline */}

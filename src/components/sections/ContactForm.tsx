@@ -15,7 +15,7 @@ interface FormData {
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClasses = cn(
-  "w-full px-4 py-3 bg-[#1C1C1C] border border-platinum/10 rounded-sm",
+  "w-full px-4 py-3 bg-stone border border-platinum/10 rounded-sm",
   "font-ui text-sm text-platinum placeholder:text-platinum/30",
   "focus:outline-none focus:border-platinum/30 focus:ring-1 focus:ring-platinum/10 transition-all duration-300",
   "disabled:opacity-50 disabled:cursor-not-allowed"
@@ -32,6 +32,24 @@ export function ContactForm() {
     e.preventDefault();
     setStatus("submitting");
     setErrorMsg("");
+
+    // Client-side validation before network call
+    if (!form.name.trim() || form.name.trim().length < 2) {
+      setStatus("error");
+      setErrorMsg("Please enter your full name.");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      setStatus("error");
+      setErrorMsg("Please enter a valid email address.");
+      return;
+    }
+    if (form.message.trim().length < 10) {
+      setStatus("error");
+      setErrorMsg("Please write a few words in your message.");
+      return;
+    }
 
     try {
       const res = await fetch("/api/contact", {
@@ -134,6 +152,7 @@ export function ContactForm() {
               </label>
               <select
                 id="contact-interest"
+                required
                 disabled={isSubmitting}
                 value={form.interest}
                 onChange={(e) => setForm({ ...form, interest: e.target.value })}
