@@ -12,6 +12,7 @@ export const metadata = createMetadata({
   description:
     "The profound understanding that exceptional materials spanning geological time, cultural heritage, and human innovation deserve equal reverence.",
   path: "/material-consciousness",
+  ogImage: "/story/timeline-earth.jpg",
 });
 
 export default function MaterialConsciousnessPage() {

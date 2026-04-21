@@ -10,6 +10,7 @@ export const metadata = createMetadata({
   description:
     "Iberian goldwork, Asian trade objects, European Renaissance pieces, and contemporary provenance documentation. Every artifact in the Phaigort Archive carries a documented chain of custody.",
   path: "/archive",
+  ogImage: "/collections/historical-artifacts.jpg",
 });
 
 const ARCHIVE_CATEGORIES = [

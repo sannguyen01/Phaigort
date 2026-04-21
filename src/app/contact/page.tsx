@@ -10,6 +10,7 @@ export const metadata = createMetadata({
   description:
     "Reach the Phaigort team for inquiries about rare gemstones, precious metal specimens, historical artifacts, and private consultations. We respond within 48 hours.",
   path: "/contact",
+  ogImage: "/collections/precious-metals.jpg",
 });
 
 export default function ContactPage() {

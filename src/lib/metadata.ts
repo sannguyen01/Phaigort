@@ -5,16 +5,16 @@ interface PageMetadataOptions {
   title?: string;
   description?: string;
   path?: string;
+  ogImage?: string;
 }
 
 export function createMetadata({
   title,
   description,
   path = "",
+  ogImage = "/og-image.jpg",
 }: PageMetadataOptions = {}): Metadata {
-  const pageTitle = title
-    ? `${title} — ${BRAND.name}`
-    : `${BRAND.name} — ${BRAND.tagline}`;
+  const pageTitle = title ? `${title} — ${BRAND.name}` : `${BRAND.name} — ${BRAND.tagline}`;
   const pageDescription = description ?? BRAND.description;
   const url = `${BRAND.url}${path}`;
 
@@ -32,10 +32,10 @@ export function createMetadata({
       type: "website",
       images: [
         {
-          url: "/og-image.jpg",
+          url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${BRAND.name} — ${BRAND.tagline}`,
+          alt: pageTitle,
         },
       ],
     },

@@ -10,6 +10,7 @@ export const metadata = createMetadata({
   description:
     "The Phaigort Atelier offers private consultations for collectors and first-time visitors seeking rare gemstones, precious metals, and authenticated historical pieces. No appointment required for an initial visit.",
   path: "/atelier",
+  ogImage: "/editorial/gemstone-bg.jpg",
 });
 
 const APPROACHES = [
