@@ -122,20 +122,21 @@ export function BrandPremise() {
             style={{ height: "1px", background: "rgba(200,200,200,0.1)" }}
           />
 
-          {/* Signature — real calligraphic PNG asset, slow float */}
+          {/* Signature — calligraphic PNG, 16/9 container matches native PNG ratio,
+              scale-[1.4] zooms into the signature strokes, overflow-hidden clips the excess */}
           <motion.div
             animate={prefersReducedMotion ? {} : { y: [0, -8, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            className="relative w-full"
-            style={{ maxWidth: "480px", aspectRatio: "3/1" }}
+            className="relative w-full overflow-hidden"
+            style={{ aspectRatio: "16/9" }}
           >
             <Image
               src="/brand/signature-v2.png"
               alt="Phaigort"
               fill
-              sizes="380px"
-              className="object-contain"
-              style={{ opacity: 0.88 }}
+              sizes="(max-width: 768px) calc(100vw - 32px), 45vw"
+              className="scale-[1.4] object-contain object-center"
+              style={{ opacity: 0.92 }}
               loading="lazy"
             />
           </motion.div>

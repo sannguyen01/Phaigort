@@ -5,8 +5,9 @@
 //   "light" — white fill (#FAFAFA), void-black text — solid light header
 // "wordmark-white" maps to "dark" for backward compatibility.
 //
-// SVG viewBox 0 0 420 162 gives ~2.59:1 aspect ratio matching the brand mark.
-// All text uses textAnchor="middle" so the diamond is always visually centered.
+// SVG viewBox 0 0 420 222 gives ~1.94:1 aspect ratio matching the brand mark.
+// Diamond points: top-center (210,6), right (414,111), bottom-center (210,216), left (6,111).
+// fontWeight 400 (regular) matches the reference brand assets exactly.
 
 interface LogoMarkProps {
   /** @deprecated Use variant instead */
@@ -17,19 +18,17 @@ interface LogoMarkProps {
   className?: string;
 }
 
-// Diamond proportions: wide flat rhombus, 2.59:1 (width:height).
-// Points: top-center, right, bottom-center, left.
-const DIAMOND = "210,6 414,81 210,156 6,81";
+// Diamond proportions: wide flat rhombus, 1.94:1 (width:height) — matches brand PNG assets.
+const DIAMOND = "210,6 414,111 210,216 6,111";
 
 export function PhaigortLogoMark({
   navy,
   variant,
   width = 164,
-  height = 63,
+  height = 84,
   className,
 }: LogoMarkProps) {
-  const resolved: "light" | "dark" =
-    variant === "light" ? "light" : "dark"; // wordmark-white and dark → dark diamond
+  const resolved: "light" | "dark" = variant === "light" ? "light" : "dark"; // wordmark-white and dark → dark diamond
 
   const _ = navy; // suppress unused-var lint (legacy prop, no longer drives rendering)
 
@@ -38,7 +37,7 @@ export function PhaigortLogoMark({
 
   return (
     <svg
-      viewBox="0 0 420 162"
+      viewBox="0 0 420 222"
       width={width}
       height={height}
       fill="none"
@@ -49,16 +48,16 @@ export function PhaigortLogoMark({
       {/* Solid diamond fill */}
       <polygon points={DIAMOND} fill={diamondFill} />
 
-      {/* Wordmark — Garet, centered inside diamond */}
+      {/* Wordmark — Garet regular, centered inside diamond */}
       <text
         x="210"
-        y="90"
+        y="111"
         textAnchor="middle"
         dominantBaseline="middle"
         fontFamily="Garet, Inter, system-ui, sans-serif"
-        fontSize="22"
-        fontWeight="600"
-        letterSpacing="5"
+        fontSize="36"
+        fontWeight="400"
+        letterSpacing="3"
         fill={textFill}
       >
         PHAIGORT

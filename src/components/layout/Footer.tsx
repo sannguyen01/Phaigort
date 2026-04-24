@@ -23,7 +23,7 @@ export function Footer() {
               aria-label={BRAND.name}
               className="inline-block transition-opacity duration-300 hover:opacity-60"
             >
-              <PhaigortLogoMark variant="light" width={132} height={51} />
+              <PhaigortLogoMark variant="light" width={120} height={63} />
             </Link>
             <p className="max-w-[220px] font-ui text-[13px] leading-relaxed text-platinum/40">
               {BRAND.tagline}

@@ -45,7 +45,8 @@ const DRAWER_LINK_VARIANTS = {
 // solid header (scrolled / sub-pages):    diamond #141414 dark,   text #0A0A0A
 // Both fills transition at 350ms ease, in sync with header background-color.
 
-const HEADER_DIAMOND = "210,6 414,81 210,156 6,81";
+// viewBox 0 0 420 222 → 1.94:1 diamond matches brand reference PNG proportions exactly.
+const HEADER_DIAMOND = "210,6 414,111 210,216 6,111";
 
 interface NavLogoProps {
   solid: boolean;
@@ -54,9 +55,9 @@ interface NavLogoProps {
 function NavLogo({ solid }: NavLogoProps) {
   return (
     <svg
-      viewBox="0 0 420 162"
-      width={150}
-      height={58}
+      viewBox="0 0 420 222"
+      width={140}
+      height={74}
       fill="none"
       aria-hidden="true"
       focusable="false"
@@ -68,13 +69,13 @@ function NavLogo({ solid }: NavLogoProps) {
       />
       <text
         x="210"
-        y="90"
+        y="111"
         textAnchor="middle"
         dominantBaseline="middle"
         fontFamily="Garet, Inter, system-ui, sans-serif"
-        fontSize="22"
-        fontWeight="600"
-        letterSpacing="5"
+        fontSize="36"
+        fontWeight="400"
+        letterSpacing="3"
         fill={solid ? "#FAFAFA" : "#141414"}
         style={{ transition: "fill 350ms ease" }}
       >
