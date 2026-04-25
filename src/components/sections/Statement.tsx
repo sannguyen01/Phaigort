@@ -60,7 +60,7 @@ export function Statement() {
               className="mb-5 font-ui font-bold tracking-[0.2em]"
               style={{
                 fontSize: "var(--text-xs)",
-                color: "var(--t09)",
+                color: "var(--color-rule)",
               }}
             >
               {pillar.number}

@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { NAV_LINKS, BRAND, SOCIAL } from "@/lib/constants";
-import { PhaigortLogoMark } from "@/components/ui/LogoMark";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,7 +23,16 @@ export function Footer() {
               aria-label={BRAND.name}
               className="inline-block transition-opacity duration-300 hover:opacity-60"
             >
-              <PhaigortLogoMark variant="light" width={120} height={63} />
+              <div className="relative" style={{ width: "68px", height: "68px" }}>
+                <Image
+                  src="/brand/logo-dark.png"
+                  alt={BRAND.name}
+                  fill
+                  sizes="68px"
+                  className="object-contain"
+                  style={{ filter: "invert(1)" }}
+                />
+              </div>
             </Link>
             <p className="max-w-[220px] font-ui text-[13px] leading-relaxed text-platinum/40">
               {BRAND.tagline}

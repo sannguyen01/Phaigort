@@ -5,8 +5,8 @@
 //   "light" — white fill (#FAFAFA), void-black text — solid light header
 // "wordmark-white" maps to "dark" for backward compatibility.
 //
-// SVG viewBox 0 0 420 222 gives ~1.94:1 aspect ratio matching the brand mark.
-// Diamond points: top-center (210,6), right (414,111), bottom-center (210,216), left (6,111).
+// SVG viewBox 0 0 420 222 gives ~2.10:1 aspect ratio matching the brand mark.
+// Diamond points: top-center (210,14), right (414,111), bottom-center (210,208), left (6,111).
 // fontWeight 400 (regular) matches the reference brand assets exactly.
 
 interface LogoMarkProps {
@@ -18,14 +18,14 @@ interface LogoMarkProps {
   className?: string;
 }
 
-// Diamond proportions: wide flat rhombus, 1.94:1 (width:height) — matches brand PNG assets.
-const DIAMOND = "210,6 414,111 210,216 6,111";
+// Diamond proportions: wide flat rhombus, 2.10:1 (width:height) — matches brand PNG assets.
+const DIAMOND = "210,14 414,111 210,208 6,111";
 
 export function PhaigortLogoMark({
   navy,
   variant,
-  width = 164,
-  height = 84,
+  width = 140,
+  height = 67,
   className,
 }: LogoMarkProps) {
   const resolved: "light" | "dark" = variant === "light" ? "light" : "dark"; // wordmark-white and dark → dark diamond
@@ -55,7 +55,7 @@ export function PhaigortLogoMark({
         textAnchor="middle"
         dominantBaseline="middle"
         fontFamily="Garet, Inter, system-ui, sans-serif"
-        fontSize="36"
+        fontSize="32"
         fontWeight="400"
         letterSpacing="3"
         fill={textFill}
