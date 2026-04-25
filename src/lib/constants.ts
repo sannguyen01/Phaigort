@@ -25,7 +25,7 @@ export const TREASURE_DOMAINS = [
     description:
       "Native gold specimens from alluvial deposits, platinum in its elemental state, silver of dendritic formation — materials that are simultaneously geological documents and stores of enduring value. The finest specimens are indistinguishable from sculpture.",
     href: "/collections#precious-metals",
-    image: "/hero/hero-diamond.jpg",
+    image: "/collections/precious-metals.jpg",
     imageAlt: "Diamond specimen under studio light — Phaigort Precious Metals",
     hoverImage: "/story/full-diamond.png",
     hoverImageAlt: "Full diamond crystal — Phaigort Precious Metals",
@@ -35,7 +35,7 @@ export const TREASURE_DOMAINS = [
     description:
       "Coloured gemstones of exceptional origin — Kashmir sapphires of violet-blue saturation, Burmese spinels with chromium fluorescence, alexandrites whose absorption spectrum bridges daylight and incandescent light. Each stone is selected for the geological event it represents, not the market category it occupies.",
     href: "/collections#geological-rarities",
-    image: "/hero/hero-gemstone.jpg",
+    image: "/collections/geological-rarities.jpg",
     imageAlt: "Cut gemstone specimen on neutral ground — Phaigort Geological Rarities",
     hoverImage: "/editorial/gemstone-bg.jpg",
     hoverImageAlt: "Gemstone field close detail — Phaigort Geological Rarities",
@@ -45,7 +45,7 @@ export const TREASURE_DOMAINS = [
     description:
       "Objects carrying the accumulated intelligence of craft traditions across centuries — Portuguese filigree of the sixteenth century, Spanish colonial goldwork, Asian export pieces whose trade routes are inscribed in their materials. Provenance is documented, not asserted.",
     href: "/collections#historical-artifacts",
-    image: "/story/garcia-de-orta.jpg",
+    image: "/collections/historical-artifacts.jpg",
     imageAlt: "Historical material study — Phaigort Historical Artifacts",
     hoverImage: "/story/timeline-earth.jpg",
     hoverImageAlt: "Geological timeline — Phaigort Historical Artifacts",
@@ -55,7 +55,7 @@ export const TREASURE_DOMAINS = [
     description:
       "Materials at the boundary of what science currently permits — metamorphic composites, aerospace-grade alloys applied beyond their industrial context, proprietary surface treatments that require years to develop and cannot be replicated at scale. The category is defined by irreproducibility.",
     href: "/collections#contemporary-innovations",
-    image: "/story/expedition-rough.jpg",
+    image: "/collections/contemporary-innovations.jpg",
     imageAlt: "Rough geological specimen from field expedition — Phaigort Contemporary Innovations",
     hoverImage: "/story/rough-stone.png",
     hoverImageAlt: "Rough stone detail — Phaigort Contemporary Innovations",

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { createMetadata } from "@/lib/metadata";
 import { H1, H2, Body, Caption, Label } from "@/components/ui/Typography";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -18,7 +19,17 @@ export default function ContactPage() {
     <div>
       {/* Hero */}
       <DarkFieldStage intensity="deep" className="py-24 md:py-36">
-        <Container className="max-w-3xl">
+        <Image
+          src="/hero/hero-diamond.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover object-center"
+          style={{ opacity: 0.09, filter: "grayscale(100%)" }}
+          aria-hidden
+        />
+        <Container className="relative z-10 max-w-3xl">
           <Caption className="text-platinum/50">Open a Dialogue</Caption>
           <H1 className="mt-5 text-platinum">A conversation is where it begins.</H1>
           <Body className="mt-6 text-platinum/70">

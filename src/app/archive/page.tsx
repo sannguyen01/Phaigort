@@ -19,23 +19,23 @@ const ARCHIVE_CATEGORIES = [
     period: "15th – 18th Century",
     description:
       "Spanish colonial jewelry blending European techniques with indigenous traditions. Portuguese filigree representing five centuries of craft transmission — a wire-working discipline so demanding it cannot be industrially reproduced.",
-    image: "/story/garcia-de-orta.jpg",
-    imageAlt: "Historical material study — Phaigort Archive",
+    image: "/collections/historical-artifacts.jpg",
+    imageAlt: "Iberian historical goldwork artifacts — Phaigort Archive",
   },
   {
     title: "Asian Trade Objects",
     period: "16th – 19th Century",
     description:
       "Objects connecting civilizations along maritime trade routes — ceramic masterworks, metalwork demonstrating cross-cultural technique exchange, and material culture shaped by the Silk Road's final centuries of activity.",
-    image: "/hero/hero-diamond.jpg",
-    imageAlt: "Precious metals and Asian trade metalwork — Phaigort Archive",
+    image: "/story/garcia-de-orta.jpg",
+    imageAlt: "Asian trade object documentation — Phaigort Archive",
   },
   {
     title: "European Renaissance",
     period: "14th – 17th Century",
     description:
       "Goldwork and gem-set pieces from the era when scientific inquiry and artistic ambition converged. Objects from workshops where the same mind that studied mineralogy also set stones.",
-    image: "/hero/hero-gemstone.jpg",
+    image: "/collections/geological-rarities.jpg",
     imageAlt: "European Renaissance gem-set jewelry — Phaigort Archive",
   },
   {
@@ -43,8 +43,8 @@ const ARCHIVE_CATEGORIES = [
     period: "Ongoing Documentation",
     description:
       "Every historical acquisition undergoes professional assessment evaluating preservation state, structural stability, and documented chain of custody. Objects of significant historical sensitivity are not acquired without thorough due diligence across recognised registries.",
-    image: "/editorial/gemstone-bg.jpg",
-    imageAlt: "Gemstone documentation and provenance — Phaigort Archive",
+    image: "/story/timeline-earth.jpg",
+    imageAlt: "Geological timeline and provenance documentation — Phaigort Archive",
   },
 ] as const;
 
@@ -117,30 +117,39 @@ export default function ArchivePage() {
         </Container>
       </section>
 
-      {/* ── Closing note ─────────────────────────────────────────────────── */}
-      <section
-        className="py-14 text-center text-platinum md:py-20"
-        style={{ background: "var(--color-bg)" }}
-      >
-        <Container className="max-w-xl">
-          <ScrollReveal>
-            <div className="flex justify-center">
-              <svg viewBox="0 0 40 40" width="16" height="16" fill="none" aria-hidden="true">
-                <polygon
-                  points="20,2 38,20 20,38 2,20"
-                  fill="none"
-                  stroke="rgba(200,200,200,0.25)"
-                  strokeWidth="1"
-                />
-              </svg>
-            </div>
-            <p className="mt-6 font-display text-[1.05rem] italic leading-relaxed text-platinum/50">
-              Every object in the Phaigort Archive was acquired on the condition that its story
-              could be fully told — not claimed.
+      {/* ── Editorial break — full-bleed with pull-quote ──────────────────── */}
+      <ScrollReveal>
+        <div
+          className="relative max-h-[420px] min-h-[240px] overflow-hidden"
+          style={{ height: "38vh" }}
+        >
+          <Image
+            src="/editorial/hero-break.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            loading="lazy"
+            aria-hidden
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-0 h-24"
+            style={{ background: "linear-gradient(to bottom, var(--color-bg), transparent)" }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
+            style={{ background: "linear-gradient(to top, var(--color-bg), transparent)" }}
+          />
+          <div className="absolute inset-0 flex items-center justify-center px-6">
+            <p className="max-w-2xl text-center font-display text-[1.05rem] italic leading-relaxed text-platinum/70">
+              Every object here was acquired on the condition that its story could be fully told
+              — not claimed.
             </p>
-          </ScrollReveal>
-        </Container>
-      </section>
+          </div>
+        </div>
+      </ScrollReveal>
     </>
   );
 }
