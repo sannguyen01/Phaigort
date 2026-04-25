@@ -67,7 +67,7 @@ export function MaterialStory() {
           />
 
           <a
-            href="/our-story"
+            href="/material-consciousness"
             className="mt-8 inline-flex items-center gap-3 font-ui uppercase tracking-[0.16em] transition-opacity duration-200 hover:opacity-100"
             style={{
               fontSize: "var(--text-xs)",

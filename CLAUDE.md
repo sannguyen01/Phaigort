@@ -74,9 +74,13 @@ This renders an SVG fractal-noise grain at ~5% opacity — simulating SEM gemsto
 texture. The grain must be nearly invisible at normal viewing distance.
 
 ### Photography Rules
-- Gemstones and artefacts: lit and shot against neutral-black fields only
+- Photography of gemstones, specimens, and artefacts is **required** on Homepage and sub-pages
+- Shot against neutral-black fields only — T-01 `#0A0A0A` or T-02 `#141414` backgrounds
 - No warm gels, no ambient blue cast, no reflective coloured surfaces in frame
 - The object itself is the only permitted light source in the composition
+- Hero section: full-bleed specimen photography with slow parallax and radial mask is the canonical treatment
+- Domain cards (DomainsGrid): each domain must have a representative image mapped from `/hero/` or `/story/`
+- All domain images must use `next/image` with `fill`, `sizes`, and descriptive `alt` text
 
 ## PROHIBITED — DO NOT USE, DO NOT REINTRODUCE
 These are permanently removed from the Phaigort design system:
@@ -114,7 +118,7 @@ Labels/nav = `--text-xs` + `letter-spacing: 0.12em` + `text-transform: uppercase
 
 ## Homepage Section Sequence (src/app/page.tsx)
 Mount in this exact order:
-1. `<Hero />`            — 100dvh, botanical SVG at 8% opacity, NO photography
+1. `<Hero />`            — 100dvh, necklace/specimen photography permitted, botanical pattern overlay
 2. `<Philosophy />`      — centred editorial text, max-width 640px, dark ground
 3. `<MaterialStory />`   — two-column: copy left, arch-masked image right
 4. `<Statement />`       — three numbered pillars (01 / 02 / 03), T-09 numbers

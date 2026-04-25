@@ -10,7 +10,7 @@ export const metadata = createMetadata({
   description:
     "Phaigort presents four domains of material rarity: coloured gemstones of geological origin, precious metal specimens, authenticated historical artifacts, and contemporary material innovations. Each piece is documented from source to acquisition.",
   path: "/collections",
-  ogImage: "/collections/geological-rarities.jpg",
+  ogImage: "/hero/hero-gemstone.jpg",
 });
 
 export default function CollectionsPage() {

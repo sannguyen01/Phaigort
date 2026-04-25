@@ -10,7 +10,7 @@ export const metadata = createMetadata({
   description:
     "Iberian goldwork, Asian trade objects, European Renaissance pieces, and contemporary provenance documentation. Every artifact in the Phaigort Archive carries a documented chain of custody.",
   path: "/archive",
-  ogImage: "/collections/historical-artifacts.jpg",
+  ogImage: "/story/garcia-de-orta.jpg",
 });
 
 const ARCHIVE_CATEGORIES = [
@@ -19,15 +19,15 @@ const ARCHIVE_CATEGORIES = [
     period: "15th – 18th Century",
     description:
       "Spanish colonial jewelry blending European techniques with indigenous traditions. Portuguese filigree representing five centuries of craft transmission — a wire-working discipline so demanding it cannot be industrially reproduced.",
-    image: "/collections/historical-artifacts.jpg",
-    imageAlt: "Historical goldwork jewelry — Phaigort Archive",
+    image: "/story/garcia-de-orta.jpg",
+    imageAlt: "Historical material study — Phaigort Archive",
   },
   {
     title: "Asian Trade Objects",
     period: "16th – 19th Century",
     description:
       "Objects connecting civilizations along maritime trade routes — ceramic masterworks, metalwork demonstrating cross-cultural technique exchange, and material culture shaped by the Silk Road's final centuries of activity.",
-    image: "/collections/precious-metals.jpg",
+    image: "/hero/hero-diamond.jpg",
     imageAlt: "Precious metals and Asian trade metalwork — Phaigort Archive",
   },
   {
@@ -35,7 +35,7 @@ const ARCHIVE_CATEGORIES = [
     period: "14th – 17th Century",
     description:
       "Goldwork and gem-set pieces from the era when scientific inquiry and artistic ambition converged. Objects from workshops where the same mind that studied mineralogy also set stones.",
-    image: "/collections/geological-rarities.jpg",
+    image: "/hero/hero-gemstone.jpg",
     imageAlt: "European Renaissance gem-set jewelry — Phaigort Archive",
   },
   {
@@ -43,7 +43,7 @@ const ARCHIVE_CATEGORIES = [
     period: "Ongoing Documentation",
     description:
       "Every historical acquisition undergoes professional assessment evaluating preservation state, structural stability, and documented chain of custody. Objects of significant historical sensitivity are not acquired without thorough due diligence across recognised registries.",
-    image: "/collections/geological-rarities-detail.jpg",
+    image: "/editorial/gemstone-bg.jpg",
     imageAlt: "Gemstone documentation and provenance — Phaigort Archive",
   },
 ] as const;

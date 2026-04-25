@@ -14,7 +14,7 @@ const TIMELINE_DATA = [
       "A ruby's red comes from chromium — the same element that colours emeralds green, depending entirely on the mineral that hosts it. An alexandrite shifts from teal in daylight to deep raspberry under incandescent light because its absorption spectrum falls precisely on the boundary between two light sources. These are not accidents of beauty. They are chemistry operating under conditions that exist only deep within the Earth, only under specific geological circumstance, only once.",
     body2:
       "We choose materials where this geological intelligence is still visible in the object itself — not polished away, not set so the stone becomes decoration. Every piece in a Phaigort collection is selected because you cannot separate its beauty from its science. The two arrived together. They do not come apart.",
-    image: "/collections/geological-rarities.jpg",
+    image: "/hero/hero-gemstone.jpg",
     imageAlt: "Cut gemstones representing the geological forces that create colour — Phaigort",
   },
   {
