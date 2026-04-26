@@ -83,67 +83,65 @@ These tensions are **productive**, not problems to be solved. They give Phaigort
 
 ### 2.1 — Color Theology
 
-Phaigort's palette is not decorative. Each colour carries a specific semantic weight.
+Phaigort's palette is geological argument, not decoration. The entire identity derives from **dark-field gemological illumination** — the scientific technique in which a stone is placed against a lightless ground so that its internal structure becomes visible. The stone illuminates itself. The field disappears. A pure, tonally graduated achromatic ground has no opinion. It disappears. The stone speaks.
 
-#### Primary Field: Platinum White `#F8F9FB`
-*Coverage: 60–75% of any composition.*
+The complete and only colour vocabulary for all Phaigort brand production:
 
-This is the breath between moments. The white of bleached Portuguese limestone. The light of an overcast Atlantic sky. It creates the void space that allows heavy materials to breathe. It is never pure white — it carries warmth (the `#FB` in the hex is slightly warm), preventing the clinical coldness of pure #FFFFFF.
+| Token | Hex | Name | Primary Use |
+|---|---|---|---|
+| T-01 | `#0A0A0A` | Void Obsidian | Page ground, packaging, absolute dark field |
+| T-02 | `#141414` | Abyssal Carbon | Hero sections, DarkFieldStage |
+| T-03 | `#1C1C1C` | Void Ink | Navigation, elevated surfaces |
+| T-04 | `#2E2E2E` | Iron Veil | Dividers, secondary surfaces |
+| T-05 | `#3D3D3D` | Slate Cipher | Product cards, caption backgrounds |
+| T-06 | `#525252` | Graphite Stratum | Inactive text, ghost states |
+| T-07 | `#7A7A7A` | Dust of Ages | Captions, metadata, timestamps |
+| T-08 | `#A8A8A8` | Mineral Quartz | Body copy support, inactive UI |
+| T-09 | `#C8C8C8` | Platinum Mist | Ruled lines, section numbers, fine ornamental |
+| T-10 | `#DEDEDE` | Sterling Breath | Secondary headings, subheadings |
+| T-11 | `#F2F2F2` | White Void | Primary body copy, editorial text |
+| T-12 | `#FAFAFA` | Pure Aperture | Display headlines, logo on dark |
 
-**Photographic equivalent**: Aged vellum, bleached linen, white marble with grey veining, overcast studio light.
+#### The Tonal Descent Principle
 
-#### Anchor: Royal Navy `#1A2851`
-*Coverage: 40–50% as text and DarkFieldStage blocks.*
+Pages are composed as a descent into depth: the darkest tones (T-01 → T-03) anchor large fields; the lightest tones (T-10 → T-12) carry the highest-value content — headlines, specimen names, display text. This direction is never reversed.
 
-The depth of oceanic water between the Tagus River and the Indian Ocean. The colour of night sky over open water. In dark-field photography, this is the background that makes gemstones float. As text, it carries the weight of the scholarly tradition — serious but not severe.
+#### No Colour Competes With the Material
 
-**Photographic equivalent**: Midnight blue velvet, deep-sea water, night sky without stars, indigo-dyed linen.
+When a Burmese ruby sits against T-02 Abyssal Carbon, the chromium red of that stone is the only colour on the page. When a Kashmir sapphire floats on T-01 Void Obsidian, its cornflower blue is uncontested. The moment a background carries hue — navy, ivory, amber — the brand begins competing with its own inventory.
 
-#### Life Signal: Coral Reef `#FF6B4A`
-*Coverage: 5–8% maximum — CTAs, discovery markers, punctuation.*
+**Warmth enters only through photography** — the amber raking light on a gold specimen, the 2800K lamplight in a scholar's study. In the typographic and UI layer, colour is strictly prohibited.
 
-Used with restraint equivalent to a red stamp on a trading document. The colour of a flame, of volcanic rock at the surface, of the moment something is found. It marks action and urgency without alarm. When used in photography as a prop or accent, it should appear as: a wax seal, a single coral fragment, a ceramic shard, fire.
-
-**Never use coral as a background colour. Never use it for decorative purposes. Only for signal.**
-
-#### Navigation: Sapphire Blue `#0F52BA`
-*Coverage: Accent — links, interactive states.*
-
-The blue of Iberian maritime charts. Deep sea, not sky. Used for navigation (links, interactive elements) because it is directional — it points somewhere.
-
-#### Void Stage: Deep Navy `#0F172A`
-*The DarkFieldStage background. The laboratory dark. The velvet beneath a gemstone.*
-
-This is the colour of gemological dark-field illumination — the standard scientific technique for revealing internal structure in coloured stones. When Phaigort places content on this field, it is making a statement: *we are examining this with the rigour of a gemologist*.
+**Permanently prohibited**: Royal Navy `#1A2851`, Coral Reef `#FF6B4A`, Sapphire Blue `#0F52BA`, warm ivory `#FAF7F2` — none of these exist in the Phaigort system.
 
 ---
 
 ### 2.2 — Typography Architecture
 
-#### Cormorant — The Voice of Geological Time
+#### Cardo — The Voice of Geological Time
 **Role**: Headings, display text, editorial statements, pullquotes.
 **Weight usage**: Bold (700) for declarations; Semibold (600) for headers; Italic for scientific or philosophical asides.
 **Sizes**: Display (clamp 48–96px), H1 (clamp 36–72px), H2 (clamp 28–48px), H3 (clamp 22–36px).
 
-Cormorant is an Old-Style serif with pronounced calligraphic contrast — its thick strokes and thin hairlines recall the manuscript hand of Renaissance natural philosophers. It carries centuries in its letterforms. When used for geological copy ("forty million years"), it makes deep time feel physically present.
+Cardo is an Old-Style serif with pronounced calligraphic contrast — its thick strokes and thin hairlines recall the manuscript hand of Renaissance natural philosophers. It carries centuries in its letterforms. When used for geological copy ("forty million years"), it makes deep time feel physically present.
 
-**Editorial rule**: Cormorant should never be set small. It loses its character below 22px. At small sizes, defer to Inter.
+**Editorial rule**: Cardo should never be set small. It loses its character below 22px. At small sizes, defer to Garet.
 
-#### Jost — The Cartographer's Hand
+#### Garet — The Cartographer's Hand
 **Role**: Brand identity, navigation, section labels, UI labels, domain numbers.
 **Weight usage**: Medium (500) for navigation; Regular (400) for labels.
 **Case**: Always uppercase with letter-spacing 0.15–0.25em.
 **Sizes**: Navigation (13–14px), Labels (10–12px), UI (12–16px).
 
-Jost is a geometric sans with optical clarity — it reads like a cartographer's annotation on a maritime chart. Uppercase, tracked, precise. It is the navigational layer of the visual system: it tells you where you are, not how to feel.
+Garet is a geometric sans with optical clarity — it reads like a cartographer's annotation on a maritime chart. Uppercase, tracked, precise. It is the navigational layer of the visual system: it tells you where you are, not how to feel.
 
-#### Inter — The Scholar's Note
+#### Garet — Body, Captions & Forms
 **Role**: Body copy, captions, form elements, long-form educational content.
 **Weight usage**: Regular (400) for body; Medium (500) for emphasis.
 **Sizes**: Body (15–17px), Caption (12–13px).
 **Line height**: 1.65–1.75 (generous — this is reading text, not display text).
 
-Inter is the reading font. It disappears and lets the content dominate. For a brand whose primary value is knowledge transmission, the body font must be maximally legible without character.
+Garet at reading weight disappears and lets the content dominate. For a brand whose primary value is knowledge transmission, the body font must be maximally legible without character. Both navigation/UI and body text use Garet — differentiated by case (uppercase + wide tracking for UI; natural case + generous leading for body).
 
 ---
 
@@ -156,9 +154,9 @@ Phaigort's 40–50% negative space is not underdevelopment or restraint. It is t
 **Spatial principles:**
 - Every major composition has one visual centre of gravity, surrounded by void.
 - No element competes with another. Elements are choreographed, not crowded.
-- The 8px grid (multiples: 8, 16, 24, 32, 48, 64, 96, 128) is the geological strata — the underlying order beneath visible surfaces.
+- The 4px base grid (multiples: 4, 8, 16, 24, 32, 48, 64, 96, 128) is the geological strata — the underlying order beneath visible surfaces.
 - **Caesura** (the dramatic section break between dark and light fields) is a formal device. Each caesura must feel earned, not habitual.
-- **The DarkFieldStage** (deep-navy background blocks) is reserved for moments of maximum drama: the hero entry, the collection CTA, the atelier portal. Used too frequently, it loses power.
+- **The DarkFieldStage** (Abyssal Carbon `#141414` background) is reserved for moments of maximum drama: the hero entry, the collection CTA, the atelier portal. Used too frequently, it loses power.
 
 ---
 
@@ -168,12 +166,12 @@ In digital space, materials must have a **tactile implication** — the viewer c
 
 | Surface | CSS Treatment | Emotional Quality |
 |---|---|---|
-| **Vellum** (warm, aged) | `bg-warm-ivory`, subtle grain overlay | Scholarly, archival, trustworthy |
-| **Velvet** (deep, absorptive) | `bg-royal-navy`, no texture | Depth, luxury, containment |
-| **Platinum** (cool, hard, reflective) | `bg-platinum`, `border border-royal-navy/8` | Precision, purity, modernity |
+| **Void Field** (absolute dark, geological) | T-01 `#0A0A0A` — page ground | The lightless laboratory — the stone speaks |
+| **Velvet** (deep, absorptive) | T-02 `#141414` — DarkFieldStage | Depth, luxury, gemological containment |
+| **Graphite** (elevated surface) | T-03 `#1C1C1C` — navigation, UI containers | Structural authority without heaviness |
 | **Rough stone** (tactile, uncut) | Image texture, organic | Geological reality, before human intervention |
 | **Polished metal** (mirror) | High contrast, specular highlights in imagery | Achievement, transformation |
-| **Aged parchment** | `bg-[#F0EEE9]`, collection card background | Historical depth, provenance |
+| **Warm Linen** (archival prop — photography only) | `#F0EEE9` in photo backdrops only, never UI | Historical depth, provenance |
 
 ---
 
@@ -181,12 +179,11 @@ In digital space, materials must have a **tactile implication** — the viewer c
 
 Phaigort uses **no emoji icons** and no generic icon libraries. The iconographic vocabulary is architectural and minimal:
 
-- **Dividers**: Thin 1px horizontal rules (`border-royal-navy/10`) — geological strata lines
-- **Scroll indicator**: Vertical line dissolving to transparent (gradient from `platinum/30` to transparent) — the thread of descent
-- **Domain numbers**: `01`, `02`, `03`, `04` — cartographic annotations
+- **Dividers**: Thin 1px horizontal rules (`rgba(250, 250, 250, 0.06)`) — geological strata lines
+- **Scroll indicator**: Vertical line dissolving to transparent (gradient from `rgba(250, 250, 250, 0.30)` to transparent) — the thread of descent
+- **Domain numbers**: `01`, `02`, `03`, `04` in Platinum Mist `#C8C8C8` — cartographic annotations
 - **Navigation arrows**: Text-based (`→`, `←`) or minimal custom SVG — never icon library arrows
-- **Section labels** (Caption): 10–12px Jost uppercase, widely tracked — the map legend
-- **The Coral dot**: A single `#FF6B4A` circular mark used as a discovery signal — rare, meaningful
+- **Section labels** (Caption): 10–12px Garet uppercase, widely tracked — the map legend
 
 ---
 
@@ -254,11 +251,11 @@ The photograph must show that the stone is a **geological event**. It should app
 - Uncut or minimally cut rough crystals: sapphires in matrix, spinel octahedra, alexandrite in pegmatite host rock
 - Precisely cut stones on **scientific specimen trays** (not velvet ring holders) — white ceramic dishes, granite slabs, aged brass trays
 - Stones photographed against geological maps of their origin region
-- Internal characteristics (silk, inclusions, fingerprints) shown via dark-field illumination
+- Garetnal characteristics (silk, inclusions, fingerprints) shown via dark-field illumination
 - Crystal habit series: showing the crystal form that produced the cut stone
 
 #### Lighting Prescription: Dark-Field Illumination
-Dark-field lighting is the geological standard for revealing internal structure in coloured stones. The stone floats on a dark field (deep navy `#0F172A`) illuminated by a single or dual-axis light source positioned to enter the pavilion and refract through the interior. This reveals:
+Dark-field lighting is the geological standard for revealing internal structure in coloured stones. The stone floats on a dark field (Abyssal Carbon `#141414`) illuminated by a single or dual-axis light source positioned to enter the pavilion and refract through the interior. This reveals:
 - Silk in Kashmir sapphires (rutile needles that give the velvety character)
 - Chromium fluorescence in Burmese rubies and spinels
 - The alexandrite colour change (photograph under both daylight 5500K and incandescent 2800K)
@@ -409,7 +406,7 @@ Beyond domain-specific photography, Phaigort requires editorial campaign imagery
 
 **Mood**: Scholar's study. Evening light. Warm amber. The moment just before comprehension.
 **Reference**: Dutch Golden Age still life painting (Vermeer, de Hoogh), manuscript illumination.
-**Palette**: Deep navy background, amber-gold light, platinum-white highlights.
+**Palette**: Abyssal Carbon `#141414` background, amber-gold raking light, platinum-white highlights.
 
 #### Campaign III: "The Passage" (Maritime Heritage)
 **Concept**: The trading vessel as vehicle of discovery. Aged ship's maps, compass, rope, salt-worn wood, a specimen chest open to reveal gemstones. The materials and the means of their journey together.
@@ -423,7 +420,7 @@ Beyond domain-specific photography, Phaigort requires editorial campaign imagery
 
 **Mood**: Still, precise, profound. Maximum void space. Objects isolated on platinum-white field.
 **Reference**: Hiroshi Sugimoto's museum photography. The object as time capsule.
-**Palette**: Pure platinum white, deep navy text/annotation, objects at full material fidelity.
+**Palette**: Pure platinum white, Abyssal Carbon text/annotation, objects at full material fidelity.
 
 ---
 
@@ -431,19 +428,19 @@ Beyond domain-specific photography, Phaigort requires editorial campaign imagery
 
 #### Homepage — Hero Section
 - **Current state**: Dark navy gradient with radial sapphire glow (no image)
-- **Recommended**: Add a hero image layer with `object-cover`, opacity-blended into the deep navy
+- **Recommended**: Add a hero image layer with `object-cover`, opacity-blended into the Abyssal Carbon
 - **Image**: Campaign II "The Knowledge" — an extreme close-up of a rough Kashmir sapphire on a geological map, photographed in raking light. Dark field naturally. The stone's interior structure visible through the uncut surface.
-- **Dimensions**: 2400 × 1350px (16:9), must work with deep navy overlay at 60% opacity
-- **Tone**: Enough dark to merge with `#0F172A` DarkFieldStage, stone illuminated from within
+- **Dimensions**: 2400 × 1350px (16:9), must work with Abyssal Carbon overlay at 60% opacity
+- **Tone**: Enough dark to merge with `#141414` DarkFieldStage, stone illuminated from within
 
 #### Homepage — OurStory (MaterialStory) Section
-- **Current state**: `bg-warm-ivory` — three-pillar layout. No images.
+- **Current state**: `bg-void-ink` — three-pillar layout. No images.
 - **Opportunity**: A horizontal visual strip between pillars showing: rough crystal → geological field → cut stone (three-image series)
 - **Dimensions**: 3 × square crops (1:1, 400 × 400px each)
 
 #### Collections Page — Domain Headers
 - **All four domain images exist** but require replacement with directed photography
-- **Geological Rarities**: Kashmir sapphire under dark-field illumination, deep navy field
+- **Geological Rarities**: Kashmir sapphire under dark-field illumination, Abyssal Carbon field
 - **Precious Metals**: Crystalline gold specimen on slate, raking light from left
 - **Historical Artifacts**: Portuguese filigree pendant on aged cartographic map, plan view
 - **Contemporary Innovations**: Iridescent composite panel, three-angle triptych
@@ -477,34 +474,34 @@ The closest living reference: **Apartamento** (for spatial warmth), **032c** (fo
 ### 4.2 — Cover Concepts
 
 #### Cover A: "The Stone"
-A single unheated Kashmir sapphire, photographed on a pure platinum-white field, occupying 40% of the frame. Below: `PHAIGORT` in Jost uppercase, 0.25em tracking. A single datum line: *"Kashmir · Corundum · 65,000,000 years"*. Nothing else. Maximum void. The stone earns its prominence through absence of competition.
+A single unheated Kashmir sapphire, photographed on a pure platinum-white field, occupying 40% of the frame. Below: `PHAIGORT` in Garet uppercase, 0.25em tracking. A single datum line: *"Kashmir · Corundum · 65,000,000 years"*. Nothing else. Maximum void. The stone earns its prominence through absence of competition.
 
 #### Cover B: "The Map"
-An aged cartographic map of the Iberian trade routes (Manila Galleon line highlighted in Coral `#FF6B4A` — a single stroke). In the lower quadrant: a gemstone specimen laid directly on the map at the location of its geological origin. `PHAIGORT` reversed in platinum over the deep-navy ocean area of the map. An editorial caption in Jost: *"From source to collection — the Iberian Voyage, continued."*
+An aged cartographic map of the Iberian trade routes (Manila Galleon line highlighted in Platinum Mist `#C8C8C8` — a single stroke). In the lower quadrant: a gemstone specimen laid directly on the map at the location of its geological origin. `PHAIGORT` reversed in platinum over the deep-navy ocean area of the map. An editorial caption in Garet: *"From source to collection — the Iberian Voyage, continued."*
 
 #### Cover C: "The Light"
-An alexandrite photographed under daylight illumination (pure teal-green) and incandescent illumination (deep crimson-red) in a diptych — two images, one stone. The technical impossibility made visible. Cover line in Cormorant italic: *"The same stone. Two truths."* `PHAIGORT` anchored at the bottom in Jost.
+An alexandrite photographed under daylight illumination (pure teal-green) and incandescent illumination (deep crimson-red) in a diptych — two images, one stone. The technical impossibility made visible. Cover line in Cardo italic: *"The same stone. Two truths."* `PHAIGORT` anchored at the bottom in Garet.
 
 ---
 
 ### 4.3 — Feature Spread: Geological Rarities
 
-**Opening spread** (pages 1–2): Full-bleed dark field photograph — the Kashmir valley geological panorama in the left half, extreme close-up of rough sapphire in matrix in the right half. No text on page 1. Page 2: `01 / Geological Rarities` in Jost, followed by the opening text in Cormorant 24px. Three-column grid, generous leading.
+**Opening spread** (pages 1–2): Full-bleed dark field photograph — the Kashmir valley geological panorama in the left half, extreme close-up of rough sapphire in matrix in the right half. No text on page 1. Page 2: `01 / Geological Rarities` in Garet, followed by the opening text in Cardo 24px. Three-column grid, generous leading.
 
-**Interior spread** (pages 3–4): A taxonomy of coloured stones — organised by geological family, not by market value. Sapphires (corundum family) → Spinels (separate species, not sapphire) → Tourmalines (complex borosilicates) → Alexandrites (chrysoberyls with vanadium chromium). Each with:
-- Species name in Cormorant bold
-- Formation geology in Inter regular
+**Garetior spread** (pages 3–4): A taxonomy of coloured stones — organised by geological family, not by market value. Sapphires (corundum family) → Spinels (separate species, not sapphire) → Tourmalines (complex borosilicates) → Alexandrites (chrysoberyls with vanadium chromium). Each with:
+- Species name in Cardo bold
+- Formation geology in Garet regular
 - Origin map inset (very small, cartographic)
 
-**Closing spread** (pages 5–6): The "Geological Float" composition — a single padparadscha sapphire on deep navy field, occupying full spread. One datum: *"Padparadscha · Ilakaka deposit, Madagascar · Alluvial formation, Precambrian basement rock."*
+**Closing spread** (pages 5–6): The "Geological Float" composition — a single padparadscha sapphire on Abyssal Carbon field, occupying full spread. One datum: *"Padparadscha · Ilakaka deposit, Madagascar · Alluvial formation, Precambrian basement rock."*
 
 ---
 
 ### 4.4 — Feature Spread: Precious Metals
 
-**Opening spread**: A native gold specimen photographed with raking light — the crystal facets catching light individually, creating a field of micro-stars. Left: full-bleed image. Right: the text of *"Gold, in its native state, is a geological event frozen in time"* set in Cormorant 36px, leading 1.3, no body text yet.
+**Opening spread**: A native gold specimen photographed with raking light — the crystal facets catching light individually, creating a field of micro-stars. Left: full-bleed image. Right: the text of *"Gold, in its native state, is a geological event frozen in time"* set in Cardo 36px, leading 1.3, no body text yet.
 
-**Interior spreads**: Comparative taxonomy — crystalline gold (octahedral), wire gold (arborescent), alluvial gold (rounded, water-worn), electrum (paler, softer tone). Each form with its formation story. A geological timeline running across the spread gutter.
+**Garetior spreads**: Comparative taxonomy — crystalline gold (octahedral), wire gold (arborescent), alluvial gold (rounded, water-worn), electrum (paler, softer tone). Each form with its formation story. A geological timeline running across the spread gutter.
 
 ---
 
@@ -512,7 +509,7 @@ An alexandrite photographed under daylight illumination (pure teal-green) and in
 
 **Opening spread**: The trade route map — a reproduction or faithful facsimile of a period Iberian cartographic document showing the Manila Galleon route. Over the Pacific Ocean: a single Portuguese filigree pendant photographed floating (dark background, retouched to remove studio context). The artifact is literally suspended over the ocean it once crossed.
 
-**Interior spreads**: Craft technique documentation — extreme macro of filigree wirework techniques (granulation, twist, plain wire). Each technique named in Jost uppercase, described in Inter body text. The craft lineage visible in the photographs.
+**Garetior spreads**: Craft technique documentation — extreme macro of filigree wirework techniques (granulation, twist, plain wire). Each technique named in Garet uppercase, described in Garet body text. The craft lineage visible in the photographs.
 
 ---
 
@@ -520,7 +517,7 @@ An alexandrite photographed under daylight illumination (pure teal-green) and in
 
 **Opening spread**: A full-bleed image of the contemporary material's surface showing its reactive properties — photographed at three different light angles, combined in a triptych within a single spread. The three-panel format suggests scientific documentation.
 
-**Interior spreads**: The R&D story — prototype images alongside final object, material specification data presented as typography (numbers and measurements as design elements). A timeline from concept to realised material. The intellectual property visible as beauty.
+**Garetior spreads**: The R&D story — prototype images alongside final object, material specification data presented as typography (numbers and measurements as design elements). A timeline from concept to realised material. The intellectual property visible as beauty.
 
 ---
 
@@ -536,7 +533,7 @@ The following prompts are structured for use with Nano Banana's AI-powered image
 - **Intended use**: Where this image will be placed
 
 > **Universal Style Suffix** (append to all prompts):
-> `--style editorial documentary photography, warm amber raking light, platinum-white highlights, deep navy shadow zones, Cormorant editorial typography reference, Iberian trading house aesthetic, 16th century natural philosophy studio, geological specimen photography, National Geographic scientific precision, Kodak Vision 3 film grain, subtle vignette --ar [specified per prompt]`
+> `--style editorial documentary photography, warm amber raking light, platinum-white highlights, Abyssal Carbon shadow zones, Cardo editorial typography reference, Iberian trading house aesthetic, 16th century natural philosophy studio, geological specimen photography, National Geographic scientific precision, Kodak Vision 3 film grain, subtle vignette --ar [specified per prompt]`
 
 > **Universal Negative Prompt** (apply to all generations):
 > `ring box, velvet cushion, jewelry store props, sparkle filter, lens flare, rainbow effect, pure white studio background, fashion model hands, price tag, retail packaging, bokeh-heavy, soft dreamy, fairytale, purple gradient, neon, digital glitch, emoji icons, busy composition, clutter, too many elements, corporate photography, stock photo aesthetic, champagne glass, flower petal, water droplet as style choice, blue-grey cold shadows`
@@ -549,13 +546,13 @@ The following prompts are structured for use with Nano Banana's AI-powered image
 ```
 PROMPT: Extreme close-up macro photograph of an unheated Kashmir sapphire, oval mixed cut, 
 displaying deep cornflower-blue with velvety silk inclusions visible under raking dark-field 
-illumination. Stone floats on pure deep navy (#0F172A) background. Single light source from 
+illumination. Stone floats on pure Abyssal Carbon (#141414) background. Single light source from 
 camera right at 25 degrees elevation, creating a bright crescent on the stone's upper left 
 pavilion facets. The stone's interior silk rutile needles render as silver-blue threads inside 
 the blue volume. Geological documentary photography, sharp focus throughout the stone, very 
 slight warm film grain. The stone occupies 45% of the frame, pure void on all sides.
 
-STYLE: editorial geological specimen photography, dark-field illumination, deep navy void, 
+STYLE: editorial geological specimen photography, dark-field illumination, Abyssal Carbon void, 
 warm amber rim light from camera right, platinum-white highlight ceiling, Kodak Vision 3 
 film grain, 4800K color temperature, vignette 8%
 
@@ -596,7 +593,7 @@ photographed under daylight 5500K illumination, displaying its pure teal-blue-gr
 colour. Stone on aged white ceramic specimen dish on dark slate. Sharp focus. RIGHT PANEL: 
 Identical composition, identical stone, but photographed under incandescent 2800K 
 illumination, displaying pure blood-crimson red. Both panels equal size, black gutter 
-divider between them. Below each panel: Jost uppercase annotation "DAYLIGHT 5500K" and 
+divider between them. Below each panel: Garet uppercase annotation "DAYLIGHT 5500K" and 
 "INCANDESCENT 2800K". No other elements. Pure scientific documentation aesthetic.
 
 STYLE: scientific gemological documentation, controlled studio light, two-panel comparison, 
@@ -729,7 +726,7 @@ INTENDED USE: Collections page editorial spread, atelier page detail
 
 #### PRMT-HA-03 · The Knowledge (Campaign II — Scholar's Study)
 ```
-PROMPT: Interior documentary photograph of a scholar's desk or study — evening, single 
+PROMPT: Garetior documentary photograph of a scholar's desk or study — evening, single 
 warm lamp source (amber, 2800K). Open on the desk: a facsimile volume of Garcia de Orta's 
 'Colóquios dos simples e drogas da India' (1563), open to the gemstone chapter. A brass 
 loupe resting on the open page. A Kashmir sapphire (round, unset) placed on the text. 
@@ -802,17 +799,17 @@ INTENDED USE: Material Consciousness editorial spread, collections page suppleme
 #### PRMT-HERO-01 · Homepage DarkFieldStage Hero Image
 ```
 PROMPT: Extreme close-up of an uncut rough Kashmir sapphire crystal fragment — 
-photographed in dark-field illumination against a background that grades from deep navy 
-(#0F172A) at edges to slightly lighter navy-midnight at center. The stone surface: 
+photographed in dark-field illumination against a background that grades from Abyssal Carbon 
+(#141414) at edges to slightly lighter navy-midnight at center. The stone surface: 
 raw, unpolished, showing the natural hexagonal crystal habit of corundum. The stone's 
 interior: lit from within by the dark-field light source, showing the silk inclusions 
 as a luminous veil of silver-blue threads inside the blue crystal volume. The entire 
 image is intended to be overlaid with the Phaigort hero text at 60% opacity — 
 the stone provides the luminous background texture, the text floats over it.
-The image should work harmoniously with deep navy (#0F172A) text overlay.
+The image should work harmoniously with Abyssal Carbon (#141414) text overlay.
 
-STYLE: dark-field illumination gemological photography, deep navy background 
-graduating from #0F172A at edges, Kashmir sapphire interior illumination, 
+STYLE: dark-field illumination gemological photography, Abyssal Carbon background 
+graduating from #141414 at edges, Kashmir sapphire interior illumination, 
 silk inclusions visible as silver-blue veil, raw crystal surface, 
 not polished or cut, geological specimen photography, 4800K, Kodak Vision 3 grain
 
@@ -821,22 +818,22 @@ ring or setting, hand, sparkle effects, artificial light effects,
 anything that would conflict with text overlay
 
 ASPECT RATIO: 16:9
-INTENDED USE: Hero section background (behind text overlay), opacity blend with #0F172A
+INTENDED USE: Hero section background (behind text overlay), opacity blend with #141414
 ```
 
 #### PRMT-HERO-02 · "Forty Million Years" Campaign Still
 ```
-PROMPT: Three objects on a pure platinum-white (#F8F9FB) surface — arranged in a 
+PROMPT: Three objects on a pure Pure Aperture #FAFAFA surface — arranged in a 
 precise horizontal composition with generous void space (50% white at all edges):
 LEFT: An unheated Kashmir sapphire, oval cut, deep cornflower-blue, placed on 
-a small white ceramic specimen dish. Small Jost annotation below: "65,000,000 years"
+a small white ceramic specimen dish. Small Garet annotation below: "65,000,000 years"
 CENTER: A Portuguese filigree pendant (white gold wirework, 16th century), placed 
-directly on the surface. Small Jost annotation below: "500 years"
+directly on the surface. Small Garet annotation below: "500 years"
 RIGHT: A small iridescent composite material swatch (contemporary innovation), 
-placed on a clean aluminum specimen tray. Small Jost annotation below: "5 years"
+placed on a clean aluminum specimen tray. Small Garet annotation below: "5 years"
 Overhead studio illumination, even, precise, 5000K. The platinum-white background 
 appears as a soft studio void. Each object is sharply focused. The annotations 
-are typographically precise Jost uppercase, very small.
+are typographically precise Garet uppercase, very small.
 
 STYLE: museum object photography, overhead studio illumination 5000K, 
 platinum-white studio background, precise compositional spacing, 
@@ -855,7 +852,7 @@ The following table structures all 14 generated images for Nano Banana slide ass
 
 | Prompt ID | Subject | AR | Slide Type | Text Zone | Background |
 |---|---|---|---|---|---|
-| PRMT-GR-01 | Kashmir Sapphire Dark Field | 16:9 | Full-bleed | Left 35% overlay | Deep navy `#0F172A` |
+| PRMT-GR-01 | Kashmir Sapphire Dark Field | 16:9 | Full-bleed | Left 35% overlay | Abyssal Carbon `#141414` |
 | PRMT-GR-02 | Sapphire on Map | 3:2 | Editorial spread page | Right side text column | No overlay |
 | PRMT-GR-03 | Alexandrite Diptych | 16:9 | Science comparison | Below (caption only) | No overlay |
 | PRMT-GR-04 | Spinel UV Fluorescence | 16:9 | Science comparison | Below caption | No overlay |
@@ -871,10 +868,10 @@ The following table structures all 14 generated images for Nano Banana slide ass
 | PRMT-HERO-02 | Forty Million Years | 16:9 | Campaign spread | Below (annotations internal) | Platinum white |
 
 #### Typography Overlay Rules for Nano Banana Slides
-- **Over dark images** (navy, dark field): Platinum `#F8F9FB` text — Cormorant display + Jost labels
-- **Over light images** (platinum, linen, white studio): Royal Navy `#1A2851` text
-- **Caption text**: Always Inter Regular, 12–13px, `royal-navy/60` or `platinum/60`
-- **Domain numbers**: Jost uppercase, 10px, 0.25em tracking, coral `#FF6B4A`
+- **Over dark images** (navy, dark field): Pure Aperture `#FAFAFA` text — Cardo display + Garet labels
+- **Over light images** (platinum, linen, white studio): Void Ink `#1C1C1C` text
+- **Caption text**: Always Garet Regular, 12–13px, `void-ink/60` or `platinum/60`
+- **Domain numbers**: Garet uppercase, 10px, 0.25em tracking, Platinum Mist `#C8C8C8`
 - **Text zone**: Never place text over the main subject. Always use void areas.
 - **Minimum padding**: 48px (6 × 8px grid unit) from any frame edge
 
@@ -891,7 +888,7 @@ Before any image is approved for production use, verify against the Phaigort sta
 
 **Visual Identity**
 - [ ] Shadow zones are warm amber-brown, not blue-grey
-- [ ] Background is either deep navy (`#0F172A`), platinum white (`#F8F9FB`), or warm linen (`#F0EEE9`)
+- [ ] Background is Abyssal Carbon `#141414` (dark field), Pure Aperture `#FAFAFA` (photography studio only), or warm linen `#F0EEE9` (archival prop photography only)
 - [ ] Film grain is present (organic warmth, not digital noise)
 - [ ] Vignette is present (5–10%, not aggressive)
 - [ ] Void space ≥ 40% of frame
@@ -951,7 +948,7 @@ transition: { delay, duration: 1.0, ease: [0.22, 1, 0.36, 1] }
 - **Hero parallax**: Content shifts `[0, 40px]` as hero scrolls out. Creates sense of the text floating above the material.
 - **Overlay parallax**: Background overlay shifts `[0%, 15%]` — slower than content, creating depth separation.
 - **ScrollReveal threshold**: `-100px` margin (triggers just before element enters viewport — anticipatory reveal, not reactive).
-- **ScrollProgress indicator**: The thin coral `#FF6B4A` line at page top grows with scroll depth — a geological survey marker.
+- **ScrollProgress indicator**: The thin Platinum Mist `#C8C8C8` line at page top grows with scroll depth — a geological survey marker.
 
 ### 6.4 — Micro-interaction Grammar
 
@@ -973,7 +970,7 @@ Examples:
 - `"Native gold specimen · Crystalline arborescent habit · Hydrothermal vein formation"`
 - `"Portuguese filigree pendant · Lisbon workshop, circa 1580 · White gold wirework, 65-step technique"`
 
-**Caption format** (when displayed): `[Species name in Cormorant italic] · [Location] · [Scientific context]`
+**Caption format** (when displayed): `[Species name in Cardo italic] · [Location] · [Scientific context]`
 
 **Never**: "Beautiful sapphire", "Stunning gold", "Gorgeous pendant" — aesthetic adjectives are editorial weakness. Material identity is the statement.
 
