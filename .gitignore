@@ -42,3 +42,6 @@ next-env.d.ts
 # OMC session state
 .omc/
 .superpowers/
+
+# image generation staging (review before moving to public/)
+/staging/
